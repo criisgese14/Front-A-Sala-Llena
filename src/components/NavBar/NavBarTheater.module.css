@@ -1,0 +1,18 @@
+.navContainer {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 60vw;
+  align-items: center;
+}
+
+.logo {
+  margin-top: 2.5rem;
+  height: 8rem;
+  width: auto;
+  border-radius: 50%;
+  box-shadow: 0 1px 25px rgb(255, 255, 255);
+  border-color: none;
+}
+
+.dropdown {
+}
