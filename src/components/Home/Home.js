@@ -6,10 +6,12 @@ import Shows from "../Shows/Shows";
 import Paginate from "../Paginate/Paginate";
 import { allShows, orderScore } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import style from "./Home.module.css";
 
 export default function Home() {
   const dispatch = useDispatch();
+  const history = useHistory()
   const allshows = useSelector((state) => state.shows);
   const [order, setOrder] = useState("");
   const [actualPage, setActualPage] = useState(1);
@@ -46,6 +48,7 @@ export default function Home() {
       <div className={style.paginate}>
         <Paginate qty={qty} allshows={allshows.length} paginate={paginate} />
       </div>
+      <span onClick={() => history.push('/editProfileTheater/1')}>editProfileTheater</span>
     </div>
   );
 }

@@ -247,6 +247,23 @@ export function loginViewer ({ email, password }) {
 
     }
 }
+export function editProfileT(payload){
+    return async function(dispatch){
+        try{
+            const { data } = await axios.put(`http://localhost:3001/theaters/${payload.id}`, payload)
+            alert(data)
+            return dispatch({type: PUT_PROFILE_THEATER})
+        }
+        catch(err){
+            console.log(err)
+        }
+    }
+}
+export const createTheater = values => dispatch =>{
+    return axios.post(`http://localhost:3001/theaters`, values)
+    .then( res => dispatch({type: CREATE_THEATER, payload: res.data}))
+} 
+
 
 
 export const ORDER_PRICE = "ORDER_PRICE";
@@ -267,3 +284,5 @@ export const PUT_VIEWER = "PUT_VIEWER";
 export const GET_ALL_ViEWERS = 'GET_ALL_ViEWERS';
 export const GET_SHOW_BY_NAME = 'GET_SHOW_BY_NAME';
 export const DELETE_VIEWER= 'DELETE_VIEWER'
+export const PUT_PROFILE_THEATER = 'PUT_PROFILE_THEATER'
+export const CREATE_THEATER = "CREATE_THEATER"

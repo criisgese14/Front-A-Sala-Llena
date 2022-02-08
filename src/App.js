@@ -30,7 +30,7 @@ function App() {
           <Route exact path='/loginviewer' component={LogInViewer}/>
           <Route exact path='/formViewerRegister' component={FormViewers}/>
           <Route exact path='/theaterRegister' component={FormTheater}/>
-          <Route exact path='/EditProfileTheater' component={EditProfileTheater}/>
+          <Route exact path='/editProfileTheater/:id' render = {({match}) => <EditProfileTheater props={match.params.id}/>}  />
           {/*<Route exact path='/create/:id' component={FormShow}/>*/}
           <PrivateRoute exact path='/create/:id' component={FormShow}/>
           {/*<Route exact path='/theaterHome/:id' component={HomeTheater}/>*/}
