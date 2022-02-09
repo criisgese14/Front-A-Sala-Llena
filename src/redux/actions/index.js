@@ -161,8 +161,7 @@ export function loginTheater ({ email, password }) {
     //  return res.json()
     //})
     .then(res => {
-      const { jwt } = res
-      return jwt
+      return res.data
     })
     .catch(error => console.log(error))
   }
@@ -199,6 +198,7 @@ export function deleteViewer(id){
     }
 }
 
+
 //export function loginViewer ({ email, password }) {
 //    console.log(email)
 //    return fetch('http://localhost:3001/login/viewer', {
@@ -226,8 +226,8 @@ export function loginViewer ({ email, password }) {
     //  return res.json()
     //})
     .then(res => {
-      const { jwt } = res
-      return jwt
+      
+      return res.data
     })
     .catch(error => console.log(error))
   }
@@ -285,4 +285,4 @@ export const GET_ALL_ViEWERS = 'GET_ALL_ViEWERS';
 export const GET_SHOW_BY_NAME = 'GET_SHOW_BY_NAME';
 export const DELETE_VIEWER= 'DELETE_VIEWER'
 export const PUT_PROFILE_THEATER = 'PUT_PROFILE_THEATER'
-export const CREATE_THEATER = "CREATE_THEATER"
+export const CREATE_THEATER = "CREATE_THEATER";
