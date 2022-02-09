@@ -4,6 +4,7 @@ import {Link, useHistory } from "react-router-dom";
 import {useDispatch, useSelector  } from "react-redux"
 import {putViewer, getViewerDetail, deleteViewer} from "../../redux/actions/index.js"
 import { useParams } from "react-router-dom";
+import NavBarPerfilViewer from "../NavBar/NavBarPerfilViewer.js";
 
 
 const FormPutViewer = () => {
@@ -62,6 +63,7 @@ const FormPutViewer = () => {
 
     return(
         <div>
+            <NavBarPerfilViewer/>
             <h1>Actualizar Espectador:</h1>
             <button onClick={changeEdit}>Edit</button>
             <form onSubmit={handleSubmit}>
