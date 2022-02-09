@@ -264,11 +264,16 @@ export function editProfileT(payload) {
     }
   };
 }
-export const createTheater = (values) => (dispatch) => {
-  return axios
-    .post(`http://localhost:3001/theaters`, values)
-    .then((res) => dispatch({ type: CREATE_THEATER, payload: res.data }));
-};
+
+export function createTheater(values) {
+  try {
+    const theater = axios.post("http://localhost:3001/theaters", values);
+    return {
+      type: "CREATE_THEATER",
+      payload: theater,
+    };
+  } catch (error) {}
+}
 
 export function createFavorites(id, changes) {
   try {

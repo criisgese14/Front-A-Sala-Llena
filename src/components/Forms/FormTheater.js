@@ -1,97 +1,184 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { Fragment } from 'react';
 import { createTheater } from '../../redux/actions';
+import { useForm } from 'react-hook-form'
 
 const FormTheater = ()  => {
-  const dispatch = useDispatch()
-  const [input, setInput] = useState({
-    name: '',
-    image: ``,
-    CUIT: '',
-    adress: '',
-    email: '',
-    confirmEmail: '',
-    password: '',
-    confirmPassword: '',
-    province: '',
-    phoneNumber: '',
-    seatsQTY: '',
-    score: 1
-  });
-  const provinces = ["Buenos Aires", "Cordoba", "Santa Fe", "Catamarca", "Chaco", "Chubut", "Corrientes",
-  "Entre Rios", "Formosa", "Jujuy", "La Pampa", "La Rioja", "Mendoza","Misiones", "Neuquen", "Rio Negro",
-  "Salta", "San Juan", "San Luis", "Santa Cruz", "Santiago del Estero", "Tierra del Fuego", "Tucuman",
-  "CABA"]
+  const { register, handleSubmit,  formState: { errors } } = useForm();
 
-  function handleChange(e) {
-    const { value, name } = e.target;
-    setInput({
-      ...input,
-      [name]: value // Sintaxis ES6 para actualizar la key correspondiente
-    });
-  }
-
-  function handleSubmit (e) {
-    e.preventDefault()
-    if(input.password !== input.confirmPassword){
-      return alert('las contraseñas no coinciden')
+  const  onSubmit=(data)=> {
+    let inputs={
+      name: data.name,
+      image: data.image,
+      CUIT: data.CUIT,
+      adress: data.adress,
+      email: data.email,
+      password: data.password,
+      province: data.province,
+      phoneNumber: data.phoneNumber,
+      seatsQTY: data.seatsQTY,
     }
-    if(input.email !== input.confirmEmail){
-      return alert('los correos deben coincidir') 
-    }
-    dispatch(createTheater({...input}))
-    setInput({
-      name: '',
-      image: ``,
-      CUIT: '',
-      adress: '',
-      email: '',
-      confirmEmail: '',
-      password: '',
-      confirmPassword: '',
-      province: '',
-      phoneNumber: '',
-      seatsQTY: '',
-      score: 1  
-    })
+    createTheater(inputs)
+    alert("Teatro creado con exito")
   }
   return (
-    <form onSubmit={handleSubmit}>  
-      {/* name */}
-      <input name="name" type="text" value={input.name} onChange={handleChange} placeholder="Name of the theater" />
-      {/* image*/}
-      <input name="image" type="text" value={input.image} onChange={handleChange} placeholder="image" />
-      {/*CUIT*/}
-      <input name="CUIT" type="text" value={input.CUIT} onChange={handleChange} placeholder="CUIT" />
-      {/* email */}
-      <input name="email" type="text" value={input.email} onChange={handleChange} placeholder="email" />
-      <input name="confirmEmail" type="text" value={input.confirmEmail} onChange={handleChange} placeholder="Confirm email"/>
-      {/* password  */}
-      <input name="password" type="text" value={input.password} onChange={handleChange} placeholder="Password" />
-      <input name="confirmPassword" type="text" value={input.confirmPassword} onChange={handleChange} placeholder="Confirm Password" />
-      {/* adress */}
-      <input name="adress" type="text" value={input.adress} onChange={handleChange} placeholder="Adress" />
-      {/* province */}
-      <select onChange={handleChange} name='province' value={input.province}>
-        <option value=''>Province</option>
-        {provinces.map(el => <option value={el}>{el}</option>)} 
-      </select>
-      {/* phoneNumber */}
-      <input name="phoneNumber" type="text" value={input.phoneNumber} onChange={handleChange} placeholder="Phone Number" />
-      {/* seatsQTY */}
-      <input name="seatsQTY" type="number" value={input.seatsQTY} min='1'max='1000'onChange={handleChange} placeholder="Seates" />
-      <input name="score" type="range" value={input.score} min='1' max='5' onChange={handleChange} placeholder="Score" />
-      <label>{input.score}</label>
-      {input.name && 
-        input.CUIT &&
-        input.email && input.confirmEmail && 
-        input.password && input.confirmPassword &&
-        input.adress && 
-        input.phoneNumber && 
-        input.province? 
-        <button >Register</button>: 
-        <button disabled>Register</button>}
-    </form>
+    <div className="form-group row">
+        <Fragment>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="form-group">
+                      <label className="form-label col-lg-12">Nombre del Teatro :</label>
+                      <input  type="text" 
+                        name="name" placeholder="Nombre del Teatro"
+                        className="form-control my-2" 
+                        {...register("name",{
+                            required:{
+                                value:true, 
+                                message: "El campo es requerido",
+                            }
+                        })}/>
+                        <span className="text-danger text-small d-block mb-2">{errors.name&&errors.name.message}</span>
+
+                        <label className="form-label col-lg-12">CUIT:</label>
+                        <input  type="text" 
+                        name="CUIT" placeholder="CUIT"
+                        className="form-control my-2" 
+                        {...register("CUIT",{
+                            required:{
+                                value:true, 
+                                message: "El campo es requerido",
+                            }
+                        })}/>
+                        <span className="text-danger text-small d-block mb-2">{errors.CUIT&&errors.CUIT.message}</span>
+                        </div>
+
+                          <label>Email:</label>
+                            <input  type="text" 
+                            name="email" 
+                            placeholder="Ingrese su Correo Electronico"
+                            className="form-control my-2"
+                            {...register("email" ,{
+                                required:{ 
+                                value: true,
+                                message: "El campo es requerido",
+                                },
+                                pattern: {
+                                    value: /\S+@\S+\.\S+/,
+                                    message: "Este formato de correo no es el adecuado"
+                                }
+                            })}
+                            />
+                            {<span className="text-danger text-small d-block mb-2">{errors.email && errors.email.message}</span>}
+                
+                            <label>Contraseña:</label>
+                            <input  type="password" 
+                            name="password" 
+                            placeholder="Ingrese su Contraseña"
+                            className="form-control my-2"
+                            {...register("password" ,{
+                                required:{ 
+                                value: true,
+                                message: "El campo es requerido",
+                                },
+                                minLength: {
+                                    value: 8,
+                                    message: "Minimo 8 caracteres"
+                                },
+                                pattern: {
+                                    value: /(?=(.*[0-9]))(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/,
+                                    message: "Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos."
+                                }
+                            })}
+                            />
+                            {<span className="text-danger text-small d-block mb-2">{errors.password && errors.password.message}</span>}
+                
+                          <label>Selecciona la Provincia:</label>
+                          <select className="form-control" name="province" {...register("province" ,{})} >
+                                <option default>Seleccione una Provincia</option>
+                                <option>Buenos Aires</option>
+                                <option>Cordoba</option>
+                                <option>Santa Fe</option>
+                                <option>Catamarca</option>                        
+                                <option>Chaco</option>                        
+                                <option>Chubut</option>                        
+                                <option>Entre Rios</option>                        
+                                <option>Corrientes</option>                       
+                                <option>Formosa</option>
+                                <option>Jujuy</option>                        
+                                <option>La Pampa</option>                        
+                                <option>La Rioja</option>                        
+                                <option>Mendoza</option>                        
+                                <option>Misiones</option>
+                                <option>Neuquen</option>                        
+                                <option>Rio Negro</option>                        
+                                <option>Salta</option>                        
+                                <option>San Juan</option>                        
+                                <option>San Luis</option>
+                                <option>Santa Cruz</option>                        
+                                <option>Santiago del Estero</option>                        
+                                <option>Tierra del Fuego</option>                        
+                                <option>Tucuman</option>                        
+                                <option>CABA</option>
+                            </select>
+                        <span className="text-danger text-small d-block mb-2">{errors.genre&&errors.genre.message}</span>
+
+                        <label className="form-label col-lg-12">Direccion del Teatro :</label>
+                        <input  type="text" 
+                        name="adress" placeholder="Direccion del Teatro"
+                        className="form-control my-2" 
+                        {...register("adress",{
+                            required:{
+                                value:true, 
+                                message: "El campo es requerido",
+                            }
+                        })}/>
+                        <span className="text-danger text-small d-block mb-2">{errors.adress&&errors.adress.message}</span>
+                
+                        <label className="form-label col-lg-12">Numero de telefono:</label>
+                        <input  type="number" 
+                                name="phoneNumber"
+                                placeholder="Numero de telefono"
+                                className="form-control "
+                                {...register("phoneNumber",{
+                                    required:{
+                                        value:true, 
+                                        message: "El campo es requerido",
+                                    }, 
+                                    pattern: {
+                                        value: /^(0|[1-9][0-9]*)$/,
+                                        message: "No se pueden numero negativos ni decimales"
+                                    }
+                                })}/>
+                                <span className="text-danger text-small d-block mb-2">{errors.phoneNumber&&errors.phoneNumber.message}</span>
+
+                        <label className="form-label col-lg-12">Cantidad de asientos del Teatro:</label>
+                        <input  type="number" 
+                                name="seatsQTY"
+                                placeholder="Nº Asientos"
+                                className="form-control "
+                                {...register("seatsQTY",{
+                                    required:{
+                                        value:true, 
+                                        message: "El campo es requerido",
+                                    }, 
+                                    pattern: {
+                                        value: /^(0|[1-9][0-9]*)$/,
+                                        message: "No se pueden numero negativos ni decimales"
+                                    }
+                                })}/>
+                        <span className="text-danger text-small d-block mb-2">{errors.seatsQTY&&errors.seatsQTY.message}</span>
+
+                        <label>Imagen de perfil:</label>
+                        <input  type="url" 
+                                width="100" height="30"  name="image"
+                                alt="perfil"
+                                placeholder="Inserte una URL de imagen" 
+                                className="form-control my-2"
+                                {...register("image" ,{})}
+                        />
+                        
+                        <button className="btn btn-primary" type="submit">Registra Teatro</button>
+                </form> 
+            </Fragment>
+      </div>
   )
 }
 
