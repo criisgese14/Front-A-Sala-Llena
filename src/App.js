@@ -20,6 +20,7 @@ import PrivateRouteHomeT from "./PrivateRoutes/PrivateRouteHomeT";
 import PrivateRouteCreateShow from './PrivateRoutes/PrivateRouteCreateShow.js';
 import PrivateRouteProfileT from './PrivateRoutes/PrivateRouteProfileT.js';
 import PrivateRoutePutV from "./PrivateRoutes/PrivateRoutePutV";
+import Newsletter from "./components/Newsletter/Newsletter";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
           <PrivateRouteHomeV exact path='/viewerHome/:id' component={HomeViewer}/>
           <PrivateRoutePutV exact path='/formPutViewer/:id' component={FormPutViewer}/>
           <Route exact path='/showDetail/:id' component={ShowDetail}/>
+          <Route exact path='newsletter/:id' component={Newsletter}/>
         </header>
       </div>
       
