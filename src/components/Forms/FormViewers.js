@@ -1,54 +1,23 @@
-import React, {/* useEffect, */ useState, Fragment} from "react";
-import { useDispatch, /* useSelector */ } from "react-redux";
-// import { Link, useHistory } from "react-router-dom";
+import React, { Fragment} from "react";
 import {postViewer} from "../../redux/actions/index.js"
-// import Select from "react-select"
 import { useForm } from 'react-hook-form'
 
 const FormViewers = ()=> {
-    let dispatch = useDispatch();
-    // let history = useHistory();
     const { register, handleSubmit,  formState: { errors } } = useForm();
-    const [input, setInput]= useState({
-        
-    })
     
 
     const onSubmit = (data) => {
-        setInput(data)
-        postViewer(input)
+        const inputs = {
+            name: data.name,
+            email: data.email,
+            password: data.password,
+            image: data.image,
+            province: data.province,
+        }
+        postViewer(inputs)
+        alert("Usuario creado con exito")
     }
     
-    // const optionsProvince=[
-    //     {name: "province",value:"Buenos Aires" ,label:"Buenos Aires"},
-    //     {name: "province",value:"Cordoba" ,label:"Cordoba"},
-    //     {name: "province",value:"Santa Fe" ,label:"Santa Fe"},
-    //     {name: "province",value:"Catamarca" ,label:"Catamarca"},
-    //     {name: "province",value:"Buenos Aires" ,label:"Buenos Aires"},
-    //     {name: "province",value:"Catamarca" ,label:"Catamarca"},
-    //     {name: "province",value:"Chaco" ,label:"Chaco"},
-    //     {name: "province",value:"Chubut" ,label:"Chubut"},
-    //     {name: "province",value:"Entre Rios" ,label:"Entre Rios"},
-    //     {name: "province",value:"Corrientes" ,label:"Corrientes"},
-    //     {name: "province",value:"Formosa" ,label:"Formosa"},
-    //     {name: "province",value:"Jujuy" ,label:"Jujuy"},
-    //     {name: "province",value:"La Pampa" ,label:"La Pampa"},
-    //     {name: "province",value:"La Rioja" ,label:"La Rioja"},
-    //     {name: "province",value:"Mendoza" ,label:"Mendoza"},
-    //     {name: "province",value:"Misiones" ,label:"Misiones"},
-    //     {name: "province",value:"Neuquen" ,label:"Neuquen"},
-    //     {name: "province",value:"Rio Negro" ,label:"Rio Negro"},
-    //     {name: "province",value:"Salta" ,label:"Salta"},
-    //     {name: "province",value:"San Juan" ,label:"San Juan"},
-    //     {name: "province",value:"San Luis" ,label:"San Luis"},
-    //     {name: "province",value:"Santa Cruz" ,label:"Santa Cruz"},
-    //     {name: "province",value:"Santiago del Estero" ,label:"Santiago del Estero"},
-    //     {name: "province",value:"Tierra del Fuego" ,label:"Tierra del Fuego"},
-    //     {name: "province",value:"Tucuman" ,label:"Tucuman"},
-    //     {name: "province",value:"CABA" ,label:"CABA"},
-    // ]
-    console.log(input);
-    // console.log(confirmacion)
     return(
             <Fragment>
                 <form  onSubmit={handleSubmit(onSubmit)}>
@@ -95,8 +64,12 @@ const FormViewers = ()=> {
                                 message: "El campo es requerido",
                                 },
                                 minLength: {
-                                    value: 5,
-                                    message: "Minimo 5 caracteres"
+                                    value: 8,
+                                    message: "Minimo 8 caracteres"
+                                },
+                                pattern: {
+                                    value: /(?=(.*[0-9]))(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/,
+                                    message: "Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos."
                                 }
                             })}
                             />
