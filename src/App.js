@@ -15,7 +15,11 @@ import HomeViewer from "./components/HomeViewer/HomeViewer";
 import FormPutViewer from "./components/Forms/FormPutViewer.js"
 import {UserContextProvider} from './context/UserContext.js';
 import ShowDetail from "./components/Shows/ShowDetail.js"
-import PrivateRoute from "./PrivateRoute";
+import PrivateRouteHomeV from "./PrivateRoutes/PrivateRouteHomeV.js";
+import PrivateRouteHomeT from "./PrivateRoutes/PrivateRouteHomeT";
+import PrivateRouteCreateShow from './PrivateRoutes/PrivateRouteCreateShow.js';
+import PrivateRouteProfileT from './PrivateRoutes/PrivateRouteProfileT.js';
+import PrivateRoutePutV from "./PrivateRoutes/PrivateRoutePutV";
 
 function App() {
   return (
@@ -30,15 +34,11 @@ function App() {
           <Route exact path='/loginviewer' component={LogInViewer}/>
           <Route exact path='/formViewerRegister' component={FormViewers}/>
           <Route exact path='/theaterRegister' component={FormTheater}/>
-          <Route exact path='/editProfileTheater/:id' render = {({match}) => <EditProfileTheater props={match.params.id}/>}  />
-          {/*<Route exact path='/create/:id' component={FormShow}/>*/}
-          <PrivateRoute exact path='/create/:id' component={FormShow}/>
-          {/*<Route exact path='/theaterHome/:id' component={HomeTheater}/>*/}
-          <PrivateRoute exact path='/theaterHome/:id' component={HomeTheater}/>
-          <Route exact path='/viewerHome/:id' component={HomeViewer}/>
-          {/* <PrivateRoute exact path='/viewerHome/:id' component={HomeViewer}/> */}
-          {/*<Route exact path='/formPutViewer/:id' component={FormPutViewer}/>*/}
-          <PrivateRoute exact path='/formPutViewer/:id' component={FormPutViewer}/>
+          <PrivateRouteProfileT exact path='/editProfileTheater/:id' render = {({match}) => <EditProfileTheater props={match.params.id}/>}  />
+          <PrivateRouteCreateShow exact path='/create/:id' component={FormShow}/>
+          <PrivateRouteHomeT exact path='/theaterHome/:id' component={HomeTheater}/>
+          <PrivateRouteHomeV exact path='/viewerHome/:id' component={HomeViewer}/>
+          <PrivateRoutePutV exact path='/formPutViewer/:id' component={FormPutViewer}/>
           <Route exact path='/showDetail/:id' component={ShowDetail}/>
         </header>
       </div>
