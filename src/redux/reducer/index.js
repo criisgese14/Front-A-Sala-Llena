@@ -5,7 +5,7 @@ import {ORDER_SCORE, FILTER_PROVINCE, POST_SHOW,
         FILTER_RATED,
         FILTER_TICKETS_QTY, POST_TICKET, SHOW_DETAIL, 
         THEATER_DETAIL, GET_VIEWER_DETAIL, PUT_VIEWER,GET_ALL_ViEWERS, 
-        GET_SHOW_BY_NAME, DELETE_VIEWER} from "../actions/index.js"
+        GET_SHOW_BY_NAME, DELETE_VIEWER,GET_FAVS} from "../actions/index.js"
 
 
 const initialState = {
@@ -17,6 +17,7 @@ const initialState = {
     showdetail: {},
     viewerDetail:{},
     viewers: [],
+    
 
 }
 
@@ -149,6 +150,7 @@ function rootReducer (state = initialState, action) {
             return{
                 ...state
             }
+        
         default:
             return state;
     }
