@@ -18,7 +18,8 @@ const FormViewers = ()=> {
         alert("Usuario creado con exito")
     }
     
-    return(
+    return( 
+        <div className="card border-success " >
             <Fragment>
                 <form  onSubmit={handleSubmit(onSubmit)}>
                     <label>Nombre:</label>
@@ -115,7 +116,9 @@ const FormViewers = ()=> {
                     </select>
                     <button className="btn btn-primary">Enviar</button>
                 </form>
+                
             </Fragment>
+    </div>
     )
 }
 export default FormViewers;

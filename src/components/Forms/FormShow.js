@@ -41,7 +41,7 @@ const FormShow = ()=>{
         alert("Espectaculo agregado!");
         history.push(`/theaterHome/${id}`);
         }
-
+        
 
     return (
         <div className="container">
@@ -182,8 +182,8 @@ const FormShow = ()=>{
                         <span className="text-danger text-small d-block mb-2">{errors.date&&errors.date.message}</span>
 
                 <label className="form-label col-lg-12">Zona:</label>
-                <select name="zone" className="form-control "
-                        {...register("zone",{
+                <select name="seatNumber" className="form-control "
+                        {...register("seatNumber",{
                             required:{
                                 value:true, 
                                 message: "El campo es requerido",
@@ -199,7 +199,6 @@ const FormShow = ()=>{
                 <label className="form-label col-lg-12">Entradas disponibles:</label>
                 <input  type="number" 
                         name="ticketsQty" 
-                        
                         title="Introduzca las entradas disponibles"
                         placeholder="Entradas Disponibles"
                         className="form-control "
