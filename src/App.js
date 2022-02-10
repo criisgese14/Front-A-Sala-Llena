@@ -21,6 +21,7 @@ import PrivateRouteCreateShow from "./PrivateRoutes/PrivateRouteCreateShow.js";
 import PrivateRouteProfileT from "./PrivateRoutes/PrivateRouteProfileT.js";
 import PrivateRoutePutV from "./PrivateRoutes/PrivateRoutePutV";
 import Newsletter from "./components/Newsletter/Newsletter";
+import SalesHistory from "./components/SalesHistory/SalesHistory";
 
 function App() {
   return (
@@ -66,6 +67,7 @@ function App() {
               path="/formPutViewer/newsletter/:id"
               component={Newsletter}
             />
+            <Route exact path='/saleshistory/:id' component={SalesHistory}/>
           </header>
         </div>
       </BrowserRouter>
