@@ -19,6 +19,7 @@ import {
   DELETE_VIEWER,
   GET_FAVS,
   CREATE_FAVORITES,
+  GET_ALL_TICKETS,
 } from "../actions/index.js";
 
 const initialState = {
@@ -30,6 +31,7 @@ const initialState = {
   showdetail: {},
   viewerDetail: {},
   viewers: [],
+  tickets: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -169,7 +171,11 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
       };
-
+    case GET_ALL_TICKETS:
+      return{
+        ...state,
+        tickets: action.payload
+      }
     default:
       return state;
   }
