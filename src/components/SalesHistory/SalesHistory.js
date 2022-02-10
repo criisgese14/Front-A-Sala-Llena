@@ -34,7 +34,7 @@ const SalesHistory = () =>{
                     return(
                         <div key={e.id}>
                         <h3>{e.name}</h3>
-                        <h4>Cantidad de entradas:{e.tickets.length} </h4>
+                        <h4>Cantidad de entradas:{filterTicket.length} </h4>
                         <h4>Total vendido: ${total?.reduce(function(a, b){ return a + b; })} </h4>
                         </div>
                     )
