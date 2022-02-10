@@ -64,14 +64,14 @@ const FormViewers = ()=> {
                                 value: true,
                                 message: "El campo es requerido",
                                 },
-                                minLength: {
-                                    value: 8,
-                                    message: "Minimo 8 caracteres"
-                                },
-                                pattern: {
-                                    value: /(?=(.*[0-9]))(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/,
-                                    message: "Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos."
-                                }
+                                // minLength: {
+                                //     value: 8,
+                                //     message: "Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos."
+                                // },
+                                // pattern: {
+                                //     value: /(?=(.*[0-9]))(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/,
+                                //     message: "Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos."
+                                // }
                             })}
                             />
                             {<span className="text-danger text-small d-block mb-2">{errors.password && errors.password.message}</span>}
