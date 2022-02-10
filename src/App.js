@@ -22,6 +22,7 @@ import PrivateRouteProfileT from "./PrivateRoutes/PrivateRouteProfileT.js";
 import PrivateRoutePutV from "./PrivateRoutes/PrivateRoutePutV";
 import Newsletter from "./components/Newsletter/Newsletter";
 import SalesHistory from "./components/SalesHistory/SalesHistory";
+import ViewerHistory from "./components/ViewerHistory/ViewerHistory";
 
 function App() {
   return (
@@ -67,7 +68,8 @@ function App() {
               path="/formPutViewer/newsletter/:id"
               component={Newsletter}
             />
-            <Route exact path='/saleshistory/:id' component={SalesHistory}/>
+            <Route exact path='/salesHistory/:id' component={SalesHistory}/>
+            <Route exact path='/formPutViewer/viewerHistory/:id' component={ViewerHistory}/>
           </header>
         </div>
       </BrowserRouter>
