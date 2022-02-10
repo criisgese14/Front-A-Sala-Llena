@@ -18,7 +18,8 @@ const FormViewers = ()=> {
         alert("Usuario creado con exito")
     }
     
-    return(
+    return( 
+        <div className="card border-success " >
             <Fragment>
                 <form  onSubmit={handleSubmit(onSubmit)}>
                     <label>Nombre:</label>
@@ -63,14 +64,14 @@ const FormViewers = ()=> {
                                 value: true,
                                 message: "El campo es requerido",
                                 },
-                                minLength: {
-                                    value: 8,
-                                    message: "Minimo 8 caracteres"
-                                },
-                                pattern: {
-                                    value: /(?=(.*[0-9]))(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/,
-                                    message: "Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos."
-                                }
+                                // minLength: {
+                                //     value: 8,
+                                //     message: "Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos."
+                                // },
+                                // pattern: {
+                                //     value: /(?=(.*[0-9]))(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/,
+                                //     message: "Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos."
+                                // }
                             })}
                             />
                             {<span className="text-danger text-small d-block mb-2">{errors.password && errors.password.message}</span>}
@@ -115,7 +116,9 @@ const FormViewers = ()=> {
                     </select>
                     <button className="btn btn-primary">Enviar</button>
                 </form>
+                
             </Fragment>
+    </div>
     )
 }
 export default FormViewers;

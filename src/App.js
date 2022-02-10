@@ -47,11 +47,21 @@ function App() {
               path="/create/:id"
               component={FormShow}
             />
+            {/* <Route
+              exact
+              path="/create/:id"
+              component={FormShow}
+            /> */}
             <PrivateRouteHomeT
               exact
               path="/theaterHome/:id"
               component={HomeTheater}
             />
+            {/* <Route
+              exact
+              path="/theaterHome/:id"
+              component={HomeTheater}
+            /> */}
             <PrivateRouteHomeV
               exact
               path="/viewerHome/:id"

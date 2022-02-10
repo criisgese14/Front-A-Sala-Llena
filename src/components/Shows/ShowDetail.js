@@ -16,8 +16,13 @@ const ShowDetail = () => {
         dispatch(showDetail(id));
     }, [dispatch]);
     setTimeout(()=> setPrecio(show.tickets[0].price))
+    
     console.log(show);
+    
 
+
+    let dateTimer = show.date
+    let timeTimer = show.time
     return (
         <div className={style.detailContainer}>
         <div className={style.navDetail}>
@@ -42,7 +47,7 @@ const ShowDetail = () => {
                 <h4>{show.length} </h4>
                 <h3>Genero: </h3>
                 <h4>{show.genre} </h4>
-                <Timer newDate={show.date} newTime={show.time}/>
+                <Timer newDate={dateTimer} newTime={timeTimer} price={precio}/>
                 </div>
                 <div>
                 <h3>Entradas disponibles: </h3>
@@ -52,8 +57,11 @@ const ShowDetail = () => {
                 <h4>{show.date} </h4>
                 <h3>Hora: </h3>
                 <h4>{show.time} </h4>
-                <h3>Precio Desde: </h3>
+                <h3>Precio Original: </h3>
                 <h4>{precio}$ </h4>
+                <h3>Precio Reducido:</h3>
+
+                <h3>Porcentaje de descuento actual:</h3>
                 
                 </div>
                 <div className={style.btnContainer}>
