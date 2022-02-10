@@ -77,7 +77,7 @@ function App() {
               path="/formPutViewer/newsletter/:id"
               component={Newsletter}
             />
-            <Route exact path='/saleshistory/:id' component={SalesHistory}/>
+            <Route exact path="/saleshistory/:id" component={SalesHistory} />
           </header>
         </div>
       </BrowserRouter>
