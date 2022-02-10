@@ -288,6 +288,18 @@ export function createFavorites(id, changes) {
   }
 }
 
+export function getAllTickets(){
+    return function(dispatch){
+        return axios.get('http://localhost:3001/tickets')
+        .then(res => res.data)
+        .then(data =>{
+            dispatch({type: GET_ALL_TICKETS, payload: data})
+        })
+        .catch(error => console.log(error)) 
+    }
+    
+}
+
 export const ORDER_PRICE = "ORDER_PRICE";
 export const FILTER_PROVINCE = "FILTER_PROVINCE";
 export const POST_SHOW = "POST_SHOW";
@@ -309,3 +321,4 @@ export const DELETE_VIEWER = "DELETE_VIEWER";
 export const PUT_PROFILE_THEATER = "PUT_PROFILE_THEATER";
 export const CREATE_THEATER = "CREATE_THEATER";
 export const CREATE_FAVORITES = "CREATE_FAVORITES";
+export const GET_ALL_TICKETS = "GET_ALL_TICKETS";
