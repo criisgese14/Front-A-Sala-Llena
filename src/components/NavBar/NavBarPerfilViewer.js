@@ -23,7 +23,7 @@ const NavBarPerfilViewer = () => {
               <Dropdown.Item href={`formPutViewer/${id}`}>
                 <button>Mi Cuenta</button>
               </Dropdown.Item>
-              <Dropdown.Item>
+              <Dropdown.Item href={`viewerHistory/${id}`}>
                 <button>Mis Reservas</button>
               </Dropdown.Item>
               <Dropdown.Item>
