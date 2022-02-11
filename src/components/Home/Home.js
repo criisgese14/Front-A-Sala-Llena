@@ -10,6 +10,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import style from "./Home.module.css";
 import Footer from "../Footer/Footer";
 
+import CarouselContainer from "../Carrousel/Carrousel.js"
 export default function Home() {
   const dispatch = useDispatch();
   const history = useHistory()
@@ -38,7 +39,7 @@ export default function Home() {
       </div>
       {/* <Link to ='/'>
                 </Link> */}
-
+      <CarouselContainer allshows={allshows}/>
       <div className={style.showsContainer}>
         {actualShow.length ? (
           <Shows actualShow={actualShow}/>
@@ -46,6 +47,7 @@ export default function Home() {
           <p>...Loading</p>
         )}
       </div>
+      
       <div className={style.paginate}>
         <Paginate qty={qty} allshows={allshows.length} paginate={paginate} />
       </div>

@@ -67,6 +67,11 @@ function App() {
               path="/viewerHome/:id"
               component={HomeViewer}
             />
+            {/* <Route
+              exact
+              path="/viewerHome/:id"
+              component={HomeViewer}
+            /> */}
             <PrivateRoutePutV
               exact
               path="/formPutViewer/:id"

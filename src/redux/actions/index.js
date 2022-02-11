@@ -179,6 +179,17 @@ export function putViewer(id, changes) {
   };
 }
 
+export function putTicket(id, nuevoticket) {
+  return function (dispatch) {
+    return axios
+      .put(`http://localhost:3001/tickets/${id}`, nuevoticket)
+      .then((response) => response.data)
+      .then((data) => {
+        dispatch({ type: PUT_TICKET, payload: data });
+      });
+  };
+}
+
 export function getAllViewers() {
   return function (dispatch) {
     return axios
@@ -322,3 +333,4 @@ export const PUT_PROFILE_THEATER = "PUT_PROFILE_THEATER";
 export const CREATE_THEATER = "CREATE_THEATER";
 export const CREATE_FAVORITES = "CREATE_FAVORITES";
 export const GET_ALL_TICKETS = "GET_ALL_TICKETS";
+export const PUT_TICKET = "PUT_TICKET";

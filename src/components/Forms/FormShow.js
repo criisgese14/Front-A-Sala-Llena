@@ -27,9 +27,10 @@ const FormShow = ()=>{
             rated: data.rated, 
             date: data.date, 
             time: data.time,
+            originPrice: data.originPrice,
         }
         const tickets = {
-            price: data.price,
+            price: data.originPrice,
             seatNumber: data.seatNumber,
             nameShow: data.name,
 
@@ -44,7 +45,7 @@ const FormShow = ()=>{
         history.push(`/theaterHome/${id}`);
         }
         
-
+        
     return (
         <div className="container">
             <Link to={`/theaterHome/${id}`}><button className="btn btn-primary">Volver</button></Link>
@@ -212,20 +213,20 @@ const FormShow = ()=>{
                         })}/>
                         <span className="text-danger text-small d-block mb-2">{errors.ticketsQty&&errors.ticketsQty.message}</span>
 
-                <label className="form-label col-lg-12">Precio de entradas:</label>        
+                <label className="form-label col-lg-12">Precio de Original de las entradas:</label>        
                 <input  type="number" 
-                        name="price"
+                        name="originPrice"
                         className="form-control "
                         placeholder="Precio por entrada"
-                        {...register("price",{
+                        {...register("originPrice",{
                             required:{
                                 value:true, 
                                 message: "El campo es requerido",
                             }
                         })}/>
-                        <span className="text-danger text-small d-block mb-2">{errors.price&&errors.price.message}</span>
+                        <span className="text-danger text-small d-block mb-2">{errors.originPrice&&errors.originPrice.message}</span>
                         
-                        <button className="btn btn-primary" type="submit">Agregar Tickets</button>
+                        <button className="btn btn-primary" type="submit">Agregar Espectaculo</button>
                 </form> 
             </Fragment>
             </div>
