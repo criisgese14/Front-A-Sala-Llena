@@ -1,6 +1,7 @@
 import React, { Fragment} from "react";
 import {postViewer} from "../../redux/actions/index.js"
 import { useForm } from 'react-hook-form'
+import Footer from "../Footer/Footer.js";
 
 const FormViewers = ()=> {
     const { register, handleSubmit,  formState: { errors } } = useForm();
@@ -118,6 +119,7 @@ const FormViewers = ()=> {
                 </form>
                 
             </Fragment>
+            <Footer/>
     </div>
     )
 }
