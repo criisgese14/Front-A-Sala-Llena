@@ -5,7 +5,7 @@ import {ORDER_SCORE, FILTER_PROVINCE, POST_SHOW,
         FILTER_RATED,
         FILTER_TICKETS_QTY, POST_TICKET, SHOW_DETAIL, 
         THEATER_DETAIL, GET_VIEWER_DETAIL, PUT_VIEWER,GET_ALL_ViEWERS, 
-        GET_SHOW_BY_NAME, DELETE_VIEWER} from "../actions/index.js"
+        GET_SHOW_BY_NAME, DELETE_VIEWER, CHECKOUT_PAY} from "../actions/index.js"
 
 
 const initialState = {
@@ -146,6 +146,10 @@ function rootReducer (state = initialState, action) {
                 shows:action.payload
             }
         case DELETE_VIEWER:
+            return{
+                ...state
+            }
+        case CHECKOUT_PAY:
             return{
                 ...state
             }

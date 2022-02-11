@@ -16,6 +16,8 @@ import FormPutViewer from "./components/Forms/FormPutViewer.js"
 import {UserContextProvider} from './context/UserContext.js';
 import ShowDetail from "./components/Shows/ShowDetail.js"
 import PrivateRoute from "./PrivateRoute";
+import Checkout from "./components/Checkout/Checkout";
+
 
 function App() {
   return (
@@ -40,6 +42,7 @@ function App() {
           {/*<Route exact path='/formPutViewer/:id' component={FormPutViewer}/>*/}
           <PrivateRoute exact path='/formPutViewer/:id' component={FormPutViewer}/>
           <Route exact path='/showDetail/:id' component={ShowDetail}/>
+          <Route exact path='/showDetail/checkout/:id' component={Checkout}/>
         </header>
       </div>
       

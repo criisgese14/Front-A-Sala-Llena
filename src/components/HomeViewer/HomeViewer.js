@@ -7,6 +7,7 @@ import SearchBar from "../SearchBar/SearchBar.js";
 import Paginate from "../Paginate/Paginate.js";
 import style from "./HomeViewer.module.css";
 
+
 const HomeViewer = () => {
   const dispatch = useDispatch();
 //   const show = useSelector((state) => state.shows);
@@ -61,6 +62,7 @@ const paginate = (number) => {
           <a href="/">Aviso legal</a>
           <a href="/">Centro de ayuda</a>
   </footer> 
+
 </div>
 )
 }

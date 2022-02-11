@@ -1,22 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { showDetail } from "../../redux/actions/index.js";
+import { showDetail, checkoutPay } from "../../redux/actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import style from "./ShowDetail.module.css";
 import logo from "../../assets/logo a sala llena-sinfondo.png";
 import Button from "react-bootstrap/Button";
 import Timer from "../Timer/timer.js"
+// import useMPKey from "../../hooks/useMPKey.js";
 
 const ShowDetail = () => {
+
     const show = useSelector((state) => state.showdetail);
     const dispatch = useDispatch();
     const { id } = useParams();
+
     const [precio, setPrecio]= useState(null);
+    // const {keyMP} = useMPKey();
+    // console.log(keyMP);
+
     useEffect(() => {
         dispatch(showDetail(id));
     }, [dispatch]);
     setTimeout(()=> setPrecio(show.tickets[0].price))
-    console.log(show);
 
     return (
         <div className={style.detailContainer}>
@@ -56,10 +61,13 @@ const ShowDetail = () => {
                 <h4>{precio}$ </h4>
                 
                 </div>
+                    
                 <div className={style.btnContainer}>
-                <Button className={style.btn} variant="primary">
-                    Comprar
-                </Button>
+                <Link to={`/showDetail/checkout/${id}`} style={{ textDecoration: "none" }}>
+                    <Button className={style.btn} variant="primary">
+                        Comprar
+                    </Button>
+                </Link>
                 </div>
             </div>
             <div className={style.inf}>
