@@ -16,7 +16,7 @@ export function filterPerProvince(payload) {
 
 export function postShow(newShow) {
   try {
-    const show = axios.post("http://localhost:3001/shows", newShow);
+    const show = axios.post("https://a-sala-llena.herokuapp.com/shows", newShow);
     return {
       type: "POST_SHOW",
       payload: show,
@@ -29,7 +29,7 @@ export function postShow(newShow) {
 export function allShows() {
   return function (dispatch) {
     return axios
-      .get("http://localhost:3001/shows")
+      .get("https://a-sala-llena.herokuapp.com/shows")
       .then((response) => response.data)
       .then((data) => {
         dispatch({ type: "GET_ALL_SHOWS", payload: data });
@@ -40,7 +40,7 @@ export function allShows() {
 export function theaterDetail(id) {
   return function (dispatch) {
     return axios
-      .get(`http://localhost:3001/theaters/${id}`)
+      .get(`https://a-sala-llena.herokuapp.com/theaters/${id}`)
       .then((response) => response.data)
       .then((data) => {
         dispatch({ type: "THEATER_DETAIL", payload: data });
@@ -50,7 +50,7 @@ export function theaterDetail(id) {
 export function allTheaters() {
   return function (dispatch) {
     return axios
-      .get("http://localhost:3001/theaters")
+      .get("https://a-sala-llena.herokuapp.com/theaters")
       .then((resp) => resp.data)
       .then((data) => {
         dispatch({
@@ -91,7 +91,7 @@ export function filterPerTicketsQty(payload) {
 
 export function postViewer(newviewer) {
   try {
-    const viewer = axios.post("http://localhost:3001/viewers", newviewer);
+    const viewer = axios.post("https://a-sala-llena.herokuapp.com/viewers", newviewer);
     return {
       type: "POST_VIEWER",
       payload: viewer,
@@ -102,7 +102,7 @@ export const ORDER_SCORE = "ORDER_SCORE";
 
 export function postTicket(newticket) {
   try {
-    const tickets = axios.post("http://localhost:3001/tickets", newticket);
+    const tickets = axios.post("https://a-sala-llena.herokuapp.com/tickets", newticket);
     return {
       type: "POST_TICKET",
       payload: tickets,
@@ -113,7 +113,7 @@ export function postTicket(newticket) {
 export function showDetail(id) {
   return function (dispatch) {
     return axios
-      .get(`http://localhost:3001/shows/${id}`)
+      .get(`https://a-sala-llena.herokuapp.com/shows/${id}`)
       .then((response) => response.data)
       .then((data) => {
         dispatch({ type: "SHOW_DETAIL", payload: data });
@@ -124,7 +124,7 @@ export function showDetail(id) {
 export function getViewerDetail(id) {
   return function (dispatch) {
     return axios
-      .get(`http://localhost:3001/viewers/${id}`)
+      .get(`https://a-sala-llena.herokuapp.com/viewers/${id}`)
       .then((response) => response.data)
       .then((data) => {
         dispatch({ type: GET_VIEWER_DETAIL, payload: data });
@@ -134,7 +134,7 @@ export function getViewerDetail(id) {
 
 //export function loginTheater ({ email, password }) {
 //    console.log(email)
-//    return fetch('http://localhost:3001/login/theater', {
+//    return fetch('https://a-sala-llena.herokuapp.com/login/theater', {
 //      method: 'POST',
 //      headers: {
 //        "Content-Type": "application/json"
@@ -154,7 +154,7 @@ export function loginTheater({ email, password }) {
   console.log(email);
   return (
     axios
-      .post("http://localhost:3001/login/theater", { email, password })
+      .post("https://a-sala-llena.herokuapp.com/login/theater", { email, password })
 
       //.then(res => {
       //  if (!res.ok) throw new Error('Response is NOT ok')
@@ -170,7 +170,7 @@ export function loginTheater({ email, password }) {
 export function putViewer(id, changes) {
   return function (dispatch) {
     return axios
-      .put(`http://localhost:3001/viewers/${id}`, changes)
+      .put(`https://a-sala-llena.herokuapp.com/viewers/${id}`, changes)
       .then((response) => response.data)
       .then((data) => {
         console.log(data);
@@ -182,7 +182,7 @@ export function putViewer(id, changes) {
 export function getAllViewers() {
   return function (dispatch) {
     return axios
-      .get("http://localhost:3001/viewers")
+      .get("https://a-sala-llena.herokuapp.com/viewers")
       .then((response) => response.data)
       .then((data) => {
         dispatch({ type: GET_ALL_ViEWERS, payload: data });
@@ -193,7 +193,7 @@ export function getAllViewers() {
 export function deleteViewer(id) {
   return function (dispatch) {
     return axios
-      .delete(`http://localhost:3001/viewers/${id}`)
+      .delete(`https://a-sala-llena.herokuapp.com/viewers/${id}`)
       .then((response) => response.data)
       .then((data) => {
         dispatch({ type: DELETE_VIEWER, payload: data });
@@ -203,7 +203,7 @@ export function deleteViewer(id) {
 
 //export function loginViewer ({ email, password }) {
 //    console.log(email)
-//    return fetch('http://localhost:3001/login/viewer', {
+//    return fetch('https://a-sala-llena.herokuapp.com/login/viewer', {
 //      method: 'POST',
 //      headers: {
 //        "Content-Type": "application/json"
@@ -223,7 +223,7 @@ export function loginViewer({ email, password }) {
   console.log(email);
   return (
     axios
-      .post("http://localhost:3001/login/viewer", { email, password })
+      .post("https://a-sala-llena.herokuapp.com/login/viewer", { email, password })
 
       //.then(res => {
       //  if (!res.ok) throw new Error('Response is NOT ok')
@@ -239,7 +239,7 @@ export function loginViewer({ email, password }) {
 export function getShowByName(name) {
   return async function (dispatch) {
     try {
-      var resp = await axios.get(`http://localhost:3001/shows?name=${name}`);
+      var resp = await axios.get(`https://a-sala-llena.herokuapp.com/shows?name=${name}`);
       return dispatch({
         type: GET_SHOW_BY_NAME,
         payload: resp.data,
@@ -254,7 +254,7 @@ export function editProfileT(payload) {
   return async function (dispatch) {
     try {
       const { data } = await axios.put(
-        `http://localhost:3001/theaters/${payload.id}`,
+        `https://a-sala-llena.herokuapp.com/theaters/${payload.id}`,
         payload
       );
       alert(data);
@@ -267,7 +267,7 @@ export function editProfileT(payload) {
 
 export function createTheater(values) {
   try {
-    const theater = axios.post("http://localhost:3001/theaters", values);
+    const theater = axios.post("https://a-sala-llena.herokuapp.com/theaters", values);
     return {
       type: "CREATE_THEATER",
       payload: theater,
@@ -277,7 +277,7 @@ export function createTheater(values) {
 
 export function createFavorites(id, changes) {
   try {
-    const fav = axios.post(`http://localhost:3001/favorites/${id}`, changes);
+    const fav = axios.post(`https://a-sala-llena.herokuapp.com/favorites/${id}`, changes);
     console.log(fav);
     return {
       type: CREATE_FAVORITES,
@@ -290,7 +290,7 @@ export function createFavorites(id, changes) {
 
 export function getAllTickets(){
     return function(dispatch){
-        return axios.get('http://localhost:3001/tickets')
+        return axios.get('https://a-sala-llena.herokuapp.com/tickets')
         .then(res => res.data)
         .then(data =>{
             dispatch({type: GET_ALL_TICKETS, payload: data})
