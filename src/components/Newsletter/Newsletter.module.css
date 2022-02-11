@@ -1,0 +1,11 @@
+.inputContainer {
+  color: aliceblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inp {
+  margin-top: 15rem;
+  margin-right: 3rem;
+}

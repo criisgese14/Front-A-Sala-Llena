@@ -1,227 +1,236 @@
-import React, {useEffect, useState} from "react";
+import React, { useState, Fragment} from "react";
 import {Link, useHistory } from "react-router-dom";
-import {useDispatch , } from "react-redux"
 import {postShow, postTicket} from "../../redux/actions/index.js"
 import { useParams } from "react-router-dom";
+import { useForm } from 'react-hook-form'
+import Footer from "../Footer/Footer.js";
+
 const FormShow = ()=>{
-    const dispatch = useDispatch();
     const history = useHistory()
     let {id} = useParams();
-    console.log(id)
+    const { register, handleSubmit,  formState: { errors } } = useForm();
+    
     const [input, setInput] = useState({
         theaterId: id,
-        name: "",
-        summary: "",
-        genre: "",
-        length: "",
-        image: "",
-        ticketsQty: "",
-        rated: "", 
-        date: "", 
-        time: "",
-    })
-    // const [times, setTime]= useState("")
-    const [ticket, setTicket] = useState({
-        price: "",
-        seatNumber: "",
-        nameShow: "",
     })
 
-    console.log(ticket)
-    useEffect(()=>{
-
-    }, [dispatch])
-    
-    function handleInputChangeShow (event){
-        console.log(event)
-        event.preventDefault();
-        setInput({
+    console.log(id)
+    const onSubmit =(data)=> {
+        const inputs = {
             ...input,
-            [event.target.name]: event.target.value,
-        })
-    }
-    function handleInputChangeTicket (event){
-        console.log(event)
-        event.preventDefault();
-        setTicket({
-            ...ticket,
-            [event.target.name]: event.target.value,
-        })
-    }
-    function handleInputChangeTicketName (event){
-        event.preventDefault()
-        setTicket({
-            ...ticket,
-            nameShow: event.target.value
-        })
-    }
-    // function handleInputChangeTime (event){
-    //     event.preventDefault();
-    //     setInput({
-    //         ...input,
-    //         time: [...input.time, times],
-    //     })
-    //     setTime("")
-    // }
-    // function handleInputChangeImage (event){
-    //     event.preventDefault();
-    //     setInput({
-    //         ...input,
-    //         [event.target.name]: [...input.image, event.target.value],
-    //     })
-    // }
-    
-    // function handleInputChangeTime1(event){
-    //     setTime(
-    //         event.target.value
-    //     )
-    // }
-    function handleSubmit(e) {
-        e.preventDefault();
-        for( var i = 0 ; i< input.ticketsQty; i++ ){
-            dispatch(postTicket(ticket))
+            name: data.name,
+            summary: data.summary,
+            genre: data.genre,
+            length: data.length,
+            image: data.image,
+            ticketsQty: data.ticketsQty,
+            rated: data.rated, 
+            date: data.date, 
+            time: data.time,
+            originPrice: data.originPrice,
         }
-        dispatch(postShow(input));
+        const tickets = {
+            price: data.originPrice,
+            seatNumber: data.seatNumber,
+            nameShow: data.name,
+
+        }
+        console.log("input",inputs )
+        console.log("ticket",tickets ) 
+        for( var i = 0 ; i< data.ticketsQty; i++ ){
+            postTicket(tickets)
+        }
+        postShow(inputs);
         alert("Espectaculo agregado!");
-        setInput({
-            name: "",
-            summary: "",
-            genre: "",
-            length: "",
-            image: "",
-            ticketsQty: "",
-            rated: "", 
-            date: "", 
-            time: "",});
         history.push(`/theaterHome/${id}`);
         }
-
-    console.log(input)
+        
+        
     return (
-        <div>
-            <Link to="/"><button>Volver</button></Link>
-            <h1>Soy el formulario de creacion de espectaculo</h1>
-            {/* <form onSubmit={handleInputChangeTime}>
-            <label>Pases de la Obra:</label>
-            <input  type="time" 
-                    name="time" 
-                    onChange={(e)=>{handleInputChangeTime1(e)}}
-                    />
-                    <button onSubmit={handleInputChangeTime}>add</button>
-                    {input.time?.map((e)=><p key={e}>{e}</p>)}
-            </form> */}
-        <form onSubmit={handleSubmit}>
-            <label>Nombre de la obra:</label>
-            <input  type="text" 
-                    name="name" placeholder="Nombre de la obra"
-                    value={input.name} 
-                    onChange={(e)=>{handleInputChangeShow(e); handleInputChangeTicketName(e)}}/>
+        <div className="container">
+            <Link to={`/theaterHome/${id}`}><button className="btn btn-primary">Volver</button></Link>
+            <div className="text-center padding" ><h1>Soy el formulario de creacion de espectaculo</h1></div>
+        <div className="form-group row">
+        <Fragment>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="form-group">
+                <label className="form-label col-lg-12">Nombre de la obra:</label>
+                <input  type="text" 
+                        name="name" placeholder="Nombre de la obra"
+                        className="form-control my-2" 
+                        {...register("name",{
+                            required:{
+                                value:true, 
+                                message: "El campo es requerido",
+                            }
+                        })}/>
+                        <span className="text-danger text-small d-block mb-2">{errors.name&&errors.name.message}</span>
+                </div>
+                <label className="form-label col-lg-12">Descripcion de la Obra:</label>
+                <textarea  type="text" 
+                            name="summary" 
+                            width="100" height="30" maxLength="1000"
+                            placeholder="Descripcion de la Obra. Max 1000 caracteres."
+                            className="form-control my-2"
+                            {...register("summary",{
+                            required:{
+                                value:true, 
+                                message: "El campo es requerido"},
+                            maxLength:{
+                                    value: 1000,
+                                    message: "No se pueden mas de 1000 caracteres"
+                                }
+                            
+                        })}/>
+                        <span className="text-danger text-small d-block mb-2">{errors.summary&&errors.summary.message}</span>
 
-            <label>Descripcion de la Obra:</label>
-            <textarea  type="text" 
-                        name="summary" 
-                        width="100" height="30" maxLength="1000"
-                        placeholder="Descripcion de la Obra. Max 1000 caracteres."
-                        value={input.summary} 
-                        onChange={(e)=>{handleInputChangeShow(e)}}/>
-            <label>Pase de la Obra:</label>
-            <input  type="time" 
-                    name="time" 
-                    onChange={(e)=>{handleInputChangeShow(e)}}
-                    />
-            <label>Seleciona el Genero: </label>
-            <select value={input.genre} name="genre" 
-                    onChange={(e)=>{handleInputChangeShow(e)}}>
-                    <optgroup label="*OBRAS MAYORES*">
-                        <option>Comedia</option>
-                        <option>Drama</option>
-                        <option>Tragedia</option>
-                        <option>Tragicomedia</option>
-                        <option>Monólogo</option>
-                    </optgroup>
-                    <optgroup label="*OBRAS MENORES*">
-                        <option>Auto Sacramental</option>
-                        <option>Entremes</option>
-                        <option>Sainete</option>
-                        <option>Farsa</option>
-                        <option>Vodevil</option>
-                    </optgroup>
-                    <optgroup label="*OBRAS MUSICALES*">
-                        <option>Ópera</option>
-                        <option>Zarzuela</option>
-                        <option>Opereta</option>
-                        <option>Musical</option>
-                        <option>Ballet</option>
-                        <option>Danza</option>
-                    </optgroup>
-            </select>
+                <label className="form-label col-lg-12">Pase de la Obra:</label>
+                <input  type="time" 
+                        name="time" 
+                        className="form-control my-2"
+                        {...register("time",{
+                            required:{
+                                value:true, 
+                                message: "El campo es requerido",
+                            },
+                        })}/>
+                        <span className="text-danger text-small d-block mb-2">{errors.time&&errors.time.message}</span>
+                <label className="form-label col-lg-12">Seleciona el Genero: </label>
+                <select name="genre" 
+                        className="form-control "
+                        {...register("genre",{
+                            required:{
+                                value:true, 
+                                message: "El campo es requerido",
+                            }
+                        })}>
+                        
+                        <optgroup label="*OBRAS MAYORES*">
+                            <option>Comedia</option>
+                            <option>Drama</option>
+                            <option>Tragedia</option>
+                            <option>Tragicomedia</option>
+                            <option>Monólogo</option>
+                        </optgroup>
+                        <optgroup label="*OBRAS MENORES*">
+                            <option>Auto Sacramental</option>
+                            <option>Entremes</option>
+                            <option>Sainete</option>
+                            <option>Farsa</option>
+                            <option>Vodevil</option>
+                        </optgroup>
+                        <optgroup label="*OBRAS MUSICALES*">
+                            <option>Ópera</option>
+                            <option>Zarzuela</option>
+                            <option>Opereta</option>
+                            <option>Musical</option>
+                            <option>Ballet</option>
+                            <option>Danza</option>
+                        </optgroup>
+                </select>
+                <span className="text-danger text-small d-block mb-2">{errors.genre&&errors.genre.message}</span>
 
-            <label>Seleciona el Tipo de Publico: </label>
-            <select value={input.rated} name="rated"
-                    onChange={(e)=>{handleInputChangeShow(e)}}>
+                <label className="form-label col-lg-12">Seleciona el Tipo de Publico: </label>
+                <select name="rated" className="form-control "
+                        {...register("rated",{
+                            required:{
+                                value:true, 
+                                message: "El campo es requerido",
+                            }
+                        })}>
 
-                        <option>Todas las edades</option>
-                        <option>Apta para mayores de 13 años</option>
-                        <option>Apta para mayores de 16 años</option>
-                        <option>Apta para mayores de 18 años</option>
-                        <option>Exhibición condicionada</option>
-            </select>
+                            <option>Todas las edades</option>
+                            <option>Apta para mayores de 13 años</option>
+                            <option>Apta para mayores de 16 años</option>
+                            <option>Apta para mayores de 18 años</option>
+                            <option>Exhibición condicionada</option>
+                </select>
+                <span className="text-danger text-small d-block mb-2">{errors.rated&&errors.rated.message}</span>
 
-            <label>Duracion de la Obra:</label>
-            <input  type="number" 
-                    name="length" 
-                    value={input.length} 
-                    title="Formato en minutos"
-                    placeholder="Minutos de la Obra"
-                    onChange={(e)=>{handleInputChangeShow(e)}}/>
+                <label className="form-label col-lg-12">Duracion de la Obra:</label>
+                <input  type="number" 
+                        name="length" 
+                        title="Formato en minutos"
+                        placeholder="Minutos de la Obra"
+                        className="form-control "
+                        {...register("length",{
+                            required:{
+                                value:true, 
+                                message: "El campo es requerido",
+                            }, 
+                            pattern: {
+                                value: /^(0|[1-9][0-9]*)$/,
+                                message: "No se pueden numero negativos ni decimales"
+                            }
+                        })}/>
+                        <span className="text-danger text-small d-block mb-2">{errors.length&&errors.length.message}</span>
 
-            <label>Imagenes de la obra:</label>
-            <input  type="url" 
-                    name="image" 
-                    value={input.image} 
-                    onChange={(e)=>{handleInputChangeShow(e)}}/>
+                <label className="form-label col-lg-12">Imagenes de la obra:</label>
+                <input  type="url" 
+                        name="image"
+                        className="form-control "
+                        {...register("image",)}/>
+                        <span className="text-danger text-small d-block mb-2">{errors.image&&errors.image.message}</span>
 
-            <label>Fecha de la obra:</label>
-            <input  type="date" 
-                    name="date" 
-                    value={input.date} 
-                    onChange={(e)=>{handleInputChangeShow(e)}}/>
+                <label className="form-label col-lg-12">Fecha de la obra:</label>
+                <input  type="date" 
+                        name="date"
+                        className="form-control "
+                        {...register("date",{
+                            required:{
+                                value:true, 
+                                message: "El campo es requerido",
+                            }
+                        })}/>
+                        <span className="text-danger text-small d-block mb-2">{errors.date&&errors.date.message}</span>
 
-            <label>Entradas disponibles:</label>
-            <input  type="number" 
-                    name="ticketsQty" 
-                    value={input.ticketsQty} 
-                    title="Introduzca las entradas disponibles"
-                    placeholder="Entradas Disponibles"
-                    onChange={(e)=>{handleInputChangeShow(e)}}/>
+                <label className="form-label col-lg-12">Zona:</label>
+                <select name="seatNumber" className="form-control "
+                        {...register("seatNumber",{
+                            required:{
+                                value:true, 
+                                message: "El campo es requerido",
+                            }
+                        })}>
 
-            <label>Zona:</label>
-            <input  type="text" value={ticket.seatNumber}
-                    name="seatNumber" 
-                    onChange={(e)=>{handleInputChangeTicket(e)}}/>
+                            <option>Platea</option>
+                            <option selected>General</option>
+                            <option>Palco</option>
+                </select>
+                <span className="text-danger text-small d-block mb-2">{errors.seatNumber&&errors.seatNumber.message}</span>
+                        
+                <label className="form-label col-lg-12">Entradas disponibles:</label>
+                <input  type="number" 
+                        name="ticketsQty" 
+                        title="Introduzca las entradas disponibles"
+                        placeholder="Entradas Disponibles"
+                        className="form-control "
+                        {...register("ticketsQty",{
+                            required:{
+                                value:true, 
+                                message: "El campo es requerido",
+                            }
+                        })}/>
+                        <span className="text-danger text-small d-block mb-2">{errors.ticketsQty&&errors.ticketsQty.message}</span>
 
-            <label>Precio de entradas:</label>        
-            <input  type="number" value={ticket.price}
-                    name="price" 
-                    onChange={(e)=>{handleInputChangeTicket(e)}}/>
-            
-
-
-                    {   input.name===""||
-                        input.summary===""||
-                        input.genre===""||
-                        input.length===""||
-                        input.ticketsQty===""||
-                        input.rated===""||
-                        input.date===""||
-                        /* input.image ===""|| */
-                        input.time===""
-                        ?
-                        <button disabled type="submit">Agregar Obra</button>
-                        :
-                        <button type="submit">Agregar Obra</button> }
-            </form> 
-            
+                <label className="form-label col-lg-12">Precio de Original de las entradas:</label>        
+                <input  type="number" 
+                        name="originPrice"
+                        className="form-control "
+                        placeholder="Precio por entrada"
+                        {...register("originPrice",{
+                            required:{
+                                value:true, 
+                                message: "El campo es requerido",
+                            }
+                        })}/>
+                        <span className="text-danger text-small d-block mb-2">{errors.originPrice&&errors.originPrice.message}</span>
+                        
+                        <button className="btn btn-primary" type="submit">Agregar Espectaculo</button>
+                </form> 
+            </Fragment>
+            </div>
+            <Footer/>
         </div>
     )
 }

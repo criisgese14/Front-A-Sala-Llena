@@ -6,7 +6,7 @@ import style from "./ShowDetail.module.css";
 import logo from "../../assets/logo a sala llena-sinfondo.png";
 import Button from "react-bootstrap/Button";
 import Timer from "../Timer/timer.js"
-// import useMPKey from "../../hooks/useMPKey.js";
+import Footer from "../Footer/Footer.js";
 
 const ShowDetail = () => {
 
@@ -23,6 +23,9 @@ const ShowDetail = () => {
     }, [dispatch]);
     setTimeout(()=> setPrecio(show.tickets[0].price))
 
+
+    let dateTimer = show.date
+    let timeTimer = show.time
     return (
         <div className={style.detailContainer}>
         <div className={style.navDetail}>
@@ -47,7 +50,7 @@ const ShowDetail = () => {
                 <h4>{show.length} </h4>
                 <h3>Genero: </h3>
                 <h4>{show.genre} </h4>
-                <Timer newDate={show.date} newTime={show.time}/>
+                <Timer newDate={dateTimer} newTime={timeTimer} price={precio}/>
                 </div>
                 <div>
                 <h3>Entradas disponibles: </h3>
@@ -57,8 +60,11 @@ const ShowDetail = () => {
                 <h4>{show.date} </h4>
                 <h3>Hora: </h3>
                 <h4>{show.time} </h4>
-                <h3>Precio Desde: </h3>
+                <h3>Precio Original: </h3>
                 <h4>{precio}$ </h4>
+                <h3>Precio Reducido:</h3>
+
+                <h3>Porcentaje de descuento actual:</h3>
                 
                 </div>
                     
@@ -76,6 +82,7 @@ const ShowDetail = () => {
             </div>
             </div>
         </div>
+        <Footer/>
         </div>
     );
     };

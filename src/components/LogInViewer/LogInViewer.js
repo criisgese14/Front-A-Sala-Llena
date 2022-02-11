@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import useUser from '../../hooks/useUser.js';
 import { getAllViewers } from '../../redux/actions/index.js';
 import { useSelector, useDispatch } from 'react-redux';
+import Footer from "../Footer/Footer.js";
 
 
 function validate(input){
@@ -101,6 +102,7 @@ const LogInViewer = () => {
             <Link to='/formViewerRegister'>
             <button>REGISTRARSE</button>
             </Link>
+            <Footer/>
         </div>
     )
 

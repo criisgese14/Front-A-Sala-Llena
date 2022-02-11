@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import style from "./ShowCard.module.css";
-
+// import Timer from "../Timer/timer.js"
 const ShowCard = ({
   id,
   name,

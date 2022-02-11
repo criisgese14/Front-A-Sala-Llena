@@ -1,25 +1,42 @@
-import {ORDER_SCORE, FILTER_PROVINCE, POST_SHOW, 
-        GET_ALL_SHOWS, FILTER_THEATER, 
-        FILTER_GENRE, GET_ALL_THEATERS,
-        POST_VIEWER,
-        FILTER_RATED,
-        FILTER_TICKETS_QTY, POST_TICKET, SHOW_DETAIL, 
-        THEATER_DETAIL, GET_VIEWER_DETAIL, PUT_VIEWER,GET_ALL_ViEWERS, 
-        GET_SHOW_BY_NAME, DELETE_VIEWER, CHECKOUT_PAY} from "../actions/index.js"
 
+import {
+  ORDER_SCORE,
+  FILTER_PROVINCE,
+  POST_SHOW,
+  GET_ALL_SHOWS,
+  FILTER_THEATER,
+  FILTER_GENRE,
+  GET_ALL_THEATERS,
+  POST_VIEWER,
+  FILTER_RATED,
+  FILTER_TICKETS_QTY,
+  POST_TICKET,
+  SHOW_DETAIL,
+  THEATER_DETAIL,
+  GET_VIEWER_DETAIL,
+  PUT_VIEWER,
+  GET_ALL_ViEWERS,
+  GET_SHOW_BY_NAME,
+  DELETE_VIEWER,
+  GET_FAVS,
+  CREATE_FAVORITES,
+  GET_ALL_TICKETS,
+  CHECKOUT_PAY
+} from "../actions/index.js";
 
 const initialState = {
-    // score: [],
-    theaters: [],
-    shows: [],
-    allshows: [],
-    theatersDetail:{},
-    showdetail: {},
-    viewerDetail:{},
-    viewers: [],
+  // score: [],
+  theaters: [],
+  shows: [],
+  allshows: [],
+  theatersDetail: {},
+  showdetail: {},
+  viewerDetail: {},
+  viewers: [],
+  tickets: [],
+};
 
-}
-
+ 
 function rootReducer (state = initialState, action) {
     const theaters = state.theaters;
     // const shows = state.shows;

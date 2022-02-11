@@ -6,10 +6,14 @@ import Shows from "../Shows/Shows";
 import Paginate from "../Paginate/Paginate";
 import { allShows, orderScore } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import style from "./Home.module.css";
+import Footer from "../Footer/Footer";
 
+import CarouselContainer from "../Carrousel/Carrousel.js"
 export default function Home() {
   const dispatch = useDispatch();
+  const history = useHistory()
   const allshows = useSelector((state) => state.shows);
   const [order, setOrder] = useState("");
   const [actualPage, setActualPage] = useState(1);
@@ -35,7 +39,7 @@ export default function Home() {
       </div>
       {/* <Link to ='/'>
                 </Link> */}
-
+      <CarouselContainer allshows={allshows}/>
       <div className={style.showsContainer}>
         {actualShow.length ? (
           <Shows actualShow={actualShow}/>
@@ -43,9 +47,11 @@ export default function Home() {
           <p>...Loading</p>
         )}
       </div>
+      
       <div className={style.paginate}>
         <Paginate qty={qty} allshows={allshows.length} paginate={paginate} />
       </div>
+      <Footer/>
     </div>
   );
 }
