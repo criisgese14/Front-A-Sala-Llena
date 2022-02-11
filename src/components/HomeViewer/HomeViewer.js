@@ -6,7 +6,7 @@ import NavBarViewer from "../NavBar/NavBarViewer.js";
 import SearchBar from "../SearchBar/SearchBar.js";
 import Paginate from "../Paginate/Paginate.js";
 import style from "./HomeViewer.module.css";
-
+import CarouselContainer from "../Carrousel/Carrousel.js"
 const HomeViewer = () => {
   const dispatch = useDispatch();
 //   const show = useSelector((state) => state.shows);
@@ -43,7 +43,7 @@ const paginate = (number) => {
 </div>
 {/* <Link to ='/'>
           </Link> */}
-
+<CarouselContainer allshows={allshows}/>
 <div className={style.showsContainer}>
   {actualShow.length ? (
     <Shows actualShow={actualShow}/>
@@ -51,6 +51,7 @@ const paginate = (number) => {
     <p>...</p>
   )}
 </div>
+
 <div className={style.paginate}>
   <Paginate qty={qty} allshows={allshows.length} paginate={paginate} />
 </div>

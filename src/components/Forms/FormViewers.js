@@ -1,8 +1,9 @@
 import React, { Fragment} from "react";
 import {postViewer} from "../../redux/actions/index.js"
 import { useForm } from 'react-hook-form'
-
+import {Link, useHistory } from "react-router-dom";
 const FormViewers = ()=> {
+    const history = useHistory()
     const { register, handleSubmit,  formState: { errors } } = useForm();
     
 
@@ -16,6 +17,7 @@ const FormViewers = ()=> {
         }
         postViewer(inputs)
         alert("Usuario creado con exito")
+        history.push(`/loginviewer`)
     }
     
     return( 

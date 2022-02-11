@@ -23,7 +23,7 @@ import PrivateRoutePutV from "./PrivateRoutes/PrivateRoutePutV";
 import Newsletter from "./components/Newsletter/Newsletter";
 import SalesHistory from "./components/SalesHistory/SalesHistory";
 import ViewerHistory from "./components/ViewerHistory/ViewerHistory";
-import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
+// import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
 
 function App() {
   return (
@@ -66,6 +66,11 @@ function App() {
               path="/viewerHome/:id"
               component={HomeViewer}
             />
+            {/* <Route
+              exact
+              path="/viewerHome/:id"
+              component={HomeViewer}
+            /> */}
             <PrivateRoutePutV
               exact
               path="/formPutViewer/:id"
@@ -79,7 +84,7 @@ function App() {
             />
             <Route exact path='/salesHistory/:id' component={SalesHistory}/>
             <Route exact path='/formPutViewer/viewerHistory/:id' component={ViewerHistory}/>
-            <Route exact path='/privacyPolicy' component={PrivacyPolicy}/>
+            {/* <Route exact path='/privacyPolicy' component={PrivacyPolicy}/> */}
           </header>
         </div>
       </BrowserRouter>
