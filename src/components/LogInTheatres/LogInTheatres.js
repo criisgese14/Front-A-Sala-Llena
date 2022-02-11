@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import useUser from '../../hooks/useUser.js';
 import { allTheaters } from '../../redux/actions/index.js';
 import { useSelector, useDispatch } from 'react-redux';
+import Footer from "../Footer/Footer.js";
 
 function validate(input){
     let errors = {};
@@ -110,6 +111,7 @@ const LogInTheatres = () => {
             <Link to='/theaterRegister'>
             <button>REGISTRARSE</button>
             </Link>
+            <Footer/>
         </div>
     )
 
