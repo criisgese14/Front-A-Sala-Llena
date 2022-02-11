@@ -24,6 +24,7 @@ import Newsletter from "./components/Newsletter/Newsletter";
 import SalesHistory from "./components/SalesHistory/SalesHistory";
 import ViewerHistory from "./components/ViewerHistory/ViewerHistory";
 import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
+import TermsAndConditions from "./components/TermsAndConditions/TermsAndConditions";
 
 function App() {
   return (
@@ -80,6 +81,7 @@ function App() {
             <Route exact path='/salesHistory/:id' component={SalesHistory}/>
             <Route exact path='/formPutViewer/viewerHistory/:id' component={ViewerHistory}/>
             <Route exact path='/privacyPolicy' component={PrivacyPolicy}/>
+            <Route exact path='/termsConditions' component={TermsAndConditions}/>
           </header>
         </div>
       </BrowserRouter>
