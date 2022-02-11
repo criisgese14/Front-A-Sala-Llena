@@ -1,13 +1,14 @@
 import React, { useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { editProfileT } from "../../redux/actions";
-import {useParams} from 'react-router-dom';
+import Footer from "../Footer/Footer";
+import { useParams } from "react-router-dom";
 
-const EditProfileTheater = ({props}) => {
+const EditProfileTheater = () => {
   const dispatch = useDispatch()
-  
+  const {id} = useParams();
   const { theaters } = useSelector(state => state)
-  let teatro = theaters.filter(el => el.id == props)
+  let teatro = theaters.filter(el => el.id == id)
   const { name,image,CUIT,adress,email,password,province,phoneNumber,seatsQTY,score} = teatro[0]
   const [input, setInput] = useState({
     name: name?`${name}`:'', 
@@ -37,7 +38,7 @@ const EditProfileTheater = ({props}) => {
 
   function handleSubmit (e) {
     e.preventDefault()
-    dispatch(editProfileT({...input, id: props}))
+    dispatch(editProfileT({...input, id}))
   }
 
     return (
@@ -72,6 +73,7 @@ const EditProfileTheater = ({props}) => {
         <button disabled>Save</button>} */}
         <button>save</button>
     </form>
+    <Footer/>
     </div>
     );
   }
