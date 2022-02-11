@@ -3,6 +3,8 @@ import {Link, useHistory } from "react-router-dom";
 import {postShow, postTicket} from "../../redux/actions/index.js"
 import { useParams } from "react-router-dom";
 import { useForm } from 'react-hook-form'
+import Footer from "../Footer/Footer.js";
+
 const FormShow = ()=>{
     const history = useHistory()
     let {id} = useParams();
@@ -45,7 +47,7 @@ const FormShow = ()=>{
 
     return (
         <div className="container">
-            <Link to="/"><button className="btn btn-primary">Volver</button></Link>
+            <Link to={`/theaterHome/${id}`}><button className="btn btn-primary">Volver</button></Link>
             <div className="text-center padding" ><h1>Soy el formulario de creacion de espectaculo</h1></div>
         <div className="form-group row">
         <Fragment>
@@ -227,6 +229,7 @@ const FormShow = ()=>{
                 </form> 
             </Fragment>
             </div>
+            <Footer/>
         </div>
     )
 }
