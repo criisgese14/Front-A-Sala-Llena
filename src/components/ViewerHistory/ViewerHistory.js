@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {allShows, getViewerDetail, getAllTickets, allTheaters} from '../../redux/actions/index.js';
 import NavBarPerfilViewer from "../NavBar/NavBarPerfilViewer.js";
+import Footer from '../Footer/Footer.js';
 
 const ViewerHistory = () => {
     const dispatch = useDispatch();
@@ -66,6 +67,7 @@ const ViewerHistory = () => {
                     <h1>NO HAY ENTRADAS COMPRADAS</h1>
                 )
             }
+            <Footer/>
         </div>
         
     )
