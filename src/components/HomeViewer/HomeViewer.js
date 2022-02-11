@@ -6,6 +6,7 @@ import NavBarViewer from "../NavBar/NavBarViewer.js";
 import SearchBar from "../SearchBar/SearchBar.js";
 import Paginate from "../Paginate/Paginate.js";
 import style from "./HomeViewer.module.css";
+import Footer from "../Footer/Footer.js";
 
 const HomeViewer = () => {
   const dispatch = useDispatch();
@@ -33,35 +34,29 @@ const paginate = (number) => {
 //     </div>
 //   );
 // };
-<div className={style.homeContainer}>
-<div className={style.navContainer}>
-    <h3>Usuario</h3>
-  <NavBarViewer setActualPage={setActualPage} setOrder={setOrder} />
-</div>
-<div className={style.searchContainer}>
-  <SearchBar />
-</div>
+  <div className={style.homeContainer}>
+    <div className={style.navContainer}>
+     <h3>Usuario</h3>
+      <NavBarViewer setActualPage={setActualPage} setOrder={setOrder} />
+    </div>
+    <div className={style.searchContainer}>
+      <SearchBar />
+    </div>
 {/* <Link to ='/'>
           </Link> */}
 
-<div className={style.showsContainer}>
-  {actualShow.length ? (
-    <Shows actualShow={actualShow}/>
-  ) : (
-    <p>...</p>
-  )}
-</div>
-<div className={style.paginate}>
-  <Paginate qty={qty} allshows={allshows.length} paginate={paginate} />
-</div>
-<footer class={style.footer}>
-          <a href="/">Términos y condiciones</a>
-          <a href="/">Politica de privacidad</a>
-          <a href="/">Contacto</a>
-          <a href="/">Aviso legal</a>
-          <a href="/">Centro de ayuda</a>
-  </footer> 
-</div>
+    <div className={style.showsContainer}>
+      {actualShow.length ? (
+        <Shows actualShow={actualShow}/>
+      ) : (
+        <p>...</p>
+      )}
+    </div>
+    <div className={style.paginate}>
+      <Paginate qty={qty} allshows={allshows.length} paginate={paginate} />
+    </div> 
+    <Footer/>
+  </div>
 )
 }
 
