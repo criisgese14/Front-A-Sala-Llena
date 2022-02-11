@@ -61,7 +61,7 @@ const LogInViewer = () => {
         e.preventDefault();
         loginviewer(input);
         //navigate('/viewerHome/1')
-        window.location.href=`http://localhost:3000/viewerHome/${filterViewer.id}`
+        window.location.href=`https://front-a-sala-llena.vercel.app/viewerHome/${filterViewer.id}`
         setInput({email:'',password:''})
         
     }

@@ -60,7 +60,7 @@ const useUser = () => {
     setKey(null)
     setId(null)
     //setRol(null)
-    window.location.href="http://localhost:3000"
+    window.location.href="https://front-a-sala-llena.vercel.app/"
   }, [setKey,setId,setRol])
 
   return {
