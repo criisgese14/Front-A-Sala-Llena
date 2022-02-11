@@ -4,6 +4,7 @@ import style from "./Newsletter.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { allTheaters, putViewer, createFavorites } from "../../redux/actions";
 import { useParams } from "react-router-dom";
+import Footer from "../Footer/Footer";
 
 const Newsletter = () => {
   const theaters = useSelector((state) => state.theaters);
@@ -79,6 +80,7 @@ const Newsletter = () => {
           <button>Suscribirse</button>
         </form>
       </div>
+      <Footer/>
     </div>
   );
 };
