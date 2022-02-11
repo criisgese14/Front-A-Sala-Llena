@@ -6,6 +6,7 @@ import style from "./ShowDetail.module.css";
 import logo from "../../assets/logo a sala llena-sinfondo.png";
 import Button from "react-bootstrap/Button";
 import Timer from "../Timer/timer.js"
+import Footer from "../Footer/Footer.js";
 
 const ShowDetail = () => {
     const show = useSelector((state) => state.showdetail);
@@ -76,6 +77,7 @@ const ShowDetail = () => {
             </div>
             </div>
         </div>
+        <Footer/>
         </div>
     );
     };
