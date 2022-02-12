@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { showDetail } from "../../redux/actions/index.js";
+import { showDetail, checkoutPay } from "../../redux/actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import style from "./ShowDetail.module.css";
@@ -141,9 +141,11 @@ const ShowDetail = () => {
                 <h4>{porcentaje}%</h4>
                 </div>
                 <div className={style.btnContainer}>
-                <Button className={style.btn} variant="primary">
-                    Comprar
-                </Button>
+                <Link to={`/showDetail/checkout/${id}`} style={{ textDecoration: "none" }}>
+                    <Button className={style.btn} variant="primary">
+                        Comprar
+                    </Button>
+                </Link>
                 </div>
             </div>
             <div className={style.inf}>
