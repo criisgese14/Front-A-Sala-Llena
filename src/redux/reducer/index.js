@@ -34,6 +34,7 @@ const initialState = {
   viewerDetail: {},
   viewers: [],
   tickets: [],
+  link: '',
 };
 
  
@@ -168,7 +169,8 @@ function rootReducer (state = initialState, action) {
             }
         case CHECKOUT_PAY:
             return{
-                ...state
+                ...state,
+                link:action.payload
             }
         default:
             return state;

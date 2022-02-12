@@ -9,7 +9,6 @@ import Timer from "../Timer/timer.js"
 import Footer from "../Footer/Footer.js";
 import Countdown from 'react-countdown';
 
-
 const ShowDetail = () => {
     const show = useSelector((state) => state.showdetail);
     const dispatch = useDispatch();
@@ -141,9 +140,11 @@ const ShowDetail = () => {
                 <h4>{porcentaje}%</h4>
                 </div>
                 <div className={style.btnContainer}>
-                <Button className={style.btn} variant="primary">
-                    Comprar
-                </Button>
+                <Link to={`/showDetail/checkout/${id}`} style={{ textDecoration: "none" }}>
+                    <Button className={style.btn} variant="primary">
+                        Comprar
+                    </Button>
+                </Link>
                 </div>
             </div>
             <div className={style.inf}>

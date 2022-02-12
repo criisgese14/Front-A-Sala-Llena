@@ -312,7 +312,7 @@ export function getAllTickets(){
     
 }
 
-export function checkoutPay(id) {
+// export function checkoutPay(id) {
     // console.log(id)
     // // var script = document.createElement('script');
     // //         script.src = "https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";
@@ -334,35 +334,47 @@ export function checkoutPay(id) {
     // )
 
 
-    return async function (dispatch) {
-        try{
-            const pay = await axios.post ('http://localhost:3001/tickets/pay', {id})
+    // return async function (dispatch) {
+    //     try{
+    //         const pay = await axios.post ('http://localhost:3001/tickets/pay', {id})
             
-            var script = document.createElement('script');
-            script.src = "https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";
-            // const attr_data_preference = document.createAttribute('data-preference-id') //Crea un nodo atribute
-	        // attr_data_preference.value = id.id  
-            // script.setAttributeNode(script);
-            script.type = "text/javascript";
-            script.dataset.preferenceId = pay.preferenceId;
-            document.getElementById("button-checkout").innerHTML = "";
-            document.querySelector("#button-checkout").appendChild(script);
-            // var key = pay.data
-            // console.log(key)
-            // window.location.href = 'https://sandbox.mercadopago.com.ar/checkout/v1/redirect?pref_id=672708410-642e44a0-3182-4983-b7d7-3e01eebce9e5'
-            // console.log(window.location)
-            dispatch({
-                type: CHECKOUT_PAY,
-                payload: pay.data,
-                // key
-            })
-            // window.location = pay.data.redirect
-        } catch(e) {
-            console.log(e)
-        }
-    }
+    //         var script = document.createElement('script');
+    //         script.src = "https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";
+    //         // const attr_data_preference = document.createAttribute('data-preference-id') //Crea un nodo atribute
+	  //       // attr_data_preference.value = id.id  
+    //         // script.setAttributeNode(script);
+    //         script.type = "text/javascript";
+    //         script.dataset.preferenceId = pay.preferenceId;
+    //         document.getElementById("button-checkout").innerHTML = "";
+    //         document.querySelector("#button-checkout").appendChild(script);
+    //         // var key = pay.data
+    //         // console.log(key)
+    //         // window.location.href = 'https://sandbox.mercadopago.com.ar/checkout/v1/redirect?pref_id=672708410-642e44a0-3182-4983-b7d7-3e01eebce9e5'
+    //         // console.log(window.location)
+    //         dispatch({
+    //             type: CHECKOUT_PAY,
+    //             payload: pay.data,
+    //             // key
+    //         })
+    //         // window.location = pay.data.redirect
+    //     } catch(e) {
+    //         console.log(e)
+    //     }
+    // }
 
 
+// }
+
+export function checkoutPay({price, seatNumber, idShow, idViewer}) {
+  return function (dispatch) {
+    axios.post('http://localhost:3001/tickets/pay', {price, seatNumber, idShow, idViewer}).then((response) => {
+
+      dispatch({
+        type: CHECKOUT_PAY,
+        payload: response.data,
+      });
+    });
+  };
 }
 
 

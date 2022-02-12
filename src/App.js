@@ -90,6 +90,8 @@ function App() {
             <Route exact path='/privacyPolicy' component={PrivacyPolicy}/>
             <Route exact path='/termsConditions' component={TermsAndConditions}/>
             <Route exact path='/showDetail/checkout/:id' component={Checkout}/>
+            <Route exact path='/pasarela/:id' component={PasarelaDePago}/>
+
           </header>
         </div>
       </BrowserRouter>
