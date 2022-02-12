@@ -235,8 +235,7 @@ export function loginViewer({ email, password }) {
   return (
     axios
       .post("https://back-asalallena.herokuapp.com/login/viewer", { email, password })
-
-      //.then(res => {
+       //.then(res => {
       //  if (!res.ok) throw new Error('Response is NOT ok')
       //  return res.json()
       //})
@@ -247,17 +246,19 @@ export function loginViewer({ email, password }) {
   );
 }
 
-export function getShowByName(name) {
-  return async function (dispatch) {
-    try {
-      var resp = await axios.get(`https://back-asalallena.herokuapp.com/shows?name=${name}`);
-      return dispatch({
-        type: GET_SHOW_BY_NAME,
-        payload: resp.data,
-      });
-    } catch (e) {
-      alert("This Show does not exist");
-      return console.log(e);
+  export function getShowByName(name) {
+    return async function (dispatch){
+        try {
+            var resp = await axios.get (`https://back-asalallena.herokuapp.com/shows?name=${name}`);
+            return dispatch({
+                type: GET_SHOW_BY_NAME,
+                payload: resp.data
+            })
+        } catch (e) {
+            alert('No hay espectáculos con ese nombre');
+            return console.log(e);
+        }
+
     }
 }
 
