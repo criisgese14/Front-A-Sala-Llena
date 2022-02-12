@@ -1,19 +1,30 @@
-import React, {useState}from 'react'
+import React, {useState, useEffect}from 'react'
 import Seat from '../Seats/Seats'
-
-const PasarelaDePago = ({props}) => {
+import { useDispatch, useSelector } from 'react-redux'
+import { showDetail } from "../../redux/actions/index.js";
+import { useParams } from "react-router-dom";
+const PasarelaDePago =  ({props}) => {
     const [seatNumber, setSeatNumber] = useState(0)
-
+    const show = useSelector((state) => state.showdetail);
+    const dispatch = useDispatch();
+    const {id} = useParams()
+    const [tickets , setTickets]= useState()
+    let variable = false;
 const onChange = ({target: {name, value}}) => {
     setSeatNumber(value)
 }
+  useEffect(()=>{
+    dispatch(showDetail(id))
+  },[dispatch])
+  // console.log(tickets, "Tickets")
   return (
     <div>
         <h3>Pasarela se Pago</h3>    
         <label>Selecciona # de entradas</label>    
-        <input name='seatnumber' type={'number'} value={seatNumber} onChange={(e) =>onChange(e)}></input>
-        <Seat seatsNumber={seatNumber}/>
-        <button type='submit'>Pagar</button>
+        <input name='seatnumber' type={'number'} onChange={(e)=>{onChange(e)}}></input>
+        <Seat seatsNumber={seatNumber}   />
+        
+        <button >Pagar</button>
     </div>
   )
 }

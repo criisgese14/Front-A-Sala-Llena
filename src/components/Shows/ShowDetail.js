@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button";
 import Timer from "../Timer/timer.js"
 import Footer from "../Footer/Footer.js";
 import Countdown from 'react-countdown';
+import {putTicket} from "../../redux/actions/index.js"
 
 
 const ShowDetail = () => {
@@ -21,13 +22,12 @@ const ShowDetail = () => {
     });
     const [preciofinal, setPreciofinal]= useState('')
     const [porcentaje, setPorcentaje] = useState(null)
-    
     useEffect(() => {
         dispatch(showDetail(id));
     }, [dispatch]);
     
     
-    
+    console.log(show)
     const renderer = ({ days, hours, minutes, seconds, completed }) => {
             if (completed){
                 <div><p>La obra ya ha comenzado!</p></div>
@@ -36,19 +36,13 @@ const ShowDetail = () => {
                     <div>
                     <p>{days}</p>
                     <p><small>Dias</small></p>
-                    
                     <span>:</span>
-                    
                     <p>{hours}</p>
                     <p><small>Horas</small></p>
-                    
                     <span>:</span>
-                    
                     <p>{minutes}</p>
                     <p><small>Minutos</small></p>
-                    
                     <span>:</span>
-                    
                     <p>{seconds}</p>
                     <p><small>Segundos</small></p>
                     </div>
@@ -84,8 +78,19 @@ const ShowDetail = () => {
         }
         
         
-    
-    
+        const onSubmit=()=>{
+            for (let i = 0; i < show.tickets.length; i++) {
+                let tickets = {
+                    id: show.tickets[i].id,
+                    seatNumber: show.tickets[i].seatNumber,
+                    price: preciofinal
+                }
+                dispatch(putTicket(show.tickets[i].id, tickets))
+                console.log(tickets, "tikeron")
+            }
+        }   
+
+
         function porcentajefuncion ( porcentajes ){
             var descuento = (show.originPrice * porcentajes )/100
             var preciofinal = show.originPrice - descuento
@@ -141,9 +146,11 @@ const ShowDetail = () => {
                 <h4>{porcentaje}%</h4>
                 </div>
                 <div className={style.btnContainer}>
-                <Button className={style.btn} variant="primary">
-                    Comprar
-                </Button>
+                <Link to={`/pasarela/${id}`} style={{ textDecoration: "none" }}>
+                    <Button className={style.btn} variant="primary" onClick={onSubmit}>
+                        Comprar
+                    </Button>
+                </Link>
                 </div>
             </div>
             <div className={style.inf}>
