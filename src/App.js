@@ -2,9 +2,6 @@ import "./App.css";
 import { BrowserRouter, Route } from "react-router-dom";
 import LogInTheatres from "./components/LogInTheatres/LogInTheatres";
 import LogInViewer from "./components/LogInViewer/LogInViewer";
-import NavBarAll from "./components/NavBar/NavBarAll";
-import NavBarTheater from "./components/NavBar/NavBarTheater";
-import NavBarViewer from "./components/NavBar/NavBarViewer";
 import Home from "./components/Home/Home";
 import FormViewers from "./components/Forms/FormViewers.js";
 import FormShow from "./components/Forms/FormShow";
@@ -12,6 +9,7 @@ import HomeTheater from "./components/HomeTheater/HomeTheater";
 import FormTheater from "./components/Forms/FormTheater";
 import EditProfileTheater from "./components/Forms/EditProfileTheater";
 import HomeViewer from "./components/HomeViewer/HomeViewer";
+import Checkout from "./components/Checkout/Checkout";
 import FormPutViewer from "./components/Forms/FormPutViewer.js";
 import { UserContextProvider } from "./context/UserContext.js";
 import ShowDetail from "./components/Shows/ShowDetail.js";
@@ -23,6 +21,10 @@ import PrivateRoutePutV from "./PrivateRoutes/PrivateRoutePutV";
 import Newsletter from "./components/Newsletter/Newsletter";
 import SalesHistory from "./components/SalesHistory/SalesHistory";
 import ViewerHistory from "./components/ViewerHistory/ViewerHistory";
+import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
+import TermsAndConditions from "./components/TermsAndConditions/TermsAndConditions";
+import Seat from "./components/Seats/Seats";
+import PasarelaDePago from "./components/PasarelaDePago/PasarelaDePago";
 
 function App() {
   return (
@@ -35,12 +37,12 @@ function App() {
             <Route exact path="/loginviewer" component={LogInViewer} />
             <Route exact path="/formViewerRegister" component={FormViewers} />
             <Route exact path="/theaterRegister" component={FormTheater} />
+            <Route exact path='/seat' component={Seat}/>
+             <Route exact path='/pasarela' component={PasarelaDePago}/>
             <PrivateRouteProfileT
               exact
               path="/editProfileTheater/:id"
-              render={({ match }) => (
-                <EditProfileTheater props={match.params.id} />
-              )}
+              component={EditProfileTheater}
             />
             <PrivateRouteCreateShow
               exact
@@ -67,6 +69,11 @@ function App() {
               path="/viewerHome/:id"
               component={HomeViewer}
             />
+            {/* <Route
+              exact
+              path="/viewerHome/:id"
+              component={HomeViewer}
+            /> */}
             <PrivateRoutePutV
               exact
               path="/formPutViewer/:id"
@@ -80,6 +87,9 @@ function App() {
             />
             <Route exact path='/salesHistory/:id' component={SalesHistory}/>
             <Route exact path='/formPutViewer/viewerHistory/:id' component={ViewerHistory}/>
+            <Route exact path='/privacyPolicy' component={PrivacyPolicy}/>
+            <Route exact path='/termsConditions' component={TermsAndConditions}/>
+            <Route exact path='/showDetail/checkout/:id' component={Checkout}/>
           </header>
         </div>
       </BrowserRouter>

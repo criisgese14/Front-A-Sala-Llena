@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { createTheater } from '../../redux/actions';
 import { useForm } from 'react-hook-form'
+import Footer from '../Footer/Footer';
 
 const FormTheater = ()  => {
   const { register, handleSubmit,  formState: { errors } } = useForm();
@@ -178,6 +179,7 @@ const FormTheater = ()  => {
                         <button className="btn btn-primary" type="submit">Registra Teatro</button>
                 </form> 
             </Fragment>
+            <Footer/>
       </div>
   )
 }

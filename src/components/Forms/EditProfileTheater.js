@@ -1,23 +1,26 @@
 import React, { useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { editProfileT } from "../../redux/actions";
+import Footer from "../Footer/Footer";
+import { useParams } from "react-router-dom";
 
-const EditProfileTheater = ({props}) => {
+const EditProfileTheater = () => {
   const dispatch = useDispatch()
+  const {id} = useParams();
   const { theaters } = useSelector(state => state)
-  let teatro = theaters.filter(el => el.id == props)
+  let teatro = theaters.filter(el => el.id == id)
   const { name,image,CUIT,adress,email,password,province,phoneNumber,seatsQTY,score} = teatro[0]
   const [input, setInput] = useState({
     name: name?`${name}`:'', 
-    image: `${image}`,
-    CUIT: `${CUIT}`,
-    email: `${email}`,
-    password: `${password}`,
-    adress: `${adress}`, 
-    province: `${province}`, 
-    phoneNumber: `${phoneNumber}`,
-    seatsQTY: `${seatsQTY}`, 
-    score:`${score}`,
+    image: image?`${image}`:'',
+    CUIT: CUIT?`${CUIT}`:'',
+    email: email?`${email}`:'',
+    password: password?`${password}`:'',
+    adress: adress?`${adress}`:'', 
+    province: province?`${province}`:'', 
+    phoneNumber: phoneNumber?`${phoneNumber}`:'',
+    seatsQTY: seatsQTY?`${seatsQTY}`:'', 
+    score: score?`${score}`:'',
   });
   const provinces = ["Buenos Aires", "Cordoba", "Santa Fe", "Catamarca", "Chaco", "Chubut", "Corrientes",
   "Entre Rios", "Formosa", "Jujuy", "La Pampa", "La Rioja", "Mendoza","Misiones", "Neuquen", "Rio Negro",
@@ -35,7 +38,7 @@ const EditProfileTheater = ({props}) => {
 
   function handleSubmit (e) {
     e.preventDefault()
-    dispatch(editProfileT({...input, id: props}))
+    dispatch(editProfileT({...input, id}))
   }
 
     return (
@@ -70,6 +73,7 @@ const EditProfileTheater = ({props}) => {
         <button disabled>Save</button>} */}
         <button>save</button>
     </form>
+    <Footer/>
     </div>
     );
   }

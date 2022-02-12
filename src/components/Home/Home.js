@@ -8,10 +8,12 @@ import { allShows, orderScore } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import style from "./Home.module.css";
+import Footer from "../Footer/Footer";
 
+import CarouselContainer from "../Carrousel/Carrousel.js";
 export default function Home() {
   const dispatch = useDispatch();
-  const history = useHistory()
+  const history = useHistory();
   const allshows = useSelector((state) => state.shows);
   const [order, setOrder] = useState("");
   const [actualPage, setActualPage] = useState(1);
@@ -25,7 +27,7 @@ export default function Home() {
   };
   useEffect(() => {
     dispatch(allShows());
-  }, [dispatch]);
+  }, []);
 
   return (
     <div className={style.homeContainer}>
@@ -35,20 +37,21 @@ export default function Home() {
       <div className={style.searchContainer}>
         <SearchBar />
       </div>
-      {/* <Link to ='/'>
-                </Link> */}
 
+      {/* <CarouselContainer allshows={allshows} /> */}
       <div className={style.showsContainer}>
         {actualShow.length ? (
-          <Shows actualShow={actualShow}/>
+          <Shows actualShow={actualShow} />
         ) : (
           <p>...Loading</p>
         )}
       </div>
+
       <div className={style.paginate}>
         <Paginate qty={qty} allshows={allshows.length} paginate={paginate} />
       </div>
-      <span onClick={() => history.push('/editProfileTheater/1')}>editProfileTheater</span>
+      <span onClick={() => history.push('/editProfileTheater/2')}>editProfileTheater</span>
+      <Footer />
     </div>
   );
 }

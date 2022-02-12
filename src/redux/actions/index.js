@@ -16,7 +16,7 @@ export function filterPerProvince(payload) {
 
 export function postShow(newShow) {
   try {
-    const show = axios.post("https://a-sala-llena.herokuapp.com/shows", newShow);
+    const show = axios.post("https://back-asalallena.herokuapp.com/shows", newShow);
     return {
       type: "POST_SHOW",
       payload: show,
@@ -29,7 +29,7 @@ export function postShow(newShow) {
 export function allShows() {
   return function (dispatch) {
     return axios
-      .get("https://a-sala-llena.herokuapp.com/shows")
+      .get("https://back-asalallena.herokuapp.com/shows")
       .then((response) => response.data)
       .then((data) => {
         dispatch({ type: "GET_ALL_SHOWS", payload: data });
@@ -40,7 +40,7 @@ export function allShows() {
 export function theaterDetail(id) {
   return function (dispatch) {
     return axios
-      .get(`https://a-sala-llena.herokuapp.com/theaters/${id}`)
+      .get(`https://back-asalallena.herokuapp.com/theaters/${id}`)
       .then((response) => response.data)
       .then((data) => {
         dispatch({ type: "THEATER_DETAIL", payload: data });
@@ -50,7 +50,7 @@ export function theaterDetail(id) {
 export function allTheaters() {
   return function (dispatch) {
     return axios
-      .get("https://a-sala-llena.herokuapp.com/theaters")
+      .get("https://back-asalallena.herokuapp.com/theaters")
       .then((resp) => resp.data)
       .then((data) => {
         dispatch({
@@ -91,7 +91,7 @@ export function filterPerTicketsQty(payload) {
 
 export function postViewer(newviewer) {
   try {
-    const viewer = axios.post("https://a-sala-llena.herokuapp.com/viewers", newviewer);
+    const viewer = axios.post("https://back-asalallena.herokuapp.com/viewers", newviewer);
     return {
       type: "POST_VIEWER",
       payload: viewer,
@@ -102,7 +102,7 @@ export const ORDER_SCORE = "ORDER_SCORE";
 
 export function postTicket(newticket) {
   try {
-    const tickets = axios.post("https://a-sala-llena.herokuapp.com/tickets", newticket);
+    const tickets = axios.post("https://back-asalallena.herokuapp.com/tickets", newticket);
     return {
       type: "POST_TICKET",
       payload: tickets,
@@ -113,7 +113,7 @@ export function postTicket(newticket) {
 export function showDetail(id) {
   return function (dispatch) {
     return axios
-      .get(`https://a-sala-llena.herokuapp.com/shows/${id}`)
+      .get(`https://back-asalallena.herokuapp.com/shows/${id}`)
       .then((response) => response.data)
       .then((data) => {
         dispatch({ type: "SHOW_DETAIL", payload: data });
@@ -124,7 +124,7 @@ export function showDetail(id) {
 export function getViewerDetail(id) {
   return function (dispatch) {
     return axios
-      .get(`https://a-sala-llena.herokuapp.com/viewers/${id}`)
+      .get(`https://back-asalallena.herokuapp.com/viewers/${id}`)
       .then((response) => response.data)
       .then((data) => {
         dispatch({ type: GET_VIEWER_DETAIL, payload: data });
@@ -134,7 +134,7 @@ export function getViewerDetail(id) {
 
 //export function loginTheater ({ email, password }) {
 //    console.log(email)
-//    return fetch('https://a-sala-llena.herokuapp.com/login/theater', {
+//    return fetch('https://back-asalallena.herokuapp.com/login/theater', {
 //      method: 'POST',
 //      headers: {
 //        "Content-Type": "application/json"
@@ -154,7 +154,7 @@ export function loginTheater({ email, password }) {
   console.log(email);
   return (
     axios
-      .post("https://a-sala-llena.herokuapp.com/login/theater", { email, password })
+      .post("https://back-asalallena.herokuapp.com/login/theater", { email, password })
 
       //.then(res => {
       //  if (!res.ok) throw new Error('Response is NOT ok')
@@ -170,7 +170,7 @@ export function loginTheater({ email, password }) {
 export function putViewer(id, changes) {
   return function (dispatch) {
     return axios
-      .put(`https://a-sala-llena.herokuapp.com/viewers/${id}`, changes)
+      .put(`https://back-asalallena.herokuapp.com/viewers/${id}`, changes)
       .then((response) => response.data)
       .then((data) => {
         console.log(data);
@@ -179,10 +179,21 @@ export function putViewer(id, changes) {
   };
 }
 
+export function putTicket(id, nuevoticket) {
+  return function (dispatch) {
+    return axios
+      .put(`https://back-asalallena.herokuapp.com/tickets/${id}`, nuevoticket)
+      .then((response) => response.data)
+      .then((data) => {
+        dispatch({ type: PUT_TICKET, payload: data });
+      });
+  };
+}
+
 export function getAllViewers() {
   return function (dispatch) {
     return axios
-      .get("https://a-sala-llena.herokuapp.com/viewers")
+      .get("https://back-asalallena.herokuapp.com/viewers")
       .then((response) => response.data)
       .then((data) => {
         dispatch({ type: GET_ALL_ViEWERS, payload: data });
@@ -193,7 +204,7 @@ export function getAllViewers() {
 export function deleteViewer(id) {
   return function (dispatch) {
     return axios
-      .delete(`https://a-sala-llena.herokuapp.com/viewers/${id}`)
+      .delete(`https://back-asalallena.herokuapp.com/viewers/${id}`)
       .then((response) => response.data)
       .then((data) => {
         dispatch({ type: DELETE_VIEWER, payload: data });
@@ -203,7 +214,7 @@ export function deleteViewer(id) {
 
 //export function loginViewer ({ email, password }) {
 //    console.log(email)
-//    return fetch('https://a-sala-llena.herokuapp.com/login/viewer', {
+//    return fetch('https://back-asalallena.herokuapp.com/login/viewer', {
 //      method: 'POST',
 //      headers: {
 //        "Content-Type": "application/json"
@@ -223,7 +234,7 @@ export function loginViewer({ email, password }) {
   console.log(email);
   return (
     axios
-      .post("https://a-sala-llena.herokuapp.com/login/viewer", { email, password })
+      .post("https://back-asalallena.herokuapp.com/login/viewer", { email, password })
 
       //.then(res => {
       //  if (!res.ok) throw new Error('Response is NOT ok')
@@ -239,7 +250,7 @@ export function loginViewer({ email, password }) {
 export function getShowByName(name) {
   return async function (dispatch) {
     try {
-      var resp = await axios.get(`https://a-sala-llena.herokuapp.com/shows?name=${name}`);
+      var resp = await axios.get(`https://back-asalallena.herokuapp.com/shows?name=${name}`);
       return dispatch({
         type: GET_SHOW_BY_NAME,
         payload: resp.data,
@@ -248,13 +259,13 @@ export function getShowByName(name) {
       alert("This Show does not exist");
       return console.log(e);
     }
-  };
 }
+
 export function editProfileT(payload) {
   return async function (dispatch) {
     try {
       const { data } = await axios.put(
-        `https://a-sala-llena.herokuapp.com/theaters/${payload.id}`,
+        `https://back-asalallena.herokuapp.com/theaters/${payload.id}`,
         payload
       );
       alert(data);
@@ -267,7 +278,7 @@ export function editProfileT(payload) {
 
 export function createTheater(values) {
   try {
-    const theater = axios.post("https://a-sala-llena.herokuapp.com/theaters", values);
+    const theater = axios.post("https://back-asalallena.herokuapp.com/theaters", values);
     return {
       type: "CREATE_THEATER",
       payload: theater,
@@ -277,7 +288,7 @@ export function createTheater(values) {
 
 export function createFavorites(id, changes) {
   try {
-    const fav = axios.post(`https://a-sala-llena.herokuapp.com/favorites/${id}`, changes);
+    const fav = axios.post(`https://back-asalallena.herokuapp.com/favorites/${id}`, changes);
     console.log(fav);
     return {
       type: CREATE_FAVORITES,
@@ -290,7 +301,7 @@ export function createFavorites(id, changes) {
 
 export function getAllTickets(){
     return function(dispatch){
-        return axios.get('https://a-sala-llena.herokuapp.com/tickets')
+        return axios.get('https://back-asalallena.herokuapp.com/tickets')
         .then(res => res.data)
         .then(data =>{
             dispatch({type: GET_ALL_TICKETS, payload: data})
@@ -299,6 +310,60 @@ export function getAllTickets(){
     }
     
 }
+
+export function checkoutPay(id) {
+    // console.log(id)
+    // // var script = document.createElement('script');
+    // //         script.src = "https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";
+    // //         // const attr_data_preference = document.createAttribute('data-preference-id') //Crea un nodo atribute
+	// //         // attr_data_preference.value = id.id  
+    // //         // script.setAttributeNode(script);
+    // //         script.type = "text/javascript";
+    // //         script.dataset.preferenceId =  axios
+    // //         .post ('https://back-asalallena.herokuapp.com/tickets/pay', {id}).preferenceId;
+    // //         document.getElementById("button-checkout").innerHTML = "";
+    // //         document.querySelector("#button-checkout").appendChild(script);
+    // return (
+    //     axios.post ('https://back-asalallena.herokuapp.com/tickets/pay', {id})
+    //         .then((res) => {
+    //             console.log(res.data)
+    //             return res.data
+    //         })
+    //         .catch((e) => console.log(e))
+    // )
+
+
+    return async function (dispatch) {
+        try{
+            const pay = await axios.post ('https://back-asalallena.herokuapp.com/tickets/pay', {id})
+            
+            var script = document.createElement('script');
+            script.src = "https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";
+            // const attr_data_preference = document.createAttribute('data-preference-id') //Crea un nodo atribute
+	        // attr_data_preference.value = id.id  
+            // script.setAttributeNode(script);
+            script.type = "text/javascript";
+            script.dataset.preferenceId = pay.preferenceId;
+            document.getElementById("button-checkout").innerHTML = "";
+            document.querySelector("#button-checkout").appendChild(script);
+            // var key = pay.data
+            // console.log(key)
+            // window.location.href = 'https://sandbox.mercadopago.com.ar/checkout/v1/redirect?pref_id=672708410-642e44a0-3182-4983-b7d7-3e01eebce9e5'
+            // console.log(window.location)
+            dispatch({
+                type: CHECKOUT_PAY,
+                payload: pay.data,
+                // key
+            })
+            // window.location = pay.data.redirect
+        } catch(e) {
+            console.log(e)
+        }
+    }
+
+
+}
+
 
 export const ORDER_PRICE = "ORDER_PRICE";
 export const FILTER_PROVINCE = "FILTER_PROVINCE";
@@ -315,10 +380,12 @@ export const SHOW_DETAIL = "SHOW_DETAIL";
 export const THEATER_DETAIL = "THEATER_DETAIL";
 export const GET_VIEWER_DETAIL = "GET_VIEWER_DETAIL";
 export const PUT_VIEWER = "PUT_VIEWER";
-export const GET_ALL_ViEWERS = "GET_ALL_ViEWERS";
-export const GET_SHOW_BY_NAME = "GET_SHOW_BY_NAME";
-export const DELETE_VIEWER = "DELETE_VIEWER";
+export const GET_ALL_ViEWERS = 'GET_ALL_ViEWERS';
+export const GET_SHOW_BY_NAME = 'GET_SHOW_BY_NAME';
+export const DELETE_VIEWER= 'DELETE_VIEWER';
+export const CHECKOUT_PAY = 'CHECKOUT_PAY';
 export const PUT_PROFILE_THEATER = "PUT_PROFILE_THEATER";
 export const CREATE_THEATER = "CREATE_THEATER";
 export const CREATE_FAVORITES = "CREATE_FAVORITES";
 export const GET_ALL_TICKETS = "GET_ALL_TICKETS";
+export const PUT_TICKET = "PUT_TICKET";

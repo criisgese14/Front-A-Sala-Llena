@@ -3,7 +3,7 @@ import NavBarTheater from "../NavBar/NavBarTheater";
 import { useDispatch, useSelector } from "react-redux";
 import {getAllTickets,allShows,theaterDetail} from '../../redux/actions/index.js';
 import { useParams } from "react-router-dom";
-import Dropdown from "react-bootstrap/Dropdown";
+import Footer from "../Footer/Footer";
 
 const SalesHistory = () =>{
     const dispatch = useDispatch();
@@ -44,6 +44,7 @@ const SalesHistory = () =>{
                     <h1>TODAVIA NO HAY VENTAS</h1>
                 )
             }
+            <Footer/>
         </div>
     )
 }
