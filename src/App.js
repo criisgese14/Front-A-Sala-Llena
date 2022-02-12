@@ -9,6 +9,7 @@ import HomeTheater from "./components/HomeTheater/HomeTheater";
 import FormTheater from "./components/Forms/FormTheater";
 import EditProfileTheater from "./components/Forms/EditProfileTheater";
 import HomeViewer from "./components/HomeViewer/HomeViewer";
+import Checkout from "./components/Checkout/Checkout";
 import FormPutViewer from "./components/Forms/FormPutViewer.js";
 import { UserContextProvider } from "./context/UserContext.js";
 import ShowDetail from "./components/Shows/ShowDetail.js";
@@ -80,6 +81,7 @@ function App() {
               path="/formPutViewer/newsletter/:id"
               component={Newsletter}
             />
+<<<<<<< HEAD
             <Route exact path="/salesHistory/:id" component={SalesHistory} />
             <Route
               exact
@@ -92,6 +94,13 @@ function App() {
               path="/termsConditions"
               component={TermsAndConditions}
             />
+=======
+            <Route exact path='/salesHistory/:id' component={SalesHistory}/>
+            <Route exact path='/formPutViewer/viewerHistory/:id' component={ViewerHistory}/>
+            <Route exact path='/privacyPolicy' component={PrivacyPolicy}/>
+            <Route exact path='/termsConditions' component={TermsAndConditions}/>
+            <Route exact path='/showDetail/checkout/:id' component={Checkout}/>
+>>>>>>> b9d24b18fd52f0d0c29c3e9b39371610c463fdc1
           </header>
         </div>
       </BrowserRouter>
