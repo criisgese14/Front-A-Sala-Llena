@@ -5,6 +5,7 @@ import {useDispatch, useSelector  } from "react-redux"
 import {putViewer, getViewerDetail, deleteViewer} from "../../redux/actions/index.js"
 import { useParams } from "react-router-dom";
 import NavBarPerfilViewer from "../NavBar/NavBarPerfilViewer.js";
+import Footer from "../Footer/Footer.js";
 
 
 const FormPutViewer = () => {
@@ -100,6 +101,7 @@ const FormPutViewer = () => {
             <button type="submit">Actualizar</button>
             </form>
             <button onClick={handleSubmitDelete}> Borrar Usuario</button>
+            <Footer/>
         </div>
     )
 }

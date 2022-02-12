@@ -3,13 +3,10 @@ import NavBarTheater from "../NavBar/NavBarTheater";
 import SearchBar from "../SearchBar/SearchBar";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import {
-  theaterDetail,
-  allTheaters,
-  allShows,
-} from "../../redux/actions/index.js";
+import {theaterDetail,allTheaters,allShows} from "../../redux/actions/index.js";
 import ShowCard from "../ShowCard/ShowCard";
 import style from "./HomeTheater.module.css";
+import Footer from "../Footer/Footer";
 
 const HomeTheater = () => {
   const dispatch = useDispatch();
@@ -47,6 +44,7 @@ const HomeTheater = () => {
           />
         ))}
       </div>
+      <Footer/>
     </div>
   );
 };

@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ShowCard from "../ShowCard/ShowCard";
-import { useDispatch, useSelector } from "react-redux";
-import { allShows } from "../../redux/actions/index.js";
+
+;
 
 const Shows = ({ actualShow }) => {
-  const dispatch = useDispatch();
-  const shows = useSelector((state) => state.shows);
+  
 
 //   useEffect(() => {
 //     dispatch(allShows());

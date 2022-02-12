@@ -2,9 +2,6 @@ import "./App.css";
 import { BrowserRouter, Route } from "react-router-dom";
 import LogInTheatres from "./components/LogInTheatres/LogInTheatres";
 import LogInViewer from "./components/LogInViewer/LogInViewer";
-import NavBarAll from "./components/NavBar/NavBarAll";
-import NavBarTheater from "./components/NavBar/NavBarTheater";
-import NavBarViewer from "./components/NavBar/NavBarViewer";
 import Home from "./components/Home/Home";
 import FormViewers from "./components/Forms/FormViewers.js";
 import FormShow from "./components/Forms/FormShow";
@@ -22,6 +19,9 @@ import PrivateRouteProfileT from "./PrivateRoutes/PrivateRouteProfileT.js";
 import PrivateRoutePutV from "./PrivateRoutes/PrivateRoutePutV";
 import Newsletter from "./components/Newsletter/Newsletter";
 import SalesHistory from "./components/SalesHistory/SalesHistory";
+import ViewerHistory from "./components/ViewerHistory/ViewerHistory";
+import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
+import TermsAndConditions from "./components/TermsAndConditions/TermsAndConditions";
 
 function App() {
   return (
@@ -37,9 +37,7 @@ function App() {
             <PrivateRouteProfileT
               exact
               path="/editProfileTheater/:id"
-              render={({ match }) => (
-                <EditProfileTheater props={match.params.id} />
-              )}
+              component={EditProfileTheater}
             />
             <PrivateRouteCreateShow
               exact
@@ -66,6 +64,11 @@ function App() {
               path="/viewerHome/:id"
               component={HomeViewer}
             />
+            {/* <Route
+              exact
+              path="/viewerHome/:id"
+              component={HomeViewer}
+            /> */}
             <PrivateRoutePutV
               exact
               path="/formPutViewer/:id"
@@ -77,7 +80,18 @@ function App() {
               path="/formPutViewer/newsletter/:id"
               component={Newsletter}
             />
-            <Route exact path="/saleshistory/:id" component={SalesHistory} />
+            <Route exact path="/salesHistory/:id" component={SalesHistory} />
+            <Route
+              exact
+              path="/formPutViewer/viewerHistory/:id"
+              component={ViewerHistory}
+            />
+            <Route exact path="/privacyPolicy" component={PrivacyPolicy} />
+            <Route
+              exact
+              path="/termsConditions"
+              component={TermsAndConditions}
+            />
           </header>
         </div>
       </BrowserRouter>
