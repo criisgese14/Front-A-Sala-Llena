@@ -81,26 +81,11 @@ function App() {
               path="/formPutViewer/newsletter/:id"
               component={Newsletter}
             />
-<<<<<<< HEAD
-            <Route exact path="/salesHistory/:id" component={SalesHistory} />
-            <Route
-              exact
-              path="/formPutViewer/viewerHistory/:id"
-              component={ViewerHistory}
-            />
-            <Route exact path="/privacyPolicy" component={PrivacyPolicy} />
-            <Route
-              exact
-              path="/termsConditions"
-              component={TermsAndConditions}
-            />
-=======
             <Route exact path='/salesHistory/:id' component={SalesHistory}/>
             <Route exact path='/formPutViewer/viewerHistory/:id' component={ViewerHistory}/>
             <Route exact path='/privacyPolicy' component={PrivacyPolicy}/>
             <Route exact path='/termsConditions' component={TermsAndConditions}/>
             <Route exact path='/showDetail/checkout/:id' component={Checkout}/>
->>>>>>> b9d24b18fd52f0d0c29c3e9b39371610c463fdc1
           </header>
         </div>
       </BrowserRouter>
