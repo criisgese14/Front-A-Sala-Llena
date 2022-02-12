@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment} from 'react';
 import { useDispatch } from 'react-redux';
 import { createTheater } from '../../redux/actions';
 
@@ -31,7 +31,7 @@ const FormTheater = ()  => {
     });
   }
 
-  function handleSubmit (e) {
+  function onSubmit (e) {
     e.preventDefault()
     if(input.password !== input.confirmPassword){
       return alert('las contraseñas no coinciden')
@@ -56,7 +56,8 @@ const FormTheater = ()  => {
     })
   }
   return (
-    <form onSubmit={handleSubmit}>  
+    <div>
+    <form onSubmit={onSubmit}>  
       {/* name */}
       <input name="name" type="text" value={input.name} onChange={handleChange} placeholder="Name of the theater" />
       {/* image*/}
@@ -92,6 +93,7 @@ const FormTheater = ()  => {
         <button >Register</button>: 
         <button disabled>Register</button>}
     </form>
+  </div>
   )
 }
 
