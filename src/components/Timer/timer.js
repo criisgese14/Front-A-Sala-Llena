@@ -1,10 +1,12 @@
 import React, {useState, useRef, useEffect} from "react";
 
-const Timer = ({newDate, newTime})=>{
+const Timer = ({newDate, newTime, price})=>{
     const [timerDias, setTimerDias] = useState('00')
     const [timerHoras, setTimerHoras] = useState('00')
     const [timerMinutos, setTimerMinutos] = useState('00')
     const [timerSegundos, setTimerSegundos] = useState('00')
+    const [preciofinal, setPreciofinal]= useState('')
+    const [porcentaje, setPorcentaje] = useState(null)
 
     //devuelve un objeto ref mutable cuya propiedad .current se inicializa con el argumento pasado (initialValue).
     //El objeto devuelto se mantendrá persistente durante la vida completa del componente.
@@ -35,12 +37,42 @@ const Timer = ({newDate, newTime})=>{
         }, 1000)
     }
     useEffect(() => {
+        numerodeporcentaje()
         startTimer();
         return()=>{
             clearInterval(interval.current)
         }
     })
+    function numerodeporcentaje(){
+        if(timerDias ===0 && timerHoras < 6){
+            setPorcentaje(10)
+            porcentajefuncion(porcentaje)
+        }else if(timerDias === 0 && timerHoras < 12){
+            setPorcentaje(15)
+            porcentajefuncion(porcentaje)
+        }else if(timerDias === 0 && timerHoras > 12){
+            setPorcentaje(20)
+            porcentajefuncion(porcentaje)
+        }else if(timerDias === 1 && timerHoras > 12){
+            setPorcentaje(25)
+            porcentajefuncion(porcentaje)
+        }else {
+            setPorcentaje(30)
+            porcentajefuncion(porcentaje)
+        }
+    }
     
+    
+
+
+    function porcentajefuncion ( porcentajes ){
+        var descuento = (price * porcentajes )/100
+        console.log(descuento)
+        var preciofinal = price - descuento
+        setPreciofinal(preciofinal)
+    }
+    
+    console.log(price)
     // console.log(newDate)
     // console.log(newTime)
     return (
@@ -68,6 +100,10 @@ const Timer = ({newDate, newTime})=>{
                     </section>
                 </div>
             </section>
+            <h3>Precio:</h3>
+            <h4>${preciofinal}</h4>
+            <h3>Descuento: </h3>
+            <h4>{porcentaje}%</h4>
         </section>
     )
 }

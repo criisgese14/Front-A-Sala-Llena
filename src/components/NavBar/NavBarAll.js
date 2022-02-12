@@ -3,12 +3,18 @@ import NavBar from "./NavBar";
 import { Link } from "react-router-dom";
 import style from "./NavBarAll.module.css";
 import Dropdown from "react-bootstrap/Dropdown";
+import logo from "../../assets/logo a sala llena-sinfondo.png";
 
 export default function NavBarAll({ setActualPage, setOrder }) {
   return (
     <div>
       <div className={style.NavBarAllContainer}>
-        <NavBar setActualPage={setActualPage} setOrder={setOrder} />
+        <div className={style.column}>
+          <Link to="/">
+            <img className={style.logo} src={logo} alt="A sala llena" />
+          </Link>
+          <NavBar setActualPage={setActualPage} setOrder={setOrder} />
+        </div>
         <div className={style.loginContainer}>
           <Dropdown>
             <Dropdown.Toggle variant="info" id="dropdown-basic">
