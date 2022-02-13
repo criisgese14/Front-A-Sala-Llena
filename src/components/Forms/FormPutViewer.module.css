@@ -1,0 +1,29 @@
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 2rem;
+}
+.title {
+  color: white;
+}
+.formContainer {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  width: 89%;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.footerContainer {
+  position: absolute;
+  bottom: 0;
+}
+
+.btn {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+}
