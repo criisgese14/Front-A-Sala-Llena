@@ -13,11 +13,11 @@ import Checkout from "./components/Checkout/Checkout";
 import FormPutViewer from "./components/Forms/FormPutViewer.js";
 import { UserContextProvider } from "./context/UserContext.js";
 import ShowDetail from "./components/Shows/ShowDetail.js";
-import PrivateRouteHomeV from "./PrivateRoutes/PrivateRouteHomeV.js";
-import PrivateRouteHomeT from "./PrivateRoutes/PrivateRouteHomeT";
-import PrivateRouteCreateShow from "./PrivateRoutes/PrivateRouteCreateShow.js";
-import PrivateRouteProfileT from "./PrivateRoutes/PrivateRouteProfileT.js";
-import PrivateRoutePutV from "./PrivateRoutes/PrivateRoutePutV";
+// import PrivateRouteHomeV from "./PrivateRoutes/PrivateRouteHomeV.js";
+// import PrivateRouteHomeT from "./PrivateRoutes/PrivateRouteHomeT";
+// import PrivateRouteCreateShow from "./PrivateRoutes/PrivateRouteCreateShow.js";
+// import PrivateRouteProfileT from "./PrivateRoutes/PrivateRouteProfileT.js";
+// import PrivateRoutePutV from "./PrivateRoutes/PrivateRoutePutV";
 import Newsletter from "./components/Newsletter/Newsletter";
 import SalesHistory from "./components/SalesHistory/SalesHistory";
 import ViewerHistory from "./components/ViewerHistory/ViewerHistory";
@@ -40,12 +40,12 @@ function App() {
             <Route exact path="/theaterRegister" component={FormTheater} />
             <Route exact path='/seat' component={Seat}/>
              <Route exact path='/pasarela' component={PasarelaDePago}/>
-            <PrivateRouteProfileT
+             <Route
               exact
               path="/editProfileTheater/:id"
               component={EditProfileTheater}
             />
-            <PrivateRouteCreateShow
+            <Route
               exact
               path="/create/:id"
               component={FormShow}
@@ -55,7 +55,7 @@ function App() {
               path="/create/:id"
               component={FormShow}
             /> */}
-            <PrivateRouteHomeT
+            <Route
               exact
               path="/theaterHome/:id"
               component={HomeTheater}
@@ -65,7 +65,7 @@ function App() {
               path="/theaterHome/:id"
               component={HomeTheater}
             /> */}
-            <PrivateRouteHomeV
+            <Route
               exact
               path="/viewerHome/:id"
               component={HomeViewer}
@@ -75,7 +75,7 @@ function App() {
               path="/viewerHome/:id"
               component={HomeViewer}
             /> */}
-            <PrivateRoutePutV
+            <Route
               exact
               path="/formPutViewer/:id"
               component={FormPutViewer}
