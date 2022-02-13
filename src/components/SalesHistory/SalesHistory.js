@@ -21,7 +21,7 @@ const SalesHistory = () =>{
     },[]);
     
     
-    console.log('prueba',tickets.viewerId)
+    console.log('prueba', tickets[0].viewerId)
     let filterShows = show?.filter((e) => e.theaterId ===  theater?.id)
     let filterTicket = tickets?.filter((e) => e.show.theaterId === theater?.id)
     console.log('filter',filterShows)
