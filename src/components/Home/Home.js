@@ -51,8 +51,8 @@ export default function Home() {
       <div className={style.paginate}>
         <Paginate qty={qty} allshows={allshows.length} paginate={paginate} />
       </div>
-      
-      <div>
+
+      <div className={style.footerContainer}>
         <Footer />
       </div>
     </div>

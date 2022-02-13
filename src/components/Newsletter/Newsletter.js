@@ -49,20 +49,22 @@ const Newsletter = () => {
   };
 
   return (
-    <div>
-      <div>
+    <div className={style.newsletter}>
+      <div className={style.navContainer}>
         <NavBarPerfilViewer />
       </div>
 
       <div className={style.inputContainer}>
         <form onSubmit={(e) => HandleSubmit(e)}>
-          <label className={style.inp}>
+          <h2>
             Suscribite a nuestro newsletter para recibir informacion sobre los
             ultimos shows
-          </label>
-
-          <input type="checkbox" onChange={(e) => HandleCheck(e)} />
-          <div>
+          </h2>
+          <span className={style.check}>
+            <label className={style.inp}>Hace click para suscribirte</label>
+            <input type="checkbox" onChange={(e) => HandleCheck(e)} />
+          </span>
+          <div className={style.select}>
             <select onChange={(e) => HandleChange(e)}>
               <option defaultValue="" hidden>
                 Elegi tu teatro favorito
@@ -87,10 +89,12 @@ const Newsletter = () => {
               );
             })} */}
           </div>
-          <button>Enviar</button>
+          <button className={style.btn}>Enviar</button>
         </form>
       </div>
-      <Footer/>
+      <div className={style.footerContainer}>
+        <Footer />
+      </div>
     </div>
   );
 };

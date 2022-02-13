@@ -1,7 +1,11 @@
 .homeContainer {
-  /* position: absolute; */
   width: 100%;
+  height: 100vh;
   /* background: linear-gradient(#070047, #62016e); */
+}
+.searchContainer {
+  display: flex;
+  justify-content: center;
 }
 .showsContainer {
   margin-top: 2rem;
@@ -15,6 +19,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+}
+
+.footerContainer {
+  position: absolute;
+  bottom: 0;
 }
 
 @media (max-width: 768px) {
@@ -31,5 +40,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+  }
+
+  .footerContainer {
+    position: absolute;
+    bottom: 0;
   }
 }

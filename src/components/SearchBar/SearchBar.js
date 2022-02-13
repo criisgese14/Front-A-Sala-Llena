@@ -29,7 +29,6 @@ export default function SearchBar() {
     <div className={style.searchContainer}>
       <InputGroup className="mb-3">
         <FormControl
-          
           aria-label="Recipient's username"
           aria-describedby="basic-addon2"
           type="text"
@@ -39,7 +38,7 @@ export default function SearchBar() {
           value={name}
         />
         <Button
-          variant="info"
+          variant="secondary"
           id="button-addon2"
           type="submit"
           onClick={(e) => handleSubmit(e)}

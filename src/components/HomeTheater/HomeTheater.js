@@ -32,7 +32,9 @@ const HomeTheater = () => {
   return (
     <div className={style.homeContainer}>
       <NavBarTheater id={id} />
-      <SearchBar />
+      <div className={style.searchContainer}>
+        <SearchBar />
+      </div>
       <div className={style.showsContainer}>
         {filterShows.map((e) => (
           <ShowCard

@@ -1,8 +1,11 @@
-
-import React, {useEffect, useState} from "react";
-import {useHistory } from "react-router-dom";
-import {useDispatch, useSelector  } from "react-redux"
-import {putViewer, getViewerDetail, deleteViewer} from "../../redux/actions/index.js"
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  putViewer,
+  getViewerDetail,
+  deleteViewer,
+} from "../../redux/actions/index.js";
 import { useParams } from "react-router-dom";
 import NavBarPerfilViewer from "../NavBar/NavBarPerfilViewer.js";
 import Footer from "../Footer/Footer.js";
@@ -66,10 +69,14 @@ const FormPutViewer = () => {
       </div>
       <div className={style.title}>
         <h1>Actualizar Espectador:</h1>
-        <button onClick={changeEdit}>Edit</button>
+      </div>
+      <div className={style.btnContainer}>
+        <button onClick={changeEdit} className={style.btn}>
+          Edit
+        </button>
       </div>
       <div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={style.formContainer}>
           <label>Nombre:</label>
           {edit === false ? (
             <input
@@ -127,11 +134,15 @@ const FormPutViewer = () => {
               }}
             />
           )}
-          <button type="submit">Actualizar</button>
+          <button type="submit" className={style.btn}>
+            Actualizar
+          </button>
         </form>
       </div>
-      <div className={style.btn}>
-        <button onClick={handleSubmitDelete}> Borrar Usuario</button>
+      <div className={style.btnContainer}>
+        <button onClick={handleSubmitDelete} className={style.btn}>
+          Borrar Usuario
+        </button>
       </div>
       <div className={style.footerContainer}>
         <Footer />

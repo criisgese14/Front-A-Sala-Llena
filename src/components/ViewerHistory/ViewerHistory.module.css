@@ -1,27 +1,11 @@
-.newsletter {
-  height: 100vh;
-}
-
 .navContainer {
   display: flex;
   justify-content: flex-end;
 }
 
-.inputContainer {
+.card {
   margin-top: 3rem;
-  color: aliceblue;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.inp {
-  font-size: 1.2em;
-  margin-bottom: 1rem;
-}
-
-.select {
-  margin: 2rem 0 2rem 0;
+  color: white;
 }
 
 .btn {

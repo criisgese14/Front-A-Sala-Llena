@@ -12,6 +12,11 @@
   margin: auto;
 }
 
+.searchContainer {
+  display: flex;
+  justify-content: center;
+}
+
 .footerContainer {
   position: absolute;
   bottom: 0;
