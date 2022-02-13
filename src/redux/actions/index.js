@@ -391,6 +391,18 @@ export function checkoutPay({price, seatNumber, idShow, idViewer}) {
   };
 }
 
+export function postNewsletterShow(nameTheater) {
+  try {
+    const postshow = axios.post("http://localhost:3001/newsletter", {nameTheater});
+    
+    return {
+      type: POST_NEWSLETTER_SHOW,
+      payload: postshow,
+    };
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 export const ORDER_PRICE = "ORDER_PRICE";
 export const FILTER_PROVINCE = "FILTER_PROVINCE";
@@ -417,3 +429,4 @@ export const CREATE_FAVORITES = "CREATE_FAVORITES";
 export const GET_ALL_TICKETS = "GET_ALL_TICKETS";
 export const PUT_TICKET = "PUT_TICKET";
 export const POST_REVIEW = 'POST_REVIEW';
+export const POST_NEWSLETTER_SHOW = 'POST_NEWSLETTER_SHOW';
