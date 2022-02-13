@@ -1,6 +1,6 @@
 
 import React, {useEffect, useState} from "react";
-import {Link, useHistory } from "react-router-dom";
+import {useHistory } from "react-router-dom";
 import {useDispatch, useSelector  } from "react-redux"
 import {putViewer, getViewerDetail, deleteViewer} from "../../redux/actions/index.js"
 import { useParams } from "react-router-dom";

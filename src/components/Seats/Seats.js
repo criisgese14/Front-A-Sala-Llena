@@ -26,7 +26,7 @@ const MySeats = ({seatsNumber, setSeatAvailable, seatsavailable, form}) => {
         }
         else if(!selected.includes(silla) && available.includes(silla)&& selected.length<=seatsNumber-1){
             setSelected([...selected, silla])
-            setAvailable(available.filter(el => el != silla))
+            setAvailable(available.filter(el => el !== silla))
         }else if(selected.includes(silla)){
             setSelected(selected.filter(el => el !== silla))
             setAvailable([...available, silla])
@@ -43,7 +43,7 @@ const MySeats = ({seatsNumber, setSeatAvailable, seatsavailable, form}) => {
         }else if(!showdetail.tickets){
             console.log('else: ',JSON.parse(window.localStorage.getItem('show')))
         }
-    },[])
+    },[showdetail.tickets])
     
     console.log(selected);
     return (

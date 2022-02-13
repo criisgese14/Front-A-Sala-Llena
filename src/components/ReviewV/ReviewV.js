@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {postReview} from '../../redux/actions/index.js';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+
 
 const Review = ({nameTheater,nameShow,nameViewer}) => {
-    {/*const [input,setInput] = useState({theaterScore:'', showScore:'', review:''})*/}
+    
     let [theaterScore,setTheaterScore] = useState('');
     let [showScore,setShowScore] = useState('');
     let [review,setReview] = useState('');

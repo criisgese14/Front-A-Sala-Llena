@@ -42,7 +42,7 @@ const Timer = ({newDate, newTime, price})=>{
         return()=>{
             clearInterval(interval.current)
         }
-    })
+    },)
     function numerodeporcentaje(){
         if(timerDias ===0 && timerHoras < 6){
             setPorcentaje(10)

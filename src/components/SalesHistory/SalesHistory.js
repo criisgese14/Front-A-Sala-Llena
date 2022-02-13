@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import NavBarTheater from "../NavBar/NavBarTheater";
 import { useDispatch, useSelector } from "react-redux";
 import {getAllTickets,allShows,theaterDetail} from '../../redux/actions/index.js';
@@ -18,7 +18,7 @@ const SalesHistory = () =>{
         dispatch(getAllTickets())
         dispatch(allShows())
         dispatch(theaterDetail(id))
-    },[dispatch]);
+    },[dispatch,id]);
     
     let filterShows = show?.filter((e) => e.theaterId ===  theater?.id)
     let filterTicket = tickets?.filter((e) => e.show.theaterId === theater?.id)

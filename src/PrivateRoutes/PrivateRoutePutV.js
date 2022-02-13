@@ -5,7 +5,7 @@ import React from 'react';
 
 
 const PrivateRoutePutV = ({component:Component,...rest}) => {
-    const {isLogged,id,rol,logaout} = useUser();
+    const {isLogged,id,rol} = useUser();
     const {pathname} = useLocation();
     
     console.log('loged',isLogged)

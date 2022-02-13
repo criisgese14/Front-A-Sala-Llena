@@ -15,7 +15,7 @@ const HomeViewer = () => {
   const dispatch = useDispatch();
   //   const show = useSelector((state) => state.shows);
   const allshows = useSelector((state) => state.shows);
-  const [order, setOrder] = useState("");
+  const [, setOrder] = useState("");
   const [actualPage, setActualPage] = useState(1);
   const [qty] = useState(6);
   const iLastShow = actualPage * qty; //6
@@ -29,7 +29,7 @@ const HomeViewer = () => {
   useEffect(() => {
     dispatch(getViewerDetail(id));
     dispatch(allShows());
-  }, [dispatch]);
+  }, [dispatch,id]);
 
   const shows = allshows?.filter((e) => e.theater.province === detail.province);
   console.log(shows);

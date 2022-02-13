@@ -5,7 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import style from "./ShowDetail.module.css";
 import logo from "../../assets/logo a sala llena-sinfondo.png";
 import Button from "react-bootstrap/Button";
-import Timer from "../Timer/timer.js"
+//import Timer from "../Timer/timer.js"
 import Footer from "../Footer/Footer.js";
 import Countdown from 'react-countdown';
 import {putTicket} from "../../redux/actions/index.js"
@@ -14,7 +14,7 @@ const ShowDetail = () => {
     const show = useSelector((state) => state.showdetail);
     const dispatch = useDispatch();
     const { id } = useParams();
-    const [precio, setPrecio]= useState(null);
+    //const [precio, setPrecio]= useState(null);
     const [tiempo, setTiempo ]= useState({
         dia: 0,
         hora: 0
@@ -23,7 +23,7 @@ const ShowDetail = () => {
     const [porcentaje, setPorcentaje] = useState(null)
     useEffect(() => {
         dispatch(showDetail(id));
-    }, [dispatch]);
+    }, [dispatch,id]);
     
     
     console.log(show)
@@ -110,7 +110,7 @@ const ShowDetail = () => {
         <div className={style.cardDetail}>
             <div className={style.izq}>
             <div>
-                <img src={show.image} className={style.image} />
+                <img src={show.image} className={style.image} alt='img'/>
             </div>
             </div>
             <div className={style.der}>

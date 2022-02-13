@@ -1,6 +1,6 @@
 import React, {useEffect,useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams,Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {allShows, getViewerDetail, getAllTickets, allTheaters} from '../../redux/actions/index.js';
 import NavBarPerfilViewer from "../NavBar/NavBarPerfilViewer.js";
 import Footer from '../Footer/Footer.js';
@@ -22,7 +22,7 @@ const ViewerHistory = () => {
         dispatch(getViewerDetail(id))
         dispatch(getAllTickets())
         dispatch(allTheaters())
-    },[dispatch])
+    },[dispatch,id])
 
     function onClick(e){
         e.preventDefault();

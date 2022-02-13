@@ -61,7 +61,7 @@ const useUser = () => {
     setId(null)
     //setRol(null)
     window.location.href="http://localhost:3000"
-  }, [setKey,setId,setRol])
+  }, [setKey,setId])
 
   return {
     

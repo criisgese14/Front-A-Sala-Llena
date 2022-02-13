@@ -1,23 +1,23 @@
 import React, {useState, useEffect}from 'react'
 import Seat from '../Seats/Seats'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch} from 'react-redux'
 import { showDetail } from "../../redux/actions/index.js";
 import { useParams } from "react-router-dom";
 import Checkout from '../Checkout/Checkout';
 
 const PasarelaDePago =  ({props}) => {
     const [seatNumber, setSeatNumber] = useState(0)
-    const show = useSelector((state) => state.showdetail);
+    //const show = useSelector((state) => state.showdetail);
     const dispatch = useDispatch();
     const {id} = useParams()
-    const [tickets , setTickets]= useState()
-    let variable = false;
+    //const [tickets , setTickets]= useState()
+    //let variable = false;
 const onChange = ({target: {name, value}}) => {
     setSeatNumber(value)
 }
   useEffect(()=>{
     dispatch(showDetail(id))
-  },[dispatch])
+  },[dispatch,id])
   // console.log(tickets, "Tickets")
   return (
     <div>

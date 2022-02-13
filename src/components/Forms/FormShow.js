@@ -16,15 +16,15 @@ const FormShow = ()=>{
 
     useEffect(()=>{
         dispatch(theaterDetail(id))
-    },[])
+    },[dispatch,id])
 
     
     
-    const [input, setInput] = useState({
+    const [input] = useState({
         theaterId: id,
     })
     const [seatsavailable, setSeatAvailable] = useState([])
-    const [form, setForm ]= useState(true)
+    const [form ]= useState(true)
     
     console.log(seatsavailable, "seats")
     console.log(id)
@@ -42,7 +42,7 @@ const FormShow = ()=>{
             time: data.time,
             originPrice: data.originPrice,
         }
-        let tickets={}
+        //let tickets={}
         console.log("input",inputs )
         
         for( var i = 0 ; i< seatsavailable.length; i++ ){

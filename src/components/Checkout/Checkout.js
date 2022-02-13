@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { showDetail, checkoutPay } from "../../redux/actions/index.js";
+import React from "react";
+import { checkoutPay } from "../../redux/actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import logo from "../../assets/logo a sala llena-sinfondo.png";
 import style from "./Checkout.module.css";
 
 export default function Checkout({price, seatNumber, idShow}) {
-    const show = useSelector((state) => state.showdetail);
-    const ticket = useSelector((state) => state.ticket);
+    //const show = useSelector((state) => state.showdetail);
+    //const ticket = useSelector((state) => state.ticket);
     const link = useSelector((state) => state.link);
     const { idViewer } = useParams(); 
     const dispatch = useDispatch();
