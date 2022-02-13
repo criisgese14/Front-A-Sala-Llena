@@ -13,7 +13,7 @@ import Footer from "../Footer/Footer";
 //import CarouselContainer from "../Carrousel/Carrousel.js"
 export default function Home() {
   const dispatch = useDispatch();
-  const history = useHistory()
+  const history = useHistory();
   const allshows = useSelector((state) => state.shows);
   const [order, setOrder] = useState("");
   const [actualPage, setActualPage] = useState(1);
@@ -27,7 +27,7 @@ export default function Home() {
   };
   useEffect(() => {
     dispatch(allShows());
-  }, [dispatch]);
+  }, []);
 
   return (
     <div className={style.homeContainer}>
@@ -42,16 +42,17 @@ export default function Home() {
       {/*<CarouselContainer allshows={allshows}/>*/}
       <div className={style.showsContainer}>
         {actualShow.length ? (
-          <Shows actualShow={actualShow}/>
+          <Shows actualShow={actualShow} />
         ) : (
           <p>...Loading</p>
         )}
       </div>
-      
+
       <div className={style.paginate}>
         <Paginate qty={qty} allshows={allshows.length} paginate={paginate} />
       </div>
-      <Footer/>
+      <span onClick={() => history.push('/editProfileTheater/2')}>editProfileTheater</span>
+      <Footer />
     </div>
   );
 }

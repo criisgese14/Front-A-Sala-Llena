@@ -4,7 +4,7 @@ import {postShow, postTicket} from "../../redux/actions/index.js"
 import { useParams } from "react-router-dom";
 import { useForm } from 'react-hook-form'
 import Footer from "../Footer/Footer.js";
-
+import Seat from "../Seats/Seats.js"
 const FormShow = ()=>{
     const history = useHistory()
     let {id} = useParams();
@@ -13,7 +13,10 @@ const FormShow = ()=>{
     const [input, setInput] = useState({
         theaterId: id,
     })
-
+    const [seatsavailable, setSeatAvailable] = useState([])
+    const [form, setForm ]= useState(true)
+    
+    console.log(seatsavailable, "seats")
     console.log(id)
     const onSubmit =(data)=> {
         const inputs = {
@@ -23,21 +26,23 @@ const FormShow = ()=>{
             genre: data.genre,
             length: data.length,
             image: data.image,
-            ticketsQty: data.ticketsQty,
+            ticketsQty: seatsavailable.length,
             rated: data.rated, 
             date: data.date, 
             time: data.time,
             originPrice: data.originPrice,
         }
-        const tickets = {
+        let tickets={}
+        console.log("input",inputs )
+        
+        for( var i = 0 ; i< seatsavailable.length; i++ ){
+            const tickets = {
             price: data.originPrice,
-            seatNumber: data.seatNumber,
+            seatNumber: seatsavailable[i],
             nameShow: data.name,
 
-        }
-        console.log("input",inputs )
-        console.log("ticket",tickets ) 
-        for( var i = 0 ; i< data.ticketsQty; i++ ){
+            }
+            console.log("ticket",tickets ) 
             postTicket(tickets)
         }
         postShow(inputs);
@@ -184,7 +189,7 @@ const FormShow = ()=>{
                         })}/>
                         <span className="text-danger text-small d-block mb-2">{errors.date&&errors.date.message}</span>
 
-                <label className="form-label col-lg-12">Zona:</label>
+                {/* <label className="form-label col-lg-12">Zona:</label>
                 <select name="seatNumber" className="form-control "
                         {...register("seatNumber",{
                             required:{
@@ -197,9 +202,9 @@ const FormShow = ()=>{
                             <option selected>General</option>
                             <option>Palco</option>
                 </select>
-                <span className="text-danger text-small d-block mb-2">{errors.seatNumber&&errors.seatNumber.message}</span>
+                <span className="text-danger text-small d-block mb-2">{errors.seatNumber&&errors.seatNumber.message}</span> */}
                         
-                <label className="form-label col-lg-12">Entradas disponibles:</label>
+                {/* <label className="form-label col-lg-12">Entradas disponibles:</label>
                 <input  type="number" 
                         name="ticketsQty" 
                         title="Introduzca las entradas disponibles"
@@ -211,8 +216,11 @@ const FormShow = ()=>{
                                 message: "El campo es requerido",
                             }
                         })}/>
-                        <span className="text-danger text-small d-block mb-2">{errors.ticketsQty&&errors.ticketsQty.message}</span>
+                        <span className="text-danger text-small d-block mb-2">{errors.ticketsQty&&errors.ticketsQty.message}</span> */}
+                <label className="form-label col-lg-12">Seleccione los asientos disponibles:</label> 
+                <Seat seatsavailable={seatsavailable} setSeatAvailable={setSeatAvailable} form={form} ></Seat>
 
+                
                 <label className="form-label col-lg-12">Precio de Original de las entradas:</label>        
                 <input  type="number" 
                         name="originPrice"

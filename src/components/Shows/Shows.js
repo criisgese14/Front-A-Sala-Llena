@@ -9,9 +9,10 @@ const Shows = ({ actualShow }) => {
 //   useEffect(() => {
 //     dispatch(allShows());
 //   }, []);
-
+  
   return (
     <div>
+      
       {actualShow?.map((e) => (
         <ShowCard
           key={e.id}
@@ -23,6 +24,7 @@ const Shows = ({ actualShow }) => {
           rated={e.rated}
           date={e.date}
           score={e.score}
+          time={e.time}
         />
       ))}
     </div>

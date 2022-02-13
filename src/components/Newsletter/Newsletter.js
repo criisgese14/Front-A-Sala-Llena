@@ -20,14 +20,14 @@ const Newsletter = () => {
   }, []);
 
   function HandleChange(e) {
-    {
-      setInput({
-        ...input,
-        nameTheater: [...input.nameTheater, e.target.value],
-      });
-    }
+    e.preventDefault();
+    setInput({
+      ...input,
+      nameTheater: e.target.value,
+    });
   }
   const HandleCheck = (e) => {
+    e.preventDefault();
     if (e.target.checked) {
       setInput((prevInput) => ({
         ...prevInput,
@@ -40,6 +40,7 @@ const Newsletter = () => {
     e.preventDefault();
     dispatch(putViewer(id, { isSubscribed: input.isSubscribed }));
     dispatch(createFavorites(id, { nameTheater: input.nameTheater }));
+    console.log(input);
     alert("Gracias por suscribirte!");
     setInput({
       isSubscribed: false,
@@ -62,22 +63,31 @@ const Newsletter = () => {
 
           <input type="checkbox" onChange={(e) => HandleCheck(e)} />
           <div>
-            <select>
-              <option defaultValue="">Elegi tu teatro favorito</option>
+            <select onChange={(e) => HandleChange(e)}>
+              <option defaultValue="" hidden>
+                Elegi tu teatro favorito
+              </option>
               {theaters?.map((el) => {
                 return (
-                  <option
-                    key={el.id}
-                    value={el.name}
-                    onChange={(e) => HandleChange(e)}
-                  >
+                  <option key={el.id} value={el.name}>
                     {el.name}
                   </option>
                 );
               })}
             </select>
+            {/* {input.nameTheater?.map((el) => {
+              return (
+                <ul key={el}>
+                  <li>
+                    <p>
+                      <strong>{el}</strong>
+                    </p>
+                  </li>
+                </ul>
+              );
+            })} */}
           </div>
-          <button>Suscribirse</button>
+          <button>Enviar</button>
         </form>
       </div>
       <Footer/>

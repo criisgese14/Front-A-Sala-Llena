@@ -9,6 +9,7 @@ import HomeTheater from "./components/HomeTheater/HomeTheater";
 import FormTheater from "./components/Forms/FormTheater";
 import EditProfileTheater from "./components/Forms/EditProfileTheater";
 import HomeViewer from "./components/HomeViewer/HomeViewer";
+import Checkout from "./components/Checkout/Checkout";
 import FormPutViewer from "./components/Forms/FormPutViewer.js";
 import { UserContextProvider } from "./context/UserContext.js";
 import ShowDetail from "./components/Shows/ShowDetail.js";
@@ -22,6 +23,8 @@ import SalesHistory from "./components/SalesHistory/SalesHistory";
 import ViewerHistory from "./components/ViewerHistory/ViewerHistory";
 import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
 import TermsAndConditions from "./components/TermsAndConditions/TermsAndConditions";
+import Seat from "./components/Seats/Seats";
+import PasarelaDePago from "./components/PasarelaDePago/PasarelaDePago";
 
 
 function App() {
@@ -35,6 +38,8 @@ function App() {
             <Route exact path="/loginviewer" component={LogInViewer} />
             <Route exact path="/formViewerRegister" component={FormViewers} />
             <Route exact path="/theaterRegister" component={FormTheater} />
+            <Route exact path='/seat' component={Seat}/>
+             <Route exact path='/pasarela' component={PasarelaDePago}/>
             <PrivateRouteProfileT
               exact
               path="/editProfileTheater/:id"
@@ -85,6 +90,9 @@ function App() {
             <Route exact path='/formPutViewer/viewerHistory/:id' component={ViewerHistory}/>
             <Route exact path='/privacyPolicy' component={PrivacyPolicy}/>
             <Route exact path='/termsConditions' component={TermsAndConditions}/>
+            <Route exact path='/showDetail/checkout/:id' component={Checkout}/>
+            <Route exact path='/pasarela/:id' component={PasarelaDePago}/>
+
             
           </header>
         </div>
