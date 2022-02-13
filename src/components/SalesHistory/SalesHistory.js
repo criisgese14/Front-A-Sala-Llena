@@ -18,7 +18,7 @@ const SalesHistory = () =>{
         dispatch(getAllTickets())
         dispatch(allShows())
         dispatch(theaterDetail(id))
-    },[dispatch,id]);
+    },[]);
     
     
     console.log(tickets)
