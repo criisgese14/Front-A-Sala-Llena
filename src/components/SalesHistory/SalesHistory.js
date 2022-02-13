@@ -19,7 +19,7 @@ const SalesHistory = () =>{
         dispatch(allShows())
         dispatch(theaterDetail(id))
     },[dispatch,id]);
-    
+    console.log(tickets)
     let filterShows = show?.filter((e) => e.theaterId ===  theater?.id)
     let filterTicket = tickets?.filter((e) => e.show.theaterId === theater?.id)
     console.log('filter',filterShows)
