@@ -21,7 +21,8 @@ import {
   GET_FAVS,
   CREATE_FAVORITES,
   GET_ALL_TICKETS,
-  CHECKOUT_PAY
+  CHECKOUT_PAY,
+  POST_NEWSLETTER_SHOW
 } from "../actions/index.js";
 
 const initialState = {
@@ -171,6 +172,10 @@ function rootReducer (state = initialState, action) {
             return{
                 ...state,
                 link:action.payload
+            }
+        case POST_NEWSLETTER_SHOW:
+            return{
+                ...state
             }
         default:
             return state;
