@@ -26,6 +26,7 @@ import TermsAndConditions from "./components/TermsAndConditions/TermsAndConditio
 import Seat from "./components/Seats/Seats";
 import PasarelaDePago from "./components/PasarelaDePago/PasarelaDePago";
 
+
 function App() {
   return (
     <UserContextProvider>
@@ -90,6 +91,9 @@ function App() {
             <Route exact path='/privacyPolicy' component={PrivacyPolicy}/>
             <Route exact path='/termsConditions' component={TermsAndConditions}/>
             <Route exact path='/showDetail/checkout/:id' component={Checkout}/>
+            <Route exact path='/pasarela/:id' component={PasarelaDePago}/>
+
+            
           </header>
         </div>
       </BrowserRouter>

@@ -17,7 +17,7 @@ const Newsletter = () => {
 
   useEffect(() => {
     dispatch(allTheaters());
-  }, []);
+  }, [dispatch]);
 
   function HandleChange(e) {
     e.preventDefault();

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 // import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 // import logo from "../../logo a sala llena-sinfondo.png";
@@ -10,7 +10,7 @@ import {
   filterPerTheater,
   orderScore,
   filterPerRated,
-  filterPerTicketsQty,
+  //filterPerTicketsQty,
 } from "../../redux/actions";
 import style from "./NavBar.module.css";
 import Accordion from "react-bootstrap/Accordion";
@@ -18,7 +18,7 @@ import Accordion from "react-bootstrap/Accordion";
 export default function NavBar({ setActualPage, setOrder }) {
   const dispatch = useDispatch();
   const theaters = useSelector((state) => state.theaters);
-  const allshows = useSelector((state) => state.allshows);
+  //const allshows = useSelector((state) => state.allshows);
 
   useEffect(() => {
     dispatch(allShows());
@@ -26,7 +26,7 @@ export default function NavBar({ setActualPage, setOrder }) {
 
   useEffect(() => {
     dispatch(allTheaters());
-  }, []);
+  }, [dispatch]);
 
   function handleOrderScore(e) {
     // e.preventDefault()
@@ -53,10 +53,10 @@ export default function NavBar({ setActualPage, setOrder }) {
     e.preventDefault();
     dispatch(filterPerRated(e.target.value));
   }
-  function handleFilterTicketsQty(e) {
-    e.preventDefault();
-    dispatch(filterPerTicketsQty(e.target.value));
-  }
+  //function handleFilterTicketsQty(e) {
+  //  e.preventDefault();
+  //  dispatch(filterPerTicketsQty(e.target.value));
+  //}
 
   return (
     <div className={style.navContainer}>

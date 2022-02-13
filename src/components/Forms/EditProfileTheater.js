@@ -8,7 +8,7 @@ const EditProfileTheater = () => {
   const dispatch = useDispatch()
   const {id} = useParams();
   const { theaters } = useSelector(state => state)
-  let teatro = theaters.filter(el => el.id == id)
+  let teatro = theaters.filter(el => el.id === id)
   const { name,image,CUIT,adress,email,password,province,phoneNumber,seatsQTY,score} = teatro[0]
   const [input, setInput] = useState({
     name: name?`${name}`:'', 

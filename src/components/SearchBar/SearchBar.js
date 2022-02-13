@@ -29,7 +29,7 @@ export default function SearchBar() {
     <div className={style.searchContainer}>
       <InputGroup className="mb-3">
         <FormControl
-          placeholder="Recipient's username"
+          
           aria-label="Recipient's username"
           aria-describedby="basic-addon2"
           type="text"

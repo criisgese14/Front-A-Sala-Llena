@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,6 +7,13 @@ import {
   getViewerDetail,
   deleteViewer,
 } from "../../redux/actions/index.js";
+=======
+
+import React, {useEffect, useState} from "react";
+import {useHistory } from "react-router-dom";
+import {useDispatch, useSelector  } from "react-redux"
+import {putViewer, getViewerDetail, deleteViewer} from "../../redux/actions/index.js"
+>>>>>>> Second-sprint
 import { useParams } from "react-router-dom";
 import NavBarPerfilViewer from "../NavBar/NavBarPerfilViewer.js";
 import Footer from "../Footer/Footer.js";

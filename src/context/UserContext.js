@@ -5,7 +5,7 @@ import React, {useState} from 'react'
 const Context = React.createContext({})
 
 export function UserContextProvider ({children}) {
-  const [favs, setFavs] = useState([])
+  
   const [key, setKey] = useState(
     () => window.sessionStorage.getItem('key')
   )

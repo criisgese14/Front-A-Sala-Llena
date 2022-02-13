@@ -1,9 +1,10 @@
-import React, {useEffect} from "react";
+import React, {useEffect,useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {allShows, getViewerDetail, getAllTickets, allTheaters} from '../../redux/actions/index.js';
 import NavBarPerfilViewer from "../NavBar/NavBarPerfilViewer.js";
 import Footer from '../Footer/Footer.js';
+import Review from "../ReviewV/ReviewV.js";
 
 const ViewerHistory = () => {
     const dispatch = useDispatch();
@@ -11,6 +12,7 @@ const ViewerHistory = () => {
     const viewer = useSelector((state) => state.viewerDetail);
     const ticket = useSelector((state) => state.tickets);
     const theater = useSelector((state) => state.theaters);
+    const [button,setButton] = useState(true);
     const {id} = useParams();
     let showID;
     let theaterID;
@@ -20,10 +22,15 @@ const ViewerHistory = () => {
         dispatch(getViewerDetail(id))
         dispatch(getAllTickets())
         dispatch(allTheaters())
-    },[dispatch])
+    },[dispatch,id])
 
-    console.log('show',show)
-    let filterTicket = ticket?.filter(e => e.viewer.id === viewer.id)
+    function onClick(e){
+        e.preventDefault();
+        setButton(false)
+    }
+
+    console.log('ticket',ticket)
+    let filterTicket = ticket?.filter(e => e.viewerId === viewer.id)
     console.log('filterTicket',filterTicket)
     
     for (let i = 0; i < filterTicket.length; i++) {
@@ -51,15 +58,25 @@ const ViewerHistory = () => {
         <div>
             <NavBarPerfilViewer/>
             {
-                filterShow.length && filterTicket.length ?(
+                filterShow.length && filterTicket.length   ?(
                     filterShow.map((e)=>{
                         return(
                             <div key={e.id}>
                                 <h3>{e.name}</h3>
-                                <p>{filterTheater.name} </p>
+                                <p>{filterTheater?.name} </p>
                                 <p>Funcion: {e.date} {e.time}</p>
                                 <h4>Cantidad: {filterTicket.length}</h4>
                                 <h4>Total: ${total?.reduce(function(a, b){ return a + b; })} </h4>
+                                <button onClick={onClick}>Review</button>
+                                {!button ? <Review 
+                                            nameTheater={filterTheater.name}
+                                            nameShow={e.name}
+                                            nameViewer={viewer.name}
+                                            
+                                            /> 
+                                            
+                                            : null
+                                }
                             </div>
                         )
                     })

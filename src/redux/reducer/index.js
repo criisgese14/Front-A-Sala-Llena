@@ -18,10 +18,8 @@ import {
   GET_ALL_ViEWERS,
   GET_SHOW_BY_NAME,
   DELETE_VIEWER,
-  GET_FAVS,
-  CREATE_FAVORITES,
-  GET_ALL_TICKETS,
-  CHECKOUT_PAY
+  CHECKOUT_PAY,
+  POST_NEWSLETTER_SHOW
 } from "../actions/index.js";
 
 const initialState = {
@@ -34,11 +32,12 @@ const initialState = {
   viewerDetail: {},
   viewers: [],
   tickets: [],
+  link: '',
 };
 
  
 function rootReducer (state = initialState, action) {
-    const theaters = state.theaters;
+    //const theaters = state.theaters;
     // const shows = state.shows;
     const allshows = state.allshows;
 
@@ -125,10 +124,10 @@ function rootReducer (state = initialState, action) {
                 shows: filterTickets
             }
 
-                return {
-                    ...state,
-                    shows: filterGenre
-                }
+                //return {
+                //    ...state,
+                //    shows: filterGenre
+                //}
         case POST_VIEWER:
             return {
                 ...state,
@@ -167,6 +166,11 @@ function rootReducer (state = initialState, action) {
                 ...state
             }
         case CHECKOUT_PAY:
+            return{
+                ...state,
+                link:action.payload
+            }
+        case POST_NEWSLETTER_SHOW:
             return{
                 ...state
             }

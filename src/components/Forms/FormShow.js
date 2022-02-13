@@ -1,9 +1,16 @@
+<<<<<<< HEAD
 import React, { useState, Fragment } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { postShow, postTicket } from "../../redux/actions/index.js";
+=======
+import React, { useState, Fragment, useEffect} from "react";
+import {Link, useHistory } from "react-router-dom";
+import {postShow, postTicket, postNewsletterShow, theaterDetail} from "../../redux/actions/index.js"
+>>>>>>> Second-sprint
 import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Footer from "../Footer/Footer.js";
+<<<<<<< HEAD
 import style from "./FormShow.module.css";
 
 const FormShow = () => {
@@ -58,6 +65,71 @@ const FormShow = () => {
         <h1>Soy el formulario de creacion de espectaculo</h1>
       </div>
       <div className="form-group row">
+=======
+import Seat from "../Seats/Seats.js"
+import { useDispatch, useSelector } from "react-redux";
+
+const FormShow = ()=>{
+    const history = useHistory()
+    const dispatch = useDispatch()
+    const theater = useSelector((state) => state.theatersDetail)
+    let {id} = useParams();
+    const { register, handleSubmit,  formState: { errors } } = useForm();
+
+    useEffect(()=>{
+        dispatch(theaterDetail(id))
+    },[dispatch,id])
+
+    
+    
+    const [input] = useState({
+        theaterId: id,
+    })
+    const [seatsavailable, setSeatAvailable] = useState([])
+    const [form ]= useState(true)
+    
+    console.log(seatsavailable, "seats")
+    console.log(id)
+    const onSubmit =(data)=> {
+        const inputs = {
+            ...input,
+            name: data.name,
+            summary: data.summary,
+            genre: data.genre,
+            length: data.length,
+            image: data.image,
+            ticketsQty: seatsavailable.length,
+            rated: data.rated, 
+            date: data.date, 
+            time: data.time,
+            originPrice: data.originPrice,
+        }
+        //let tickets={}
+        console.log("input",inputs )
+        
+        for( var i = 0 ; i< seatsavailable.length; i++ ){
+            const tickets = {
+            price: data.originPrice,
+            seatNumber: seatsavailable[i],
+            nameShow: data.name,
+
+            }
+            console.log("ticket",tickets ) 
+            postTicket(tickets)
+        }
+        postShow(inputs);
+        postNewsletterShow(theater.name)
+        alert("Espectaculo agregado!");
+        history.push(`/theaterHome/${id}`);
+        }
+        
+        
+    return (
+        <div className="container">
+            <Link to={`/theaterHome/${id}`}><button className="btn btn-primary">Volver</button></Link>
+            <div className="text-center padding" ><h1>Soy el formulario de creacion de espectaculo</h1></div>
+        <div className="form-group row">
+>>>>>>> Second-sprint
         <Fragment>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-group">
@@ -250,6 +322,7 @@ const FormShow = () => {
               {errors.seatNumber && errors.seatNumber.message}
             </span>
 
+<<<<<<< HEAD
             <label className="form-label col-lg-12">
               Entradas disponibles:
             </label>
@@ -300,3 +373,59 @@ const FormShow = () => {
   );
 };
 export default FormShow;
+=======
+                {/* <label className="form-label col-lg-12">Zona:</label>
+                <select name="seatNumber" className="form-control "
+                        {...register("seatNumber",{
+                            required:{
+                                value:true, 
+                                message: "El campo es requerido",
+                            }
+                        })}>
+
+                            <option>Platea</option>
+                            <option selected>General</option>
+                            <option>Palco</option>
+                </select>
+                <span className="text-danger text-small d-block mb-2">{errors.seatNumber&&errors.seatNumber.message}</span> */}
+                        
+                {/* <label className="form-label col-lg-12">Entradas disponibles:</label>
+                <input  type="number" 
+                        name="ticketsQty" 
+                        title="Introduzca las entradas disponibles"
+                        placeholder="Entradas Disponibles"
+                        className="form-control "
+                        {...register("ticketsQty",{
+                            required:{
+                                value:true, 
+                                message: "El campo es requerido",
+                            }
+                        })}/>
+                        <span className="text-danger text-small d-block mb-2">{errors.ticketsQty&&errors.ticketsQty.message}</span> */}
+                <label className="form-label col-lg-12">Seleccione los asientos disponibles:</label> 
+                <Seat seatsavailable={seatsavailable} setSeatAvailable={setSeatAvailable} form={form} ></Seat>
+
+                
+                <label className="form-label col-lg-12">Precio de Original de las entradas:</label>        
+                <input  type="number" 
+                        name="originPrice"
+                        className="form-control "
+                        placeholder="Precio por entrada"
+                        {...register("originPrice",{
+                            required:{
+                                value:true, 
+                                message: "El campo es requerido",
+                            }
+                        })}/>
+                        <span className="text-danger text-small d-block mb-2">{errors.originPrice&&errors.originPrice.message}</span>
+                        
+                        <button className="btn btn-primary" type="submit">Agregar Espectaculo</button>
+                </form> 
+            </Fragment>
+            </div>
+            <Footer/>
+        </div>
+    )
+}
+export default FormShow;
+>>>>>>> Second-sprint

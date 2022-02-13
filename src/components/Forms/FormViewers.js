@@ -3,7 +3,7 @@ import {postViewer} from "../../redux/actions/index.js"
 import { useForm } from 'react-hook-form'
 import Footer from "../Footer/Footer.js";
 
-import {Link, useHistory } from "react-router-dom";
+import {useHistory } from "react-router-dom";
 const FormViewers = ()=> {
     const history = useHistory()
     const { register, handleSubmit,  formState: { errors } } = useForm();

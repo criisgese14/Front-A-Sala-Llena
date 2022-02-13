@@ -48,7 +48,7 @@ const LogInTheatres = () => {
     e.preventDefault();
     login(input);
     //navigate('/viewerHome/1')
-    window.location.href = `http://localhost:3000/theaterHome/${filterTheater.id}`;
+    window.location.href = `https://front-a-sala-llena-nine.vercel.app/theaterHome/${filterTheater.id}`;
     setInput({ email: "", password: "" });
   }
 

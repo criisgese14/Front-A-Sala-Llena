@@ -5,7 +5,7 @@ import React from 'react';
 
 
 const PrivateRouteHomeV = ({component:Component,...rest}) => {
-    const {isLogged,id,rol,logaout} = useUser();
+    const {isLogged,id,rol} = useUser();
     const {pathname} = useLocation();
     
     console.log('loged',isLogged)
@@ -13,12 +13,7 @@ const PrivateRouteHomeV = ({component:Component,...rest}) => {
     console.log('params',pathname)
     console.log('rol',rol)
 
-    function logOut(){
-        window.sessionStorage.removeItem('key')
-        window.sessionStorage.removeItem('id')
-        window.sessionStorage.removeItem('rol')
-        
-    }
+    
 
     return (
         <Route {...rest}>
