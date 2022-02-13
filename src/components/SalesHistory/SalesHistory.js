@@ -11,7 +11,7 @@ const SalesHistory = () =>{
     const show = useSelector((state) => state.shows)
     const theater = useSelector((state) => state.theatersDetail)
     const {id} = useParams();
-    let ticket;
+    
     
 
     useEffect(()=>{
@@ -20,12 +20,9 @@ const SalesHistory = () =>{
         dispatch(theaterDetail(id))
     },[dispatch,id]);
     
-    for (let i = 0; i < filterShows.length; i++) {
-        ticket = filterShows[i].tickets
-        
-    }
     
-    console.log('prueba', ticket)
+    
+    console.log('prueba', tickets)
     let filterShows = show?.filter((e) => e.theaterId ===  theater?.id)
     let filterTicket = tickets?.filter((e) => e.show.theaterId === theater?.id)
     console.log('filter',filterShows)
