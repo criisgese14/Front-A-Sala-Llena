@@ -23,6 +23,7 @@ import ViewerHistory from "./components/ViewerHistory/ViewerHistory";
 import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
 import TermsAndConditions from "./components/TermsAndConditions/TermsAndConditions";
 
+
 function App() {
   return (
     <UserContextProvider>
@@ -84,6 +85,7 @@ function App() {
             <Route exact path='/formPutViewer/viewerHistory/:id' component={ViewerHistory}/>
             <Route exact path='/privacyPolicy' component={PrivacyPolicy}/>
             <Route exact path='/termsConditions' component={TermsAndConditions}/>
+            
           </header>
         </div>
       </BrowserRouter>
