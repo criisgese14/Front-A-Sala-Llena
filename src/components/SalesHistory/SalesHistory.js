@@ -7,7 +7,7 @@ import Footer from "../Footer/Footer";
 
 const SalesHistory = () =>{
     const dispatch = useDispatch();
-    const tickets = useSelector((state) => state.tickets);
+    //const tickets = useSelector((state) => state.tickets);
     const show = useSelector((state) => state.shows)
     const theater = useSelector((state) => state.theatersDetail)
     const {id} = useParams();
@@ -33,7 +33,7 @@ const SalesHistory = () =>{
         <div>
             <NavBarTheater/>
             {
-                filterShows.length && filterTicket.length  ?(
+                filterShows.length   ?(
                     filterShows.map((e,i) =>{
                     return(
                         <div key={e.id}>
