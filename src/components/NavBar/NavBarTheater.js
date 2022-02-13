@@ -33,7 +33,7 @@ export default function NavBarTheater({ id }) {
             <Dropdown.Item href={`/create/${id}`}>
               <button href={`/create/${id}`}>Agregar espectáculos</button>
             </Dropdown.Item>
-            <Dropdown.Item href={`/saleshistory/${id}`}>
+            <Dropdown.Item href={`/salesHistory/${id}`}>
               <button>Ventas</button>
             </Dropdown.Item>
             <Dropdown.Item onClick={()=>history.push(`/editProfileTheater/${id}`)}>
