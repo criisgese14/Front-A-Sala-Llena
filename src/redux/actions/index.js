@@ -311,6 +311,20 @@ export function getAllTickets(){
     
 }
 
+
+export function postReview(theaterScore,showScore,review,nameTheater,nameShow,nameViewer) {
+  try {
+    const postreview = axios.post("http://localhost:3001/reviews", {theaterScore,showScore,review,nameTheater,nameShow,nameViewer});
+    
+    return {
+      type: POST_REVIEW,
+      payload: postreview,
+    };
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export const ORDER_PRICE = "ORDER_PRICE";
 export const FILTER_PROVINCE = "FILTER_PROVINCE";
 export const POST_SHOW = "POST_SHOW";
@@ -334,3 +348,4 @@ export const CREATE_THEATER = "CREATE_THEATER";
 export const CREATE_FAVORITES = "CREATE_FAVORITES";
 export const GET_ALL_TICKETS = "GET_ALL_TICKETS";
 export const PUT_TICKET = "PUT_TICKET";
+export const POST_REVIEW = 'POST_REVIEW';
