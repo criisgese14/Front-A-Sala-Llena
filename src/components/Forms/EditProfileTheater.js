@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { editProfileT, theaterDetail } from "../../redux/actions";
 import Footer from "../Footer/Footer";
 import { useParams } from "react-router-dom";
+import NavBarTheater from "../NavBar/NavBarTheater";
 
 const EditProfileTheater = () => {
   const dispatch = useDispatch()
@@ -44,6 +45,7 @@ const EditProfileTheater = () => {
 
     return (
     <div>
+      <NavBarTheater/>
         <form onSubmit={handleSubmit}>  
       {/* name */}
       <input name="name" type="text" value={input.name} onChange={handleChange} placeholder="Name of the theater" />
