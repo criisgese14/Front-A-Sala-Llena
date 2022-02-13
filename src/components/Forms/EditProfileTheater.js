@@ -1,15 +1,14 @@
-import React, { useState} from "react";
+import React, { useEffect, useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { editProfileT } from "../../redux/actions";
+import { editProfileT, theaterDetail} from "../../redux/actions";
 import Footer from "../Footer/Footer";
 import { useParams } from "react-router-dom";
 
 const EditProfileTheater = () => {
   const dispatch = useDispatch()
   const {id} = useParams();
-  const { theaters } = useSelector(state => state)
-  let teatro = theaters.filter(el => el.id === id)
-  const { name,image,CUIT,adress,email,password,province,phoneNumber,seatsQTY,score} = teatro[0]
+  const { theatersDetail } = useSelector(state => state)
+  let { name,image,CUIT,adress,email,password,province,phoneNumber,seatsQTY,score} = theatersDetail
   const [input, setInput] = useState({
     name: name?`${name}`:'', 
     image: image?`${image}`:'',
@@ -26,7 +25,7 @@ const EditProfileTheater = () => {
   "Entre Rios", "Formosa", "Jujuy", "La Pampa", "La Rioja", "Mendoza","Misiones", "Neuquen", "Rio Negro",
   "Salta", "San Juan", "San Luis", "Santa Cruz", "Santiago del Estero", "Tierra del Fuego", "Tucuman",
   "CABA"]
-  // console.log('theaters', theaters)
+  console.log('theatersDetail: ', theatersDetail)
 
 
   const handleChange = ({target: {name, value }}) => {
@@ -40,6 +39,9 @@ const EditProfileTheater = () => {
     e.preventDefault()
     dispatch(editProfileT({...input, id}))
   }
+  useEffect(()=>{
+    dispatch(theaterDetail(id))
+  },[dispatch])
 
     return (
     <div>
@@ -66,7 +68,7 @@ const EditProfileTheater = () => {
       {/* seatsQTY */}
       <input name="seatsQTY" type="number" value={input.seatsQTY} min='1'max='1000'onChange={handleChange} placeholder="Seates" />
       <input name="score" type="range" value={input.score} min='1' max='5' onChange={handleChange} placeholder="Score" />
-      <lavel>{input.score}</lavel>
+      <lavel style={{color: 'white'}}>{input.score}</lavel>
       {/* {input.name && input.image &&
         input.adress && input.phoneNumber && input.province? 
         <button >Save</button>: 

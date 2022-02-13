@@ -34,7 +34,7 @@ function App() {
         <div className="App">
           <header className="App-header">
             <Route exact path="/" component={Home} />
-            <Route exact path="/loginteatres" component={LogInTheatres} />
+            <Route exact path="/loginteatres" component={LogInTheatres}/>
             <Route exact path="/loginviewer" component={LogInViewer} />
             <Route exact path="/formViewerRegister" component={FormViewers} />
             <Route exact path="/theaterRegister" component={FormTheater} />
@@ -45,6 +45,11 @@ function App() {
               path="/editProfileTheater/:id"
               component={EditProfileTheater}
             />
+            {/* <Route
+              exact
+              path="/editProfileTheater/:id"
+              component={EditProfileTheater}
+            /> */}
             <PrivateRouteCreateShow
               exact
               path="/create/:id"
