@@ -1,9 +1,14 @@
 .NavBarAllContainer {
   display: flex;
-  gap: 30%;
+  /* gap: 40%; */
+  justify-content: space-between;
 }
+.column {
+  width: 13rem;
+}
+
 .logo {
-  margin-left: 5vw;
+  /* margin-left: 5vw; */
   height: 8rem;
   width: auto;
   border-radius: 50%;
@@ -13,7 +18,7 @@
 .loginContainer {
   display: flex;
   justify-content: end;
-  align-items: center;
+  align-items: flex-start;
   font-size: 1rem;
 }
 
@@ -26,14 +31,16 @@
   .column {
     display: flex;
     flex-direction: column;
+    width: 6rem;
+    margin-bottom: 2rem;
   }
 
   .logo {
-    margin-left: 5vw;
     height: 5rem;
     width: auto;
     border-radius: 50%;
     box-shadow: 0 5px 25px rgb(255, 255, 255);
+    margin-bottom: 2rem;
   }
 
   .loginContainer {

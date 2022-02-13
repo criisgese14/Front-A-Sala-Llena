@@ -1,18 +1,40 @@
-.navContainer {
+.NavBarAllContainer {
   display: flex;
-  justify-content: space-evenly;
-  gap: 60vw;
+  gap: 30%;
+}
+
+.miCuenta {
+  display: flex;
+  justify-content: end;
   align-items: center;
+  font-size: 1rem;
 }
 
-.logo {
-  margin-top: 2.5rem;
-  height: 8rem;
-  width: auto;
-  border-radius: 50%;
-  box-shadow: 0 1px 25px rgb(255, 255, 255);
-  border-color: none;
-}
+@media (max-width: 768px) {
+  .NavBarAllContainer {
+    display: flex;
+    /* gap: 40%; */
+    justify-content: space-between;
+  }
+  .column {
+    display: flex;
+    flex-direction: column;
+    width: 6rem;
+    margin-bottom: 2rem;
+  }
 
-.dropdown {
+  .logo {
+    height: 5rem;
+    width: auto;
+    border-radius: 50%;
+    box-shadow: 0 5px 25px rgb(255, 255, 255);
+    margin-bottom: 2rem;
+  }
+
+  .miCuenta {
+    display: flex;
+    justify-content: end;
+    align-items: flex-start;
+    font-size: 1rem;
+  }
 }
