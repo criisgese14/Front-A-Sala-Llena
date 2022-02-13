@@ -27,7 +27,7 @@ const SalesHistory = () =>{
     //let filterTicketShow = tickets?.map((e) => e.show)
     console.log('filter',filterShows)
     //console.log('ticket',filterTicketShow )
-    let total = filterShows?.tickets.map(e=> e.price)
+    let total = filterShows?.tickets?.map(e=> e.price)
     console.log('total',total)
     return(
         <div>
@@ -38,7 +38,7 @@ const SalesHistory = () =>{
                     return(
                         <div key={e.id}>
                         <h3>{e.name}</h3>
-                        <h4>Cantidad de entradas:{filterShows.tickets.length} </h4>
+                        <h4>Cantidad de entradas:{filterShows?.tickets?.length} </h4>
                         <h4>Total vendido: ${total?.reduce(function(a, b){ return a + b; })} </h4>
                         </div>
                         )
