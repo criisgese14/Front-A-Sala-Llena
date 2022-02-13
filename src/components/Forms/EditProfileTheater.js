@@ -1,15 +1,15 @@
-import React, { useState} from "react";
+import React, { useState, useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { editProfileT } from "../../redux/actions";
+import { editProfileT, theaterDetail } from "../../redux/actions";
 import Footer from "../Footer/Footer";
 import { useParams } from "react-router-dom";
 
 const EditProfileTheater = () => {
   const dispatch = useDispatch()
   const {id} = useParams();
-  const { theaters } = useSelector(state => state)
-  let teatro = theaters.filter(el => el.id === id)
-  const { name,image,CUIT,adress,email,password,province,phoneNumber,seatsQTY,score} = teatro[0]
+  const { theatersDetail } = useSelector(state => state)
+  //let teatro = theaters.filter(el => el.id === id)
+  const { name,image,CUIT,adress,email,password,province,phoneNumber,seatsQTY,score} = theatersDetail
   const [input, setInput] = useState({
     name: name?`${name}`:'', 
     image: image?`${image}`:'',
@@ -28,6 +28,7 @@ const EditProfileTheater = () => {
   "CABA"]
   // console.log('theaters', theaters)
 
+  useEffect(()=>{dispatch (theaterDetail(id))}, [dispatch])
 
   const handleChange = ({target: {name, value }}) => {
     setInput({
