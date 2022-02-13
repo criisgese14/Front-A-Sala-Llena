@@ -23,7 +23,7 @@ const FormTheater = ()  => {
     alert("Teatro creado con exito")
 
     
-    history.push("/loginviewer")}
+    history.push("/loginteatres")}
   return (
     <div className="form-group row">
         <Fragment>
