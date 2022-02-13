@@ -24,9 +24,9 @@ const SalesHistory = () =>{
     
     console.log('prueba', tickets)
     let filterShows = show?.filter((e) => e.theaterId ===  theater?.id)
-    let filterTicket = tickets?.filter((e) => e.show.theaterId === theater?.id)
+    let filterTicketShow = tickets?.map((e) => e.show)
     console.log('filter',filterShows)
-    console.log('ticket',filterTicket )
+    console.log('ticket',filterTicketShow )
     let total = filterTicket.map(e=> e.price)
     console.log('total',total)
     return(
