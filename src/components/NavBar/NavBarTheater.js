@@ -1,12 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import logo from "../../assets/logo a sala llena-sinfondo.png";
 import useUser from "../../hooks/useUser";
 import style from "./NavBarTheater.module.css";
 import Dropdown from "react-bootstrap/Dropdown";
 
+
 export default function NavBarTheater({ id }) {
   const { logout } = useUser();
+
+  const history = useHistory()
 
   function handleLogOut(e) {
     e.preventDefault();
@@ -33,7 +36,7 @@ export default function NavBarTheater({ id }) {
             <Dropdown.Item href={`/saleshistory/${id}`}>
               <button>Ventas</button>
             </Dropdown.Item>
-            <Dropdown.Item href={`/editProfileTheater/${id}`}>
+            <Dropdown.Item onClick={()=>history.push(`/editProfileTheater/${id}`)}>
               <button>Perfil</button>
             </Dropdown.Item>
             <Dropdown.Item href="">
