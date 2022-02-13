@@ -10,10 +10,9 @@ import { useParams } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import style from "./SalesHistory.module.css";
 
-<<<<<<< HEAD
 const SalesHistory = () => {
   const dispatch = useDispatch();
-  const tickets = useSelector((state) => state.tickets);
+  //const tickets = useSelector((state) => state.tickets);
   const show = useSelector((state) => state.shows);
   const theater = useSelector((state) => state.theatersDetail);
   const { id } = useParams();
@@ -23,71 +22,23 @@ const SalesHistory = () => {
     dispatch(allShows());
     dispatch(theaterDetail(id));
   }, [dispatch, id]);
-  console.log(tickets);
+
+  //console.log('prueba', tickets)
   let filterShows = show?.filter((e) => e.theaterId === theater?.id);
-  let filterTicket = tickets?.filter((e) => e.show.theaterId === theater?.id);
+  //let filterTicketShow = tickets?.map((e) => e.show)
   console.log("filter", filterShows);
-  console.log("ticket", filterTicket);
-  let total = filterTicket.map((e) => e.price);
+  //console.log('ticket',filterTicketShow )
+  let total = filterShows?.tickets?.map((e) => e.price);
   console.log("total", total);
   return (
-    <div className={style.salesContainer}>
+    <div>
       <NavBarTheater />
-=======
-const SalesHistory = () =>{
-    const dispatch = useDispatch();
-    //const tickets = useSelector((state) => state.tickets);
-    const show = useSelector((state) => state.shows)
-    const theater = useSelector((state) => state.theatersDetail)
-    const {id} = useParams();
-    
-    
-
-    useEffect(()=>{
-        dispatch(getAllTickets())
-        dispatch(allShows())
-        dispatch(theaterDetail(id))
-    },[dispatch,id])
-    
-    
-    
-    //console.log('prueba', tickets)
-    let filterShows = show?.filter((e) => e.theaterId ===  theater?.id)
-    //let filterTicketShow = tickets?.map((e) => e.show)
-    console.log('filter',filterShows)
-    //console.log('ticket',filterTicketShow )
-    let total = filterShows?.tickets?.map(e=> e.price)
-    console.log('total',total)
-    return(
-        <div>
-            <NavBarTheater/>
-            {
-                filterShows.length   ?(
-                    filterShows.map((e,i) =>{
-                    return(
-                        <div key={e.id}>
-                        <h3>{e.name}</h3>
-                        <h4>Cantidad de entradas:{filterShows?.tickets?.length} </h4>
-                        <h4>Total vendido: ${total?.reduce(function(a, b){ return a + b; })} </h4>
-                        </div>
-                        )
-                    }) 
-                ) : (
-                    <h1>TODAVIA NO HAY VENTAS</h1>
-                )
-            }
-            <Footer/>
-        </div>
-    )
-}
->>>>>>> 3f01204469e1088123abfb6660a60a23b020250b
-
-      {filterShows.length && filterTicket.length ? (
+      {filterShows.length ? (
         filterShows.map((e, i) => {
           return (
             <div key={e.id}>
               <h3>{e.name}</h3>
-              <h4>Cantidad de entradas:{filterTicket.length} </h4>
+              <h4>Cantidad de entradas:{filterShows?.tickets?.length} </h4>
               <h4>
                 Total vendido: $
                 {total?.reduce(function (a, b) {
@@ -100,9 +51,7 @@ const SalesHistory = () =>{
       ) : (
         <h1>TODAVIA NO HAY VENTAS</h1>
       )}
-      <div className={style.footerContainer}>
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 };
