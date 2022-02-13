@@ -26,9 +26,6 @@ const NavBarPerfilViewer = () => {
               <Dropdown.Item href={`viewerHistory/${id}`}>
                 <button>Mis Reservas</button>
               </Dropdown.Item>
-              <Dropdown.Item>
-                <button>Opiniones</button>
-              </Dropdown.Item>
               <Dropdown.Item href={`newsletter/${id}`}>
                 <button>Newsletter</button>
               </Dropdown.Item>
