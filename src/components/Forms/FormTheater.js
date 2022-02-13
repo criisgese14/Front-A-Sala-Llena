@@ -2,10 +2,11 @@ import React, { Fragment } from 'react';
 import { createTheater } from '../../redux/actions';
 import { useForm } from 'react-hook-form'
 import Footer from '../Footer/Footer';
+import {useHistory } from "react-router-dom";
 
 const FormTheater = ()  => {
   const { register, handleSubmit,  formState: { errors } } = useForm();
-
+  let history = useHistory();
   const  onSubmit=(data)=> {
     let inputs={
       name: data.name,
@@ -20,7 +21,9 @@ const FormTheater = ()  => {
     }
     createTheater(inputs)
     alert("Teatro creado con exito")
-  }
+
+    
+    history.push("/loginviewer")}
   return (
     <div className="form-group row">
         <Fragment>
