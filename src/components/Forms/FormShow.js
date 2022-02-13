@@ -1,14 +1,24 @@
-import React, { useState, Fragment} from "react";
+import React, { useState, Fragment, useEffect} from "react";
 import {Link, useHistory } from "react-router-dom";
-import {postShow, postTicket} from "../../redux/actions/index.js"
+import {postShow, postTicket, postNewsletterShow, theaterDetail} from "../../redux/actions/index.js"
 import { useParams } from "react-router-dom";
 import { useForm } from 'react-hook-form'
 import Footer from "../Footer/Footer.js";
 import Seat from "../Seats/Seats.js"
+import { useDispatch, useSelector } from "react-redux";
+
 const FormShow = ()=>{
     const history = useHistory()
+    const dispatch = useDispatch()
+    const theater = useSelector((state) => state.theatersDetail)
     let {id} = useParams();
     const { register, handleSubmit,  formState: { errors } } = useForm();
+
+    useEffect(()=>{
+        dispatch(theaterDetail(id))
+    },[])
+
+    
     
     const [input, setInput] = useState({
         theaterId: id,
@@ -46,6 +56,7 @@ const FormShow = ()=>{
             postTicket(tickets)
         }
         postShow(inputs);
+        postNewsletterShow(theater.name)
         alert("Espectaculo agregado!");
         history.push(`/theaterHome/${id}`);
         }
