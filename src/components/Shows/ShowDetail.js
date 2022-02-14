@@ -131,11 +131,17 @@ const ShowDetail = () => {
               <h3>Genero: </h3>
               <h4>{show.genre} </h4>
               {/* <Timer newDate={dateTimer} newTime={timeTimer} price={precio}/> */}
-              <Countdown date={dateTimer} renderer={renderer} onTick={onStart}>
-                <div>
-                  <p>La obra ya ha comenzado!</p>
-                </div>
-              </Countdown>
+              <div>
+                <Countdown
+                  date={dateTimer}
+                  renderer={renderer}
+                  onTick={onStart}
+                >
+                  <div>
+                    <p>La obra ya ha comenzado!</p>
+                  </div>
+                </Countdown>
+              </div>
             </div>
             <div>
               <h3>Entradas disponibles: </h3>
