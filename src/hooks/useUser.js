@@ -56,7 +56,7 @@ const useUser = () => {
     setKey(null);
     
     //setRol(null)
-    window.location.href="https://quizzical-colden-ae9e61.netlify.app"
+    window.location.href="https://front-a-sala-llena-five.vercel.app/"
   }, [setKey])
 
   return {
