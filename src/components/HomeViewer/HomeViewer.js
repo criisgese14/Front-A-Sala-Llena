@@ -31,8 +31,8 @@ const HomeViewer = () => {
     dispatch(allShows());
   }, [dispatch, id]);
 
-  const shows = allshows?.filter((e) => e.theater.province === detail.province);
-  console.log(shows);
+  // const shows = allshows?.filter((e) => e.theater.province === detail.province);
+  // console.log(shows);
 
   return (
     //     <div className={style.homeContainer}>
