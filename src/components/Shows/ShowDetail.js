@@ -170,7 +170,7 @@ const ShowDetail = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
