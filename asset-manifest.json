@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/Front-A-Sala-Llena/static/css/main.f2dfd76f.css",
-    "main.js": "/Front-A-Sala-Llena/static/js/main.bc6090eb.js",
+    "main.js": "/Front-A-Sala-Llena/static/js/main.ae4ebab9.js",
     "static/js/787.660c7d42.chunk.js": "/Front-A-Sala-Llena/static/js/787.660c7d42.chunk.js",
     "static/media/logo a sala llena-sinfondo.png": "/Front-A-Sala-Llena/static/media/logo a sala llena-sinfondo.af17bcad50a256cdbf1a.png",
     "index.html": "/Front-A-Sala-Llena/index.html",
     "main.f2dfd76f.css.map": "/Front-A-Sala-Llena/static/css/main.f2dfd76f.css.map",
-    "main.bc6090eb.js.map": "/Front-A-Sala-Llena/static/js/main.bc6090eb.js.map",
+    "main.ae4ebab9.js.map": "/Front-A-Sala-Llena/static/js/main.ae4ebab9.js.map",
     "787.660c7d42.chunk.js.map": "/Front-A-Sala-Llena/static/js/787.660c7d42.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f2dfd76f.css",
-    "static/js/main.bc6090eb.js"
+    "static/js/main.ae4ebab9.js"
   ]
 }
