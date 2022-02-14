@@ -1,8 +1,6 @@
 .loginContainer {
   color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+
   height: 100vh;
 }
 
@@ -11,7 +9,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* margin-bottom: 25%; */
 }
 
 .header {
