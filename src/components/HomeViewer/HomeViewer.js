@@ -29,10 +29,10 @@ const HomeViewer = () => {
   useEffect(() => {
     dispatch(getViewerDetail(id));
     dispatch(allShows());
-  }, [dispatch,id]);
+  }, [dispatch, id]);
 
-  const shows = allshows?.filter((e) => e.theater.province === detail.province);
-  console.log(shows);
+  // const shows = allshows?.filter((e) => e.theater.province === detail.province);
+  // console.log(shows);
 
   return (
     //     <div className={style.homeContainer}>
@@ -45,7 +45,6 @@ const HomeViewer = () => {
     // };
     <div className={style.homeContainer}>
       <div className={style.navContainer}>
-        <h3>Usuario</h3>
         <NavBarViewer setActualPage={setActualPage} setOrder={setOrder} />
       </div>
       <div className={style.searchContainer}>
@@ -67,7 +66,9 @@ const HomeViewer = () => {
       <div className={style.paginate}>
         <Paginate qty={qty} allshows={allshows.length} paginate={paginate} />
       </div>
-      <Footer />
+      {/* <div className={style.footerContainer}>
+        <Footer />
+      </div> */}
     </div>
   );
 };

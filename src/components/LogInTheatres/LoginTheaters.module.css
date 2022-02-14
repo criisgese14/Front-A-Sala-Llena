@@ -1,8 +1,6 @@
 .loginContainer {
   color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+
   height: 100vh;
 }
 
@@ -42,9 +40,7 @@
 @media (max-width: 768px) {
   .loginContainer {
     color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+
     height: 100vh;
   }
 

@@ -5,11 +5,10 @@ import useUser from "../../hooks/useUser";
 import style from "./NavBarTheater.module.css";
 import Dropdown from "react-bootstrap/Dropdown";
 
-
 export default function NavBarTheater({ id }) {
   const { logout } = useUser();
 
-  const history = useHistory()
+  const history = useHistory();
 
   function handleLogOut(e) {
     e.preventDefault();
@@ -23,9 +22,9 @@ export default function NavBarTheater({ id }) {
           <img className={style.logo} src={logo} alt="A sala llena" />
         </Link>
       </div>
-      <div className={style.dropdown}>
+      <div className={style.micuenta}>
         <Dropdown>
-          <Dropdown.Toggle variant="info" id="dropdown-basic">
+          <Dropdown.Toggle variant="secondary" id="dropdown-basic">
             Mi cuenta
           </Dropdown.Toggle>
 
@@ -36,7 +35,9 @@ export default function NavBarTheater({ id }) {
             <Dropdown.Item href={`/salesHistory/${id}`}>
               <button>Ventas</button>
             </Dropdown.Item>
-            <Dropdown.Item onClick={()=>history.push(`/editProfileTheater/${id}`)}>
+            <Dropdown.Item
+              onClick={() => history.push(`/editProfileTheater/${id}`)}
+            >
               <button>Perfil</button>
             </Dropdown.Item>
             <Dropdown.Item href="">

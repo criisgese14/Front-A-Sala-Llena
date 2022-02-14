@@ -17,7 +17,7 @@ export default function NavBarAll({ setActualPage, setOrder }) {
         </div>
         <div className={style.loginContainer}>
           <Dropdown>
-            <Dropdown.Toggle variant="info" id="dropdown-basic">
+            <Dropdown.Toggle variant="secondary" id="dropdown-basic">
               Entrar
             </Dropdown.Toggle>
 

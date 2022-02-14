@@ -106,9 +106,9 @@ const LogInViewer = () => {
           <button>REGISTRARSE</button>
         </Link>
       </div>
-      <div>
+      {/* <div>
         <Footer />
-      </div>
+      </div> */}
     </div>
   );
 };

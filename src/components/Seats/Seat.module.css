@@ -1,13 +1,12 @@
 /* @import url('https://fon/ts.googleapis.com/css?family=Lato&display=swap'); */
 
-:root{
-    --color-seat: #444451;
+:root {
+  --color-seat: #444451;
 }
-.component{
-    background-color: rgb(0, 0, 0);
-    width: 450px;
+.component {
+  background-color: rgb(0, 0, 0);
+  width: 18rem;
 }
-
 
 * {
   box-sizing: border-box;
@@ -77,7 +76,6 @@
   color: #777;
   list-style-type: none;
   display: flex;
-  justify-content: space-between;
 }
 
 .showcase li {
@@ -103,8 +101,8 @@
   transform: rotateX(-45deg);
   box-shadow: 0 3px 10px rgba(255, 255, 255, 0.75);
 }
-.indice{
-    color: #fff;
+.indice {
+  color: #fff;
   font-size: 10px;
   height: 10px;
   width: 15px;

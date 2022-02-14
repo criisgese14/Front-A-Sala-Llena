@@ -1,7 +1,16 @@
-.formShowContainer {
-  color: rgb(241, 237, 237);
+.backContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.formContainer {
+  width: 100%;
+  color: white;
 }
 
-form {
-  margin: 2rem 0 2rem 0;
+.formData {
+  margin: 2rem;
+}
+
+.layout {
 }

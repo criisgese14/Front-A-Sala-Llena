@@ -38,7 +38,7 @@
 @media (max-width: 768px) {
   .cardContainer {
     margin-right: 2rem;
-    height: 13rem;
+    height: 16rem;
     width: 22rem;
     background-repeat: no-repeat;
     background-size: cover;
@@ -55,7 +55,7 @@
   }
 
   .image {
-    height: 13rem;
+    height: 16rem;
     width: 10rem;
   }
 

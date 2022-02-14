@@ -32,7 +32,9 @@ const HomeTheater = () => {
   return (
     <div className={style.homeContainer}>
       <NavBarTheater id={id} />
-      <SearchBar />
+      <div className={style.searchContainer}>
+        <SearchBar />
+      </div>
       <div className={style.showsContainer}>
         {filterShows.map((e) => (
           <ShowCard
@@ -48,9 +50,9 @@ const HomeTheater = () => {
           />
         ))}
       </div>
-      <div className={style.footerContainer}>
+      {/* <div className={style.footerContainer}>
         <Footer />
-      </div>
+      </div> */}
     </div>
   );
 };
