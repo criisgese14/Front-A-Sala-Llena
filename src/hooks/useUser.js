@@ -1,29 +1,28 @@
 import { useCallback, useContext, useState } from "react";
 import Context from "../context/UserContext.js";
 import { loginTheater, loginViewer } from "../redux/actions/index.js";
+import { useSelector } from "react-redux";
 
 const useUser = () => {
   const { rol, key, id, setRol, setKey, setId, roles, setRoles } =
     useContext(Context);
   const [state, setState] = useState({ loading: false, error: false });
+  
 
   const login = useCallback(
     (input) => {
       setState({ loading: true, error: false });
       loginTheater(input)
         .then((data) => {
-          window.sessionStorage.setItem("key", data.token);
-          window.sessionStorage.setItem("id", data.id);
-          window.sessionStorage.setItem("roles", data.isTheater);
+          window.sessionStorage.setItem("key", data);
+          
           setState({ loading: false, error: false });
-          setKey(data.token);
-          setId(data.id);
-          setRoles(data.isTheater);
+          setKey(data);
+          
         })
         .catch((err) => {
           window.sessionStorage.removeItem("key");
-          window.sessionStorage.removeItem("id");
-          window.sessionStorage.removeItem("roles");
+          
           setState({ loading: false, error: true });
           console.error(err);
         });
@@ -36,18 +35,15 @@ const useUser = () => {
       setState({ loading: true, error: false });
       loginViewer(input)
         .then((data) => {
-          window.sessionStorage.setItem("key", data.token);
-          window.sessionStorage.setItem("id", data.id);
-          window.sessionStorage.setItem("rol", data.isViewer);
+          window.sessionStorage.setItem("key", data);
+          
           setState({ loading: false, error: false });
-          setKey(data.token);
-          setId(data.id);
-          setRol(data.isViewer);
+          setKey(data);
+          
         })
         .catch((err) => {
           window.sessionStorage.removeItem("key");
-          window.sessionStorage.removeItem("id");
-          window.sessionStorage.removeItem("rol");
+          
           setState({ loading: false, error: true });
           console.error(err);
         });
@@ -57,14 +53,11 @@ const useUser = () => {
 
   const logout = useCallback(() => {
     window.sessionStorage.removeItem("key");
-    window.sessionStorage.removeItem("id");
-    window.sessionStorage.removeItem("rol");
-    window.sessionStorage.removeItem("roles");
     setKey(null);
-    setId(null);
+    
     //setRol(null)
-    window.location.href="https://quizzical-colden-ae9e61.netlify.app/"
-  }, [setKey,setId])
+    window.location.href="https://quizzical-colden-ae9e61.netlify.app"
+  }, [setKey])
 
   return {
     isLogged: Boolean(key),
