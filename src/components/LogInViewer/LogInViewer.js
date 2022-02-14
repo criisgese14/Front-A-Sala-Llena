@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import GoogleLogin from "react-google-login";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import useUser from "../../hooks/useUser.js";
 import { getAllViewers } from "../../redux/actions/index.js";
 import { useSelector, useDispatch } from "react-redux";
 import Footer from "../Footer/Footer.js";
 import logo from "../../assets/logo a sala llena-sinfondo.png";
 import style from "./LoginViewer.module.css";
+
 
 function validate(input) {
   let errors = {};
@@ -29,6 +30,7 @@ const LogInViewer = () => {
   const [errors, setErrors] = useState({});
   const { hasLoginError, loginviewer } = useUser();
   const viewers = useSelector((state) => state.viewers);
+  const history = useHistory();
 
   useEffect(() => {
     dispatch(getAllViewers());
@@ -71,6 +73,11 @@ const LogInViewer = () => {
           <img className={style.logo} src={logo} alt="A sala llena" />
         </Link>
       </div>
+      <div>
+        <Link to='/'>
+        <button>Volver</button>
+        </Link>
+      </div>
       <div className={style.formContainer}>
         <form className={style.inputs} onSubmit={handleSubmit}>
           <input
@@ -102,6 +109,7 @@ const LogInViewer = () => {
           cookiePolicy={"single_host_origin"}
         />
         <p>o</p>
+        <a>¿Olvidaste tu contraseña?</a>
         <Link to="/formViewerRegister">
           <button>REGISTRARSE</button>
         </Link>
