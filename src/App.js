@@ -30,7 +30,7 @@ import PasarelaDePago from "./components/PasarelaDePago/PasarelaDePago";
 function App() {
   return (
     <UserContextProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <div className="App">
           <header className="App-header">
             <Route exact path="/" component={Home} />
