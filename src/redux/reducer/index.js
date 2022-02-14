@@ -1,3 +1,4 @@
+import { bindActionCreators } from "redux";
 import {
     ORDER_SCORE,
     FILTER_PROVINCE,
@@ -19,7 +20,9 @@ import {
     DELETE_VIEWER,
     CHECKOUT_PAY,
     POST_NEWSLETTER_SHOW,
-    GET_ALL_TICKETS
+    GET_ALL_TICKETS,
+    LOGIN_THEATER,
+    LOGIN_VIEWER
   } from "../actions/index.js";
   
   const initialState = {
@@ -33,6 +36,8 @@ import {
     viewers: [],
     tickets: [],
     link: '',
+    logintheater: false,
+    loginviewer: false,
   };
   
    
@@ -179,6 +184,16 @@ import {
                     ...state,
                     tickets: action.payload,
                 }  
+            case LOGIN_THEATER:
+                return{
+                    ...state,
+                    logintheater: action.payload
+                }
+            case LOGIN_VIEWER:
+                return{
+                    ...state,
+                    loginviewer: action.payload
+                }
           default:
               return state;
       }
