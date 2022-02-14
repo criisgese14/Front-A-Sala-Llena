@@ -50,9 +50,9 @@ const HomeTheater = () => {
           />
         ))}
       </div>
-      <div className={style.footerContainer}>
+      {/* <div className={style.footerContainer}>
         <Footer />
-      </div>
+      </div> */}
     </div>
   );
 };

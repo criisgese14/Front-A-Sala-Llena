@@ -323,7 +323,7 @@ const FormShow = () => {
           </Fragment>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

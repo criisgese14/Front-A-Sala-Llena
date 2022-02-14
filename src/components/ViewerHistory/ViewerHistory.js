@@ -100,9 +100,9 @@ const ViewerHistory = () => {
           <h1>NO HAY ENTRADAS COMPRADAS</h1>
         )}
       </div>
-      <div className={style.footerContainer}>
+      {/* <div className={style.footerContainer}>
         <Footer />
-      </div>
+      </div> */}
     </div>
   );
 };

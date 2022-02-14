@@ -51,7 +51,7 @@ const SalesHistory = () => {
       ) : (
         <h1>TODAVIA NO HAY VENTAS</h1>
       )}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

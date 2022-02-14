@@ -92,9 +92,9 @@ const Newsletter = () => {
           <button className={style.btn}>Enviar</button>
         </form>
       </div>
-      <div className={style.footerContainer}>
+      {/* <div className={style.footerContainer}>
         <Footer />
-      </div>
+      </div> */}
     </div>
   );
 };

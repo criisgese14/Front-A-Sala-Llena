@@ -173,9 +173,9 @@ const EditProfileTheater = () => {
         <button disabled>Save</button>} */}
         <button className={style.btn}>Guardar cambios</button>
       </form>
-      <div className={style.footerContainer}>
+      {/* <div className={style.footerContainer}>
         <Footer />
-      </div>
+      </div> */}
     </div>
   );
 };

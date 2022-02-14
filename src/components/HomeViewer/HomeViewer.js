@@ -66,9 +66,9 @@ const HomeViewer = () => {
       <div className={style.paginate}>
         <Paginate qty={qty} allshows={allshows.length} paginate={paginate} />
       </div>
-      <div className={style.footerContainer}>
+      {/* <div className={style.footerContainer}>
         <Footer />
-      </div>
+      </div> */}
     </div>
   );
 };
