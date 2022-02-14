@@ -8,7 +8,7 @@ import { allShows } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import style from "./Home.module.css";
-import Footer from "../Footer/Footer";
+// import Footer from "../Footer/Footer";
 
 // import CarouselContainer from "../Carrousel/Carrousel.js";
 export default function Home() {
@@ -52,9 +52,9 @@ export default function Home() {
         <Paginate qty={qty} allshows={allshows.length} paginate={paginate} />
       </div>
 
-      <div className={style.footerContainer}>
+      {/* <div className={style.footerContainer}>
         <Footer />
-      </div>
+      </div> */}
     </div>
   );
 }
