@@ -63,7 +63,7 @@ const useUser = () => {
     setKey(null);
     setId(null);
     //setRol(null)
-    window.location.href="https://quizzical-colden-ae9e61.netlify.app"
+    window.location.href="https://quizzical-colden-ae9e61.netlify.app/"
   }, [setKey,setId])
 
   return {
