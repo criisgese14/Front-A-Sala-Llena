@@ -60,7 +60,7 @@ const LogInViewer = () => {
     e.preventDefault();
     loginviewer(input);
     //navigate('/viewerHome/1')
-    window.location.href = `https://front-a-sala-llena-black.vercel.app/viewerHome/${filterViewer.id}`;
+    window.location.href = `https://front-a-sala-llena-phi.vercel.app/viewerHome/${filterViewer.id}`;
     setInput({ email: "", password: "" });
   }
 
