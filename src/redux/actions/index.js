@@ -156,7 +156,7 @@ export function loginTheater({ email, password }) {
     axios
       .post("https://back-asalallena.herokuapp.com/login/theater", { email, password })
 
-      //.then(res => {
+     //.then(res => {
       //  if (!res.ok) throw new Error('Response is NOT ok')
       //  return res.json()
       //})
@@ -166,6 +166,8 @@ export function loginTheater({ email, password }) {
       .catch((error) => console.log(error))
   );
 }
+
+
 
 export function putViewer(id, changes) {
   return function (dispatch) {
@@ -245,6 +247,8 @@ export function loginViewer({ email, password }) {
       .catch((error) => console.log(error))
   );
 }
+
+
 
   export function getShowByName(name) {
     return async function (dispatch){
@@ -430,3 +434,5 @@ export const GET_ALL_TICKETS = "GET_ALL_TICKETS";
 export const PUT_TICKET = "PUT_TICKET";
 export const POST_REVIEW = 'POST_REVIEW';
 export const POST_NEWSLETTER_SHOW = 'POST_NEWSLETTER_SHOW';
+export const LOGIN_THEATER = 'LOGIN_THEATER';
+export const LOGIN_VIEWER = 'LOGIN_VIEWER';
