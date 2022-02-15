@@ -56,7 +56,7 @@ const useUser = () => {
     setKey(null);
     
     //setRol(null)
-    window.location.href="https://front-a-sala-llena-five.vercel.app/"
+    window.location.href="https://nmangiacone.github.io/Front-A-Sala-Llena"
   }, [setKey])
 
   return {

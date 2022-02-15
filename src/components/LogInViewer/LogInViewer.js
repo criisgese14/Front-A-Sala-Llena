@@ -62,7 +62,7 @@ const LogInViewer = () => {
     e.preventDefault();
     loginviewer(input);
     //navigate('/viewerHome/1')
-    window.location.href = `https://front-a-sala-llena-five.vercel.app/viewerHome/${filterViewer.id}/`;
+    window.location.href = `https://nmangiacone.github.io/Front-A-Sala-Llena/viewerHome/${filterViewer.id}/`;
     setInput({ email: "", password: "" });
   }
 

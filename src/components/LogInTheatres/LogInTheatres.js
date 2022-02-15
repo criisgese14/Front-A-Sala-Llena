@@ -48,7 +48,7 @@ const LogInTheatres = () => {
     e.preventDefault();
     login(input);
     //navigate('/viewerHome/1')
-    window.location.href = `https://front-a-sala-llena-five.vercel.app/theaterHome/${filterTheater.id}/`;
+    window.location.href = `https://nmangiacone.github.io/Front-A-Sala-Llena/theaterHome/${filterTheater.id}/`;
     setInput({ email: "", password: "" });
   }
 
