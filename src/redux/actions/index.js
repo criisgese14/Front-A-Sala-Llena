@@ -435,7 +435,7 @@ export function postNewsletterShow(nameTheater) {
 
 export function postPasswordRecoveryViewer(email) {
   try {
-    const postEmail = axios.post("http://localhost:3001/resetPassword", {
+    const postEmail = axios.post("http://localhost:3001/resetPasswordViewer", {
       email,
     });
 
