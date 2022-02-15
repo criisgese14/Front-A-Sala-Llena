@@ -105,6 +105,7 @@ const LogInViewer = () => {
         <Link to="/formViewerRegister">
           <button>REGISTRARSE</button>
         </Link>
+        <Link to="/passwordRecoveryViewer">Olvide mi contraseña</Link>
       </div>
       {/* <div>
         <Footer />
