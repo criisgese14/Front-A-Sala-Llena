@@ -69,7 +69,7 @@ const FormShow = () => {
       postTicket(tickets);
     }
     
-    //postNewsletterShow(theater.name);
+    postNewsletterShow(theater.name);
     alert("Espectaculo agregado!");
     history.push(`/theaterHome/${id}`);
   };
