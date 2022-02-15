@@ -311,6 +311,17 @@ export function getAllTickets(){
     }
     
 }
+export function getAllReview(){
+  return function(dispatch){
+      return axios.get('http://localhost:3001/reviews')
+      .then(res => res.data)
+      .then(data =>{
+          dispatch({type: GET_ALL_REVIEW, payload: data})
+      })
+      .catch(error => console.log(error)) 
+  }
+  
+}
 
 
 export function postReview(theaterScore,showScore,review,nameTheater,nameShow,nameViewer) {
@@ -430,3 +441,4 @@ export const GET_ALL_TICKETS = "GET_ALL_TICKETS";
 export const PUT_TICKET = "PUT_TICKET";
 export const POST_REVIEW = 'POST_REVIEW';
 export const POST_NEWSLETTER_SHOW = 'POST_NEWSLETTER_SHOW';
+export const GET_ALL_REVIEW = "GET_ALL_REVIEW";

@@ -19,7 +19,8 @@ import {
     DELETE_VIEWER,
     CHECKOUT_PAY,
     POST_NEWSLETTER_SHOW,
-    GET_ALL_TICKETS
+    GET_ALL_TICKETS,
+    GET_ALL_REVIEW
   } from "../actions/index.js";
   
   const initialState = {
@@ -33,9 +34,9 @@ import {
     viewers: [],
     tickets: [],
     link: '',
+    allreviews: [], 
   };
-  
-   
+
   function rootReducer (state = initialState, action) {
       //const theaters = state.theaters;
       // const shows = state.shows;
@@ -179,6 +180,11 @@ import {
                     ...state,
                     tickets: action.payload,
                 }  
+            case GET_ALL_REVIEW:
+                return {
+                    ...state,
+                    allreviews: action.payload
+                }
           default:
               return state;
       }
