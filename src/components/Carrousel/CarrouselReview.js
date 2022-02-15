@@ -15,8 +15,8 @@ const CarrouselReview = () => {
   return (
     <Carousel variant="dark">
         {ultimos?.map((e, i) => (
-                <Carousel.Item>
-                  <div className="ContainerReview">
+                <Carousel.Item key={e.id}>
+                  <div className="ContainerReview" key={e.id}>
                     <div >
                     <h4>Espectaculo: </h4>
                     <h5>{e.show.name}</h5>

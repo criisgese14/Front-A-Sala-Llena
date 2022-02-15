@@ -23,7 +23,15 @@ const FormShow = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+  const minfecha = new Date (Date())
+  const minfechaaño = minfecha.getFullYear()
+  const minfechames= minfecha.getMonth()+1 
+  let minfechames1 = minfechames.length !== 1 ? `0${minfechames}` : minfechames;
+  const minfechadia= minfecha.getDate();
+  const maxfechadia = minfecha.getDate()+2; 
+  const fechadehoy = new String(`${minfechaaño}-${minfechames1}-${minfechadia}`)
+  const fechadepasado = new String(`${minfechaaño}-${minfechames1}-${maxfechadia}`)
+  
   useEffect(() => {
     dispatch(theaterDetail(id));
   }, [dispatch, id]);
@@ -247,6 +255,8 @@ const FormShow = () => {
               <input
                 type="date"
                 name="date"
+                min= {fechadehoy}
+                max={fechadepasado}
                 className="form-control "
                 {...register("date", {
                   required: {
