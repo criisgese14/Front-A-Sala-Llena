@@ -261,18 +261,30 @@ export function getShowByName(name) {
   };
 }
 
-export function editProfileT(payload) {
-  return async function (dispatch) {
-    try {
-      const { data } = await axios.put(
-        `http://localhost:3001/theaters/${payload.id}`,
-        payload
-      );
-      alert(data);
-      return dispatch({ type: PUT_PROFILE_THEATER });
-    } catch (err) {
-      console.log(err);
-    }
+// export function editProfileT(payload) {
+//   return async function (dispatch) {
+//     try {
+//       const { data } = await axios.put(
+//         `http://localhost:3001/theaters/${payload.id}`,
+//         payload
+//       );
+//       alert(data);
+//       return dispatch({ type: PUT_PROFILE_THEATER });
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   };
+// }
+
+export function editProfileT(id, changes) {
+  return function (dispatch) {
+    return axios
+      .put(`http://localhost:3001/theaters/${id}`, changes)
+      .then((response) => response.data)
+      .then((data) => {
+        console.log(data);
+        dispatch({ type: PUT_PROFILE_THEATER, payload: data });
+      });
   };
 }
 
@@ -448,6 +460,21 @@ export function postPasswordRecoveryViewer(email) {
   }
 }
 
+export function postPasswordRecoveryTheater(email) {
+  try {
+    const postEmail = axios.post("http://localhost:3001/resetPasswordTheater", {
+      email,
+    });
+
+    return {
+      type: POST_PASSWORD_RECOVERY_THEATER,
+      payload: postEmail,
+    };
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export const ORDER_PRICE = "ORDER_PRICE";
 export const FILTER_PROVINCE = "FILTER_PROVINCE";
 export const POST_SHOW = "POST_SHOW";
@@ -476,3 +503,4 @@ export const POST_REVIEW = "POST_REVIEW";
 export const POST_NEWSLETTER_SHOW = "POST_NEWSLETTER_SHOW";
 export const GET_ALL_REVIEW = "GET_ALL_REVIEW";
 export const POST_PASSWORD_RECOVERY_VIEWER = "POST_PASSWORD_RECOVERY_VIEWER";
+export const POST_PASSWORD_RECOVERY_THEATER = "POST_PASSWORD_RECOVERY_THEATER";

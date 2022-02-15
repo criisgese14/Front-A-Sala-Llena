@@ -25,8 +25,10 @@ import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
 import TermsAndConditions from "./components/TermsAndConditions/TermsAndConditions";
 import Seat from "./components/Seats/Seats";
 import PasarelaDePago from "./components/PasarelaDePago/PasarelaDePago";
-import PasswordRecovery from "./components/LogInViewer/PasswordRecovery";
+import PasswordRecoveryViewer from "./components/LogInViewer/PasswordRecoveryViewer";
+import PasswordRecoveryTheater from "./components/LogInTheatres/PasswordRecoveryTheater";
 import ResetPasswordViewer from "./components/LogInViewer/ResetPasswordViewer";
+import ResetPasswordTheater from "./components/LogInTheatres/ResetPasswordTheater";
 
 function App() {
   return (
@@ -40,12 +42,22 @@ function App() {
             <Route
               exact
               path="/passwordRecoveryViewer"
-              component={PasswordRecovery}
+              component={PasswordRecoveryViewer}
+            />
+            <Route
+              exact
+              path="/passwordRecoveryTheater"
+              component={PasswordRecoveryTheater}
             />
             <Route
               exact
               path="/ResetPasswordViewer/:id"
               component={ResetPasswordViewer}
+            />
+            <Route
+              exact
+              path="/ResetPasswordTheater/:id"
+              component={ResetPasswordTheater}
             />
 
             <Route exact path="/formViewerRegister" component={FormViewers} />

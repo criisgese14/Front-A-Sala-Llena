@@ -111,10 +111,8 @@ const LogInTheatres = () => {
         <Link to="/theaterRegister">
           <button>REGISTRARSE</button>
         </Link>
+        <Link to="/passwordRecoveryTheater">Olvide mi contraseña</Link>
       </div>
-      {/* <div>
-        <Footer />
-      </div> */}
     </div>
   );
 };

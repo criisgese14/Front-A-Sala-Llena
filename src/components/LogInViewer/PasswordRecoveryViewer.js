@@ -15,7 +15,7 @@ function validate(input) {
   }
   return errors;
 }
-const PasswordRecovery = () => {
+const PasswordRecoveryViewer = () => {
   const dispatch = useDispatch();
   const [input, setInput] = useState({ email: "" });
   const [errors, setErrors] = useState({});
@@ -69,4 +69,4 @@ const PasswordRecovery = () => {
   );
 };
 
-export default PasswordRecovery;
+export default PasswordRecoveryViewer;
