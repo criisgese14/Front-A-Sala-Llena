@@ -28,7 +28,7 @@ const HomeTheater = () => {
   console.log("theater", theater);
 
   let filterShows = shows?.filter((e) => e.theaterId === theater?.id);
-  console.log(filterShows);
+  console.log('filterShows',filterShows);
   return (
     <div className={style.homeContainer}>
       <NavBarTheater id={id} />
@@ -36,7 +36,7 @@ const HomeTheater = () => {
         <SearchBar />
       </div>
       <div className={style.showsContainer}>
-        {filterShows? (
+        {filterShows?.length ? (
           filterShows?.map((e) => (
             <ShowCardTheater
               key={e.id}
