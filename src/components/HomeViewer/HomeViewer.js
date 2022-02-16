@@ -6,14 +6,13 @@ import NavBarViewer from "../NavBar/NavBarViewer.js";
 import SearchBar from "../SearchBar/SearchBar.js";
 import Paginate from "../Paginate/Paginate.js";
 import style from "./HomeViewer.module.css";
-import Footer from "../Footer/Footer.js";
-
 import CarouselContainer from "../Carrousel/Carrousel.js";
 import { useParams } from "react-router-dom";
 import { getViewerDetail } from "../../redux/actions/index.js";
+
 const HomeViewer = () => {
   const dispatch = useDispatch();
-  const show = useSelector((state) => state.shows);
+  // const show = useSelector((state) => state.shows);
   const allshows = useSelector((state) => state.shows);
   const [, setOrder] = useState("");
   const [actualPage, setActualPage] = useState(1);

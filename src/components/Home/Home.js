@@ -6,7 +6,7 @@ import Shows from "../Shows/Shows";
 import Paginate from "../Paginate/Paginate";
 import { allShows } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+// import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import style from "./Home.module.css";
 // import Footer from "../Footer/Footer";
 
@@ -16,7 +16,7 @@ import CarrouselReview from "../Carrousel/CarrouselReview.js";
 
 export default function Home() {
   const dispatch = useDispatch();
-  const history = useHistory();
+  // const history = useHistory();
   const allshows = useSelector((state) => state.shows);
   const [, setOrder] = useState("");
   const [actualPage, setActualPage] = useState(1);
@@ -48,7 +48,7 @@ export default function Home() {
         {actualShow?.length ? (
           <Shows actualShow={actualShow} />
         ) : (
-          <p>...Loading</p>
+          <p>En este momento no hay espectáculos con esos filtros</p>
         )}
       </div>
 

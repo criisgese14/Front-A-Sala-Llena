@@ -68,7 +68,7 @@ function rootReducer(state = initialState, action) {
       let filterProvince =
         action.payload === "all"
           ? allshows
-          : allshows.filter((e) => e.theater.province.includes(action.payload));
+          : allshows?.filter((e) => e.theater?.province.includes(action.payload));
       return {
         ...state,
         shows: filterProvince,
