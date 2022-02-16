@@ -6,21 +6,20 @@ import NavBarViewer from "../NavBar/NavBarViewer.js";
 import SearchBar from "../SearchBar/SearchBar.js";
 import Paginate from "../Paginate/Paginate.js";
 import style from "./HomeViewer.module.css";
-import Footer from "../Footer/Footer.js";
-
 import CarouselContainer from "../Carrousel/Carrousel.js";
 import { useParams } from "react-router-dom";
 import { getViewerDetail } from "../../redux/actions/index.js";
+
 const HomeViewer = () => {
   const dispatch = useDispatch();
-  const show = useSelector((state) => state.shows);
+  // const show = useSelector((state) => state.shows);
   const allshows = useSelector((state) => state.shows);
   const [, setOrder] = useState("");
   const [actualPage, setActualPage] = useState(1);
   const [qty] = useState(6);
   const iLastShow = actualPage * qty; //6
   const iFirstShow = iLastShow - qty;
-  const actualShow = allshows.slice(iFirstShow, iLastShow);
+  const actualShow = allshows?.slice(iFirstShow, iLastShow);
   const detail = useSelector((state) => state.viewerDetail);
   const { id } = useParams();
   const paginate = (number) => {
@@ -31,7 +30,7 @@ const HomeViewer = () => {
     dispatch(allShows());
   }, [dispatch, id]);
 
-  const shows = allshows?.filter((e) => e.theater.province === detail.province);
+  const shows = allshows?.filter((e) => e.theater?.province === detail.province);
   // console.log(shows);
 
   return (

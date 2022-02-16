@@ -89,7 +89,7 @@ export default function NavBar({ setActualPage, setOrder }) {
                     onChange={(prov) => handleFilterProvince(prov)}
                     name="province"
                   >
-                    <option defaultValue="">
+                    <option value="" selected disabled hidden>
                       Ubicación
                     </option>
                     <option value="all">Todas</option>
@@ -124,7 +124,7 @@ export default function NavBar({ setActualPage, setOrder }) {
                 {/* // ------------- filtro por Teatro---------- */}
                 <div>
                   <select onChange={(e) => handleFilterTheater(e)} name="name">
-                    <option defaultValue="">Teatro</option>
+                    <option value="" selected disabled hidden>Teatro</option>
                     <option value="all">Todos</option>
                     {theaters?.map((theater) => (
                       <option value={theater.name} key={theater.id}>
@@ -137,9 +137,7 @@ export default function NavBar({ setActualPage, setOrder }) {
                 <div>
                   <select onChange={(e) => handleFilterGenre(e)} name="genre">
                     {/* <optgroup label="OBRAS MAYORES"> */}
-                      <option defaultValue="">
-                        Género
-                      </option>
+                      <option value="" selected disabled hidden>Género</option>
                       <option>Comedia</option>
                       <option>Drama</option>
                       <option>Tragedia</option>
@@ -166,9 +164,7 @@ export default function NavBar({ setActualPage, setOrder }) {
                 {/* // ------------- filtro por Clasificacion---------- */}
                 <div>
                   <select onChange={(e) => handleFilterRated(e)} name="rated">
-                    <option defaultValue="">
-                      Clasificación
-                    </option>
+                    <option value="" selected disabled hidden>Clasificación </option>
                     <option value="Todas las edades">Todas las edades</option>
                     <option value="Apta para mayores de 13 años">
                       Apta para mayores de 13 años
