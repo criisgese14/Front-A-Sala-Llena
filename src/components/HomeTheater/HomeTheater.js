@@ -8,7 +8,7 @@ import {
   allTheaters,
   allShows,
 } from "../../redux/actions/index.js";
-import ShowCard from "../ShowCard/ShowCard";
+import ShowCardTheater from "../ShowCard/ShowCardTheater.js";
 import style from "./HomeTheater.module.css";
 import Footer from "../Footer/Footer";
 
@@ -37,16 +37,15 @@ const HomeTheater = () => {
       </div>
       <div className={style.showsContainer}>
         {filterShows.map((e) => (
-          <ShowCard
+          <ShowCardTheater
             key={e.id}
             id={e.id}
             name={e.name}
             genre={e.genre}
             image={e.image}
-            summery={e.summery}
             rated={e.rated}
             date={e.date}
-            score={e.score}
+            
           />
         ))}
       </div>
