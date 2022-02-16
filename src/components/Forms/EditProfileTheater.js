@@ -45,7 +45,7 @@ const EditProfileTheater = () => {
 
   function handleSubmitDelete() {
     dispatch(deleteTheater(id));
-    alert("Usuario Borrado con exito");
+    alert("Teatro Borrado con exito");
     history.push("/");
   }
   return (
