@@ -2,7 +2,7 @@ import React, { Fragment, useRef } from "react";
 import { createTheater } from "../../redux/actions";
 import { useForm } from "react-hook-form";
 import Footer from "../Footer/Footer";
-import { useHistory } from "react-router-dom";
+import { useHistory , Link} from "react-router-dom";
 
 const FormTheater = () => {
   const {
@@ -33,6 +33,9 @@ const FormTheater = () => {
   };
   return (
     <div className="form-group row">
+      <Link to={`/loginteatres`}>
+      <button type="button" className="btn btn-primary">Volver</button>
+      </Link>
       <Fragment>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="form-group">

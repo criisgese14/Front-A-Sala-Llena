@@ -2,8 +2,8 @@ import React, { Fragment, useRef } from "react";
 import { postViewer } from "../../redux/actions/index.js";
 import { useForm } from "react-hook-form";
 import Footer from "../Footer/Footer.js";
+import { useHistory, Link } from "react-router-dom";
 
-import { useHistory } from "react-router-dom";
 const FormViewers = () => {
   const history = useHistory();
   const {
@@ -31,6 +31,9 @@ const FormViewers = () => {
 
   return (
     <div className="card border-success ">
+      <Link to={`/loginviewer`}>
+      <button type="button" className="btn btn-primary">Volver</button>
+      </Link>
       <Fragment>
         <form onSubmit={handleSubmit(onSubmit)}>
           <label>Nombre:</label>
