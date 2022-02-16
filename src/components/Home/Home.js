@@ -23,7 +23,7 @@ export default function Home() {
   const [qty] = useState(6);
   const iLastShow = actualPage * qty; //6
   const iFirstShow = iLastShow - qty;
-  const actualShow = allshows.slice(iFirstShow, iLastShow);
+  const actualShow = allshows?.slice(iFirstShow, iLastShow);
   
   console.log(actualShow);
   const paginate = (number) => {
@@ -45,7 +45,7 @@ export default function Home() {
       
       <CarouselContainer allshows={allshows}/>
       <div className={style.showsContainer}>
-        {actualShow.length ? (
+        {actualShow?.length ? (
           <Shows actualShow={actualShow} />
         ) : (
           <p>...Loading</p>
@@ -53,7 +53,7 @@ export default function Home() {
       </div>
 
       <div className={style.paginate}>
-        <Paginate qty={qty} allshows={allshows.length} paginate={paginate} />
+        <Paginate qty={qty} allshows={allshows?.length} paginate={paginate} />
       </div>
       <CarrouselReview/>
       {/* <div className={style.footerContainer}>

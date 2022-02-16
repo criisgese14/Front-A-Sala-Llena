@@ -10,7 +10,7 @@ const CarrouselReview = () => {
   useEffect(() =>{
     dispatch(getAllReview())
   }, [dispatch])
-  const ultimos = review.slice(review.length - 5);
+  const ultimos = review?.slice(review.length - 5);
   console.log(ultimos)
   return (
     <Carousel variant="dark">

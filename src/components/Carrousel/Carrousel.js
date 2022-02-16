@@ -3,7 +3,7 @@ import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
 import style from "./Carrousel.module.css";
 const CarouselContainer = ({ allshows }) => {
-  const ultimos = allshows.slice(allshows.length - 5);
+  const ultimos = allshows?.slice(allshows.length - 5);
 
   return (
     <div className={style.carrouselContainer}>
