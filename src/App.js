@@ -29,6 +29,7 @@ import PasswordRecoveryViewer from "./components/LogInViewer/PasswordRecoveryVie
 import PasswordRecoveryTheater from "./components/LogInTheatres/PasswordRecoveryTheater";
 import ResetPasswordViewer from "./components/LogInViewer/ResetPasswordViewer";
 import ResetPasswordTheater from "./components/LogInTheatres/ResetPasswordTheater";
+import ShowDetailTheater from "./components/Shows/ShowDetailTheater";
 
 function App() {
   return (
@@ -108,6 +109,7 @@ function App() {
             />
             <Route exact path="/showDetail/checkout/:id" component={Checkout} />
             <Route exact path="/pasarela/:id" component={PasarelaDePago} />
+            <Route exact path='/showDetailTheater/:id' component={ShowDetailTheater}/>
           </header>
         </div>
       </BrowserRouter>
