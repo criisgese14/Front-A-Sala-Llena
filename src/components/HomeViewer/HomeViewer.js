@@ -20,7 +20,7 @@ const HomeViewer = () => {
   const [qty] = useState(6);
   const iLastShow = actualPage * qty; //6
   const iFirstShow = iLastShow - qty;
-  const actualShow = allshows.slice(iFirstShow, iLastShow);
+  const actualShow = allshows?.slice(iFirstShow, iLastShow);
   const detail = useSelector((state) => state.viewerDetail);
   const { id } = useParams();
   const paginate = (number) => {
@@ -31,7 +31,7 @@ const HomeViewer = () => {
     dispatch(allShows());
   }, [dispatch, id]);
 
-  const shows = allshows?.filter((e) => e.theater.province === detail.province);
+  const shows = allshows?.filter((e) => e.theater?.province === detail?.province);
   // console.log(shows);
 
   return (
@@ -53,18 +53,18 @@ const HomeViewer = () => {
       {/* <Link to ='/'>
               </Link> */}
 
-      {shows.length > 0 ? (
+      {shows?.length > 0 ? (
         <CarouselContainer allshows={shows} />
       ) : (
         <CarouselContainer allshows={allshows} />
       )}
 
       <div className={style.showsContainer}>
-        {actualShow.length ? <Shows actualShow={actualShow} idV={id}/> : <p>...</p>}
+        {actualShow?.length ? <Shows actualShow={actualShow} idV={id}/> : <p>...</p>}
       </div>
 
       <div className={style.paginate}>
-        <Paginate qty={qty} allshows={allshows.length} paginate={paginate} />
+        <Paginate qty={qty} allshows={allshows?.length} paginate={paginate} />
       </div>
       {/* <div className={style.footerContainer}>
         <Footer />
