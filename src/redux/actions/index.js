@@ -431,8 +431,10 @@ export function checkoutPay({seatNumber, showId, idViewer}) {
         type: CHECKOUT_PAY,
         payload: response.data,
       });
-  };
+    })
+    }
 }
+
 
 export function postNewsletterShow(nameTheater) {
   try {
