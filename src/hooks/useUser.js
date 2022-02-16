@@ -3,7 +3,7 @@ import Context from "../context/UserContext.js";
 import { loginTheater, loginViewer } from "../redux/actions/index.js";
 
 const useUser = () => {
-  const { status, setStatus} = useContext(Context);
+  const { status, setStatus, loginData, setLoginData} = useContext(Context);
   const [state, setState] = useState({ loading: false, error: false });
 
   const login = useCallback(
@@ -48,12 +48,10 @@ const useUser = () => {
     [setStatus]
   );
 
-  const logout = useCallback(() => {
+   const logout = useCallback(() => {
     window.sessionStorage.removeItem("status");
-    
+    window.sessionStorage.removeItem("loginData");
     setStatus(null);
-    
-    //setRol(null)
     window.location.href="http://localhost:3000/"
   }, [setStatus])
 
@@ -64,6 +62,7 @@ const useUser = () => {
     login,
     logout,
     loginviewer,
+    
     
   };
 };
