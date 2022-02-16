@@ -50,7 +50,7 @@ const LogInTheatres = () => {
   };
 
   const handleLogin = async (googleData) => {
-    const res = await fetch('/api/google-login', {
+    const res = await fetch('http://localhost:3001/login/google', {
       method: 'POST',
       body: JSON.stringify({
         token: googleData.tokenId,
@@ -125,7 +125,7 @@ const LogInTheatres = () => {
         <br></br>
         <GoogleLogin
           clientId="506901482868-h6pf1ffiuv7vicavl8btlunj18oeamjr.apps.googleusercontent.com"
-          buttonText="Login"
+          buttonText="Log in with Google"
           onSuccess={handleLogin}
           onFailure={handleFailure}
           cookiePolicy={"single_host_origin"}
