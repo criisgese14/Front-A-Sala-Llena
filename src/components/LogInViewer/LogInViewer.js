@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import useUser from "../../hooks/useUser.js";
 import { getAllViewers } from "../../redux/actions/index.js";
 import { useSelector, useDispatch } from "react-redux";
-import Footer from "../Footer/Footer.js";
+//import Footer from "../Footer/Footer.js";
 import logo from "../../assets/logo a sala llena-sinfondo.png";
 import style from "./LoginViewer.module.css";
 
@@ -60,7 +60,7 @@ const LogInViewer = () => {
     e.preventDefault();
     loginviewer(input);
     //navigate('/viewerHome/1')
-    window.location.href = `http://localhost:3000/viewerHome/${filterViewer.id}/`;
+    //window.location.href = `http://localhost:3000/viewerHome/${filterViewer.id}/`;
     setInput({ email: "", password: "" });
   }
 
@@ -89,7 +89,9 @@ const LogInViewer = () => {
             onChange={inputChange}
           />
           {errors.password && <p>{errors.password}</p>}
+          <Link to={`/viewerHome/${filterViewer?.id}`}>
           <button>LogIn</button>
+          </Link>
         </form>
         {hasLoginError && <strong>Usuario o contraseña invalidos</strong>}
         <br></br>
