@@ -8,7 +8,7 @@ import {
   allTheaters,
   allShows,
 } from "../../redux/actions/index.js";
-import ShowCard from "../ShowCard/ShowCard";
+import ShowCardTheater from "../ShowCard/ShowCardTheater.js";
 import style from "./HomeTheater.module.css";
 import Footer from "../Footer/Footer";
 
@@ -28,7 +28,7 @@ const HomeTheater = () => {
   console.log("theater", theater);
 
   let filterShows = shows?.filter((e) => e.theaterId === theater?.id);
-  console.log(filterShows);
+  console.log('filterShows',filterShows);
   return (
     <div className={style.homeContainer}>
       <NavBarTheater id={id} />
@@ -36,19 +36,23 @@ const HomeTheater = () => {
         <SearchBar />
       </div>
       <div className={style.showsContainer}>
-        {filterShows.map((e) => (
-          <ShowCard
-            key={e.id}
-            id={e.id}
-            name={e.name}
-            genre={e.genre}
-            image={e.image}
-            summery={e.summery}
-            rated={e.rated}
-            date={e.date}
-            score={e.score}
-          />
-        ))}
+        {filterShows?.length ? (
+          filterShows?.map((e) => (
+            <ShowCardTheater
+              key={e.id}
+              id={e.id}
+              name={e.name}
+              genre={e.genre}
+              image={e.image}
+              rated={e.rated}
+              date={e.date}
+              
+            />
+          )) 
+        ) : (
+          <h1>NO HAY SHOWS AGREGADOS</h1>
+        )
+      }
       </div>
       {/* <div className={style.footerContainer}>
         <Footer />

@@ -1,15 +1,18 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useRef } from "react";
 import { createTheater } from "../../redux/actions";
 import { useForm } from "react-hook-form";
 import Footer from "../Footer/Footer";
-import { useHistory } from "react-router-dom";
+import { useHistory , Link} from "react-router-dom";
 
 const FormTheater = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    watch
   } = useForm();
+  const password = useRef({});
+  password.current = watch("password", "");
   let history = useHistory();
   const onSubmit = (data) => {
     let inputs = {
@@ -30,11 +33,16 @@ const FormTheater = () => {
   };
   return (
     <div className="form-group row">
+      <Link to={`/loginteatres`}>
+      <button type="button" className="btn btn-primary">Volver</button>
+      </Link>
+      <h4>Campos obligatorios (*)</h4>
       <Fragment>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="form-group">
-            <label className="form-label col-lg-12">Nombre del Teatro :</label>
+            <label className="form-label col-lg-12">* Nombre del Teatro :</label>
             <input
+              title="Ingrese el Nombre del Teatro"
               type="text"
               name="name"
               placeholder="Nombre del Teatro"
@@ -50,8 +58,9 @@ const FormTheater = () => {
               {errors.name && errors.name.message}
             </span>
 
-            <label className="form-label col-lg-12">CUIT:</label>
+            <label className="form-label col-lg-12">* CUIT:</label>
             <input
+
               type="text"
               name="CUIT"
               placeholder="CUIT"
@@ -68,8 +77,9 @@ const FormTheater = () => {
             </span>
           </div>
 
-          <label>Email:</label>
+          <label>* Email:</label>
           <input
+            title="ejemplo: usuario@nombre.com"
             type="text"
             name="email"
             placeholder="Ingrese su Correo Electronico"
@@ -91,8 +101,9 @@ const FormTheater = () => {
             </span>
           }
 
-          <label>Contraseña:</label>
+          <label>* Contraseña:</label>
           <input
+            title="Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos."
             type="password"
             name="password"
             placeholder="Ingrese su Contraseña"
@@ -102,15 +113,11 @@ const FormTheater = () => {
                 value: true,
                 message: "El campo es requerido",
               },
-              minLength: {
-                value: 8,
-                message: "Minimo 8 caracteres",
-              },
-              pattern: {
-                value: /(?=(.*[0-9]))(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/,
-                message:
-                  "Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos.",
-              },
+              // pattern: {
+              //   value: /(?=(.*[0-9]))(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/,
+              //   message:
+              //     "Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos.",
+              // },
             })}
           />
           {
@@ -118,8 +125,36 @@ const FormTheater = () => {
               {errors.password && errors.password.message}
             </span>
           }
+          <small>Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos.</small>
+          <br/>
+          <label>Repite tu contraseña:</label>
+          <input
+            title="Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos."
+            type="password"
+            name="newpassword"
+            placeholder="Repita la contraseña"
+            className="form-control my-2"
+            {...register("newpassword", {
+              required: {
+                value: true,
+                message: "El campo es requerido",
+              },
+              // pattern: {
+              //   value: /(?=(.*[0-9]))(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/,
+              //   message:
+              //     "Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos.",
+              // },
+              validate: value =>
+              value === password.current || "La contraseña debe coincidir"
+            })}
+          />
+          {
+            <span className="text-danger text-small d-block mb-2">
+              {errors.newpassword && errors.newpassword.message}
+            </span>
+          }
 
-          <label>Selecciona la Provincia:</label>
+          <label>* Selecciona la Provincia:</label>
           <select
             className="form-control"
             name="province"
@@ -155,7 +190,7 @@ const FormTheater = () => {
             {errors.genre && errors.genre.message}
           </span>
 
-          <label className="form-label col-lg-12">Direccion del Teatro :</label>
+          <label className="form-label col-lg-12">* Direccion del Teatro :</label>
           <input
             type="text"
             name="adress"
@@ -172,8 +207,9 @@ const FormTheater = () => {
             {errors.adress && errors.adress.message}
           </span>
 
-          <label className="form-label col-lg-12">Numero de telefono:</label>
+          <label className="form-label col-lg-12">* Numero de telefono:</label>
           <input
+            title="No se pueden numero negativos ni decimales"
             type="number"
             name="phoneNumber"
             placeholder="Numero de telefono"
@@ -194,9 +230,10 @@ const FormTheater = () => {
           </span>
 
           <label className="form-label col-lg-12">
-            Cantidad de asientos del Teatro:
+            * Cantidad de asientos del Teatro:
           </label>
           <input
+            title="Numero de butacas que tiene tu teatro"
             type="number"
             name="seatsQTY"
             placeholder="Nº Asientos"

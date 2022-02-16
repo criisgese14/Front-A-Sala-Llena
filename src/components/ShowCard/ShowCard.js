@@ -18,7 +18,7 @@ const ShowCard = ({
   idV
 }) => {
   let timer = `${date} ${time}`;
-  console.log(timer);
+  
   return (
     <div>
       {(idV)?

@@ -26,6 +26,11 @@ import TermsAndConditions from "./components/TermsAndConditions/TermsAndConditio
 import Seat from "./components/Seats/Seats";
 import PasarelaDePago from "./components/PasarelaDePago/PasarelaDePago";
 import ShowDetailHome from "./components/Shows/ShowDetailHome";
+import PasswordRecoveryViewer from "./components/LogInViewer/PasswordRecoveryViewer";
+import PasswordRecoveryTheater from "./components/LogInTheatres/PasswordRecoveryTheater";
+import ResetPasswordViewer from "./components/LogInViewer/ResetPasswordViewer";
+import ResetPasswordTheater from "./components/LogInTheatres/ResetPasswordTheater";
+import ShowDetailTheater from "./components/Shows/ShowDetailTheater";
 
 function App() {
   return (
@@ -36,6 +41,27 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route exact path="/loginteatres" component={LogInTheatres} />
             <Route exact path="/loginviewer" component={LogInViewer} />
+            <Route
+              exact
+              path="/passwordRecoveryViewer"
+              component={PasswordRecoveryViewer}
+            />
+            <Route
+              exact
+              path="/passwordRecoveryTheater"
+              component={PasswordRecoveryTheater}
+            />
+            <Route
+              exact
+              path="/ResetPasswordViewer/:id"
+              component={ResetPasswordViewer}
+            />
+            <Route
+              exact
+              path="/ResetPasswordTheater/:id"
+              component={ResetPasswordTheater}
+            />
+
             <Route exact path="/formViewerRegister" component={FormViewers} />
             <Route exact path="/theaterRegister" component={FormTheater} />
             <Route exact path='/seat' component={Seat}/>
@@ -45,41 +71,25 @@ function App() {
               path="/editProfileTheater/:id"
               component={EditProfileTheater}
             />
-            <Route
-              exact
-              path="/create/:id"
-              component={FormShow}
-            />
+            <Route exact path="/create/:id" component={FormShow} />
             {/* <Route
               exact
               path="/create/:id"
               component={FormShow}
             /> */}
-            <Route
-              exact
-              path="/theaterHome/:id"
-              component={HomeTheater}
-            />
+            <Route exact path="/theaterHome/:id" component={HomeTheater} />
             {/* <Route
               exact
               path="/theaterHome/:id"
               component={HomeTheater}
             /> */}
-            <Route
-              exact
-              path="/viewerHome/:id"
-              component={HomeViewer}
-            />
+            <Route exact path="/viewerHome/:id" component={HomeViewer} />
             {/* <Route
               exact
               path="/viewerHome/:id"
               component={HomeViewer}
             /> */}
-            <Route
-              exact
-              path="/formPutViewer/:id"
-              component={FormPutViewer}
-            />
+            <Route exact path="/formPutViewer/:id" component={FormPutViewer}/>
             <Route exact path='/showDetailHome/:idShow' component={ShowDetailHome} />
             <Route exact path="/showDetail/:id/:idV" component={ShowDetail} />
             <Route
@@ -87,13 +97,21 @@ function App() {
               path="/formPutViewer/newsletter/:id"
               component={Newsletter}
             />
-            <Route exact path='/salesHistory/:id' component={SalesHistory}/>
-            <Route exact path='/formPutViewer/viewerHistory/:id' component={ViewerHistory}/>
-            <Route exact path='/privacyPolicy' component={PrivacyPolicy}/>
-            <Route exact path='/termsConditions' component={TermsAndConditions}/>
-            {/* <Route exact path='/showDetail/checkout/:id' component={Checkout}/> */}
-            <Route exact path='/pasarela/:id' component={PasarelaDePago}/>
-            
+            <Route exact path="/salesHistory/:id" component={SalesHistory} />
+            <Route
+              exact
+              path="/formPutViewer/viewerHistory/:id"
+              component={ViewerHistory}
+            />
+            <Route exact path="/privacyPolicy" component={PrivacyPolicy} />
+            <Route
+              exact
+              path="/termsConditions"
+              component={TermsAndConditions}
+            />
+            <Route exact path="/showDetail/checkout/:id" component={Checkout} />
+            <Route exact path="/pasarela/:id" component={PasarelaDePago} />
+            <Route exact path='/showDetailTheater/:id' component={ShowDetailTheater}/>
           </header>
         </div>
       </BrowserRouter>
