@@ -60,7 +60,7 @@ const HomeViewer = () => {
       )*/}
 
       <div className={style.showsContainer}>
-        {actualShow.length ? <Shows actualShow={actualShow} /> : <p>...</p>}
+        {actualShow.length ? <Shows actualShow={actualShow} idV={id}/> : <p>...</p>}
       </div>
 
       <div className={style.paginate}>

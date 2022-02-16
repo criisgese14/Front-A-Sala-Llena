@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import style from "./Seat.module.css";
 import { useSelector } from "react-redux";
-import Checkout from '../Checkout/Checkout';
 
-const MySeats = ({ seatsNumber, setSeatAvailable, seatsavailable, form, preciofinal, setPreciofinal, id, idV }) => {
+const SeatForm = ({ seatsNumber, setSeatAvailable, seatsavailable, form, preciofinal, setPreciofinal, id, idV }) => {
   const { showdetail } = useSelector((s) => s);
   const filas = new Array(Math.ceil(8)).fill(0).map((el, index) => index + 1);
   const sillas = new Array(Math.ceil(10)).fill(0).map((el, index) => index + 1);
@@ -119,9 +118,8 @@ const MySeats = ({ seatsNumber, setSeatAvailable, seatsavailable, form, preciofi
           ))}
         </div>
       </div>
-      <Checkout selected={selected} setSelected={setSelected} seatsavailable={seatsavailable} id={id} idV={idV}/>
     </div>
   );
 };
 
-export default MySeats;
+export default SeatForm;

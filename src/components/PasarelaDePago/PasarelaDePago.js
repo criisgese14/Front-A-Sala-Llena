@@ -1,31 +1,45 @@
 import React, {useState, useEffect}from 'react'
 import Seat from '../Seats/Seats'
-import { useDispatch} from 'react-redux'
-import { showDetail } from "../../redux/actions/index.js";
-import { useParams } from "react-router-dom";
-import Checkout from '../Checkout/Checkout';
+import { useDispatch, useSelector} from 'react-redux'
+import { showDetail, getAllTickets } from "../../redux/actions/index.js";
+import { useParams, Link } from "react-router-dom";
+import logo from "../../assets/logo a sala llena-sinfondo.png";
+import style from "./PasarelaDePago.module.css";
+
+
 
 const PasarelaDePago =  ({props}) => {
     const [seatNumber, setSeatNumber] = useState(0)
-    //const show = useSelector((state) => state.showdetail);
+    const show = useSelector((state) => state.showdetail.tickets);
+    console.log(show)
+    // const jaja = show[0]
+    // console.log(jaja)
+    const hola = show?.map((t) => t.price)
+    console.log(hola)
+   
     const dispatch = useDispatch();
-    const {id} = useParams()
+    const {id, idV} = useParams()
     //const [tickets , setTickets]= useState()
     //let variable = false;
 const onChange = ({target: {name, value}}) => {
     setSeatNumber(value)
 }
+  useEffect(() => {
+    dispatch(getAllTickets())
+  },[dispatch])
   useEffect(()=>{
     dispatch(showDetail(id))
   },[dispatch,id])
   // console.log(tickets, "Tickets")
   return (
     <div>
+      <Link to="/">
+          <img src={logo} className={style.logo} alt="A sala llena" />
+      </Link>
         <h3>Pasarela se Pago</h3>   
-        <Checkout seatNumber={seatNumber} />
         <label>Selecciona # de entradas</label>    
         <input name='seatnumber' type={'number'} onChange={(e)=>{onChange(e)}}></input>
-        <Seat seatsNumber={seatNumber}   />
+        <Seat seatsNumber={seatNumber} show={show} id={id} idV={idV}/>
         
     </div>
   )

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getShowByName } from "../../redux/actions";
+import { getShowByName, allShows } from "../../redux/actions";
 import style from "./SearchBar.module.css";
 import FormControl from "react-bootstrap/FormControl";
 import InputGroup from "react-bootstrap/InputGroup";
@@ -25,6 +25,11 @@ export default function SearchBar() {
       setName("");
     }
   }
+
+  function handleClick(e) {
+    e.preventDefault();
+    dispatch(allShows());
+}
   return (
     <div className={style.searchContainer}>
       <InputGroup className="mb-3">
@@ -44,6 +49,14 @@ export default function SearchBar() {
           onClick={(e) => handleSubmit(e)}
         >
           Buscar
+        </Button>
+        <Button
+          variant="secondary"
+          id="button-addon2"
+          type="submit"
+          onClick={(e) => handleClick(e)}
+        >
+          Recargar todos los shows
         </Button>
       </InputGroup>
     </div>

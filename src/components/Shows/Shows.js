@@ -3,8 +3,7 @@ import ShowCard from "../ShowCard/ShowCard";
 
 ;
 
-const Shows = ({ actualShow }) => {
-  
+const Shows = ({ actualShow , idV }) => {  
 
 //   useEffect(() => {
 //     dispatch(allShows());
@@ -25,6 +24,7 @@ const Shows = ({ actualShow }) => {
           date={e.date}
           score={e.score}
           time={e.time}
+          idV={idV}
         />
       ))}
     </div>

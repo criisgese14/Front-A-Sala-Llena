@@ -379,9 +379,9 @@ export function postReview(theaterScore,showScore,review,nameTheater,nameShow,na
 
 // }
 
-export function checkoutPay({price, seatNumber, idShow, idViewer}) {
+export function checkoutPay({seatNumber, showId, idViewer}) {
   return function (dispatch) {
-    axios.post('http://localhost:3001/tickets/pay', {price, seatNumber, idShow, idViewer}).then((response) => {
+    axios.post('http://localhost:3001/tickets/pay', {seatNumber, showId, idViewer}).then((response) => {
 
       dispatch({
         type: CHECKOUT_PAY,

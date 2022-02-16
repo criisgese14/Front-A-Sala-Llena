@@ -9,7 +9,7 @@ import HomeTheater from "./components/HomeTheater/HomeTheater";
 import FormTheater from "./components/Forms/FormTheater";
 import EditProfileTheater from "./components/Forms/EditProfileTheater";
 import HomeViewer from "./components/HomeViewer/HomeViewer";
-import Checkout from "./components/Checkout/Checkout";
+// import Checkout from "./components/Checkout/Checkout";
 import FormPutViewer from "./components/Forms/FormPutViewer.js";
 import { UserContextProvider } from "./context/UserContext.js";
 import ShowDetail from "./components/Shows/ShowDetail.js";
@@ -25,7 +25,7 @@ import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
 import TermsAndConditions from "./components/TermsAndConditions/TermsAndConditions";
 import Seat from "./components/Seats/Seats";
 import PasarelaDePago from "./components/PasarelaDePago/PasarelaDePago";
-
+import ShowDetailHome from "./components/Shows/ShowDetailHome";
 
 function App() {
   return (
@@ -39,7 +39,7 @@ function App() {
             <Route exact path="/formViewerRegister" component={FormViewers} />
             <Route exact path="/theaterRegister" component={FormTheater} />
             <Route exact path='/seat' component={Seat}/>
-             <Route exact path='/pasarela' component={PasarelaDePago}/>
+             <Route exact path='/pasarela/:id/:idV' component={PasarelaDePago}/>
              <Route
               exact
               path="/editProfileTheater/:id"
@@ -80,7 +80,8 @@ function App() {
               path="/formPutViewer/:id"
               component={FormPutViewer}
             />
-            <Route exact path="/showDetail/:id" component={ShowDetail} />
+            <Route exact path='/showDetailHome/:idShow' component={ShowDetailHome} />
+            <Route exact path="/showDetail/:id/:idV" component={ShowDetail} />
             <Route
               exact
               path="/formPutViewer/newsletter/:id"
@@ -90,9 +91,8 @@ function App() {
             <Route exact path='/formPutViewer/viewerHistory/:id' component={ViewerHistory}/>
             <Route exact path='/privacyPolicy' component={PrivacyPolicy}/>
             <Route exact path='/termsConditions' component={TermsAndConditions}/>
-            <Route exact path='/showDetail/checkout/:id' component={Checkout}/>
+            {/* <Route exact path='/showDetail/checkout/:id' component={Checkout}/> */}
             <Route exact path='/pasarela/:id' component={PasarelaDePago}/>
-
             
           </header>
         </div>

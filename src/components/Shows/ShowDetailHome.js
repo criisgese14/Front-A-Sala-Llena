@@ -10,10 +10,10 @@ import Footer from "../Footer/Footer.js";
 import Countdown from "react-countdown";
 import { putTicket } from "../../redux/actions/index.js";
 
-const ShowDetail = () => {
+const ShowDetailHome = () => {
   const show = useSelector((state) => state.showdetail);
   const dispatch = useDispatch();
-  const { id, idV } = useParams();
+  const { idShow } = useParams();
   //const [precio, setPrecio]= useState(null);
   const [tiempo, setTiempo] = useState({
     dia: 0,
@@ -22,8 +22,8 @@ const ShowDetail = () => {
   const [preciofinal, setPreciofinal] = useState("");
   const [porcentaje, setPorcentaje] = useState(null);
   useEffect(() => {
-    dispatch(showDetail(id));
-  }, [dispatch, id]);
+    dispatch(showDetail(idShow));
+  }, [dispatch, idShow]);
 
   console.log(show);
   const renderer = ({ days, hours, minutes, seconds, completed }) => {
@@ -94,6 +94,7 @@ const ShowDetail = () => {
       dispatch(putTicket(show.tickets[i].id, tickets));
       console.log(tickets, "tikeron");
     }
+    alert('Debes estar registrado para realizar la compra')
   };
 
   function porcentajefuncion(porcentajes) {
@@ -159,7 +160,7 @@ const ShowDetail = () => {
               <h4>{porcentaje}%</h4>
             </div>
             <div className={style.btnContainer}>
-              <Link to={`/pasarela/${id}/${idV}`} style={{ textDecoration: "none" }}>
+                <Link to="/loginviewer" style={{ textDecoration: "none" }}>
                 <Button
                   className={style.btn}
                   variant="primary"
@@ -167,7 +168,7 @@ const ShowDetail = () => {
                 >
                   Comprar
                 </Button>
-              </Link>
+                </Link>
             </div>
           </div>
           <div className={style.inf}>
@@ -180,4 +181,4 @@ const ShowDetail = () => {
     </div>
   );
 };
-export default ShowDetail;
+export default ShowDetailHome;

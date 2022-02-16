@@ -1,32 +1,48 @@
-import React from "react";
-import { checkoutPay } from "../../redux/actions/index.js";
+import React, { useEffect, useState } from "react";
+import { checkoutPay, showDetail, putTicket } from "../../redux/actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
-import logo from "../../assets/logo a sala llena-sinfondo.png";
-import style from "./Checkout.module.css";
+import { useParams } from "react-router-dom";
 
-export default function Checkout({price, seatNumber, idShow}) {
-    //const show = useSelector((state) => state.showdetail);
-    //const ticket = useSelector((state) => state.ticket);
+export default function Checkout({price, id, idV, selected, setSelected, idShow}) {
+    const show = useSelector((state) => state.showdetail);
+    console.log(show)
+    const showId = id;
+    const idViewer = idV;
+    const seatNumber = selected; //array de asientos elegidos
+    console.log(seatNumber)
     const link = useSelector((state) => state.link);
-    const { idViewer } = useParams(); 
     const dispatch = useDispatch();
-
+    const tickets = useSelector((state) => state.tickets)
+    console.log(tickets)
+    // var ticketsPrice = tickets?.map((t) => t.seatNumber)
+    // console.log(ticketsPrice)
+    var equalShowId = tickets?.filter((t) => t?.showId == showId)
+    console.log(equalShowId) // me trae solo los tickets de los asientos disponibles
+    var total = equalShowId[0]?.price * seatNumber.length;
+    
     function buttonMp () {
-        dispatch(checkoutPay({price, seatNumber, idShow, idViewer}))
+        dispatch(checkoutPay({seatNumber, showId, idViewer}))
     }
 
     return (
         <div>
-            <Link to="/">
-                 <img src={logo} className={style.logo} alt="A sala llena" />
-             </Link>
+           
+            <div>
+              <label>Numero de entradas:</label>
+              <input value={selected} disabled onChange={(e) => setSelected(e)}></input>
+            </div>
+            <div>
+              <label>Total:</label>
+              <input disabled value={total}></input>
+            </div>
+            <div>
            <button variant="dark" onClick={(e) => buttonMp(e)}>
                 Confirmar pago
               </button>
               {
-                  link && window.open(link)
+                    link && window.open(link)
               }
+            </div> 
     </div>
   )
 
