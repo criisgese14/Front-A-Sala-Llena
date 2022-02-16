@@ -60,7 +60,7 @@ const LogInViewer = () => {
     e.preventDefault();
     loginviewer(input);
     //navigate('/viewerHome/1')
-    window.location.href = `https://quizzical-colden-ae9e61.netlify.app/viewerHome/${filterViewer.id}/`;
+    window.location.href = `http://localhost:3000/viewerHome/${filterViewer.id}/`;
     setInput({ email: "", password: "" });
   }
 
@@ -105,10 +105,8 @@ const LogInViewer = () => {
         <Link to="/formViewerRegister">
           <button>REGISTRARSE</button>
         </Link>
+        <Link to="/passwordRecoveryViewer">Olvide mi contraseña</Link>
       </div>
-      {/* <div>
-        <Footer />
-      </div> */}
     </div>
   );
 };

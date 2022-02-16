@@ -48,7 +48,7 @@ const LogInTheatres = () => {
     e.preventDefault();
     login(input);
     //navigate('/viewerHome/1')
-    window.location.href = `https://quizzical-colden-ae9e61.netlify.app/theaterHome/${filterTheater.id}/`;
+    window.location.href = `http://localhost:3000/theaterHome/${filterTheater.id}/`;
     setInput({ email: "", password: "" });
   }
 
@@ -111,10 +111,8 @@ const LogInTheatres = () => {
         <Link to="/theaterRegister">
           <button>REGISTRARSE</button>
         </Link>
+        <Link to="/passwordRecoveryTheater">Olvide mi contraseña</Link>
       </div>
-      {/* <div>
-        <Footer />
-      </div> */}
     </div>
   );
 };

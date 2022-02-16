@@ -17,7 +17,7 @@ const ShowCard = ({
   score,
 }) => {
   let timer = `${date} ${time}`;
-  console.log(timer);
+  
   return (
     <Link to={`/showDetail/${id}`} style={{ textDecoration: "none" }}>
       <div className={style.cardContainer}>
