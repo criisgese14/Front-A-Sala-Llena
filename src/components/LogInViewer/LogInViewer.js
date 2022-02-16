@@ -27,8 +27,14 @@ const LogInViewer = () => {
   const dispatch = useDispatch();
   const [input, setInput] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
-  const { hasLoginError, loginviewer } = useUser();
+  const { hasLoginError, loginviewer, logingoogle } = useUser();
   const viewers = useSelector((state) => state.viewers);
+  const [loginData, setLoginData] = useState(
+    sessionStorage.getItem('loginData')
+      ? JSON.parse(sessionStorage.getItem('loginData'))
+      : null
+  );
+  
 
   useEffect(() => {
     dispatch(getAllViewers());
@@ -39,8 +45,24 @@ const LogInViewer = () => {
   );
   console.log(filterViewer);
 
-  const responseGoogle = (response) => {
-    console.log(response);
+  const handleFailure = (response) => {
+    alert(response);
+  };
+
+  const handleLogin = async (googleData) => {
+    const res = await fetch('/api/google-login', {
+      method: 'POST',
+      body: JSON.stringify({
+        token: googleData.tokenId,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const data = await res.json();
+    setLoginData(data);
+    localStorage.setItem('loginData', JSON.stringify(data));
   };
 
   function inputChange(e) {
@@ -96,11 +118,12 @@ const LogInViewer = () => {
         {hasLoginError && <strong>Usuario o contraseña invalidos</strong>}
         <br></br>
         <br></br>
+        
         <GoogleLogin
-          clientId="506901482868-h6pf1ffiuv7vicavl8btlunj18oeamjr.apps.googleusercontent.com"
-          buttonText="Login"
-          onSuccess={responseGoogle}
-          onFailure={responseGoogle}
+          clientId='506901482868-h6pf1ffiuv7vicavl8btlunj18oeamjr.apps.googleusercontent.com'
+          buttonText="Log in with Google"
+          onSuccess={handleLogin}
+          onFailure={handleFailure}
           cookiePolicy={"single_host_origin"}
         />
         <p>o</p>
