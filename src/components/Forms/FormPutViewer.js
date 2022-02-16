@@ -118,6 +118,10 @@ const FormPutViewer = () => {
                   value: true,
                   message: "El campo es requerido",
                 },
+                // pattern: {
+                //     value: /(?=(.*[0-9]))(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/,
+                //     message: "Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos."
+                // }
               })}
             />
           )}

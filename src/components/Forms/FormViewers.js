@@ -34,9 +34,10 @@ const FormViewers = () => {
       <Link to={`/loginviewer`}>
       <button type="button" className="btn btn-primary">Volver</button>
       </Link>
+      <h4>Campos obligatorios (*)</h4>
       <Fragment>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <label>Nombre:</label>
+          <label>* Nombre:</label>
           <input
             type="text"
             name="name"
@@ -55,8 +56,9 @@ const FormViewers = () => {
             </span>
           }
 
-          <label>Email:</label>
+          <label>* Email:</label>
           <input
+            title="ejemplo: usuario@nombre.com"
             type="text"
             name="email"
             placeholder="Ingrese su Correo Electronico"
@@ -78,8 +80,9 @@ const FormViewers = () => {
             </span>
           }
 
-          <label>Contraseña:</label>
+          <label>* Contraseña:</label>
           <input
+            title="Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos."
             type="password"
             name="password"
             placeholder="Ingrese su Contraseña"
@@ -89,10 +92,6 @@ const FormViewers = () => {
                 value: true,
                 message: "El campo es requerido",
               },
-              // minLength: {
-              //     value: 8,
-              //     message: "Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos."
-              // },
               // pattern: {
               //     value: /(?=(.*[0-9]))(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/,
               //     message: "Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos."
@@ -104,8 +103,11 @@ const FormViewers = () => {
               {errors.password && errors.password.message}
             </span>
           }
-          <label>Repite tu contraseña:</label>
+          <small>Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos.</small>
+          <br/>
+          <label>* Repite tu contraseña:</label>
           <input
+            title="Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos."
             type="password"
             name="passwordrepeat"
             placeholder="Repita la contraseña"
@@ -115,6 +117,10 @@ const FormViewers = () => {
                 value: true,
                 message: "El campo es requerido",
               },
+              // pattern: {
+              //     value: /(?=(.*[0-9]))(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/,
+              //     message: "Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos."
+              // }
               validate: value =>
               value === password.current || "La contraseña debe coincidir"
             })}
@@ -136,9 +142,8 @@ const FormViewers = () => {
             className="form-control my-2"
             {...register("image", {})}
           />
-          <label>Selecciona la Provincia:</label>
-          {/* <Select options={optionsProvince} 
-                            onChange={(e)=>{handleInputChange(e)}}/>   */}
+          <label>* Selecciona la Provincia:</label>
+          
           <select
             className="form-control"
             name="province"
