@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import useUser from "../../hooks/useUser.js";
 import { allTheaters } from "../../redux/actions/index.js";
 import { useSelector, useDispatch } from "react-redux";
-import Footer from "../Footer/Footer.js";
+//import Footer from "../Footer/Footer.js";
 import logo from "../../assets/logo a sala llena-sinfondo.png";
 import style from "./LoginTheaters.module.css";
 function validate(input) {
@@ -48,7 +48,7 @@ const LogInTheatres = () => {
     e.preventDefault();
     login(input);
     //navigate('/viewerHome/1')
-    window.location.href = `http://localhost:3000/theaterHome/${filterTheater.id}/`;
+    //window.location.href = `http://localhost:3000/theaterHome/${filterTheater.id}/`;
     setInput({ email: "", password: "" });
   }
 
@@ -90,7 +90,9 @@ const LogInTheatres = () => {
             onChange={handleChange}
           />
           {errors.password && <p className={style.errors}>{errors.password}</p>}
+          <Link to={`/theaterHome/${filterTheater?.id}`}>
           <button>LogIn</button>
+          </Link>
         </form>
 
         {hasLoginError && (
