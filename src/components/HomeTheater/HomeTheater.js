@@ -36,18 +36,23 @@ const HomeTheater = () => {
         <SearchBar />
       </div>
       <div className={style.showsContainer}>
-        {filterShows.map((e) => (
-          <ShowCardTheater
-            key={e.id}
-            id={e.id}
-            name={e.name}
-            genre={e.genre}
-            image={e.image}
-            rated={e.rated}
-            date={e.date}
-            
-          />
-        ))}
+        {filterShows? (
+          filterShows?.map((e) => (
+            <ShowCardTheater
+              key={e.id}
+              id={e.id}
+              name={e.name}
+              genre={e.genre}
+              image={e.image}
+              rated={e.rated}
+              date={e.date}
+              
+            />
+          )) 
+        ) : (
+          <h1>NO HAY SHOWS AGREGADOS</h1>
+        )
+      }
       </div>
       {/* <div className={style.footerContainer}>
         <Footer />
