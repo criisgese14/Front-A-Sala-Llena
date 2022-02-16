@@ -30,6 +30,11 @@ const LogInTheatres = () => {
   //const [,navigate] = useLocation();
   const { hasLoginError, login } = useUser();
   const theaters = useSelector((state) => state.theaters);
+  const [loginData, setLoginData] = useState(
+    sessionStorage.getItem('loginData')
+      ? JSON.parse(sessionStorage.getItem('loginData'))
+      : null
+  );
 
   useEffect(() => {
     dispatch(allTheaters());
@@ -40,8 +45,24 @@ const LogInTheatres = () => {
   );
   console.log(filterTheater);
 
-  const responseGoogle = (response) => {
-    console.log(response);
+  const handleFailure = (response) => {
+    alert(response);
+  };
+
+  const handleLogin = async (googleData) => {
+    const res = await fetch('/api/google-login', {
+      method: 'POST',
+      body: JSON.stringify({
+        token: googleData.tokenId,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const data = await res.json();
+    setLoginData(data);
+    localStorage.setItem('loginData', JSON.stringify(data));
   };
 
   function handleSubmit(e) {
@@ -105,8 +126,8 @@ const LogInTheatres = () => {
         <GoogleLogin
           clientId="506901482868-h6pf1ffiuv7vicavl8btlunj18oeamjr.apps.googleusercontent.com"
           buttonText="Login"
-          onSuccess={responseGoogle}
-          onFailure={responseGoogle}
+          onSuccess={handleLogin}
+          onFailure={handleFailure}
           cookiePolicy={"single_host_origin"}
         />
         <p>o</p>
