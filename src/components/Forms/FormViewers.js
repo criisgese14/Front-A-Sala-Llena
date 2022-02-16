@@ -22,9 +22,9 @@ const FormViewers = () => {
       image: data.image,
       province: data.province,
     };
-    // postViewer(inputs);
+    postViewer(inputs);
     alert("Usuario creado con exito");
-    // history.push(`/loginviewer`);
+    history.push(`/loginviewer`);
     
     
   };

@@ -15,7 +15,7 @@ export default function NavBarViewer() {
     e.preventDefault();
     logout();
   }
-  console.log(id);
+  
   return (
     <div>
       <div className={style.NavBarAllContainer}>

@@ -212,6 +212,17 @@ export function deleteViewer(id) {
   };
 }
 
+export function deleteTheater(id) {
+  return function (dispatch) {
+    return axios
+      .delete(`http://localhost:3001/theaters/${id}`)
+      .then((response) => response.data)
+      .then((data) => {
+        dispatch({ type: DELETE_THEATRER, payload: data });
+      });
+  };
+}
+
 //export function loginViewer ({ email, password }) {
 //    console.log(email)
 //    return fetch('http://localhost:3001/login/viewer', {
@@ -504,3 +515,4 @@ export const POST_NEWSLETTER_SHOW = "POST_NEWSLETTER_SHOW";
 export const GET_ALL_REVIEW = "GET_ALL_REVIEW";
 export const POST_PASSWORD_RECOVERY_VIEWER = "POST_PASSWORD_RECOVERY_VIEWER";
 export const POST_PASSWORD_RECOVERY_THEATER = "POST_PASSWORD_RECOVERY_THEATER";
+export const DELETE_THEATRER= "DELETE_THEATRER";
