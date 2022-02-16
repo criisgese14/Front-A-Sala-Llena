@@ -1,9 +1,13 @@
 import React from "react";
 import Footer from "../Footer/Footer";
+import { Link } from "react-router-dom";
 
 const TermsAndConditions = () => {
     return(
         <div>
+            <Link to='/'>
+            <button>Volver</button>
+            </Link>
             <h3>TÉRMINOS Y CONDICIONES</h3>
                 <p>Cuando adquiera sus Tickets a través del Sistema A Sala Llena-OnLine (www.ASalaLlena.com.ar), por favor asegúrese de conocer y aceptar las siguientes políticas, términos y condiciones:</p><br></br>
 
