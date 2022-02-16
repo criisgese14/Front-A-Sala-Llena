@@ -150,7 +150,7 @@ const FormShow = () => {
                 {errors.time && errors.time.message}
               </span>
               <label className="form-label col-lg-12">
-                Seleciona el Genero:{" "}
+                Seleciona el Genero:
               </label>
               <select
                 name="genre"
@@ -161,7 +161,8 @@ const FormShow = () => {
                     message: "El campo es requerido",
                   },
                 })}
-              >
+              > 
+                <option selected="true" disabled="disabled">Selecciona un genero</option>
                 <optgroup label="*OBRAS MAYORES*">
                   <option>Comedia</option>
                   <option>Drama</option>
@@ -201,7 +202,7 @@ const FormShow = () => {
                     message: "El campo es requerido",
                   },
                 })}
-              >
+              > <option selected="true" disabled="disabled">Selecciona el Tipo de Publico</option>
                 <option>Todas las edades</option>
                 <option>Apta para mayores de 13 años</option>
                 <option>Apta para mayores de 16 años</option>
