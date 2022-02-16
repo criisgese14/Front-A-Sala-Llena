@@ -85,24 +85,24 @@ const ShowDetail = () => {
   }
 
   const onSubmit = () => {
-    for (let i = 0; i < show.tickets.length; i++) {
+    for (let i = 0; i < show?.tickets.length; i++) {
       let tickets = {
-        id: show.tickets[i].id,
-        seatNumber: show.tickets[i].seatNumber,
+        id: show?.tickets[i].id,
+        seatNumber: show?.tickets[i].seatNumber,
         price: preciofinal,
       };
-      dispatch(putTicket(show.tickets[i].id, tickets));
+      dispatch(putTicket(show?.tickets[i].id, tickets));
       console.log(tickets, "tikeron");
     }
   };
 
   function porcentajefuncion(porcentajes) {
-    var descuento = (show.originPrice * porcentajes) / 100;
-    var preciofinal = show.originPrice - descuento;
+    var descuento = (show?.originPrice * porcentajes) / 100;
+    var preciofinal = show?.originPrice - descuento;
     setPreciofinal(preciofinal);
   }
 
-  let dateTimer = `${show.date} ${show.time}`;
+  let dateTimer = `${show?.date} ${show?.time}`;
   return (
     <div className={style.detailContainer}>
       <div className={style.navDetail}>
@@ -112,24 +112,24 @@ const ShowDetail = () => {
       </div>
 
       <div className={style.title}>
-        <h1>{show.name}</h1>
+        <h1>{show?.name}</h1>
       </div>
 
       <div className={style.cardDetail}>
         <div className={style.izq}>
           <div>
-            <img src={show.image} className={style.image} alt="img" />
+            <img src={show?.image} className={style.image} alt="img" />
           </div>
         </div>
         <div className={style.der}>
           <div className={style.datos}>
             <div>
               <h3>Tipo de publico: </h3>
-              <h4>{show.rated} </h4>
+              <h4>{show?.rated} </h4>
               <h3>Duracion: </h3>
-              <h4>{show.length} </h4>
+              <h4>{show?.length} </h4>
               <h3>Genero: </h3>
-              <h4>{show.genre} </h4>
+              <h4>{show?.genre} </h4>
               {/* <Timer newDate={dateTimer} newTime={timeTimer} price={precio}/> */}
               <div>
                 <Countdown
@@ -146,13 +146,13 @@ const ShowDetail = () => {
             <div>
               <h3>Entradas disponibles: </h3>
               <div></div>
-              <h4>{show.ticketsQty} </h4>
+              <h4>{show?.ticketsQty} </h4>
               <h3>Fecha: </h3>
-              <h4>{show.date} </h4>
+              <h4>{show?.date} </h4>
               <h3>Hora: </h3>
-              <h4>{show.time} </h4>
+              <h4>{show?.time} </h4>
               <h3>Precio Original: </h3>
-              <s>${show.originPrice}</s>
+              <s>${show?.originPrice}</s>
               <h3>Precio Reducido:</h3>
               <h4>${preciofinal}</h4>
               <h3>Porcentaje de descuento actual:</h3>
