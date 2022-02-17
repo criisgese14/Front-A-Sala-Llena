@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import GoogleLogin from "react-google-login";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import useUser from "../../hooks/useUser.js";
 import { getAllViewers } from "../../redux/actions/index.js";
 import { useSelector, useDispatch } from "react-redux";
@@ -29,11 +29,8 @@ const LogInViewer = () => {
   const [errors, setErrors] = useState({});
   const { hasLoginError, loginviewer,googleLoginViewer} = useUser();
   const viewers = useSelector((state) => state.viewers);
-  let idV;
-  if(window.sessionStorage.getItem('id')){
-    idV = window.sessionStorage.getItem('id').valueOf()
-  }
-  
+  const [idV,setIdV] = useState('')
+
   
   
 
@@ -52,10 +49,7 @@ const LogInViewer = () => {
 
   const handleLogin =  (googleData) => {
     googleLoginViewer(googleData)
-    
-    window.location.href = `http://localhost:3000/viewerHome/${idV}/`;
-    
-    
+    setIdV(window.sessionStorage.getItem('id')?.valueOf())
   };
 
   function inputChange(e) {
@@ -178,13 +172,18 @@ const LogInViewer = () => {
           </Link>
         </div>
         <Link to="/passwordRecoveryViewer">¿Olvidaste tu contraseña?</Link>
-        <GoogleLogin
+        {
+          idV ? 
+            <Redirect to={`/viewerHome/${idV}`}/> :
+          <GoogleLogin
           clientId="506901482868-h6pf1ffiuv7vicavl8btlunj18oeamjr.apps.googleusercontent.com"
           buttonText="Log in with Google"
           onSuccess={handleLogin}
           onFailure={handleFailure}
           cookiePolicy={"single_host_origin"}
         />
+        }
+        
       </div>
     </div>
   );

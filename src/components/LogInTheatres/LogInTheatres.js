@@ -28,10 +28,7 @@ const LogInTheatres = () => {
   const [errors, setErrors] = useState({});
   const { hasLoginError, login, googleLoginTheater } = useUser();
   const theaters = useSelector((state) => state.theaters);
-  let idT;
-  if(window.sessionStorage.getItem('id')){
-    idT = window.sessionStorage.getItem('id').valueOf()
-  }
+  const [idT,setIdT] = useState('')
   
 
   useEffect(() => {
@@ -49,11 +46,7 @@ const LogInTheatres = () => {
   
   const handleLogin =  (googleData) => {
     googleLoginTheater(googleData)
-    
-    
-    window.location.href = `http://localhost:3000/theaterHome/${idT}/`;
-    
-    
+    setIdT(window.sessionStorage.getItem('id')?.valueOf())
   };
   
 
@@ -132,13 +125,17 @@ const LogInTheatres = () => {
           </Link>
         </div>
         <Link to="/passwordRecoveryViewer">¿Olvidaste tu contraseña?</Link>
-        <GoogleLogin
+        {
+          idT ? 
+          <Redirect to={`/theaterHome/${idT}`}/> :
+          <GoogleLogin
           clientId="506901482868-h6pf1ffiuv7vicavl8btlunj18oeamjr.apps.googleusercontent.com"
           buttonText="Log in with Google"
           onSuccess={handleLogin}
           onFailure={handleFailure}
           cookiePolicy={"single_host_origin"}
         />
+        }
       </div>
     </div>
   );
