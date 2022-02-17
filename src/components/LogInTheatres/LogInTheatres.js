@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import GoogleLogin from "react-google-login";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 //import { useLocation } from 'react-router-dom';
 import useUser from "../../hooks/useUser.js";
 import { allTheaters } from "../../redux/actions/index.js";
@@ -62,14 +62,17 @@ const LogInTheatres = () => {
 
     const data = await res.json();
     setLoginData(data);
-    localStorage.setItem('loginData', JSON.stringify(data));
+    sessionStorage.setItem('loginData', JSON.stringify(data));
+    if(loginData){
+      window.location.href=`http://localhost:3000/theaterHome/${filterTheater.id}/`;
+    }
   };
 
   function handleSubmit(e) {
     e.preventDefault();
     login(input);
     //navigate('/viewerHome/1')
-    //window.location.href = `http://localhost:3000/theaterHome/${filterTheater.id}/`;
+    window.location.href = `http://localhost:3000/theaterHome/${filterTheater.id}/`;
     setInput({ email: "", password: "" });
   }
 
@@ -111,9 +114,9 @@ const LogInTheatres = () => {
             onChange={handleChange}
           />
           {errors.password && <p className={style.errors}>{errors.password}</p>}
-          <Link to={`/theaterHome/${filterTheater?.id}`}>
+          {/*<Link to={`/theaterHome/${filterTheater?.id}`}>*/}
           <button>LogIn</button>
-          </Link>
+          {/*</Link>*/}
         </form>
 
         {hasLoginError && (
@@ -123,13 +126,17 @@ const LogInTheatres = () => {
         )}
         <br></br>
         <br></br>
-        <GoogleLogin
-          clientId="506901482868-h6pf1ffiuv7vicavl8btlunj18oeamjr.apps.googleusercontent.com"
-          buttonText="Log in with Google"
-          onSuccess={handleLogin}
-          onFailure={handleFailure}
-          cookiePolicy={"single_host_origin"}
-        />
+        {loginData ? (
+            <Redirect to={`/theaterHome/${filterTheater?.id}`}/>
+          ) : (
+            <GoogleLogin
+              clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+              buttonText="Log in with Google"
+              onSuccess={handleLogin}
+              onFailure={handleFailure}
+              cookiePolicy={'single_host_origin'}
+            ></GoogleLogin>
+          )}
         <p>o</p>
         <Link to="/theaterRegister">
           <button>REGISTRARSE</button>

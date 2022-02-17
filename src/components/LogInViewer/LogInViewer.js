@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import logo from "../../assets/logo a sala llena-sinfondo.png";
 import style from "./LoginViewer.module.css";
 
+
 function validate(input) {
   let errors = {};
   if (input.email === "") {
@@ -27,13 +28,10 @@ const LogInViewer = () => {
   const dispatch = useDispatch();
   const [input, setInput] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
-  const { hasLoginError, loginviewer, logingoogle } = useUser();
+  const { hasLoginError, loginviewer,googleLoginViewer } = useUser();
   const viewers = useSelector((state) => state.viewers);
-  const [loginData, setLoginData] = useState(
-    sessionStorage.getItem('loginData')
-      ? JSON.parse(sessionStorage.getItem('loginData'))
-      : null
-  );
+  const id = window.sessionStorage.getItem('id')
+  
   
 
   useEffect(() => {
@@ -49,20 +47,12 @@ const LogInViewer = () => {
     alert(response);
   };
 
-  const handleLogin = async (googleData) => {
-    const res = await fetch('http://localhost:3001/login/google', {
-      method: 'POST',
-      body: JSON.stringify({
-        token: googleData.tokenId,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-
-    const data = await res.json();
-    setLoginData(data);
-    localStorage.setItem('loginData', JSON.stringify(data));
+  const handleLogin =  (googleData) => {
+    googleLoginViewer(googleData)
+    console.log('id',id)
+    window.location.href = `http://localhost:3000/viewerHome/${id}/`;
+    
+    
   };
 
   function inputChange(e) {
@@ -82,7 +72,7 @@ const LogInViewer = () => {
     e.preventDefault();
     loginviewer(input);
     //navigate('/viewerHome/1')
-    //window.location.href = `http://localhost:3000/viewerHome/${filterViewer.id}/`;
+    window.location.href = `http://localhost:3000/viewerHome/${filterViewer.id}/`;
     setInput({ email: "", password: "" });
   }
 
@@ -111,9 +101,9 @@ const LogInViewer = () => {
             onChange={inputChange}
           />
           {errors.password && <p>{errors.password}</p>}
-          <Link to={`/viewerHome/${filterViewer?.id}`}>
+          {/*<Link to={`/viewerHome/${filterViewer?.id}`}>*/}
           <button>LogIn</button>
-          </Link>
+          {/*</Link>*/}
         </form>
         {hasLoginError && <strong>Usuario o contraseña invalidos</strong>}
         <br></br>
