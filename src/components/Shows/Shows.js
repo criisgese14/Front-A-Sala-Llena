@@ -1,17 +1,10 @@
 import React from "react";
 import ShowCard from "../ShowCard/ShowCard";
+import style from "./Shows.module.css";
 
-;
-
-const Shows = ({ actualShow , idV }) => {  
-
-//   useEffect(() => {
-//     dispatch(allShows());
-//   }, []);
-  
+const Shows = ({ actualShow, idV }) => {
   return (
-    <div>
-      
+    <div className={style.cardContainer}>
       {actualShow?.map((e) => (
         <ShowCard
           key={e.id}
