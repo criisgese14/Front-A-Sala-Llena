@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import GoogleLogin from "react-google-login";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import useUser from "../../hooks/useUser.js";
 import { getAllViewers } from "../../redux/actions/index.js";
 import { useSelector, useDispatch } from "react-redux";
 import { Navbar, Form, Container, Button } from "react-bootstrap";
 import style from "./LoginViewer.module.css";
+
 
 function validate(input) {
   let errors = {};
@@ -26,13 +27,12 @@ const LogInViewer = () => {
   const dispatch = useDispatch();
   const [input, setInput] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
-  const { hasLoginError, loginviewer, logingoogle } = useUser();
+  const { hasLoginError, loginviewer,googleLoginViewer} = useUser();
   const viewers = useSelector((state) => state.viewers);
-  const [, setLoginData] = useState(
-    sessionStorage.getItem("loginData")
-      ? JSON.parse(sessionStorage.getItem("loginData"))
-      : null
-  );
+  const [idV,setIdV] = useState('')
+
+  
+  
 
   useEffect(() => {
     dispatch(getAllViewers());
@@ -47,20 +47,9 @@ const LogInViewer = () => {
     alert(response);
   };
 
-  const handleLogin = async (googleData) => {
-    const res = await fetch("http://localhost:3001/login/google", {
-      method: "POST",
-      body: JSON.stringify({
-        token: googleData.tokenId,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    const data = await res.json();
-    setLoginData(data);
-    localStorage.setItem("loginData", JSON.stringify(data));
+  const handleLogin =  (googleData) => {
+    googleLoginViewer(googleData)
+    setIdV(window.sessionStorage.getItem('id')?.valueOf())
   };
 
   function inputChange(e) {
@@ -183,13 +172,18 @@ const LogInViewer = () => {
           </Link>
         </div>
         <Link to="/passwordRecoveryViewer">¿Olvidaste tu contraseña?</Link>
-        <GoogleLogin
+        {
+          idV ? 
+            <Redirect to={`/viewerHome/${idV}`}/> :
+          <GoogleLogin
           clientId="506901482868-h6pf1ffiuv7vicavl8btlunj18oeamjr.apps.googleusercontent.com"
           buttonText="Log in with Google"
           onSuccess={handleLogin}
           onFailure={handleFailure}
           cookiePolicy={"single_host_origin"}
         />
+        }
+        
       </div>
     </div>
   );
