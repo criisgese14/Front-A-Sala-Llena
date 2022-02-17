@@ -1,6 +1,7 @@
 import React from "react";
 import useUser from "../../hooks/useUser";
-import { Dropdown, Navbar, Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { Dropdown, Navbar, Container, Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import style from "./NavBarPerfilViewer.module.css";
 
@@ -28,18 +29,28 @@ const NavBarPerfilViewer = () => {
               <Dropdown.Toggle variant="secondary" id="dropdown-basic">
                 Mi cuenta
               </Dropdown.Toggle>
+
               <Dropdown.Menu>
-                <Dropdown.Item href={`formPutViewer/${id}`}>
-                  <button>Mi Cuenta</button>
+                <Dropdown.Item>
+                  <Link to={`/formPutViewer/${id}`}>
+                    <Button variant="outline-dark">Perfil</Button>
+                  </Link>
                 </Dropdown.Item>
-                <Dropdown.Item href={`viewerHistory/${id}`}>
-                  <button>Mis Reservas</button>
+                <Dropdown.Item>
+                  <Link to={`/viewerHistory/${id}`}>
+                    <Button variant="outline-dark">Mis Reservas</Button>
+                  </Link>
                 </Dropdown.Item>
-                <Dropdown.Item href={`newsletter/${id}`}>
-                  <button>Newsletter</button>
+                <Dropdown.Item>
+                  <Link to={`/newsletter/${id}`}>
+                    <Button variant="outline-dark">Newsletter</Button>
+                  </Link>
                 </Dropdown.Item>
+
                 <Dropdown.Item href="#/action-2">
-                  <button onClick={handleLogOut}>Cerrar sesión</button>
+                  <Button variant="outline-dark" onClick={handleLogOut}>
+                    Cerrar sesión
+                  </Button>
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>

@@ -8,9 +8,9 @@ import {
   allTheaters,
 } from "../../redux/actions/index.js";
 import NavBarPerfilViewer from "../NavBar/NavBarPerfilViewer.js";
-import Footer from "../Footer/Footer.js";
 import Review from "../ReviewV/ReviewV.js";
 import style from "./ViewerHistory.module.css";
+import { Button } from "react-bootstrap";
 
 const ViewerHistory = () => {
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const ViewerHistory = () => {
   const theater = useSelector((state) => state.theaters);
   const [button, setButton] = useState(true);
   const { id } = useParams();
-  
+
   let showID;
   let theaterID;
 
@@ -30,14 +30,11 @@ const ViewerHistory = () => {
     dispatch(getAllTickets());
     dispatch(allTheaters());
   }, [dispatch, id]);
-  
+
   function onClick(e) {
     e.preventDefault();
     setButton(false);
-    
   }
-
-  
 
   console.log("ticket", ticket);
   let filterTicket = ticket?.filter((e) => e.viewerId === viewer.id);
@@ -51,24 +48,23 @@ const ViewerHistory = () => {
   let filterShow = show?.filter((e) => e.id === showID);
   console.log("filterShow", filterShow);
 
-  let showStatus = filterShow?.map(e => e.released)
-  console.log('showStatus',showStatus)
+  let showStatus = filterShow?.map((e) => e.released);
+  console.log("showStatus", showStatus);
 
   let status;
 
   for (let e = 0; e < showStatus?.length; e++) {
-    status = showStatus[e]
-    
+    status = showStatus[e];
   }
 
-  console.log('status',status)
+  console.log("status", status);
 
   for (let j = 0; j < filterShow?.length; j++) {
     theaterID = filterShow[j].theaterId;
   }
   console.log("theaterID", theaterID);
 
- let total = filterTicket?.map((e) => e.price);
+  let total = filterTicket?.map((e) => e.price);
 
   console.log(total);
 
@@ -98,9 +94,9 @@ const ViewerHistory = () => {
                   })}{" "}
                 </h4>
                 <div>
-                  <button onClick={onClick} className={style.btn}>
+                  <Button variant="dark" onClick={onClick}>
                     Review
-                  </button>
+                  </Button>
                   {!button ? (
                     <Review
                       nameTheater={filterTheater?.name}
@@ -117,9 +113,6 @@ const ViewerHistory = () => {
           <h1>NO HAY ENTRADAS COMPRADAS</h1>
         )}
       </div>
-      {/* <div className={style.footerContainer}>
-        <Footer />
-      </div> */}
     </div>
   );
 };
