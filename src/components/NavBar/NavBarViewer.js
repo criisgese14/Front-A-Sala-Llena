@@ -15,7 +15,7 @@ export default function NavBarViewer() {
     e.preventDefault();
     logout();
   }
-  
+  console.log(id);
   return (
     <div>
       <div className={style.NavBarAllContainer}>
@@ -34,9 +34,23 @@ export default function NavBarViewer() {
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-              <Dropdown.Item href={`/formPutViewer/${id}`}>
+              
+              <Dropdown.Item>
+              <Link to={`/formPutViewer/${id}`}>
                 <button>Perfil</button>
+                </Link>
               </Dropdown.Item>
+              <Dropdown.Item>
+            <Link to={`/viewerHistory/${id}`}>
+            <button>Mis Reservas</button>
+            </Link>
+          </Dropdown.Item>
+          <Dropdown.Item>
+            <Link to={`/newsletter/${id}`}>
+            <button>Newsletter</button>
+            </Link>
+          </Dropdown.Item>
+              
               <Dropdown.Item href="#/action-2">
                 <button onClick={handleLogOut}>Cerrar sesión</button>
               </Dropdown.Item>

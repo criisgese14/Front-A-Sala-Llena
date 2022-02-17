@@ -20,6 +20,7 @@ const ViewerHistory = () => {
   const theater = useSelector((state) => state.theaters);
   const [button, setButton] = useState(true);
   const { id } = useParams();
+  
   let showID;
   let theaterID;
 
@@ -29,17 +30,20 @@ const ViewerHistory = () => {
     dispatch(getAllTickets());
     dispatch(allTheaters());
   }, [dispatch, id]);
-
+  
   function onClick(e) {
     e.preventDefault();
     setButton(false);
+    
   }
+
+  
 
   console.log("ticket", ticket);
   let filterTicket = ticket?.filter((e) => e.viewerId === viewer.id);
   console.log("filterTicket", filterTicket);
 
-  for (let i = 0; i < filterTicket.length; i++) {
+  for (let i = 0; i < filterTicket?.length; i++) {
     showID = filterTicket[i].showId;
   }
   console.log(showID);
@@ -47,12 +51,24 @@ const ViewerHistory = () => {
   let filterShow = show?.filter((e) => e.id === showID);
   console.log("filterShow", filterShow);
 
-  for (let j = 0; j < filterShow.length; j++) {
+  let showStatus = filterShow?.map(e => e.released)
+  console.log('showStatus',showStatus)
+
+  let status;
+
+  for (let e = 0; e < showStatus?.length; e++) {
+    status = showStatus[e]
+    
+  }
+
+  console.log('status',status)
+
+  for (let j = 0; j < filterShow?.length; j++) {
     theaterID = filterShow[j].theaterId;
   }
   console.log("theaterID", theaterID);
 
-  let total = filterTicket.map((e) => e.price);
+ let total = filterTicket?.map((e) => e.price);
 
   console.log(total);
 
@@ -65,8 +81,8 @@ const ViewerHistory = () => {
         <NavBarPerfilViewer />
       </div>
       <div className={style.card}>
-        {filterShow.length && filterTicket.length ? (
-          filterShow.map((e) => {
+        {filterShow?.length && filterTicket?.length ? (
+          filterShow?.map((e) => {
             return (
               <div key={e.id}>
                 <h3>{e.name}</h3>
@@ -74,7 +90,7 @@ const ViewerHistory = () => {
                 <p>
                   Funcion: {e.date} {e.time}
                 </p>
-                <h4>Cantidad: {filterTicket.length}</h4>
+                <h4>Cantidad: {filterTicket?.length}</h4>
                 <h4>
                   Total: $
                   {total?.reduce(function (a, b) {
@@ -87,9 +103,10 @@ const ViewerHistory = () => {
                   </button>
                   {!button ? (
                     <Review
-                      nameTheater={filterTheater.name}
+                      nameTheater={filterTheater?.name}
                       nameShow={e.name}
                       nameViewer={viewer.name}
+                      status={status}
                     />
                   ) : null}
                 </div>

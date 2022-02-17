@@ -94,13 +94,13 @@ function App() {
             <Route exact path="/showDetail/:id/:idV" component={ShowDetail} />
             <Route
               exact
-              path="/formPutViewer/newsletter/:id"
+              path="/newsletter/:id"
               component={Newsletter}
             />
             <Route exact path="/salesHistory/:id" component={SalesHistory} />
             <Route
               exact
-              path="/formPutViewer/viewerHistory/:id"
+              path="/viewerHistory/:id"
               component={ViewerHistory}
             />
             <Route exact path="/privacyPolicy" component={PrivacyPolicy} />

@@ -50,7 +50,7 @@ const LogInViewer = () => {
   };
 
   const handleLogin = async (googleData) => {
-    const res = await fetch('/api/google-login', {
+    const res = await fetch('http://localhost:3001/login/google', {
       method: 'POST',
       body: JSON.stringify({
         token: googleData.tokenId,

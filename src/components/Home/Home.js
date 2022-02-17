@@ -13,7 +13,6 @@ import style from "./Home.module.css";
 import CarouselContainer from "../Carrousel/Carrousel.js";
 import CarrouselReview from "../Carrousel/CarrouselReview.js";
 
-
 export default function Home() {
   const dispatch = useDispatch();
   // const history = useHistory();
@@ -24,26 +23,22 @@ export default function Home() {
   const iLastShow = actualPage * qty; //6
   const iFirstShow = iLastShow - qty;
   const actualShow = allshows?.slice(iFirstShow, iLastShow);
-  
+
   console.log(actualShow);
   const paginate = (number) => {
     setActualPage(number);
   };
   useEffect(() => {
     dispatch(allShows());
-    
   }, [dispatch]);
-  
+
   return (
     <div className={style.homeContainer}>
       <div className={style.navContainer}>
         <NavBarAll setActualPage={setActualPage} setOrder={setOrder} />
       </div>
-      <div className={style.searchContainer}>
-        <SearchBar />
-      </div>
-      
-      <CarouselContainer allshows={allshows}/>
+
+      <CarouselContainer allshows={allshows} />
       <div className={style.showsContainer}>
         {actualShow?.length ? (
           <Shows actualShow={actualShow} />
@@ -55,7 +50,7 @@ export default function Home() {
       <div className={style.paginate}>
         <Paginate qty={qty} allshows={allshows?.length} paginate={paginate} />
       </div>
-      <CarrouselReview/>
+      <CarrouselReview />
       {/* <div className={style.footerContainer}>
         <Footer />
       </div> */}
