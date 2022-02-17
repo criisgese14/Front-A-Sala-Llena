@@ -14,7 +14,7 @@ const CarouselContainer = ({ allshows }) => {
             <Carousel.Caption className={style.carouselContent}>
               {/* <p>{e.summary}</p> */}
               <Link
-                to={`/showDetail/${e.id}`}
+                to={`/showDetailHome/${e.id}`}
                 style={{ textDecoration: "none" }}
               >
                 <h4 className={style.title}>{e.name}</h4>

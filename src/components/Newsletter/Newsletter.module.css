@@ -1,4 +1,4 @@
-.newsletter {
+/* .newsletter {
   height: 100vh;
 }
 
@@ -9,7 +9,7 @@
 
 .inputContainer {
   margin-top: 3rem;
-  color: aliceblue;
+  color: rgb(0, 0, 0);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,4 +38,22 @@
 .footerContainer {
   position: absolute;
   bottom: 0;
+} */
+
+.title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1, 2rem;
+  margin-bottom: 3rem;
+}
+
+.checkContainer {
+  margin: auto;
+  width: fit-content;
+}
+
+.select {
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: center;
+  width: 30rem;
 }

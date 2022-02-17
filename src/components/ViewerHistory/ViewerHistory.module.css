@@ -7,6 +7,9 @@
   margin-top: 3rem;
   color: rgb(0, 0, 0);
 }
+.card {
+  margin-bottom: 3rem;
+}
 
 .btn {
   border: none;
@@ -17,9 +20,4 @@
 
 .btn:hover {
   background-color: rgba(255, 255, 255, 0.877);
-}
-
-.footerContainer {
-  position: absolute;
-  bottom: 0;
 }
