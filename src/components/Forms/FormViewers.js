@@ -3,7 +3,7 @@ import { postViewer } from "../../redux/actions/index.js";
 import { useForm } from "react-hook-form";
 import Footer from "../Footer/Footer.js";
 import { useHistory, Link } from "react-router-dom";
-
+import style from "./FormViewer.module.css";
 const FormViewers = () => {
   const history = useHistory();
   const {
@@ -30,14 +30,15 @@ const FormViewers = () => {
   };
 
   return (
-    <div className="card border-success ">
+    <div className={style.formViewerContainer}>
       <Link to={`/loginviewer`}>
-      <button type="button" className="btn btn-primary">Volver</button>
+      <button type="button" className="btn btn-secondary">Volver</button>
       </Link>
-      <h4>Campos obligatorios (*)</h4>
-      <Fragment>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <label>* Nombre:</label>
+      <div className={style.formViewerCreate}>
+        <form onSubmit={handleSubmit(onSubmit)} className="row g-3">
+        <h3>Registrate</h3>
+        <div className="col-md-12">
+          <label>Nombre</label>
           <input
             type="text"
             name="name"
@@ -55,8 +56,10 @@ const FormViewers = () => {
               {errors.name && errors.name.message}
             </span>
           }
+          </div>
 
-          <label>* Email:</label>
+          <div className="col-md-12">
+          <label>Email</label>
           <input
             title="ejemplo: usuario@nombre.com"
             type="text"
@@ -79,8 +82,10 @@ const FormViewers = () => {
               {errors.email && errors.email.message}
             </span>
           }
+          </div>
 
-          <label>* Contraseña:</label>
+          <div className="col-md-6">
+          <label>Contraseña</label>
           <input
             title="Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos."
             type="password"
@@ -103,14 +108,16 @@ const FormViewers = () => {
               {errors.password && errors.password.message}
             </span>
           }
-          <small>Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos.</small>
-          <br/>
-          <label>* Repite tu contraseña:</label>
+          </div>
+          
+
+          <div className="col-md-6">
+          <label>Repite tu contraseña</label>
           <input
             title="Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos."
             type="password"
             name="passwordrepeat"
-            placeholder="Repita la contraseña"
+            placeholder="Repita su Contraseña"
             className="form-control my-2"
             {...register("passwordrepeat", {
               required: {
@@ -130,8 +137,10 @@ const FormViewers = () => {
               {errors.passwordrepeat && errors.passwordrepeat.message}
             </span>
           }
+          </div>
 
-          <label>Imagen de perfil:</label>
+          <div className="col-md-6">
+          <label>Imagen de perfil</label>
           <input
             type="url"
             width="100"
@@ -139,10 +148,13 @@ const FormViewers = () => {
             name="image"
             alt="perfil"
             placeholder="Inserte una URL de imagen"
-            className="form-control my-2"
+            className="form-control"
             {...register("image", {})}
           />
-          <label>* Selecciona la Provincia:</label>
+          </div>
+
+          <div className="col-md-6">
+          <label>Selecciona la Provincia</label>
           
           <select
             className="form-control"
@@ -175,9 +187,12 @@ const FormViewers = () => {
             <option>Tucuman</option>
             <option>CABA</option>
           </select>
-          <button className="btn btn-primary">Enviar</button>
+          </div>
+          <div>
+          <button className="btn btn-dark">Enviar</button>
+          </div>
         </form>
-      </Fragment>
+      </div>
       {/* <Footer/> */}
     </div>
   );
