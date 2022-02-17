@@ -1,11 +1,11 @@
 import React from "react";
-import NavBar from "./NavBar";
 import { Link } from "react-router-dom";
 import useUser from "../../hooks/useUser.js";
 import style from "./NavBarViewer.module.css";
 import Dropdown from "react-bootstrap/Dropdown";
 import { useParams } from "react-router-dom";
 import logo from "../../assets/logo a sala llena-sinfondo.png";
+import Filters from "./Filters";
 
 export default function NavBarViewer() {
   const { logout } = useUser();
@@ -24,7 +24,7 @@ export default function NavBarViewer() {
             <img className={style.logo} src={logo} alt="A sala llena" />
           </Link>
           <div>
-            <NavBar />
+            <Filters />
           </div>
         </div>
         <div className={style.miCuenta}>

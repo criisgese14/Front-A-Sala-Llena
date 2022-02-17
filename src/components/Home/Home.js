@@ -37,11 +37,12 @@ export default function Home() {
       <div className={style.navContainer}>
         <NavBarAll setActualPage={setActualPage} setOrder={setOrder} />
       </div>
-
       <CarouselContainer allshows={allshows} />
       <div className={style.showsContainer}>
         {actualShow?.length ? (
-          <Shows actualShow={actualShow} />
+          <div>
+            <Shows actualShow={actualShow} />
+          </div>
         ) : (
           <p>En este momento no hay espectáculos con esos filtros</p>
         )}
