@@ -81,9 +81,6 @@
   margin-left: 1rem;
 }
 
-.cardContainer {
-}
-
 .cardContainer:hover {
   /* transform: scale(1.03);
   opacity: 0.95;
