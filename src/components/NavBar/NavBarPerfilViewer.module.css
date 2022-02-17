@@ -1,0 +1,12 @@
+.container {
+  width: 100vw;
+}
+
+.heigthConfig {
+  height: 12rem;
+  margin-bottom: 3rem;
+}
+
+.buttonContainer {
+  margin-right: 5rem;
+}
