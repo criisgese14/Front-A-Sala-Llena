@@ -18,8 +18,12 @@ export default function Checkout({price, id, idV, selected, setSelected, idShow}
     // console.log(ticketsPrice)
     var equalShowId = tickets?.filter((t) => t?.showId == showId)
     console.log(equalShowId) // me trae solo los tickets de los asientos disponibles
-    var total = equalShowId[0]?.price * seatNumber?.length;
-
+    // var total = equalShowId[0]?.price * seatNumber?.length;
+    var total = 0;
+    for(var i = 0; i < 1; i++) {
+      total = equalShowId[i]?.price * seatNumber.length
+    }
+    
     function buttonMp () {
         dispatch(checkoutPay({seatNumber, showId, idViewer}))
     }

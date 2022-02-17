@@ -1,5 +1,4 @@
 import React from "react";
-import NavBar from "./NavBar";
 import { Link } from "react-router-dom";
 import style from "./NavBarAll.module.css";
 import {
@@ -10,6 +9,7 @@ import {
   Dropdown,
 } from "react-bootstrap";
 import SearchBar from "../SearchBar/SearchBar.js";
+import Filters from "./Filters";
 
 export default function NavBarAll({ setActualPage, setOrder }) {
   return (
@@ -57,7 +57,7 @@ export default function NavBarAll({ setActualPage, setOrder }) {
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
-                <NavBar setActualPage={setActualPage} setOrder={setOrder} />
+                <Filters setActualPage={setActualPage} setOrder={setOrder} />
               </Offcanvas.Body>
             </Navbar.Offcanvas>
           </div>

@@ -9,10 +9,10 @@ import {
   filterPerRated,
   filterPerTicketsQty,
 } from "../../redux/actions";
-import style from "./NavBar.module.css";
+import style from "./Filters.module.css";
 import Form from "react-bootstrap/Form";
 
-export default function NavBar({ setActualPage, setOrder }) {
+export default function Filters({ setActualPage, setOrder }) {
   const dispatch = useDispatch();
   const theaters = useSelector((state) => state.theaters);
 
