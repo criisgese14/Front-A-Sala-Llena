@@ -8,7 +8,7 @@ import {
 } from "../../redux/actions/index.js";
 import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import Footer from "../Footer/Footer.js";
+// import Footer from "../Footer/Footer.js";
 import SeatForm from "../Seats/SeatForm.js";
 import { useDispatch, useSelector } from "react-redux";
 import style from "./FormShow.module.css";
@@ -22,15 +22,19 @@ const FormShow = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const minfecha = new Date (Date())
-  const minfechaaño = minfecha.getFullYear()
-  const minfechames= minfecha.getMonth()+1 
+  const minfecha = new Date(Date());
+  const minfechaaño = minfecha.getFullYear();
+  const minfechames = minfecha.getMonth() + 1;
   let minfechames1 = minfechames.length !== 1 ? `0${minfechames}` : minfechames;
-  const minfechadia= minfecha.getDate();
-  const maxfechadia = minfecha.getDate()+2; 
-  const fechadehoy = new String(`${minfechaaño}-${minfechames1}-${minfechadia}`)
-  const fechadepasado = new String(`${minfechaaño}-${minfechames1}-${maxfechadia}`)
-  
+  const minfechadia = minfecha.getDate();
+  const maxfechadia = minfecha.getDate() + 2;
+  const fechadehoy = new String(
+    `${minfechaaño}-${minfechames1}-${minfechadia}`
+  );
+  const fechadepasado = new String(
+    `${minfechaaño}-${minfechames1}-${maxfechadia}`
+  );
+
   useEffect(() => {
     dispatch(theaterDetail(id));
   }, [dispatch, id]);
@@ -68,7 +72,7 @@ const FormShow = () => {
       console.log("ticket", tickets);
       postTicket(tickets);
     }
-    
+
     postNewsletterShow(theater.name);
     alert("Espectaculo agregado!");
     history.push(`/theaterHome/${id}`);
@@ -166,8 +170,10 @@ const FormShow = () => {
                     message: "El campo es requerido",
                   },
                 })}
-              > 
-                <option selected disabled="disabled" value="">* Selecciona un genero</option>
+              >
+                <option selected disabled="disabled" value="">
+                  * Selecciona un genero
+                </option>
                 <optgroup label="*OBRAS MAYORES*">
                   <option>Comedia</option>
                   <option>Drama</option>
@@ -208,7 +214,11 @@ const FormShow = () => {
                     message: "El campo es requerido",
                   },
                 })}
-              > <option selected disabled="disabled" value="" >Selecciona el Tipo de Publico</option>
+              >
+                {" "}
+                <option selected disabled="disabled" value="">
+                  Selecciona el Tipo de Publico
+                </option>
                 <option>Todas las edades</option>
                 <option>Apta para mayores de 13 años</option>
                 <option>Apta para mayores de 16 años</option>
@@ -256,12 +266,14 @@ const FormShow = () => {
                 {errors.image && errors.image.message}
               </span>
 
-              <label className="form-label col-lg-12">* Fecha de la obra: </label>
+              <label className="form-label col-lg-12">
+                * Fecha de la obra:{" "}
+              </label>
               <input
                 title="No se admiten numeros negativos ni decimales"
                 type="date"
                 name="date"
-                min= {fechadehoy}
+                min={fechadehoy}
                 max={fechadepasado}
                 className="form-control "
                 {...register("date", {
@@ -274,11 +286,14 @@ const FormShow = () => {
               <span className="text-danger text-small d-block mb-2">
                 {errors.date && errors.date.message}
               </span>
-              <small>Solo se puden agregar espectaculos con un max de 48h del comienzo del espectaculo</small>
-              
+              <small>
+                Solo se puden agregar espectaculos con un max de 48h del
+                comienzo del espectaculo
+              </small>
+
               <div className={style.layout}>
                 <label className="form-label col-lg-12">
-                   * Seleccione los asientos disponibles:
+                  * Seleccione los asientos disponibles:
                 </label>
                 <SeatForm
                   seatsavailable={seatsavailable}
@@ -286,7 +301,9 @@ const FormShow = () => {
                   form={form}
                 ></SeatForm>
               </div>
-              <small>Selecciona los asientos disponibles para el espectaculo</small>
+              <small>
+                Selecciona los asientos disponibles para el espectaculo
+              </small>
               <label className="form-label col-lg-12">
                 * Precio de Original de las entradas:
               </label>
@@ -306,8 +323,11 @@ const FormShow = () => {
               <span className="text-danger text-small d-block mb-2">
                 {errors.originPrice && errors.originPrice.message}
               </span>
-              <small>Precio original de la obra, el descuento se hace dinamicamente cada 6h empieza con 30% y termina en un 10%</small>
-              <br/>
+              <small>
+                Precio original de la obra, el descuento se hace dinamicamente
+                cada 6h empieza con 30% y termina en un 10%
+              </small>
+              <br />
               <button className="btn btn-primary" type="submit">
                 Agregar Espectaculo
               </button>
