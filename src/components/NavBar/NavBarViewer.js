@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import logo from "../../assets/logo a sala llena-sinfondo.png";
 import Filters from "./Filters";
 
-export default function NavBarViewer() {
+export default function NavBarViewer({img}) {
   const { logout } = useUser();
   const { id } = useParams();
 
@@ -23,6 +23,9 @@ export default function NavBarViewer() {
           <Link to="/">
             <img className={style.logo} src={logo} alt="A sala llena" />
           </Link>
+          <div>
+            <img src={img} alt='img'/>
+          </div>
           <div>
             <Filters />
           </div>

@@ -5,7 +5,7 @@ import useUser from "../../hooks/useUser";
 import style from "./NavBarTheater.module.css";
 import Dropdown from "react-bootstrap/Dropdown";
 
-export default function NavBarTheater({ id }) {
+export default function NavBarTheater({ id,img }) {
   const { logout } = useUser();
 
   const history = useHistory();
@@ -21,6 +21,9 @@ export default function NavBarTheater({ id }) {
         <Link to="/">
           <img className={style.logo} src={logo} alt="A sala llena" />
         </Link>
+      </div>
+      <div>
+        <img src={img} alt='img'/>
       </div>
       <div className={style.micuenta}>
         <Dropdown>

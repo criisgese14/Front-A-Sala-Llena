@@ -44,7 +44,7 @@ const HomeViewer = () => {
     // };
     <div className={style.homeContainer}>
       <div className={style.navContainer}>
-        <NavBarViewer setActualPage={setActualPage} setOrder={setOrder} />
+        <NavBarViewer setActualPage={setActualPage} setOrder={setOrder} img={detail?.image}/>
       </div>
       <div className={style.searchContainer}>
         <SearchBar />

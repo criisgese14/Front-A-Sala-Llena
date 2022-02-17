@@ -29,9 +29,11 @@ const HomeTheater = () => {
 
   let filterShows = shows?.filter((e) => e.theaterId === theater?.id);
   console.log('filterShows',filterShows);
+  
+  
   return (
     <div className={style.homeContainer}>
-      <NavBarTheater id={id} />
+      <NavBarTheater id={id} img={theater?.image} />
       <div className={style.searchContainer}>
         <SearchBar />
       </div>
