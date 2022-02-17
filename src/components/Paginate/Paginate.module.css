@@ -1,7 +1,9 @@
 .number {
-    display: inline-flex;
+  display: flex;
+  gap: 1rem;
+  list-style: none;
 }
-
+/* 
 .btn {
     cursor: pointer;
     border: 1px solid rgb(255, 11, 11);
@@ -25,4 +27,4 @@
     background-color: #349b32;
     color: rgb(255, 11, 11);
     border: 1px solid #349b32;
-}
+} */
