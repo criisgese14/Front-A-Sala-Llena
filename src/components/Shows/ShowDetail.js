@@ -172,7 +172,7 @@ const ShowDetail = () => {
           </div>
           <div className={style.inf}>
             <h3>Descripcion : </h3>
-            <p>{show.summary}</p>
+            <p>{show?.summary}</p>
           </div>
         </div>
       </div>
