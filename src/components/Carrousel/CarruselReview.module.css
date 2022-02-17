@@ -7,6 +7,16 @@
   display: flex;
 }
 
+.scoreContainer {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.review {
+  font-style: italic;
+}
+
 @media (max-width: 768px) {
   .ContainerReview {
     height: 50%;
