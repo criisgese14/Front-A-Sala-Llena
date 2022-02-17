@@ -3,6 +3,7 @@ import { createTheater } from "../../redux/actions";
 import { useForm } from "react-hook-form";
 import Footer from "../Footer/Footer";
 import { useHistory , Link} from "react-router-dom";
+import style from "./FormTheater.module.css";
 
 const FormTheater = () => {
   const {
@@ -32,15 +33,16 @@ const FormTheater = () => {
     history.push("/loginteatres");
   };
   return (
-    <div className="form-group row">
+    <div className={style.formTheaterContainer}>
       <Link to={`/loginteatres`}>
-      <button type="button" className="btn btn-primary">Volver</button>
+      <button type="button" className="btn btn-secondary">Volver</button>
       </Link>
-      <h4>Campos obligatorios (*)</h4>
-      <Fragment>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="form-group">
-            <label className="form-label col-lg-12">* Nombre del Teatro :</label>
+      
+      <div className={style.formTheaterCreate}>
+        <form onSubmit={handleSubmit(onSubmit)} className="row g-3">
+          <h3>Registra tu Teatro</h3>
+          <div className="col-md-12">
+            <label className="form-label col-lg-12">Nombre</label>
             <input
               title="Ingrese el Nombre del Teatro"
               type="text"
@@ -57,27 +59,10 @@ const FormTheater = () => {
             <span className="text-danger text-small d-block mb-2">
               {errors.name && errors.name.message}
             </span>
+            </div>
 
-            <label className="form-label col-lg-12">* CUIT:</label>
-            <input
-
-              type="text"
-              name="CUIT"
-              placeholder="CUIT"
-              className="form-control my-2"
-              {...register("CUIT", {
-                required: {
-                  value: true,
-                  message: "El campo es requerido",
-                },
-              })}
-            />
-            <span className="text-danger text-small d-block mb-2">
-              {errors.CUIT && errors.CUIT.message}
-            </span>
-          </div>
-
-          <label>* Email:</label>
+            <div className="col-md-12">
+          <label>Email</label>
           <input
             title="ejemplo: usuario@nombre.com"
             type="text"
@@ -100,8 +85,32 @@ const FormTheater = () => {
               {errors.email && errors.email.message}
             </span>
           }
+          </div>
 
-          <label>* Contraseña:</label>
+            <div className="col-md-12">
+            <label className="form-label col-lg-12">CUIT</label>
+            <input
+
+              type="text"
+              name="CUIT"
+              placeholder="CUIT"
+              className="form-control my-2"
+              {...register("CUIT", {
+                required: {
+                  value: true,
+                  message: "El campo es requerido",
+                },
+              })}
+            />
+            <span className="text-danger text-small d-block mb-2">
+              {errors.CUIT && errors.CUIT.message}
+            </span>
+          </div>
+
+          
+
+          <div className="col-md-6">
+          <label>Contraseña</label>
           <input
             title="Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos."
             type="password"
@@ -125,9 +134,11 @@ const FormTheater = () => {
               {errors.password && errors.password.message}
             </span>
           }
-          <small>Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos.</small>
-          <br/>
-          <label>Repite tu contraseña:</label>
+          
+          </div>
+
+          <div className="col-md-6">
+          <label>Repite tu contraseña</label>
           <input
             title="Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos."
             type="password"
@@ -153,10 +164,12 @@ const FormTheater = () => {
               {errors.newpassword && errors.newpassword.message}
             </span>
           }
+          </div>
 
-          <label>* Selecciona la Provincia:</label>
+          <div className="col-md-5">
+          <label>Provincia</label>
           <select
-            className="form-control"
+            className="form-control my-2"
             name="province"
             {...register("province", {})}
           >
@@ -189,13 +202,15 @@ const FormTheater = () => {
           <span className="text-danger text-small d-block mb-2">
             {errors.genre && errors.genre.message}
           </span>
+          </div>
 
-          <label className="form-label col-lg-12">* Direccion del Teatro :</label>
+          <div className="col-md-7">
+          <label className="form-label ">Direccion </label>
           <input
             type="text"
             name="adress"
             placeholder="Direccion del Teatro"
-            className="form-control my-2"
+            className="form-control "
             {...register("adress", {
               required: {
                 value: true,
@@ -206,8 +221,10 @@ const FormTheater = () => {
           <span className="text-danger text-small d-block mb-2">
             {errors.adress && errors.adress.message}
           </span>
+          </div>
 
-          <label className="form-label col-lg-12">* Numero de telefono:</label>
+          <div className="col-md-6">
+          <label className="form-label col-lg-12">Numero de telefono</label>
           <input
             title="No se pueden numero negativos ni decimales"
             type="number"
@@ -228,9 +245,11 @@ const FormTheater = () => {
           <span className="text-danger text-small d-block mb-2">
             {errors.phoneNumber && errors.phoneNumber.message}
           </span>
+          </div>
 
+          <div className="col-md-6">
           <label className="form-label col-lg-12">
-            * Cantidad de asientos del Teatro:
+          Asientos del Teatro
           </label>
           <input
             title="Numero de butacas que tiene tu teatro"
@@ -252,8 +271,10 @@ const FormTheater = () => {
           <span className="text-danger text-small d-block mb-2">
             {errors.seatsQTY && errors.seatsQTY.message}
           </span>
+          </div>
 
-          <label>Imagen de perfil:</label>
+          <div className="col-md-12">
+          <label>Imagen de perfil</label>
           <input
             type="url"
             width="100"
@@ -264,12 +285,14 @@ const FormTheater = () => {
             className="form-control my-2"
             {...register("image", {})}
           />
-
-          <button className="btn btn-primary" type="submit">
+          </div>
+          <div>
+          <button className="btn btn-dark" type="submit">
             Registra Teatro
           </button>
+          </div>
         </form>
-      </Fragment>
+      </div>
       {/* <Footer/> */}
     </div>
   );
