@@ -31,6 +31,7 @@ import PasswordRecoveryTheater from "./components/LogInTheatres/PasswordRecovery
 import ResetPasswordViewer from "./components/LogInViewer/ResetPasswordViewer";
 import ResetPasswordTheater from "./components/LogInTheatres/ResetPasswordTheater";
 import ShowDetailTheater from "./components/Shows/ShowDetailTheater";
+import Error404 from "./components/Error 404/Error404";
 
 function App() {
   return (
@@ -94,13 +95,13 @@ function App() {
             <Route exact path="/showDetail/:id/:idV" component={ShowDetail} />
             <Route
               exact
-              path="/formPutViewer/newsletter/:id"
+              path="/newsletter/:id"
               component={Newsletter}
             />
             <Route exact path="/salesHistory/:id" component={SalesHistory} />
             <Route
               exact
-              path="/formPutViewer/viewerHistory/:id"
+              path="/viewerHistory/:id"
               component={ViewerHistory}
             />
             <Route exact path="/privacyPolicy" component={PrivacyPolicy} />
@@ -112,6 +113,7 @@ function App() {
             {/* <Route exact path="/showDetail/checkout/:id" component={Checkout} /> */}
             <Route exact path="/pasarela/:id" component={PasarelaDePago} />
             <Route exact path='/showDetailTheater/:id' component={ShowDetailTheater}/>
+            <Route exact path='/error404' component={Error404}/>
           </header>
         </div>
       </BrowserRouter>

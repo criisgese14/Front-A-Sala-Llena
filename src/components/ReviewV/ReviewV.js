@@ -4,21 +4,31 @@ import { useDispatch } from 'react-redux';
 import swal from 'sweetalert';
 
 
-const Review = ({nameTheater,nameShow,nameViewer}) => {
+const Review = ({nameTheater,nameShow,nameViewer,status}) => {
     
     let [theaterScore,setTheaterScore] = useState('');
     let [showScore,setShowScore] = useState('');
     let [review,setReview] = useState('');
+    let [button,setButton] = useState(true);
     const dispatch = useDispatch();
     
-    
+
     function handleSubmit(e){
         e.preventDefault();
-        dispatch(postReview(theaterScore,showScore,review,nameTheater,nameShow,nameViewer))
-        swal('Enviado! Muchas gracias!', '', 'success')
-        setTheaterScore('')
-        setShowScore('')
-        review('')
+        if(status){
+            dispatch(postReview(theaterScore,showScore,review,nameTheater,nameShow,nameViewer))
+            swal('Enviado! Muchas gracias!', '', 'success')
+            setTheaterScore('')
+            setShowScore('')
+            review('')
+        }else{
+            alert('Todavia no se puede valorar esta obra')
+        }
+            
+        
+            
+        
+        
     }
     
     function onChangeTheater(e){
@@ -32,6 +42,8 @@ const Review = ({nameTheater,nameShow,nameViewer}) => {
     function onChangeReview(e){
         setReview(e.target.value)
     }
+
+    
 
     console.log('theaterScore',theaterScore)
     return(

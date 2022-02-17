@@ -438,6 +438,7 @@ export function checkoutPay({seatNumber, showId, idViewer}) {
   }
 }
 
+
 export function postNewsletterShow(nameTheater) {
   try {
     const postshow = axios.post("http://localhost:3001/newsletter", {

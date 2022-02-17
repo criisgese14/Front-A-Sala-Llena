@@ -10,15 +10,14 @@ const CarouselContainer = ({ allshows }) => {
       <Carousel variant="dark">
         {ultimos?.map((e, i) => (
           <Carousel.Item key={e.id}>
-            <img className="d-block w-100" src={e.image} alt="First slide" />
-            <Carousel.Caption>
-              <h5>{e.name}</h5>
-              <p>{e.summary}</p>
+            <img className={style.image} src={e.image} alt="First slide" />
+            <Carousel.Caption className={style.carouselContent}>
+              {/* <p>{e.summary}</p> */}
               <Link
                 to={`/showDetail/${e.id}`}
                 style={{ textDecoration: "none" }}
               >
-                <button className="btn btn-primary">Ver detalles</button>
+                <h4 className={style.title}>{e.name}</h4>
               </Link>
             </Carousel.Caption>
           </Carousel.Item>

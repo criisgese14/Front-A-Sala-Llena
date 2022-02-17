@@ -1,4 +1,4 @@
-.cardContainer {
+/* .cardContainer {
   margin: 20px;
   height: 15rem;
   width: 50rem;
@@ -27,7 +27,7 @@
   justify-content: center;
   width: 35rem;
   height: 15rem;
-  color: white;
+  color: rgb(14, 12, 12);
 }
 
 .title {
@@ -65,11 +65,37 @@
     justify-content: center;
     width: 35rem;
     height: 15rem;
-    color: white;
+    color: rgb(19, 18, 18);
   }
 
   .title {
     font-size: 1rem;
     font-weight: 900;
   }
+} */
+
+.container {
+  /* border: 2px solid red; */
+  width: 22rem;
+  display: flex;
+  margin-left: 1rem;
+}
+
+.cardContainer:hover {
+  /* transform: scale(1.03);
+  opacity: 0.95;
+  transition: all 250ms ease-in-out 0s; */
+  box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
+}
+
+.title {
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2;
+}
+
+.subtitle {
+  font-family: "Montserrat", sans-serif;
+  color: #6a6a6a;
 }
