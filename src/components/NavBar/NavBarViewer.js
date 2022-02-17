@@ -80,22 +80,30 @@ export default function NavBarViewer({ img }) {
             {/* //------------------Boton Dropdown------------------------- */}
             <Dropdown>
               <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                Mi Cuenta
+                Mi cuenta
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                <Dropdown.Item href={`/formPutViewer/${id}`}>
-                  {" "}
-                  <Link to="/loginviewer">
-                    <Button variant="outline-dark">Mi Perfil</Button>
+                <Dropdown.Item>
+                  <Link to={`/formPutViewer/${id}`}>
+                    <Button variant="outline-dark">Perfil</Button>
                   </Link>
                 </Dropdown.Item>
-                <Dropdown.Item href="#/action-2">
-                  <Link to="#">
-                    <Button onClick={handleLogOut} variant="outline-dark">
-                      Cerrar Sesion
-                    </Button>
+                <Dropdown.Item>
+                  <Link to={`/viewerHistory/${id}`}>
+                    <Button variant="outline-dark">Mis Reservas</Button>
                   </Link>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Link to={`/newsletter/${id}`}>
+                    <Button variant="outline-dark">Newsletter</Button>
+                  </Link>
+                </Dropdown.Item>
+
+                <Dropdown.Item href="#/action-2">
+                  <Button variant="outline-dark" onClick={handleLogOut}>
+                    Cerrar sesión
+                  </Button>
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
