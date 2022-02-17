@@ -8,7 +8,6 @@ import {
 } from "../../redux/actions/index.js";
 import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
-// import Footer from "../Footer/Footer.js";
 import SeatForm from "../Seats/SeatForm.js";
 import { useDispatch, useSelector } from "react-redux";
 import style from "./FormShow.module.css";
