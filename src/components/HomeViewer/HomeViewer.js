@@ -3,7 +3,6 @@ import { allShows } from "../../redux/actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
 import Shows from "../Shows/Shows.js";
 import NavBarViewer from "../NavBar/NavBarViewer.js";
-import SearchBar from "../SearchBar/SearchBar.js";
 import Paginate from "../Paginate/Paginate.js";
 import style from "./HomeViewer.module.css";
 import CarouselContainer from "../Carrousel/Carrousel.js";
@@ -30,44 +29,37 @@ const HomeViewer = () => {
     dispatch(allShows());
   }, [dispatch, id]);
 
-  const shows = allshows?.filter((e) => e.theater?.province === detail?.province);
+  const shows = allshows?.filter(
+    (e) => e.theater?.province === detail?.province
+  );
   // console.log(shows);
 
   return (
-    //     <div className={style.homeContainer}>
-    //       <NavBarViewer />
-    //       <div className={style.showsContainer}>
-    //         <Shows />
-    //       </div>
-    //     </div>
-    //   );
-    // };
     <div className={style.homeContainer}>
       <div className={style.navContainer}>
-        <NavBarViewer setActualPage={setActualPage} setOrder={setOrder} img={detail?.image}/>
+        <NavBarViewer
+          setActualPage={setActualPage}
+          setOrder={setOrder}
+          img={detail?.image}
+        />
       </div>
-      <div className={style.searchContainer}>
-        <SearchBar />
+      <div className={style.carouselContainer}>
+        {shows?.length > 0 ? (
+          <CarouselContainer allshows={shows} />
+        ) : (
+          <CarouselContainer allshows={allshows} />
+        )}
       </div>
-      {/* <Link to ='/'>
-              </Link> */}
-
-      {shows?.length > 0 ? (
-        <CarouselContainer allshows={shows} />
-      ) : (
-        <CarouselContainer allshows={allshows} />
-      )}
-
       <div className={style.showsContainer}>
-        {actualShow?.length ? <Shows actualShow={actualShow} idV={id}/> : <p>...</p>}
+        {actualShow?.length ? (
+          <Shows actualShow={actualShow} idV={id} />
+        ) : (
+          <p>...</p>
+        )}
       </div>
-
       <div className={style.paginate}>
         <Paginate qty={qty} allshows={allshows?.length} paginate={paginate} />
       </div>
-      {/* <div className={style.footerContainer}>
-        <Footer />
-      </div> */}
     </div>
   );
 };

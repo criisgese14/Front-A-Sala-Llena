@@ -83,55 +83,6 @@ const LogInTheatres = () => {
 
   return (
     <div>
-      {/* <div className={style.header}>
-        <Link to="/">
-          <img className={style.logo} src={logo} alt="A sala llena" />
-        </Link>
-      </div>
-      <div className={style.formContainer}>
-        <form className={style.inputs} onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Email..."
-            value={input.email}
-            name="email"
-            onChange={handleChange}
-          />
-          {errors.email && <p className={style.errors}>{errors.email}</p>}
-          <input
-            type="password"
-            placeholder="password"
-            value={input.password}
-            name="password"
-            onChange={handleChange}
-          />
-          {errors.password && <p className={style.errors}>{errors.password}</p>}
-          <Link to={`/theaterHome/${filterTheater?.id}`}>
-          <button>LogIn</button>
-          </Link>
-        </form>
-
-        {hasLoginError && (
-          <strong className={style.errors}>
-            Usuario o contraseña invalidos
-          </strong>
-        )}
-        <br></br>
-        <br></br>
-        <GoogleLogin
-          clientId="506901482868-h6pf1ffiuv7vicavl8btlunj18oeamjr.apps.googleusercontent.com"
-          buttonText="Log in with Google"
-          onSuccess={handleLogin}
-          onFailure={handleFailure}
-          cookiePolicy={"single_host_origin"}
-        />
-        <p>o</p>
-        <Link to="/theaterRegister">
-          <button>REGISTRARSE</button>
-        </Link>
-        <Link to="/passwordRecoveryTheater">Olvide mi contraseña</Link>
-      </div> */}
-
       <Navbar
         className={style.heigthConfig}
         bg="dark"

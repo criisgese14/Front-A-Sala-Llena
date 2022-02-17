@@ -4,10 +4,11 @@ import useUser from "../../hooks/useUser.js";
 import style from "./NavBarViewer.module.css";
 import Dropdown from "react-bootstrap/Dropdown";
 import { useParams } from "react-router-dom";
-import logo from "../../assets/logo a sala llena-sinfondo.png";
 import Filters from "./Filters";
+import { Navbar, Offcanvas, Container, Button } from "react-bootstrap";
+import SearchBar from "../SearchBar/SearchBar.js";
 
-export default function NavBarViewer({img}) {
+export default function NavBarViewer({ img }) {
   const { logout } = useUser();
   const { id } = useParams();
 
@@ -18,13 +19,13 @@ export default function NavBarViewer({img}) {
   console.log(id);
   return (
     <div>
-      <div className={style.NavBarAllContainer}>
+      {/* <div className={style.NavBarAllContainer}>
         <div className={style.column}>
           <Link to="/">
             <img className={style.logo} src={logo} alt="A sala llena" />
           </Link>
           <div>
-            <img src={img} alt='img'/>
+            <img src={img} alt="img" />
           </div>
           <div>
             <Filters />
@@ -37,30 +38,86 @@ export default function NavBarViewer({img}) {
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-              
               <Dropdown.Item>
-              <Link to={`/formPutViewer/${id}`}>
-                <button>Perfil</button>
+                <Link to={`/formPutViewer/${id}`}>
+                  <button>Perfil</button>
                 </Link>
               </Dropdown.Item>
               <Dropdown.Item>
-            <Link to={`/viewerHistory/${id}`}>
-            <button>Mis Reservas</button>
-            </Link>
-          </Dropdown.Item>
-          <Dropdown.Item>
-            <Link to={`/newsletter/${id}`}>
-            <button>Newsletter</button>
-            </Link>
-          </Dropdown.Item>
-              
+                <Link to={`/viewerHistory/${id}`}>
+                  <button>Mis Reservas</button>
+                </Link>
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <Link to={`/newsletter/${id}`}>
+                  <button>Newsletter</button>
+                </Link>
+              </Dropdown.Item>
+
               <Dropdown.Item href="#/action-2">
                 <button onClick={handleLogOut}>Cerrar sesión</button>
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         </div>
-      </div>
+      </div> */}
+
+      <Navbar
+        className={style.heigthConfig}
+        bg="dark"
+        variant="dark"
+        expand={false}
+      >
+        <Container fluid>
+          <Navbar.Brand href="/">A Sala Llena</Navbar.Brand>
+          <div>
+            <img className={style.profileImage} src={img} alt="img" />
+          </div>
+          <div className={style.searchContainer}>
+            <SearchBar />
+          </div>
+          <div className={style.buttonsContainer}>
+            {/* //------------------Boton Dropdown------------------------- */}
+            <Dropdown>
+              <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                Mi Cuenta
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item href={`/formPutViewer/${id}`}>
+                  {" "}
+                  <Link to="/loginviewer">
+                    <Button variant="outline-dark">Mi Perfil</Button>
+                  </Link>
+                </Dropdown.Item>
+                <Dropdown.Item href="#/action-2">
+                  <Link to="#">
+                    <Button onClick={handleLogOut} variant="outline-dark">
+                      Cerrar Sesion
+                    </Button>
+                  </Link>
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+            {/* //------------------modal------------------------- */}
+            <Navbar.Toggle aria-controls="offcanvasNavbar" />
+            <Navbar.Offcanvas
+              id="offcanvasNavbar"
+              aria-labelledby="offcanvasNavbarLabel"
+              placement="end"
+            >
+              <Offcanvas.Header closeButton>
+                <Offcanvas.Title id="offcanvasNavbarLabel">
+                  Filtros
+                </Offcanvas.Title>
+              </Offcanvas.Header>
+              <Offcanvas.Body>
+                <Filters />
+              </Offcanvas.Body>
+            </Navbar.Offcanvas>
+          </div>
+        </Container>
+      </Navbar>
     </div>
   );
 }
