@@ -12,6 +12,8 @@ import Footer from "../Footer/Footer.js";
 import SeatForm from "../Seats/SeatForm.js";
 import { useDispatch, useSelector } from "react-redux";
 import style from "./FormShow.module.css";
+import swal from "sweetalert";
+
 const FormShow = () => {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -41,37 +43,50 @@ const FormShow = () => {
   const [form] = useState(true);
   console.log(seatsavailable, "seats");
   console.log(id);
+
   const onSubmit = (data) => {
-    const inputs = {
-      ...input,
-      theaterName: theater.name,
-      name: data.name,
-      summary: data.summary,
-      genre: data.genre,
-      length: data.length,
-      image: data.image,
-      ticketsQty: seatsavailable.length,
-      rated: data.rated,
-      date: data.date,
-      time: data.time,
-      originPrice: data.originPrice,
-    };
-    //let tickets={}
-    console.log("input", inputs);
-    postShow(inputs);
-    for (var i = 0; i < seatsavailable.length; i++) {
-      const tickets = {
-        price: data.originPrice,
-        seatNumber: seatsavailable[i],
-        nameShow: data.name,
-      };
-      console.log("ticket", tickets);
-      postTicket(tickets);
-    }
-    
     postNewsletterShow(theater.name);
-    alert("Espectaculo agregado!");
-    history.push(`/theaterHome/${id}`);
+    swal({
+      icon: "warning",
+      buttons: ['Cancelar', 'Confirmar'],
+    })
+    .then((res) => {
+      console.log(res)
+      if (res) {
+        const inputs = {
+          ...input,
+          theaterName: theater.name,
+          name: data.name,
+          summary: data.summary,
+          genre: data.genre,
+          length: data.length,
+          image: data.image,
+          ticketsQty: seatsavailable.length,
+          rated: data.rated,
+          date: data.date,
+          time: data.time,
+          originPrice: data.originPrice,
+        };
+        //let tickets={}
+        console.log("input", inputs);
+        postShow(inputs);
+        for (var i = 0; i < seatsavailable.length; i++) {
+          const tickets = {
+            price: data.originPrice,
+            seatNumber: seatsavailable[i],
+            nameShow: data.name,
+          };
+          console.log("ticket", tickets);
+          postTicket(tickets);
+        }
+        swal("Espectaculo agregado!", {
+          icon: "success",
+        });
+        history.push(`/theaterHome/${id}`);
+      } else {
+        swal("Tomate tu tiempo");
+      }
+    });
   };
 
   return (

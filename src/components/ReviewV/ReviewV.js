@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {postReview} from '../../redux/actions/index.js';
 import { useDispatch } from 'react-redux';
+import swal from 'sweetalert';
 
 
 const Review = ({nameTheater,nameShow,nameViewer}) => {
@@ -14,7 +15,7 @@ const Review = ({nameTheater,nameShow,nameViewer}) => {
     function handleSubmit(e){
         e.preventDefault();
         dispatch(postReview(theaterScore,showScore,review,nameTheater,nameShow,nameViewer))
-        alert('Enviado! Muchas gracias!')
+        swal('Enviado! Muchas gracias!', '', 'success')
         setTheaterScore('')
         setShowScore('')
         review('')

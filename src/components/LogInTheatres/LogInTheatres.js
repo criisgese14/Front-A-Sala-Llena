@@ -8,6 +8,8 @@ import { useSelector, useDispatch } from "react-redux";
 //import Footer from "../Footer/Footer.js";
 import logo from "../../assets/logo a sala llena-sinfondo.png";
 import style from "./LoginTheaters.module.css";
+import swal from 'sweetalert'
+
 function validate(input) {
   let errors = {};
   if (input.email === "") {
@@ -46,7 +48,9 @@ const LogInTheatres = () => {
   console.log(filterTheater);
 
   const handleFailure = (response) => {
-    alert(response);
+    swal({
+      tittle: response,
+      icon: 'error'});
   };
 
   const handleLogin = async (googleData) => {

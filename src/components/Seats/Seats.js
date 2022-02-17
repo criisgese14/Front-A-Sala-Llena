@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import style from "./Seat.module.css";
 import { useSelector } from "react-redux";
 import Checkout from '../Checkout/Checkout';
+import swal from "sweetalert";
 
 const MySeats = ({ seatsNumber, setSeatAvailable, seatsavailable, form, preciofinal, setPreciofinal, id, idV }) => {
   const { showdetail } = useSelector((s) => s);
@@ -36,7 +37,11 @@ const MySeats = ({ seatsNumber, setSeatAvailable, seatsavailable, form, preciofi
       setSelected(selected.filter((el) => el !== silla));
       setAvailable([...available, silla]);
     } else if (selected.length === seatsNumber) {
-      alert("no puedes escoger mas tickets");
+      swal({
+        tittle: "No puedes escoger más tickets",
+        icon: 'error',
+        time: 2000
+      });
     }
   };
   useEffect(() => {

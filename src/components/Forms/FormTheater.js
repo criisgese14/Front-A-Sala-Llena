@@ -3,6 +3,7 @@ import { createTheater } from "../../redux/actions";
 import { useForm } from "react-hook-form";
 import Footer from "../Footer/Footer";
 import { useHistory , Link} from "react-router-dom";
+import swal from "sweetalert";
 
 const FormTheater = () => {
   const {
@@ -27,8 +28,7 @@ const FormTheater = () => {
       seatsQTY: data.seatsQTY,
     };
     createTheater(inputs);
-    alert("Teatro creado con exito");
-
+    swal("Teatro creado con exito", '', 'success');
     history.push("/loginteatres");
   };
   return (

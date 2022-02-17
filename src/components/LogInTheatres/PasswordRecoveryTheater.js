@@ -4,6 +4,7 @@ import { postPasswordRecoveryTheater } from "../../redux/actions/index.js";
 import { useDispatch } from "react-redux";
 import logo from "../../assets/logo a sala llena-sinfondo.png";
 import style from "./LoginTheaters.module.css";
+import swal from "sweetalert";
 
 function validate(input) {
   let errors = {};
@@ -37,7 +38,7 @@ const PasswordRecoveryTheater = () => {
     e.preventDefault();
     dispatch(postPasswordRecoveryTheater(input.email));
     window.location.href = `http://localhost:3000`;
-    alert("Email enviado!");
+    swal("Email enviado!", '', 'success');
     setInput({ email: "" });
   }
 

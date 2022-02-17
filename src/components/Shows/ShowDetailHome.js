@@ -9,6 +9,7 @@ import Button from "react-bootstrap/Button";
 import Footer from "../Footer/Footer.js";
 import Countdown from "react-countdown";
 import { putTicket } from "../../redux/actions/index.js";
+import swal from "sweetalert";
 
 const ShowDetailHome = () => {
   const show = useSelector((state) => state.showdetail);
@@ -94,7 +95,7 @@ const ShowDetailHome = () => {
       dispatch(putTicket(show.tickets[i].id, tickets));
       console.log(tickets, "tikeron");
     }
-    alert('Debes estar registrado para realizar la compra')
+    swal('Debes estar registrado para realizar la compra', '', 'warning')
   };
 
   function porcentajefuncion(porcentajes) {

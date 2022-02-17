@@ -3,6 +3,7 @@ import { postViewer } from "../../redux/actions/index.js";
 import { useForm } from "react-hook-form";
 import Footer from "../Footer/Footer.js";
 import { useHistory, Link } from "react-router-dom";
+import swal from "sweetalert";
 
 const FormViewers = () => {
   const history = useHistory();
@@ -23,7 +24,7 @@ const FormViewers = () => {
       province: data.province,
     };
     postViewer(inputs);
-    alert("Usuario creado con exito");
+    swal("Usuario creado con exito", '', 'success');
     history.push(`/loginviewer`);
     
     

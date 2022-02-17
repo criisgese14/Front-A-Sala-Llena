@@ -109,7 +109,7 @@ function App() {
               path="/termsConditions"
               component={TermsAndConditions}
             />
-            <Route exact path="/showDetail/checkout/:id" component={Checkout} />
+            {/* <Route exact path="/showDetail/checkout/:id" component={Checkout} /> */}
             <Route exact path="/pasarela/:id" component={PasarelaDePago} />
             <Route exact path='/showDetailTheater/:id' component={ShowDetailTheater}/>
           </header>

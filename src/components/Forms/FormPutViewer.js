@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import swal from "sweetalert";
 import { useHistory, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -40,16 +41,42 @@ const FormPutViewer = () => {
       password: data.password,
       image: data.image,
     };
-    dispatch(putViewer(id, cara));
-    alert("Usuario actualizado!");
-    setEdit(false);
-    history.push(`/viewerHome/${id}`);
+    swal({
+      title: "Estás seguro?",
+      icon: "warning",
+      buttons: ['Cancel', 'Confirm'],
+    })
+    .then((res) => {
+      if (res) {
+        dispatch(putViewer(id, cara));
+        swal("Usuario actualizado!", '', 'success');
+        setEdit(false);
+        history.push(`/viewerHome/${id}`);
+      } else {
+        swal("Revisa bien tus cambios👀!");
+      }
+    });
   }
 
   function handleSubmitDelete(event) {
-    dispatch(deleteViewer(id));
-    alert("Usuario Borrado con exito");
-    history.push("/");
+    swal({
+      title: "Estás seguro?",
+      text: "Una vez borrado, no lo podras recuperar!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        swal("Usuario borrado con exito", {
+          icon: "success",
+        });
+        dispatch(deleteViewer(id));
+        history.push("/");
+      } else {
+        swal("Tu perfil seguira con vida ✔👀!");
+      }
+    });
   }
   
 

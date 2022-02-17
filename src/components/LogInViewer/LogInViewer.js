@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 //import Footer from "../Footer/Footer.js";
 import logo from "../../assets/logo a sala llena-sinfondo.png";
 import style from "./LoginViewer.module.css";
+import swal from "sweetalert";
 
 function validate(input) {
   let errors = {};
@@ -46,7 +47,7 @@ const LogInViewer = () => {
   console.log(filterViewer);
 
   const handleFailure = (response) => {
-    alert(response);
+    swal(response, '', 'error');
   };
 
   const handleLogin = async (googleData) => {

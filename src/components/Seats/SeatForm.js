@@ -35,7 +35,11 @@ const SeatForm = ({ seatsNumber, setSeatAvailable, seatsavailable, form, preciof
       setSelected(selected.filter((el) => el !== silla));
       setAvailable([...available, silla]);
     } else if (selected.length === seatsNumber) {
-      alert("no puedes escoger mas tickets");
+      swal({
+        tittle: "No puedes escoger más tickets",
+        icon: 'error',
+        time: 2000
+      });
     }
   };
   useEffect(() => {

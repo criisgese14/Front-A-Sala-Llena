@@ -31,7 +31,6 @@ export default function Home() {
   };
   useEffect(() => {
     dispatch(allShows());
-    
   }, [dispatch]);
   
   return (

@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { allTheaters, putViewer, createFavorites } from "../../redux/actions";
 import { useParams } from "react-router-dom";
 import Footer from "../Footer/Footer";
+import swal from "sweetalert";
 
 const Newsletter = () => {
   const theaters = useSelector((state) => state.theaters);
@@ -41,7 +42,7 @@ const Newsletter = () => {
     dispatch(putViewer(id, { isSubscribed: input.isSubscribed }));
     dispatch(createFavorites(id, { nameTheater: input.nameTheater }));
     console.log(input);
-    alert("Gracias por suscribirte!");
+    swal("Gracias por suscribirte!", '', 'succes');
     setInput({
       isSubscribed: false,
       nameTheater: "",

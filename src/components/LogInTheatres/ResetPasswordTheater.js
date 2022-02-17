@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { editProfileT, theaterDetail } from "../../redux/actions/index.js";
 import { useParams } from "react-router-dom";
 import style from "./ResetPasswordTheater.module.css";
+import swal from "sweetalert";
 
 const ResetPasswordTheater = () => {
   const dispatch = useDispatch();
@@ -29,7 +30,7 @@ const ResetPasswordTheater = () => {
     console.log(input);
     e.preventDefault();
     dispatch(editProfileT(id, input));
-    alert("Contraseña actualizada!");
+    swal("Contraseña actualizada!", '', 'success');
     window.location.href = `http://localhost:3000/loginteatres`;
   }
 
