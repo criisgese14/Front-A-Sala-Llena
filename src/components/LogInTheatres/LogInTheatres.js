@@ -26,13 +26,13 @@ const LogInTheatres = () => {
   const dispatch = useDispatch();
   const [input, setInput] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
-  const { hasLoginError, login } = useUser();
+  const { hasLoginError, login, googleLoginTheater } = useUser();
   const theaters = useSelector((state) => state.theaters);
-  const [, setLoginData] = useState(
-    sessionStorage.getItem("loginData")
-      ? JSON.parse(sessionStorage.getItem("loginData"))
-      : null
-  );
+  let idT;
+  if(window.sessionStorage.getItem('id')){
+    idT = window.sessionStorage.getItem('id').valueOf()
+  }
+  
 
   useEffect(() => {
     dispatch(allTheaters());
@@ -46,25 +46,16 @@ const LogInTheatres = () => {
   const handleFailure = (response) => {
     alert(response);
   };
-
-  const handleLogin = async (googleData) => {
-    const res = await fetch("http://localhost:3001/login/google", {
-      method: "POST",
-      body: JSON.stringify({
-        token: googleData.tokenId,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    const data = await res.json();
-    setLoginData(data);
-    sessionStorage.setItem('loginData', JSON.stringify(data));
-    if(loginData){
-      window.location.href=`http://localhost:3000/theaterHome/${filterTheater.id}/`;
-    }
+  
+  const handleLogin =  (googleData) => {
+    googleLoginTheater(googleData)
+    
+    
+    window.location.href = `http://localhost:3000/theaterHome/${idT}/`;
+    
+    
   };
+  
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -143,7 +134,7 @@ const LogInTheatres = () => {
         <Link to="/passwordRecoveryViewer">¿Olvidaste tu contraseña?</Link>
         <GoogleLogin
           clientId="506901482868-h6pf1ffiuv7vicavl8btlunj18oeamjr.apps.googleusercontent.com"
-          buttonText="Login"
+          buttonText="Log in with Google"
           onSuccess={handleLogin}
           onFailure={handleFailure}
           cookiePolicy={"single_host_origin"}

@@ -27,9 +27,13 @@ const LogInViewer = () => {
   const dispatch = useDispatch();
   const [input, setInput] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
-  const { hasLoginError, loginviewer,googleLoginViewer } = useUser();
+  const { hasLoginError, loginviewer,googleLoginViewer} = useUser();
   const viewers = useSelector((state) => state.viewers);
-  const id = window.sessionStorage.getItem('id')
+  let idV;
+  if(window.sessionStorage.getItem('id')){
+    idV = window.sessionStorage.getItem('id').valueOf()
+  }
+  
   
   
 
@@ -48,8 +52,8 @@ const LogInViewer = () => {
 
   const handleLogin =  (googleData) => {
     googleLoginViewer(googleData)
-    console.log('id',id)
-    window.location.href = `http://localhost:3000/viewerHome/${id}/`;
+    
+    window.location.href = `http://localhost:3000/viewerHome/${idV}/`;
     
     
   };
