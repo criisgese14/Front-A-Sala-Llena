@@ -5,6 +5,7 @@ import style from "./SearchBar.module.css";
 import FormControl from "react-bootstrap/FormControl";
 import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
+import swal from 'sweetalert'
 import { BiSearchAlt } from "react-icons/bi";
 import { FiRefreshCw } from "react-icons/fi";
 
@@ -20,7 +21,7 @@ export default function SearchBar() {
   function handleSubmit(e) {
     e.preventDefault();
     if (!name) {
-      alert("Debe ingresar un nombre de espectáculo");
+      swal("Debe ingresar un nombre de espectáculo", '', 'warning');
     } else {
       dispatch(getShowByName(name));
       //aca iria el dispatch de todos los nombres de las obras de teatro

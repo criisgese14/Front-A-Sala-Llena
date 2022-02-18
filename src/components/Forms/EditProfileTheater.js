@@ -6,6 +6,7 @@ import { useParams, useHistory, Link  } from "react-router-dom";
 import NavBarTheater from "../NavBar/NavBarTheater";
 import style from "./EditProfileTheater.module.css";
 import { useForm } from "react-hook-form";
+import swal from "sweetalert";
 
 const EditProfileTheater = () => {
   const history = useHistory();
@@ -37,16 +38,42 @@ const EditProfileTheater = () => {
       adress: data.adress,
       phoneNumber: data.phoneNumber
     };
-    dispatch(editProfileT(id, cara));
-    alert("Teatro actualizado!");
-    setEdit(false);
-    history.push(`/theaterHome/${id}`);
+    swal({
+      title: "Estás seguro?",
+      icon: "warning",
+      buttons: ['Cancel', 'Confirm'],
+    })
+    .then((res) => {
+      if (res) {
+        dispatch(editProfileT(id, cara));
+        swal("Teatro actualizado!", '', 'success');
+        setEdit(false);
+        history.push(`/theaterHome/${id}`);
+      } else {
+        swal("Revisa bien tus cambios👀!");
+      }
+    });
   }
 
   function handleSubmitDelete() {
-    dispatch(deleteTheater(id));
-    alert("Teatro Borrado con exito");
-    history.push("/");
+    swal({
+      title: "Estás seguro?",
+      text: "Una vez borrado, no lo podras recuperar!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        swal("Teatro borrado con exito", {
+          icon: "success",
+        });
+        dispatch(deleteTheater(id));
+        history.push("/");
+      } else {
+        swal("Tu teatro seguira con vida ✔👀!");
+      }
+    });
   }
   return (
     <div>

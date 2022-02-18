@@ -1,8 +1,4 @@
 .salesContainer {
-  color: white;
-}
-
-.footerContainer {
-  position: absolute;
-  bottom: 0;
+  margin-bottom: 3rem;
+  border: 2px solid red;
 }

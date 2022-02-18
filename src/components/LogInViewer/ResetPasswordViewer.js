@@ -5,6 +5,7 @@ import { putViewer, getViewerDetail } from "../../redux/actions/index.js";
 import { useParams } from "react-router-dom";
 import style from "./ResetPasswordViewer.module.css";
 import { useForm } from "react-hook-form";
+import swal from "sweetalert";
 
 const ResetPasswordViewer = () => {
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ const ResetPasswordViewer = () => {
     }
     console.log(input)
     dispatch(putViewer(id, input));
-    alert("Contraseña actualizada!");
+    swal("Contraseña actualizada!", '', 'success');
     history.push("/loginviewer")
   }
 

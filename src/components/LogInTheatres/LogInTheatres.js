@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import GoogleLogin from "react-google-login";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 //import { useLocation } from 'react-router-dom';
 import useUser from "../../hooks/useUser.js";
 import { allTheaters } from "../../redux/actions/index.js";
 import { useSelector, useDispatch } from "react-redux";
-//import Footer from "../Footer/Footer.js";
-import logo from "../../assets/logo a sala llena-sinfondo.png";
+import { Navbar, Form, Container, Button } from "react-bootstrap";
 import style from "./LoginTheaters.module.css";
+import swal from 'sweetalert'
+
 function validate(input) {
   let errors = {};
   if (input.email === "") {
@@ -27,14 +28,10 @@ const LogInTheatres = () => {
   const dispatch = useDispatch();
   const [input, setInput] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
-  //const [,navigate] = useLocation();
-  const { hasLoginError, login } = useUser();
+  const { hasLoginError, login, googleLoginTheater } = useUser();
   const theaters = useSelector((state) => state.theaters);
-  const [loginData, setLoginData] = useState(
-    sessionStorage.getItem('loginData')
-      ? JSON.parse(sessionStorage.getItem('loginData'))
-      : null
-  );
+  const [idT,setIdT] = useState('')
+  
 
   useEffect(() => {
     dispatch(allTheaters());
@@ -46,30 +43,20 @@ const LogInTheatres = () => {
   console.log(filterTheater);
 
   const handleFailure = (response) => {
-    alert(response);
+    swal({
+      tittle: response,
+      icon: 'error'});
   };
-
-  const handleLogin = async (googleData) => {
-    const res = await fetch('http://localhost:3001/login/google', {
-      method: 'POST',
-      body: JSON.stringify({
-        token: googleData.tokenId,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-
-    const data = await res.json();
-    setLoginData(data);
-    localStorage.setItem('loginData', JSON.stringify(data));
+  
+  const handleLogin =  (googleData) => {
+    googleLoginTheater(googleData)
+    setIdT(window.sessionStorage.getItem('id')?.valueOf())
   };
+  
 
   function handleSubmit(e) {
     e.preventDefault();
     login(input);
-    //navigate('/viewerHome/1')
-    //window.location.href = `http://localhost:3000/theaterHome/${filterTheater.id}/`;
     setInput({ email: "", password: "" });
   }
 
@@ -87,54 +74,72 @@ const LogInTheatres = () => {
   }
 
   return (
-    <div className={style.loginContainer}>
-      <div className={style.header}>
-        <Link to="/">
-          <img className={style.logo} src={logo} alt="A sala llena" />
-        </Link>
-      </div>
-      <div className={style.formContainer}>
-        <form className={style.inputs} onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Email..."
-            value={input.email}
-            name="email"
-            onChange={handleChange}
-          />
-          {errors.email && <p className={style.errors}>{errors.email}</p>}
-          <input
-            type="password"
-            placeholder="password"
-            value={input.password}
-            name="password"
-            onChange={handleChange}
-          />
-          {errors.password && <p className={style.errors}>{errors.password}</p>}
-          <Link to={`/theaterHome/${filterTheater?.id}`}>
-          <button>LogIn</button>
-          </Link>
-        </form>
+    <div>
+      <Navbar
+        className={style.heigthConfig}
+        bg="dark"
+        variant="dark"
+        expand={false}
+      >
+        <Container fluid>
+          <Navbar.Brand href="/">A Sala Llena</Navbar.Brand>
+        </Container>
+      </Navbar>
 
-        {hasLoginError && (
-          <strong className={style.errors}>
-            Usuario o contraseña invalidos
-          </strong>
-        )}
-        <br></br>
-        <br></br>
-        <GoogleLogin
+      <div className={style.loginContainer}>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Email..."
+              value={input.email}
+              name="email"
+              onChange={handleChange}
+            />
+            {errors.email && <p>{errors.email}</p>}
+            <Form.Text className="text-muted">
+              Nunca compartiremos esta información
+            </Form.Text>
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="password"
+              value={input.password}
+              name="password"
+              onChange={handleChange}
+            />
+            {errors.password && <p>{errors.password}</p>}
+          </Form.Group>
+          <Link to={`/theaterHome/${filterTheater?.id}`}>
+            <Button variant="dark" type="submit">
+              Iniciar Sesion
+            </Button>
+          </Link>
+        </Form>
+        {hasLoginError && <strong>Usuario o contraseña invalidos</strong>}
+        <div className={style.btn}>
+          <Link to="/theaterRegister">
+            <Button variant="dark" type="submit">
+              Registrarse
+            </Button>
+          </Link>
+        </div>
+        <Link to="/passwordRecoveryViewer">¿Olvidaste tu contraseña?</Link>
+        {
+          idT ? 
+          <Redirect to={`/theaterHome/${idT}`}/> :
+          <GoogleLogin
           clientId="506901482868-h6pf1ffiuv7vicavl8btlunj18oeamjr.apps.googleusercontent.com"
           buttonText="Log in with Google"
           onSuccess={handleLogin}
           onFailure={handleFailure}
           cookiePolicy={"single_host_origin"}
         />
-        <p>o</p>
-        <Link to="/theaterRegister">
-          <button>REGISTRARSE</button>
-        </Link>
-        <Link to="/passwordRecoveryTheater">Olvide mi contraseña</Link>
+        }
       </div>
     </div>
   );

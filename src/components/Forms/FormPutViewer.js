@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import swal from "sweetalert";
 import { useHistory, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -40,38 +41,90 @@ const FormPutViewer = () => {
       password: data.password,
       image: data.image,
     };
-    dispatch(putViewer(id, cara));
-    alert("Usuario actualizado!");
-    setEdit(false);
-    history.push(`/viewerHome/${id}`);
+    swal({
+      title: "Estás seguro?",
+      icon: "warning",
+      buttons: ['Cancel', 'Confirm'],
+    })
+    .then((res) => {
+      if (res) {
+        dispatch(putViewer(id, cara));
+        swal("Usuario actualizado!", '', 'success');
+        setEdit(false);
+        history.push(`/viewerHome/${id}`);
+      } else {
+        swal("Revisa bien tus cambios👀!");
+      }
+    });
   }
 
   function handleSubmitDelete(event) {
-    dispatch(deleteViewer(id));
-    alert("Usuario Borrado con exito");
-    history.push("/");
+    swal({
+      title: "Estás seguro?",
+      text: "Una vez borrado, no lo podras recuperar!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        swal("Usuario borrado con exito", {
+          icon: "success",
+        });
+        dispatch(deleteViewer(id));
+        history.push("/");
+      } else {
+        swal("Tu perfil seguira con vida ✔👀!");
+      }
+    });
   }
   
 
   return (
-    <div className={style.editContainer}>
-      <div className={style.nav}>
+    <div className={style.formViewerContainer} >
+      
+      {/* <div className={style.nav}>
         <NavBarPerfilViewer />
-      </div>
+      </div> */}
+      
       <Link to={`/viewerHome/${id}`}>
-      <button type="button" className="btn btn-primary">Volver</button>
+      <button type="button" className="btn btn-secondary">Volver</button>
       </Link>
-      <div className={style.title}>
-        <h1>Actualizar Espectador:</h1>
-      </div>
-      <div className={style.btnContainer}>
-        <button onClick={changeEdit} className={style.btn} className="btn btn-primary">
-          Edit
-        </button>
-      </div>
       <div>
-        <form onSubmit={handleSubmit(onSubmit)} className={style.formContainer}>
-          <label className="form-label col-lg-12">Nombre:</label>
+          <button onClick={changeEdit}  className="btn btn-primary" >
+          Edit
+          </button>
+      </div>
+      
+      <div className={style.formViewerPut}>
+        <form onSubmit={handleSubmit(onSubmit)} className="row g-3">
+          <div className="col-md-6">
+          <img src={detail.image} alt="imagen de perfil" className={style.imagen}/>
+          </div>
+
+          <div className="col-md-6">
+          <label className="form-label col-lg-12">Imagen de Perfil: </label>
+          {edit === false ? (
+            <input
+              readOnly="readonly"
+              type="text"
+              name="image"
+              value={detail.image}
+              className="form-control my-2"
+            />
+          ) : (
+            <input
+              type="url"
+              name="image"
+              placeholder="Ingresa una imagen"
+              className="form-control my-2"
+              {...register("image")}
+            />
+          )}
+          </div>
+          
+          <div className="col-md-6">
+          <label className="form-label col-lg-12">Nombre</label>
           {edit === false ? (
             <input
               readOnly="readOnly"
@@ -98,7 +151,9 @@ const FormPutViewer = () => {
                 {errors.name && errors.name.message}
               </span>
             }
-          <label className="form-label col-lg-12">Contraseña:</label>
+          </div>
+          <div className="col-md-6">
+          <label className="form-label col-lg-12">Contraseña</label>
           {edit === false ? (
             <input
               readOnly="readonly"
@@ -130,42 +185,28 @@ const FormPutViewer = () => {
                 {errors.password && errors.password.message}
               </span>
           }
-          <label className="form-label col-lg-12">Imagen de Perfil: </label>
+          </div>
+          
+          <div>
           {edit === false ? (
-            <input
-              readOnly="readonly"
-              type="text"
-              name="image"
-              value={detail.image}
-              className="form-control my-2"
-            />
-          ) : (
-            <input
-              type="url"
-              name="image"
-              placeholder="Ingresa una imagen"
-              className="form-control my-2"
-              {...register("image")}
-            />
-          )}
-          <img src={detail.image} alt="imagen de perfil" className="rounded-circle"/>
-
-          {edit === false ? (
-          <button disabled type="submit" className={style.btn} className="btn btn-primary">
+          <button disabled type="submit" className="btn btn-dark">
             Actualizar
           </button>
           ):(
-          <button  type="submit" className={style.btn} className="btn btn-primary">
+          <button  type="submit" className="btn btn-dark">
             Actualizar
           </button>)}
+          </div>
           
         </form>
+        <div className={style.btnContainer}>
+            <button onClick={handleSubmitDelete} className={style.btn} className="btn btn-danger">
+            Borrar Usuario
+            </button>
+            </div>
       </div>
-      <div className={style.btnContainer}>
-        <button onClick={handleSubmitDelete} className={style.btn} className="btn btn-primary">
-          Borrar Usuario
-        </button>
-      </div>
+
+      
       {/* <div className={style.footerContainer}>
         <Footer />
       </div> */}

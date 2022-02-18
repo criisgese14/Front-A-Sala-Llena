@@ -4,6 +4,7 @@ import { postPasswordRecoveryViewer } from "../../redux/actions/index.js";
 import { useDispatch } from "react-redux";
 import logo from "../../assets/logo a sala llena-sinfondo.png";
 import style from "./LoginViewer.module.css";
+import swal from "sweetalert";
 
 function validate(input) {
   let errors = {};
@@ -39,7 +40,7 @@ const PasswordRecoveryViewer = () => {
 
     // history.push("/");
     window.location.href = `http://localhost:3000`;
-    alert("Email enviado!");
+    swal("Email enviado!", '', 'success');
     setInput({ email: "" });
   }
 
