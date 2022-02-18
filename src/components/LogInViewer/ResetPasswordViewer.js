@@ -38,21 +38,20 @@ const ResetPasswordViewer = () => {
   }
 
   return (
-    <div className={style.editContainer}>
-      <div className={style.title}>
+    <div className={style.ResetViewerContainer}>
+      <div >
         <h1>Actualizar contraseña</h1>
       </div>
 
-      <div>
+      <div className={style.ResetViewerPut}>
         <form onSubmit={handleSubmit(onSubmit)} className={style.formContainer}>
-          <label>Contraseña:</label>
 
-          <label>* Contraseña:</label>
+          <label>Nueva Contraseña</label>
           <input
             title="Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos."
             type="password"
             name="password"
-            placeholder="Ingrese su Contraseña"
+            placeholder="Nueva Contraseña"
             className="form-control my-2"
             {...register("password", {
               required: {
@@ -70,9 +69,9 @@ const ResetPasswordViewer = () => {
               {errors.password && errors.password.message}
             </span>
           }
-          <small>Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos.</small>
+          
           <br/>
-          <label>* Repite tu contraseña:</label>
+          <label>Repite tu contraseña</label>
           <input
             title="Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos."
             type="password"
@@ -98,7 +97,7 @@ const ResetPasswordViewer = () => {
             </span>
           }
 
-          <button type="submit" className={style.btn}>
+          <button type="submit" className="btn btn-dark">
             Actualizar
           </button>
         </form>
