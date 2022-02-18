@@ -33,6 +33,7 @@ import ResetPasswordTheater from "./components/LogInTheatres/ResetPasswordTheate
 import ShowDetailTheater from "./components/Shows/ShowDetailTheater";
 import Error404 from "./components/Error 404/Error404";
 import RedirectCheckout from "./components/RedirectCheckout/RedirectCheckout";
+import Ticket from "./components/Ticket/Ticket";
 
 function App() {
   return (
@@ -115,7 +116,8 @@ function App() {
             <Route exact path="/pasarela/:id" component={PasarelaDePago} />
             <Route exact path='/showDetailTheater/:id' component={ShowDetailTheater}/>
             <Route exact path='/error404' component={Error404}/>
-            <Route exact path='/tickets/finish/:id/:idV/:seatNumber' component={RedirectCheckout} />
+            <Route exact path='/ticket/finish/:id/:idV/:seatNumber' component={RedirectCheckout} />
+            <Route exact path='/checkout/ticket' component={Ticket} />
           </header>
         </div>
       </BrowserRouter>

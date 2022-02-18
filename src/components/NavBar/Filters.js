@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   allTheaters,
-  allShows,
+  // allShows,
   filterPerGenre,
   filterPerProvince,
   filterPerTheater,
   filterPerRated,
-  filterPerTicketsQty,
+  // filterPerTicketsQty,
 } from "../../redux/actions";
 import style from "./Filters.module.css";
 import Form from "react-bootstrap/Form";
@@ -17,11 +17,8 @@ export default function Filters({ setActualPage, setOrder }) {
   const theaters = useSelector((state) => state.theaters);
 
   useEffect(() => {
-    dispatch(allShows());
-  }, [dispatch]);
-
-  useEffect(() => {
     dispatch(allTheaters());
+    // dispatch(allShows());
   }, [dispatch]);
 
   function handleFilterProvince(prov) {
@@ -30,22 +27,30 @@ export default function Filters({ setActualPage, setOrder }) {
     setActualPage(1);
     setOrder(`Filter by ${prov.target.value}`);
   }
+ 
   function handleFilterTheater(e) {
     e.preventDefault();
     dispatch(filterPerTheater(e.target.value));
+    setActualPage(1);
+    setOrder(e.target.value);
+
   }
   function handleFilterGenre(e) {
     e.preventDefault();
     dispatch(filterPerGenre(e.target.value));
+    setActualPage(1);
+    setOrder(e.target.value);
   }
   function handleFilterRated(e) {
     e.preventDefault();
     dispatch(filterPerRated(e.target.value));
+    setActualPage(1);
+    setOrder(e.target.value);
   }
-  function handleFilterTicketsQty(e) {
-    e.preventDefault();
-    dispatch(filterPerTicketsQty(e.target.value));
-  }
+  // function handleFilterTicketsQty(e) {
+  //   e.preventDefault();
+  //   dispatch(filterPerTicketsQty(e.target.value));
+  // }
 
   return (
     <div className={style.navContainer}>

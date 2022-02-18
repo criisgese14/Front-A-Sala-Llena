@@ -1,5 +1,4 @@
 import axios from "axios";
-import swal from 'sweetalert'
 
 export function orderScore(payload) {
   return {
@@ -267,10 +266,7 @@ export function getShowByName(name) {
         payload: resp.data,
       });
     } catch (e) {
-      swal({
-        title: 'No hay espectáculos con ese nombre',
-        icon: "error",
-      });
+      alert("No hay espectáculos con ese nombre");
       return console.log(e);
     }
   };
@@ -430,12 +426,13 @@ export function postReview(
 export function checkoutPay({seatNumber, showId, idViewer}) {
   return function (dispatch) {
     axios.post('http://localhost:3001/tickets/pay', {seatNumber, showId, idViewer}).then((response) => {
+
       dispatch({
         type: CHECKOUT_PAY,
         payload: response.data,
       });
     })
-  }
+    }
 }
 
 
@@ -513,4 +510,4 @@ export const POST_NEWSLETTER_SHOW = "POST_NEWSLETTER_SHOW";
 export const GET_ALL_REVIEW = "GET_ALL_REVIEW";
 export const POST_PASSWORD_RECOVERY_VIEWER = "POST_PASSWORD_RECOVERY_VIEWER";
 export const POST_PASSWORD_RECOVERY_THEATER = "POST_PASSWORD_RECOVERY_THEATER";
-export const DELETE_THEATRER= "DELETE_THEATRER"
+export const DELETE_THEATRER= "DELETE_THEATRER";

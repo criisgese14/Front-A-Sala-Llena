@@ -8,7 +8,7 @@ import {
   GET_ALL_THEATERS,
   POST_VIEWER,
   FILTER_RATED,
-  FILTER_TICKETS_QTY,
+  // FILTER_TICKETS_QTY,
   POST_TICKET,
   SHOW_DETAIL,
   THEATER_DETAIL,
@@ -42,7 +42,7 @@ const initialState = {
 function rootReducer(state = initialState, action) {
   //const theaters = state.theaters;
   // const shows = state.shows;
-  const allshows = state.allshows;
+  // const allshows = state.allshows;
 
   switch (action.type) {
     case ORDER_SCORE:
@@ -65,10 +65,11 @@ function rootReducer(state = initialState, action) {
       };
 
     case FILTER_PROVINCE:
+      let filterP = state.allshows
       let filterProvince =
         action.payload === "all"
-          ? allshows
-          : allshows?.filter((e) => e.theater?.province.includes(action.payload));
+          ? filterP
+          : filterP?.filter((e) => e.theater?.province.includes(action.payload));
       return {
         ...state,
         shows: filterProvince,
@@ -95,41 +96,44 @@ function rootReducer(state = initialState, action) {
         theaters: action.payload,
       };
     case FILTER_THEATER:
+      let filterT = state.allshows
       let filterTheater =
         action.payload === "all"
-          ? allshows
-          : allshows.filter((e) => e.theater.name.includes(action.payload));
+          ? filterT
+          : filterT.filter((e) => e.theater.name.includes(action.payload));
       return {
         ...state,
         shows: filterTheater,
       };
     case FILTER_GENRE:
+      let filterG = state.allshows
       let filterGenre =
         action.payload === "all"
-          ? allshows
-          : allshows.filter((e) => e.genre.includes(action.payload));
+          ? filterG
+          : filterG.filter((e) => e.genre.includes(action.payload));
       return {
         ...state,
         shows: filterGenre,
       };
     case FILTER_RATED:
+      let filterR = state.allshows
       let filterRated =
         action.payload === "all"
-          ? allshows
-          : allshows.filter((e) => e.rated.includes(action.payload));
+          ? filterR
+          : filterR.filter((e) => e.rated.includes(action.payload));
       return {
         ...state,
         shows: filterRated,
       };
-    case FILTER_TICKETS_QTY:
-      let filterTickets =
-        action.payload === "all"
-          ? allshows
-          : allshows.filter((e) => e.ticketsQty >= action.payload);
-      return {
-        ...state,
-        shows: filterTickets,
-      };
+    // case FILTER_TICKETS_QTY:
+    //   let filterTickets =
+    //     action.payload === "all"
+    //       ? allshows
+    //       : allshows.filter((e) => e.ticketsQty >= action.payload);
+    //   return {
+    //     ...state,
+    //     shows: filterTickets,
+    //   };
 
     //return {
     //    ...state,
