@@ -51,7 +51,8 @@ const FormShow = () => {
     postNewsletterShow(theater.name);
     swal({
       icon: "warning",
-      buttons: ['Cancelar', 'Confirmar'],
+      tittle: 'Confirmar',
+      buttons: ['Cancelar', 'Yes'],
     })
     .then((res) => {
       console.log(res)
@@ -322,11 +323,13 @@ const FormShow = () => {
 
           <div className="col-md-12">
             <label className="form-label col-lg-12">Asientos disponibles</label>
+            <div className={style.seatComponent}>
             <SeatForm
               seatsavailable={seatsavailable}
               setSeatAvailable={setSeatAvailable}
               form={form}
-            ></SeatForm>
+              ></SeatForm>
+            </div>
 
             <small>
               Selecciona los asientos disponibles para el espectaculo
