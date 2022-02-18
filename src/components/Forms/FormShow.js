@@ -68,8 +68,6 @@ const FormShow = () => {
           time: data.time,
           originPrice: data.originPrice,
         };
-        //let tickets={}
-        console.log("input", inputs);
         postShow(inputs);
         for (var i = 0; i < seatsavailable.length; i++) {
           const tickets = {
@@ -312,11 +310,13 @@ const FormShow = () => {
 
           <div className="col-md-12">
             <label className="form-label col-lg-12">Asientos disponibles</label>
+            <div className={style.seats}>
             <SeatForm
               seatsavailable={seatsavailable}
               setSeatAvailable={setSeatAvailable}
               form={form}
             ></SeatForm>
+            </div>
 
             <small>
               Selecciona los asientos disponibles para el espectaculo
