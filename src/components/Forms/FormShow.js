@@ -164,31 +164,18 @@ const FormShow = () => {
               })}
             >
               <option selected disabled="disabled" value="">
-                {" "}
+                
                 Selecciona un genero
               </option>
-              <optgroup label="*OBRAS MAYORES*">
+              
                 <option>Comedia</option>
                 <option>Drama</option>
                 <option>Tragedia</option>
                 <option>Tragicomedia</option>
                 <option>Monólogo</option>
-              </optgroup>
-              <optgroup label="*OBRAS MENORES*">
-                <option>Auto Sacramental</option>
-                <option>Entremes</option>
-                <option>Sainete</option>
-                <option>Farsa</option>
-                <option>Vodevil</option>
-              </optgroup>
-              <optgroup label="*OBRAS MUSICALES*">
                 <option>Ópera</option>
-                <option>Zarzuela</option>
-                <option>Opereta</option>
                 <option>Musical</option>
-                <option>Ballet</option>
                 <option>Danza</option>
-              </optgroup>
             </select>
             <span className="text-danger text-small d-block mb-2">
               {errors.genre && errors.genre.message}
