@@ -7,7 +7,7 @@ import { allTheaters } from "../../redux/actions/index.js";
 import { useSelector, useDispatch } from "react-redux";
 import { Navbar, Form, Container, Button } from "react-bootstrap";
 import style from "./LoginTheaters.module.css";
-import swal from 'sweetalert'
+import swal from "sweetalert";
 
 function validate(input) {
   let errors = {};
@@ -30,8 +30,7 @@ const LogInTheatres = () => {
   const [errors, setErrors] = useState({});
   const { hasLoginError, login, googleLoginTheater } = useUser();
   const theaters = useSelector((state) => state.theaters);
-  const [idT,setIdT] = useState('')
-  
+  const [idT, setIdT] = useState("");
 
   useEffect(() => {
     dispatch(allTheaters());
@@ -45,14 +44,14 @@ const LogInTheatres = () => {
   const handleFailure = (response) => {
     swal({
       tittle: response,
-      icon: 'error'});
+      icon: "error",
+    });
   };
-  
-  const handleLogin =  (googleData) => {
-    googleLoginTheater(googleData)
-    setIdT(window.sessionStorage.getItem('id')?.valueOf())
+
+  const handleLogin = (googleData) => {
+    googleLoginTheater(googleData);
+    setIdT(window.sessionStorage.getItem("id")?.valueOf());
   };
-  
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -128,18 +127,18 @@ const LogInTheatres = () => {
             </Button>
           </Link>
         </div>
-        <Link to="/passwordRecoveryViewer">¿Olvidaste tu contraseña?</Link>
-        {
-          idT ? 
-          <Redirect to={`/theaterHome/${idT}`}/> :
+        <Link to="/passwordRecoveryTheater">¿Olvidaste tu contraseña?</Link>
+        {idT ? (
+          <Redirect to={`/theaterHome/${idT}`} />
+        ) : (
           <GoogleLogin
-          clientId="506901482868-h6pf1ffiuv7vicavl8btlunj18oeamjr.apps.googleusercontent.com"
-          buttonText="Log in with Google"
-          onSuccess={handleLogin}
-          onFailure={handleFailure}
-          cookiePolicy={"single_host_origin"}
-        />
-        }
+            clientId="506901482868-h6pf1ffiuv7vicavl8btlunj18oeamjr.apps.googleusercontent.com"
+            buttonText="Log in with Google"
+            onSuccess={handleLogin}
+            onFailure={handleFailure}
+            cookiePolicy={"single_host_origin"}
+          />
+        )}
       </div>
     </div>
   );

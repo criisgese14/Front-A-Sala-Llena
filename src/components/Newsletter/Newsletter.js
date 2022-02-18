@@ -4,7 +4,6 @@ import style from "./Newsletter.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { allTheaters, putViewer, createFavorites } from "../../redux/actions";
 import { useParams } from "react-router-dom";
-import Footer from "../Footer/Footer";
 import swal from "sweetalert";
 import { Form, Button } from "react-bootstrap";
 
@@ -43,7 +42,7 @@ const Newsletter = () => {
     dispatch(putViewer(id, { isSubscribed: input.isSubscribed }));
     dispatch(createFavorites(id, { nameTheater: input.nameTheater }));
     console.log(input);
-    swal("Gracias por suscribirte!", '', 'succes');
+    swal("Gracias por suscribirte!", "", "succes");
     setInput({
       isSubscribed: false,
       nameTheater: "",
@@ -55,14 +54,11 @@ const Newsletter = () => {
       <div className={style.navContainer}>
         <NavBarPerfilViewer />
       </div>
-
-      {/* <div> */}
-      {/* <form onSubmit={(e) => HandleSubmit(e)}> */}
       <h2 className={style.title}>
         Suscribite a nuestro newsletter para recibir informacion sobre los
         ultimos shows
       </h2>
-      <Form onSubmit={(e) => HandleSubmit(e)}>
+      <Form>
         <div className={style.checkContainer}>
           <Form.Group className="mb-2" controlId="formBasicCheckbox">
             <Form.Check
