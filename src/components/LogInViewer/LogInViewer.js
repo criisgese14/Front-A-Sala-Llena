@@ -51,13 +51,6 @@ const LogInViewer = () => {
   
   function handleLogin (googleData) {
     googleLoginViewer(googleData)
-    
-    
-      
-    
-      
-    
-    
   };
   console.log('idV',idV)
   function inputChange(e) {
@@ -76,6 +69,7 @@ const LogInViewer = () => {
   function handleSubmit(e) {
     e.preventDefault();
     loginviewer(input);
+    window.location.href= `http://localhost:3000/viewerHome/${filterViewer?.id}`
     setInput({ email: "", password: "" });
   }
 
@@ -138,6 +132,7 @@ const LogInViewer = () => {
       </Navbar>
 
       <div className={style.loginContainer}>
+        <form onSubmit={handleSubmit}>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
@@ -165,12 +160,13 @@ const LogInViewer = () => {
             />
             {errors.password && <p>{errors.password}</p>}
           </Form.Group>
-          <Link to={`/viewerHome/${filterViewer?.id}`}>
-            <Button variant="dark" type="submit">
+          
+            <Button variant="dark" type="submit" onClick={handleSubmit}>
               Iniciar Sesion
             </Button>
-          </Link>
+          
         </Form>
+        </form>
         {hasLoginError && <strong>Usuario o contraseña invalidos</strong>}
         <div className={style.btn}>
           <Link to="/formViewerRegister">

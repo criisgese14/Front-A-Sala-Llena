@@ -57,7 +57,9 @@ const LogInTheatres = () => {
   function handleSubmit(e) {
     e.preventDefault();
     login(input);
+    window.location.href= `http://localhost:3000/theaterHome/${filterTheater?.id}`
     setInput({ email: "", password: "" });
+
   }
 
   function handleChange(e) {
@@ -87,7 +89,8 @@ const LogInTheatres = () => {
       </Navbar>
 
       <div className={style.loginContainer}>
-        <Form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
+        <Form >
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
             <Form.Control
@@ -114,12 +117,13 @@ const LogInTheatres = () => {
             />
             {errors.password && <p>{errors.password}</p>}
           </Form.Group>
-          <Link to={`/theaterHome/${filterTheater?.id}`}>
-            <Button variant="dark" type="submit">
+          
+            <Button variant="dark" type="submit" onClick={handleSubmit}>
               Iniciar Sesion
             </Button>
-          </Link>
+          
         </Form>
+        </form>
         {hasLoginError && <strong>Usuario o contraseña invalidos</strong>}
         <div className={style.btn}>
           <Link to="/theaterRegister">
