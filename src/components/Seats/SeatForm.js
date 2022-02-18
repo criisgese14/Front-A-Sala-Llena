@@ -1,9 +1,18 @@
 import { useState, useEffect } from "react";
 import style from "./Seat.module.css";
 import { useSelector } from "react-redux";
-import swal from 'sweetalert'
+import swal from "sweetalert";
 
-const SeatForm = ({ seatsNumber, setSeatAvailable, seatsavailable, form, asientosDisponibles }) => {
+const SeatForm = ({
+  seatsNumber,
+  setSeatAvailable,
+  seatsavailable,
+  form,
+  preciofinal,
+  setPreciofinal,
+  id,
+  idV,
+}) => {
   const { showdetail } = useSelector((s) => s);
   const filas = new Array(Math.ceil(8)).fill(0).map((el, index) => index + 1);
   const sillas = new Array(Math.ceil(10)).fill(0).map((el, index) => index + 1);
@@ -39,8 +48,8 @@ const SeatForm = ({ seatsNumber, setSeatAvailable, seatsavailable, form, asiento
     } else if (selected) {
       swal({
         tittle: "No puedes escoger más tickets",
-        icon: 'error',
-        time: 2000
+        icon: "error",
+        time: 2000,
       });
     }
   };
@@ -55,7 +64,7 @@ const SeatForm = ({ seatsNumber, setSeatAvailable, seatsavailable, form, asiento
   }, [showdetail.seatsAvailable]);
 
   console.log(selected);
-  console.log(setSelected)
+  console.log(setSelected);
   return (
     <div className={style.seatContainer}>
       <div className={style.component}>

@@ -28,9 +28,9 @@ const LogInViewer = () => {
   const dispatch = useDispatch();
   const [input, setInput] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
-  const { hasLoginError, loginviewer,googleLoginViewer} = useUser();
+  const { hasLoginError, loginviewer,googleLoginViewer,idV, isLogged} = useUser();
   const viewers = useSelector((state) => state.viewers);
-  const [idV,setIdV] = useState('')
+  //const [idV,setIdV] = useState('')
 
   
   
@@ -48,11 +48,11 @@ const LogInViewer = () => {
     swal(response, '', 'error');
   };
 
-  const handleLogin =  (googleData) => {
+  
+  function handleLogin (googleData) {
     googleLoginViewer(googleData)
-    setIdV(window.sessionStorage.getItem('id')?.valueOf())
   };
-
+  console.log('idV',idV)
   function inputChange(e) {
     setInput({
       ...input,
@@ -69,6 +69,10 @@ const LogInViewer = () => {
   function handleSubmit(e) {
     e.preventDefault();
     loginviewer(input);
+    if(isLogged){
+      window.location.href= `http://localhost:3000/viewerHome/${filterViewer?.id}`
+     
+    }
     setInput({ email: "", password: "" });
   }
 
@@ -131,6 +135,7 @@ const LogInViewer = () => {
       </Navbar>
 
       <div className={style.loginContainer}>
+        <form onSubmit={handleSubmit}>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
@@ -158,13 +163,15 @@ const LogInViewer = () => {
             />
             {errors.password && <p>{errors.password}</p>}
           </Form.Group>
-          <Link to={`/viewerHome/${filterViewer?.id}`}>
-            <Button variant="dark" type="submit">
+          
+            <Button variant="dark" type="submit" onClick={handleSubmit}>
               Iniciar Sesion
             </Button>
-          </Link>
+          
         </Form>
         {hasLoginError && <strong>Usuario o contraseña invalidos</strong>}
+        </form>
+        
         <div className={style.btn}>
           <Link to="/formViewerRegister">
             <Button variant="dark" type="submit">

@@ -90,7 +90,7 @@ const FormPutViewer = () => {
       <Link to={`/viewerHome/${id}`}>
       <button type="button" className="btn btn-secondary">Volver</button>
       </Link>
-      <div>
+      <div className={style.btnContainer}>
           <button onClick={changeEdit}  className="btn btn-primary" >
           Edit
           </button>
@@ -200,7 +200,7 @@ const FormPutViewer = () => {
           
         </form>
         <div className={style.btnContainer}>
-            <button onClick={handleSubmitDelete} className={style.btn} className="btn btn-danger">
+            <button onClick={handleSubmitDelete}  className="btn btn-danger">
             Borrar Usuario
             </button>
             </div>

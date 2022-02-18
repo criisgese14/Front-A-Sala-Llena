@@ -69,7 +69,7 @@ export default function NavBarViewer({ img }) {
         expand={false}
       >
         <Container fluid>
-          <Navbar.Brand href="/">A Sala Llena</Navbar.Brand>
+          <Navbar.Brand href={`/viewerHome/${id}`}>A Sala Llena</Navbar.Brand>
           <div>
             <img className={style.profileImage} src={img} alt="img" />
           </div>

@@ -32,6 +32,7 @@ import ResetPasswordViewer from "./components/LogInViewer/ResetPasswordViewer";
 import ResetPasswordTheater from "./components/LogInTheatres/ResetPasswordTheater";
 import ShowDetailTheater from "./components/Shows/ShowDetailTheater";
 import Error404 from "./components/Error 404/Error404";
+import RedirectCheckout from "./components/RedirectCheckout/RedirectCheckout";
 
 function App() {
   return (
@@ -114,6 +115,7 @@ function App() {
             <Route exact path="/pasarela/:id" component={PasarelaDePago} />
             <Route exact path='/showDetailTheater/:id' component={ShowDetailTheater}/>
             <Route exact path='/error404' component={Error404}/>
+            <Route exact path='/tickets/finish/:id/:idV/:seatNumber' component={RedirectCheckout} />
           </header>
         </div>
       </BrowserRouter>
