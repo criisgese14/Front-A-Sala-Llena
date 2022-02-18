@@ -18,7 +18,7 @@ export default function NavBarTheater({ id,img }) {
   return (
     <div className={style.navContainer}>
       <div className={style.logoContainer}>
-        <Link to="/">
+        <Link to={`/theaterHome/${id}`}>
           <img className={style.logo} src={logo} alt="A sala llena" />
         </Link>
       </div>

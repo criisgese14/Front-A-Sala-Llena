@@ -48,13 +48,12 @@ const FormShow = () => {
   console.log(id);
 
   const onSubmit = (data) => {
-    postNewsletterShow(theater.name);
     swal({
       icon: "warning",
-      buttons: ['Cancelar', 'Confirmar'],
+      tittle: 'Confirmar',
+      buttons: ['Cancelar', 'Yes'],
     })
     .then((res) => {
-      console.log(res)
       if (res) {
         const inputs = {
           ...input,
@@ -70,8 +69,6 @@ const FormShow = () => {
           time: data.time,
           originPrice: data.originPrice,
         };
-        //let tickets={}
-        console.log("input", inputs);
         postShow(inputs);
         for (var i = 0; i < seatsavailable.length; i++) {
           const tickets = {
@@ -85,6 +82,7 @@ const FormShow = () => {
         swal("Espectaculo agregado!", {
           icon: "success",
         });
+        postNewsletterShow(theater.name);
         history.push(`/theaterHome/${id}`);
       } else {
         swal("Tomate tu tiempo");
@@ -164,31 +162,17 @@ const FormShow = () => {
               })}
             >
               <option selected disabled="disabled" value="">
-                {" "}
                 Selecciona un genero
               </option>
-              <optgroup label="*OBRAS MAYORES*">
-                <option>Comedia</option>
-                <option>Drama</option>
-                <option>Tragedia</option>
-                <option>Tragicomedia</option>
-                <option>Monólogo</option>
-              </optgroup>
-              <optgroup label="*OBRAS MENORES*">
-                <option>Auto Sacramental</option>
-                <option>Entremes</option>
-                <option>Sainete</option>
-                <option>Farsa</option>
-                <option>Vodevil</option>
-              </optgroup>
-              <optgroup label="*OBRAS MUSICALES*">
-                <option>Ópera</option>
-                <option>Zarzuela</option>
-                <option>Opereta</option>
-                <option>Musical</option>
-                <option>Ballet</option>
-                <option>Danza</option>
-              </optgroup>
+
+              <option>Comedia</option>
+              <option>Drama</option>
+              <option>Tragedia</option>
+              <option>Tragicomedia</option>
+              <option>Monólogo</option>
+              <option>Ópera</option>
+              <option>Musical</option>
+              <option>Danza</option>
             </select>
             <span className="text-danger text-small d-block mb-2">
               {errors.genre && errors.genre.message}
@@ -293,7 +277,12 @@ const FormShow = () => {
               type="url"
               name="image"
               className="form-control "
-              {...register("image")}
+              {...register("image", {
+                required: {
+                  value: true,
+                  message: "El campo es requerido",
+                },
+              })}
             />
             <span className="text-danger text-small d-block mb-2">
               {errors.image && errors.image.message}
@@ -322,11 +311,13 @@ const FormShow = () => {
 
           <div className="col-md-12">
             <label className="form-label col-lg-12">Asientos disponibles</label>
+            <div className={style.seats}>
             <SeatForm
               seatsavailable={seatsavailable}
               setSeatAvailable={setSeatAvailable}
               form={form}
             ></SeatForm>
+            </div>
 
             <small>
               Selecciona los asientos disponibles para el espectaculo

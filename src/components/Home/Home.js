@@ -31,9 +31,12 @@ export default function Home() {
       <div className={style.navContainer}>
         <NavBarAll setActualPage={setActualPage} setOrder={setOrder} />
       </div>
+      {allshows.length === 0? <p></p>: 
       <div className={style.carouselContainer}>
         <CarouselContainer allshows={allshows} />
       </div>
+      }
+      
       <div>
         {actualShow?.length ? (
           <div className={style.showsContainer}>

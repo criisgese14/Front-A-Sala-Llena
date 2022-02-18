@@ -17,8 +17,8 @@ const SeatForm = ({
   const filas = new Array(Math.ceil(8)).fill(0).map((el, index) => index + 1);
   const sillas = new Array(Math.ceil(10)).fill(0).map((el, index) => index + 1);
   const [available, setAvailable] = useState(
-    showdetail.tickets && showdetail.tickets.length > 0
-      ? showdetail.tickets.map((el) => el.seatNumber)
+    showdetail.seatsAvailable && showdetail.seatsAvailable.length > 0
+      ? showdetail.seatsAvailable.map(el=>el)
       : JSON.parse(window.localStorage.getItem("show"))
   );
   const [selected, setSelected] = useState([]);
@@ -29,6 +29,7 @@ const SeatForm = ({
     let silla = `${r}-${s}`;
     // console.log(`row: ${r}, seat: ${s}`)
     if (!selected.includes(silla) && form) {
+      console.log('showdetail: ', showdetail);
       setSelected([...selected, silla]);
       setSeatAvailable([...seatsavailable, silla]);
     } else if (form && selected.includes(silla)) {
@@ -44,7 +45,7 @@ const SeatForm = ({
     } else if (selected.includes(silla)) {
       setSelected(selected.filter((el) => el !== silla));
       setAvailable([...available, silla]);
-    } else if (selected.length === seatsNumber) {
+    } else if (selected) {
       swal({
         tittle: "No puedes escoger más tickets",
         icon: "error",
@@ -53,14 +54,14 @@ const SeatForm = ({
     }
   };
   useEffect(() => {
-    if (showdetail.tickets && showdetail.tickets.length > 0) {
-      console.log("if numero 1:", showdetail.tickets);
-      let array = showdetail.tickets.map((el) => el.seatNumber);
+    if (showdetail.seatsAvailable && showdetail.seatsAvailable.length > 0) {
+      console.log("showdetail.seatsAvailable: ", showdetail.seatsAvailable);
+      let array = showdetail.seatsAvailable
       window.localStorage.setItem("show", JSON.stringify(array));
-    } else if (!showdetail.tickets) {
+    } else if (!showdetail.seatsAvailable) {
       console.log("else: ", JSON.parse(window.localStorage.getItem("show")));
     }
-  }, [showdetail.tickets]);
+  }, [showdetail.seatsAvailable]);
 
   console.log(selected);
   console.log(setSelected);

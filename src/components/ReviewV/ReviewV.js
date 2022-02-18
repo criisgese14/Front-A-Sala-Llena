@@ -22,7 +22,7 @@ const Review = ({nameTheater,nameShow,nameViewer,status}) => {
             setShowScore('')
             review('')
         }else{
-            alert('Todavia no se puede valorar esta obra')
+            swal('Todavia no se puede valorar esta obra', '', 'error')
         }
             
         

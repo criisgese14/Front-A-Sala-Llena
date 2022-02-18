@@ -26,7 +26,6 @@ const FormTheater = () => {
       password: data.password,
       province: data.province,
       phoneNumber: data.phoneNumber,
-      seatsQTY: data.seatsQTY,
     };
     createTheater(inputs);
     swal("Teatro creado con exito", '', 'success');
@@ -164,7 +163,7 @@ const FormTheater = () => {
             }
           </div>
 
-          <div className="col-md-5">
+          <div className="col-md-6">
             <label>Provincia</label>
             <select
               className="form-control my-2"
@@ -201,31 +200,12 @@ const FormTheater = () => {
               {errors.genre && errors.genre.message}
             </span>
           </div>
-
-          <div className="col-md-7">
-            <label className="form-label ">Direccion </label>
-            <input
-              type="text"
-              name="adress"
-              placeholder="Direccion del Teatro"
-              className="form-control "
-              {...register("adress", {
-                required: {
-                  value: true,
-                  message: "El campo es requerido",
-                },
-              })}
-            />
-            <span className="text-danger text-small d-block mb-2">
-              {errors.adress && errors.adress.message}
-            </span>
-          </div>
-
+          
           <div className="col-md-6">
             <label className="form-label col-lg-12">Numero de telefono</label>
             <input
               title="No se pueden numero negativos ni decimales"
-              type="number"
+              type="text"
               name="phoneNumber"
               placeholder="Numero de telefono"
               className="form-control "
@@ -245,27 +225,22 @@ const FormTheater = () => {
             </span>
           </div>
 
-          <div className="col-md-6">
-            <label className="form-label col-lg-12">Asientos del Teatro</label>
+          <div className="col-md-12">
+            <label className="form-label ">Direccion</label>
             <input
-              title="Numero de butacas que tiene tu teatro"
-              type="number"
-              name="seatsQTY"
-              placeholder="Nº Asientos"
+              type="text"
+              name="adress"
+              placeholder="Direccion del Teatro"
               className="form-control "
-              {...register("seatsQTY", {
+              {...register("adress", {
                 required: {
                   value: true,
                   message: "El campo es requerido",
                 },
-                pattern: {
-                  value: /^(0|[1-9][0-9]*)$/,
-                  message: "No se pueden numero negativos ni decimales",
-                },
               })}
             />
             <span className="text-danger text-small d-block mb-2">
-              {errors.seatsQTY && errors.seatsQTY.message}
+              {errors.adress && errors.adress.message}
             </span>
           </div>
 

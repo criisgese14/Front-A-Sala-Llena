@@ -22,4 +22,13 @@
   margin-top: 0.5rem;
   
 }
+.seatComponent{
+  display: flex;
+  justify-content: center;
+}
 
+.seats{
+  display: flex;
+  justify-content: center;
+  
+}
