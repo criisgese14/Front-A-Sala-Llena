@@ -6,6 +6,8 @@ import { loginTheater, loginViewer } from "../redux/actions/index.js";
 const useUser = () => {
   const { status, setStatus,loginData,setLoginData,id,setId} = useContext(Context);
   const [state, setState] = useState({ loading: false, error: false });
+  const [idV,setIdV] = useState('');
+  const [idT,setIdT] = useState('');
   
 
   const login = useCallback(
@@ -66,7 +68,7 @@ const useUser = () => {
     
     sessionStorage.setItem('loginData', JSON.stringify(data.token));
     sessionStorage.setItem('id', JSON.stringify(data.id));
-    
+    setIdV(window.sessionStorage.getItem('id').valueOf())
   };
   
   const googleLoginTheater = async (googleData) => {
@@ -85,7 +87,7 @@ const useUser = () => {
     
     sessionStorage.setItem('loginData', JSON.stringify(data.token));
     sessionStorage.setItem('id', JSON.stringify(data.id));
-    
+    setIdT(window.sessionStorage.getItem('id').valueOf())
     
   };
  
@@ -111,6 +113,8 @@ const useUser = () => {
     loginviewer,
     googleLoginViewer,
     googleLoginTheater,
+    idV,
+    idT
     
     
     

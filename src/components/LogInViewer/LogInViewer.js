@@ -28,9 +28,9 @@ const LogInViewer = () => {
   const dispatch = useDispatch();
   const [input, setInput] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
-  const { hasLoginError, loginviewer,googleLoginViewer} = useUser();
+  const { hasLoginError, loginviewer,googleLoginViewer,idV} = useUser();
   const viewers = useSelector((state) => state.viewers);
-  const [idV,setIdV] = useState('')
+  //const [idV,setIdV] = useState('')
 
   
   
@@ -48,11 +48,18 @@ const LogInViewer = () => {
     swal(response, '', 'error');
   };
 
-  const handleLogin =  (googleData) => {
+  
+  function handleLogin (googleData) {
     googleLoginViewer(googleData)
-    setIdV(window.sessionStorage.getItem('id')?.valueOf())
+    
+    
+      
+    
+      
+    
+    
   };
-
+  console.log('idV',idV)
   function inputChange(e) {
     setInput({
       ...input,

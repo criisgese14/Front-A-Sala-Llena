@@ -28,9 +28,9 @@ const LogInTheatres = () => {
   const dispatch = useDispatch();
   const [input, setInput] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
-  const { hasLoginError, login, googleLoginTheater } = useUser();
+  const { hasLoginError, login, googleLoginTheater,idT } = useUser();
   const theaters = useSelector((state) => state.theaters);
-  const [idT,setIdT] = useState('')
+  //const [idT,setIdT] = useState('')
   
 
   useEffect(() => {
@@ -50,7 +50,7 @@ const LogInTheatres = () => {
   
   const handleLogin =  (googleData) => {
     googleLoginTheater(googleData)
-    setIdT(window.sessionStorage.getItem('id')?.valueOf())
+    
   };
   
 
