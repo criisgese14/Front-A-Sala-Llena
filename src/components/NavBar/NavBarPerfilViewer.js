@@ -23,7 +23,7 @@ const NavBarPerfilViewer = () => {
         expand={false}
       >
         <Container fluid>
-          <Navbar.Brand href="/">A Sala Llena</Navbar.Brand>
+          <Navbar.Brand href={`/viewerHome/${id}`}>A Sala Llena</Navbar.Brand>
           <div className={style.buttonContainer}>
             <Dropdown>
               <Dropdown.Toggle variant="secondary" id="dropdown-basic">
