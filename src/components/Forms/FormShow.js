@@ -280,7 +280,12 @@ const FormShow = () => {
               type="url"
               name="image"
               className="form-control "
-              {...register("image")}
+              {...register("image",{
+                required: {
+                  value: true,
+                  message: "El campo es requerido",
+                },
+              })}
             />
             <span className="text-danger text-small d-block mb-2">
               {errors.image && errors.image.message}
