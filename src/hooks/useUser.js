@@ -8,6 +8,7 @@ const useUser = () => {
   const [state, setState] = useState({ loading: false, error: false });
   const [idV,setIdV] = useState('');
   const [idT,setIdT] = useState('');
+  //const [statusV,setStatusV] = useState('');
   
 
   const login = useCallback(

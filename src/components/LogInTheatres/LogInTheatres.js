@@ -28,7 +28,7 @@ const LogInTheatres = () => {
   const dispatch = useDispatch();
   const [input, setInput] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
-  const { hasLoginError, login, googleLoginTheater, idT } = useUser();
+  const { hasLoginError, login, googleLoginTheater, idT, isLogged } = useUser();
   const theaters = useSelector((state) => state.theaters);
   //const [idT,setIdT] = useState('')
 
@@ -55,7 +55,10 @@ const LogInTheatres = () => {
   function handleSubmit(e) {
     e.preventDefault();
     login(input);
-    window.location.href = `http://localhost:3000/theaterHome/${filterTheater?.id}`;
+    if (isLogged) {
+      window.location.href = `http://localhost:3000/theaterHome/${filterTheater?.id}`;
+    }
+
     setInput({ email: "", password: "" });
   }
 
