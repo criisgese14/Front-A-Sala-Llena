@@ -28,36 +28,36 @@ const SalesHistory = () => {
     dispatch(theaterDetail(decod));
   }, [dispatch, decod]);
 
-  let filterShows = show?.filter((e) => e.theaterId === theater?.id);
-  let filterTicket = tickets?.filter((e) => e.show?.theaterId === theater?.id);
+  let filterShows = show?.filter((e) => e.theaterId === theater?.id && e.released === true);
+  
   console.log("filter", filterShows);
-  console.log("ticket", filterTicket);
+  
 
-  let filterTicketSold = filterTicket?.map((e) => e.sold === true);
-  console.log("filterTicketSold", filterTicketSold);
-  let total = filterTicket?.map((e) => e.price);
+  
+  let total;
   console.log("total", total);
   return (
     <div>
       <NavBarTheater id={decod} img={theater?.image}/>
       <div className={style.cardContainer}>
-        {filterShows.length && filterTicket.length ? (
+        {filterShows.length ? (
           filterShows?.map((e, i) => {
             return (
               <div key={e.id} className={style.card}>
                 <Card border="dark" style={{ width: "18rem" }}>
                   <Card.Header>
-                    Cantidad de entradas:{filterTicketSold?.length}
+                    Cantidad de entradas:{e.ticketsSold}
                   </Card.Header>
                   <Card.Body>
                     <Card.Title>{e.name}</Card.Title>
                     <Card.Text>
-                      <h4>
+                      <p>
                         Total vendido: $
-                        {total?.reduce(function (a, b) {
+                        {e.tickets?.map(p => p.price)}
+                        {/*total?.reduce(function (a, b) {
                           return a + b;
-                        })}
-                      </h4>
+                        })*/}
+                      </p>
                     </Card.Text>
                   </Card.Body>
                 </Card>
