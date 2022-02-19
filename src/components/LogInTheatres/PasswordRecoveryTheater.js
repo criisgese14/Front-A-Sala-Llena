@@ -1,45 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { postPasswordRecoveryTheater } from "../../redux/actions/index.js";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { allTheaters } from "../../redux/actions/index.js";
+
 import logo from "../../assets/logo a sala llena-sinfondo.png";
 import style from "./LoginTheaters.module.css";
 import swal from "sweetalert";
 
-function validate(input) {
-  let errors = {};
-  if (input.email === "") {
-    errors.email = "e-mail no puede estar vacio";
-  }
-  if (!input.email.includes("@")) {
-    errors.email = "No es un email valido";
-  }
-  return errors;
-}
 const PasswordRecoveryTheater = () => {
   const dispatch = useDispatch();
+  const theaters = useSelector((state) => state.theaters);
   const [input, setInput] = useState({ email: "" });
-  const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    dispatch(allTheaters());
+  }, [dispatch]);
 
   function inputChange(e) {
     setInput({
       ...input,
       [e.target.name]: e.target.value,
     });
-    setErrors(
-      validate({
-        ...input,
-        [e.target.name]: e.target.value,
-      })
-    );
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(postPasswordRecoveryTheater(input.email));
-    window.location.href = `http://localhost:3000`;
-    swal("Email enviado!", '', 'success');
-    setInput({ email: "" });
+    const filterTheater = theaters?.find((e) => e.email === input.email);
+    if (filterTheater) {
+      postPasswordRecoveryTheater(input.email);
+      swal("Email enviado!", "", "success");
+      window.location.href = `http://localhost:3000`;
+      setInput("");
+    } else {
+      swal("", "Este email no esta registrado!", "error");
+    }
   }
 
   return (
@@ -59,7 +54,6 @@ const PasswordRecoveryTheater = () => {
             name="email"
             onChange={inputChange}
           />
-          {errors.email && <p>{errors.email}</p>}
 
           <button>Enviar</button>
         </form>
