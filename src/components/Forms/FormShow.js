@@ -48,13 +48,12 @@ const FormShow = () => {
   console.log(id);
 
   const onSubmit = (data) => {
-    postNewsletterShow(theater.name);
     swal({
       icon: "warning",
-      buttons: ['Cancelar', 'Confirmar'],
+      tittle: 'Confirmar',
+      buttons: ['Cancelar', 'Yes'],
     })
     .then((res) => {
-      console.log(res)
       if (res) {
         const inputs = {
           ...input,
@@ -83,6 +82,7 @@ const FormShow = () => {
         swal("Espectaculo agregado!", {
           icon: "success",
         });
+        postNewsletterShow(theater.name);
         history.push(`/theaterHome/${id}`);
       } else {
         swal("Tomate tu tiempo");
@@ -162,18 +162,17 @@ const FormShow = () => {
               })}
             >
               <option selected disabled="disabled" value="">
-                
                 Selecciona un genero
               </option>
-              
-                <option>Comedia</option>
-                <option>Drama</option>
-                <option>Tragedia</option>
-                <option>Tragicomedia</option>
-                <option>Monólogo</option>
-                <option>Ópera</option>
-                <option>Musical</option>
-                <option>Danza</option>
+
+              <option>Comedia</option>
+              <option>Drama</option>
+              <option>Tragedia</option>
+              <option>Tragicomedia</option>
+              <option>Monólogo</option>
+              <option>Ópera</option>
+              <option>Musical</option>
+              <option>Danza</option>
             </select>
             <span className="text-danger text-small d-block mb-2">
               {errors.genre && errors.genre.message}
@@ -278,7 +277,7 @@ const FormShow = () => {
               type="url"
               name="image"
               className="form-control "
-              {...register("image",{
+              {...register("image", {
                 required: {
                   value: true,
                   message: "El campo es requerido",

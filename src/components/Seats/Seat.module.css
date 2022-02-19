@@ -6,27 +6,13 @@
 .component {
   background-color: rgb(0, 0, 0);
   width: 18rem;
+  margin: 0px;
 }
 
 * {
   box-sizing: border-box;
 }
 
-.movie-container {
-  margin: 20px 0;
-}
-
-.movie-container select {
-  background-color: #fff;
-  border: 0;
-  border-radius: 5px;
-  font-size: 14px;
-  margin-left: 10px;
-  padding: 5px 15px 5px 15px;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
-}
 
 .container {
   perspective: 1000px;
@@ -93,14 +79,6 @@
   display: flex;
 }
 
-.screen {
-  background-color: #fff;
-  height: 70px;
-  width: 100%;
-  margin: 15px 0;
-  transform: rotateX(-45deg);
-  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.75);
-}
 .indice {
   color: #fff;
   font-size: 10px;

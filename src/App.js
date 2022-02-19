@@ -115,7 +115,7 @@ function App() {
             <Route exact path="/pasarela/:id" component={PasarelaDePago} />
             <Route exact path='/showDetailTheater/:id' component={ShowDetailTheater}/>
             <Route exact path='/error404' component={Error404}/>
-            <Route exact path='/tickets/finish/:id/:idV/:seatNumber' component={RedirectCheckout} />
+            <Route exact path='/ticket/finish/:id/:idV/:seatNumber' component={RedirectCheckout} />
           </header>
         </div>
       </BrowserRouter>

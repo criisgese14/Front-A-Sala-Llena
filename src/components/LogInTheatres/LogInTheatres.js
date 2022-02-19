@@ -7,7 +7,7 @@ import { allTheaters } from "../../redux/actions/index.js";
 import { useSelector, useDispatch } from "react-redux";
 import { Navbar, Form, Container, Button } from "react-bootstrap";
 import style from "./LoginTheaters.module.css";
-import swal from 'sweetalert'
+import swal from "sweetalert";
 
 function validate(input) {
   let errors = {};
@@ -31,7 +31,6 @@ const LogInTheatres = () => {
   const { hasLoginError, login, googleLoginTheater,idT, statusIdT } = useUser();
   const theaters = useSelector((state) => state.theaters);
   //const [idT,setIdT] = useState('')
-  
 
   useEffect(() => {
     dispatch(allTheaters());
@@ -45,14 +44,13 @@ const LogInTheatres = () => {
   const handleFailure = (response) => {
     swal({
       tittle: response,
-      icon: 'error'});
+      icon: "error",
+    });
   };
-  
-  const handleLogin =  (googleData) => {
-    googleLoginTheater(googleData)
-    
+
+  const handleLogin = (googleData) => {
+    googleLoginTheater(googleData);
   };
-  
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -107,23 +105,10 @@ const LogInTheatres = () => {
             </Form.Text>
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="password"
-              value={input.password}
-              name="password"
-              onChange={handleChange}
-            />
-            {errors.password && <p>{errors.password}</p>}
-          </Form.Group>
-          
             <Button variant="dark" type="submit" onClick={handleSubmit}>
               Iniciar Sesion
             </Button>
-          
-        </Form>
+          </Form>
         </form>
         }
         
@@ -135,18 +120,18 @@ const LogInTheatres = () => {
             </Button>
           </Link>
         </div>
-        <Link to="/passwordRecoveryViewer">¿Olvidaste tu contraseña?</Link>
-        {
-          idT ? 
-          <Redirect to={`/theaterHome/${idT}`}/> :
+        <Link to="/passwordRecoveryTheater">¿Olvidaste tu contraseña?</Link>
+        {idT ? (
+          <Redirect to={`/theaterHome/${idT}`} />
+        ) : (
           <GoogleLogin
-          clientId="506901482868-h6pf1ffiuv7vicavl8btlunj18oeamjr.apps.googleusercontent.com"
-          buttonText="Log in with Google"
-          onSuccess={handleLogin}
-          onFailure={handleFailure}
-          cookiePolicy={"single_host_origin"}
-        />
-        }
+            clientId="506901482868-h6pf1ffiuv7vicavl8btlunj18oeamjr.apps.googleusercontent.com"
+            buttonText="Log in with Google"
+            onSuccess={handleLogin}
+            onFailure={handleFailure}
+            cookiePolicy={"single_host_origin"}
+          />
+        )}
       </div>
     </div>
   );

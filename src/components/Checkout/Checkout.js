@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { checkoutPay, showDetail, putTicket } from "../../redux/actions/index.js";
+import React from "react";
+import { checkoutPay } from "../../redux/actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 
 export default function Checkout({price, id, idV, selected, setSelected, idShow}) {
     const show = useSelector((state) => state.showdetail);
@@ -16,7 +15,7 @@ export default function Checkout({price, id, idV, selected, setSelected, idShow}
     console.log(tickets)
     // var ticketsPrice = tickets?.map((t) => t.seatNumber)
     // console.log(ticketsPrice)
-    var equalShowId = tickets?.filter((t) => t?.showId == showId)
+    var equalShowId = tickets?.filter((t) => t?.showId === Number(showId))
     console.log(equalShowId) // me trae solo los tickets de los asientos disponibles
     //var total = equalShowId?.price * seatNumber?.length;
     console.log('equalShowId',equalShowId)
