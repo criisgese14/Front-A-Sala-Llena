@@ -17,6 +17,12 @@ const Newsletter = () => {
     isSubscribed: false,
     nameTheater: "",
   });
+  const [decod,setDecod] = useState('');
+
+  useEffect(async ()=>{
+    await setDecod(atob(id))
+    console.log('decod',decod)
+  },[id])
 
   useEffect(() => {
     dispatch(allTheaters());
@@ -41,8 +47,8 @@ const Newsletter = () => {
 
   const HandleSubmit = (e) => {
     e.preventDefault();
-    dispatch(putViewer(id, { isSubscribed: input.isSubscribed }));
-    dispatch(createFavorites(id, { nameTheater: input.nameTheater }));
+    dispatch(putViewer(decod, { isSubscribed: input.isSubscribed }));
+    dispatch(createFavorites(decod, { nameTheater: input.nameTheater }));
     console.log(input);
     swal("Gracias por suscribirte!", "", "succes");
     setInput({

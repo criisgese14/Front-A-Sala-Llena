@@ -151,7 +151,7 @@ const LogInViewer = () => {
       <div className={style.loginContainer}>
         {
           statusIdV ? 
-          <Redirect to={`/viewerHome/${statusIdV}`}/> : 
+          <Redirect to={`/viewerHome/${btoa(statusIdV)}`}/> : 
           <form onSubmit={handleSubmit}>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -202,7 +202,7 @@ const LogInViewer = () => {
         <Link to="/passwordRecoveryViewer">¿Olvidaste tu contraseña?</Link>
         {
           idV ? 
-            <Redirect to={`/viewerHome/${idV}`}/> :
+            <Redirect to={`/viewerHome/${btoa(idV)}`}/> :
           <GoogleLogin
           clientId="506901482868-h6pf1ffiuv7vicavl8btlunj18oeamjr.apps.googleusercontent.com"
           buttonText="Log in with Google"

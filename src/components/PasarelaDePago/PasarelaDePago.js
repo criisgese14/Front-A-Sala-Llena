@@ -21,15 +21,23 @@ const PasarelaDePago =  ({props}) => {
     const {id, idV} = useParams()
     //const [tickets , setTickets]= useState()
     //let variable = false;
-const onChange = ({target: {name, value}}) => {
+    const onChange = ({target: {name, value}}) => {
     setSeatNumber(value)
-}
+    }
+    const [decodShowId,setDecodShowId] = useState('');
+    const [decodViewerId,setDecodViewerId] = useState('');
+
+    useEffect(async ()=>{
+      await setDecodShowId(atob(id))
+      await setDecodViewerId(atob(idV))
+    },[id,idV])
+
   useEffect(() => {
     dispatch(getAllTickets())
   },[dispatch])
   useEffect(()=>{
-    dispatch(showDetail(id))
-  },[dispatch,id])
+    dispatch(showDetail(decodShowId))
+  },[dispatch,decodShowId])
   // console.log(tickets, "Tickets")
   return (
     <div>
@@ -39,7 +47,7 @@ const onChange = ({target: {name, value}}) => {
         <h3>Pasarela se Pago</h3>   
         <label>Selecciona # de entradas</label>    
         <input name='seatnumber' type={'number'} onChange={(e)=>{onChange(e)}}></input>
-        <Seat seatsNumber={seatNumber} show={show} id={id} idV={idV}/>
+        <Seat seatsNumber={seatNumber} show={show} id={decodShowId} idV={decodViewerId}/>
         
     </div>
   )

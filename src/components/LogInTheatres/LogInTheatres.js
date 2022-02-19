@@ -87,7 +87,7 @@ const LogInTheatres = () => {
       <div className={style.loginContainer}>
         {
           statusIdT ? 
-          <Redirect to={`/theaterHome/${statusIdT}`}/> :
+          <Redirect to={`/theaterHome/${btoa(statusIdT)}`}/> :
           <form onSubmit={handleSubmit}>
         <Form >
           <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -132,7 +132,7 @@ const LogInTheatres = () => {
         </div>
         <Link to="/passwordRecoveryTheater">¿Olvidaste tu contraseña?</Link>
         {idT ? (
-          <Redirect to={`/theaterHome/${idT}`} />
+          <Redirect to={`/theaterHome/${btoa(idT)}`} />
         ) : (
           <GoogleLogin
             clientId="506901482868-h6pf1ffiuv7vicavl8btlunj18oeamjr.apps.googleusercontent.com"
