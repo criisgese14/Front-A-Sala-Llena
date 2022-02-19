@@ -28,21 +28,25 @@ const LogInViewer = () => {
   const dispatch = useDispatch();
   const [input, setInput] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
-  const { hasLoginError, loginviewer,googleLoginViewer,idV, isLogged} = useUser();
+  const { hasLoginError, loginviewer,googleLoginViewer,idV, statusIdV} = useUser();
   const viewers = useSelector((state) => state.viewers);
   //const [idV,setIdV] = useState('')
 
   
-  
+  console.log('statusIdV',statusIdV)
 
   useEffect(() => {
     dispatch(getAllViewers());
   }, [dispatch]);
 
+  
+
   const filterViewer = viewers?.find(
     (e) => e.email === input.email && e.password === input.password
   );
   console.log(filterViewer);
+
+  
 
   const handleFailure = (response) => {
     swal(response, '', 'error');
@@ -51,6 +55,7 @@ const LogInViewer = () => {
   
   function handleLogin (googleData) {
     googleLoginViewer(googleData)
+    
   };
   console.log('idV',idV)
   function inputChange(e) {
@@ -69,10 +74,6 @@ const LogInViewer = () => {
   function handleSubmit(e) {
     e.preventDefault();
     loginviewer(input);
-    if(isLogged){
-      window.location.href= `http://localhost:3000/viewerHome/${filterViewer?.id}`
-     
-    }
     setInput({ email: "", password: "" });
   }
 
@@ -133,9 +134,12 @@ const LogInViewer = () => {
           <Navbar.Brand href="/">A Sala Llena</Navbar.Brand>
         </Container>
       </Navbar>
-
+      
       <div className={style.loginContainer}>
-        <form onSubmit={handleSubmit}>
+        {
+          statusIdV ? 
+          <Redirect to={`/viewerHome/${statusIdV}`}/> : 
+          <form onSubmit={handleSubmit}>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
@@ -171,6 +175,8 @@ const LogInViewer = () => {
         </Form>
         {hasLoginError && <strong>Usuario o contraseña invalidos</strong>}
         </form>
+        }
+        
         
         <div className={style.btn}>
           <Link to="/formViewerRegister">

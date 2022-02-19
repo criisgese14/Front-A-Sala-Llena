@@ -8,7 +8,8 @@ const useUser = () => {
   const [state, setState] = useState({ loading: false, error: false });
   const [idV,setIdV] = useState('');
   const [idT,setIdT] = useState('');
-  //const [statusV,setStatusV] = useState('');
+  const [statusIdV,setStatusIdV] = useState('');
+  const [statusIdT,setStatusIdT] = useState('');
   
 
   const login = useCallback(
@@ -17,13 +18,15 @@ const useUser = () => {
       loginTheater(input)
         .then((data) => {
           window.sessionStorage.setItem("status", data.isLogged);
+          window.sessionStorage.setItem("id", data.id);
           
           setState({ loading: false, error: false });
           setStatus(data.isLogged);
-          
+          setStatusIdT(window.sessionStorage.getItem('id').valueOf())
         })
         .catch((err) => {
           window.sessionStorage.removeItem("status");
+          window.sessionStorage.removeItem("id");
           
           setState({ loading: false, error: true });
           console.error(err);
@@ -38,13 +41,15 @@ const useUser = () => {
       loginViewer(input)
         .then((data) => {
           window.sessionStorage.setItem("status", data.isLogged);
-          
+          window.sessionStorage.setItem("id", data.id);
           setState({ loading: false, error: false });
           setStatus(data.isLogged);
+          setStatusIdV(window.sessionStorage.getItem('id').valueOf())
           
         })
         .catch((err) => {
           window.sessionStorage.removeItem("status");
+          window.sessionStorage.removeItem("id");
           
           setState({ loading: false, error: true });
           console.error(err);
@@ -98,7 +103,7 @@ const useUser = () => {
     window.sessionStorage.removeItem("loginData");
     window.sessionStorage.removeItem("id");
     
-    
+    setStatusIdV(null);
     setStatus(null);
     setLoginData(null);
     setId(null);
@@ -115,7 +120,9 @@ const useUser = () => {
     googleLoginViewer,
     googleLoginTheater,
     idV,
-    idT
+    idT,
+    statusIdV,
+    statusIdT
     
     
     

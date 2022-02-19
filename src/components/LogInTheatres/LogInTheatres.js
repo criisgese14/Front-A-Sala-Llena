@@ -28,7 +28,7 @@ const LogInTheatres = () => {
   const dispatch = useDispatch();
   const [input, setInput] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
-  const { hasLoginError, login, googleLoginTheater,idT, isLogged } = useUser();
+  const { hasLoginError, login, googleLoginTheater,idT, statusIdT } = useUser();
   const theaters = useSelector((state) => state.theaters);
   //const [idT,setIdT] = useState('')
   
@@ -57,13 +57,7 @@ const LogInTheatres = () => {
   function handleSubmit(e) {
     e.preventDefault();
     login(input);
-    if(isLogged){
-      window.location.href= `http://localhost:3000/theaterHome/${filterTheater?.id}`
-      
-    }
-    
     setInput({ email: "", password: "" });
-
   }
 
   function handleChange(e) {
@@ -93,7 +87,10 @@ const LogInTheatres = () => {
       </Navbar>
 
       <div className={style.loginContainer}>
-        <form onSubmit={handleSubmit}>
+        {
+          statusIdT ? 
+          <Redirect to={`/theaterHome/${statusIdT}`}/> :
+          <form onSubmit={handleSubmit}>
         <Form >
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
@@ -128,6 +125,8 @@ const LogInTheatres = () => {
           
         </Form>
         </form>
+        }
+        
         {hasLoginError && <strong>Usuario o contraseña invalidos</strong>}
         <div className={style.btn}>
           <Link to="/theaterRegister">
