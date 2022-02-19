@@ -23,4 +23,9 @@
     display: flex;
     justify-content: space-between;
   }
+  .profileImage {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+  }
 }

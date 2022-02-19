@@ -8,12 +8,11 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  height:auto;
+  height: auto;
   margin: 1rem;
-  
 }
 
-.formTheaterPut{
+.formTheaterPut {
   display: flex;
   flex-direction: column;
   /* border: 0.3rem solid rgba(20,11,14,0.76);
@@ -26,13 +25,11 @@
   margin: 0 auto;
   align-items: left;
   margin-top: 1rem;
-  
 }
-.imagen{
+.imagen {
   height: 5rem;
 }
 
-.btnContainer{
-  padding: 1rem;
-  
+.btnContainer {
+  margin-bottom: 3rem;
 }

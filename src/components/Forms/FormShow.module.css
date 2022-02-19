@@ -2,12 +2,10 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  height:auto;
-  margin: 1rem;
-  
+  height: auto;
 }
 
-.formShowCreate{
+.formShowCreate {
   display: flex;
   flex-direction: column;
   /* border: 0.3rem solid rgba(20,11,14,0.76);
@@ -20,15 +18,13 @@
   margin: 0 auto;
   align-items: left;
   margin-top: 0.5rem;
-  
 }
-.seatComponent{
+.seatComponent {
   display: flex;
   justify-content: center;
 }
 
-.seats{
+.seats {
   display: flex;
   justify-content: center;
-  
 }

@@ -19,49 +19,6 @@ export default function NavBarViewer({ img }) {
   console.log(id);
   return (
     <div>
-      {/* <div className={style.NavBarAllContainer}>
-        <div className={style.column}>
-          <Link to="/">
-            <img className={style.logo} src={logo} alt="A sala llena" />
-          </Link>
-          <div>
-            <img src={img} alt="img" />
-          </div>
-          <div>
-            <Filters />
-          </div>
-        </div>
-        <div className={style.miCuenta}>
-          <Dropdown>
-            <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-              Mi cuenta
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-              <Dropdown.Item>
-                <Link to={`/formPutViewer/${id}`}>
-                  <button>Perfil</button>
-                </Link>
-              </Dropdown.Item>
-              <Dropdown.Item>
-                <Link to={`/viewerHistory/${id}`}>
-                  <button>Mis Reservas</button>
-                </Link>
-              </Dropdown.Item>
-              <Dropdown.Item>
-                <Link to={`/newsletter/${id}`}>
-                  <button>Newsletter</button>
-                </Link>
-              </Dropdown.Item>
-
-              <Dropdown.Item href="#/action-2">
-                <button onClick={handleLogOut}>Cerrar sesión</button>
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-        </div>
-      </div> */}
-
       <Navbar
         className={style.heigthConfig}
         bg="dark"

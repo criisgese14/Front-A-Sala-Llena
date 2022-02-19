@@ -12,6 +12,7 @@ import SeatForm from "../Seats/SeatForm.js";
 import { useDispatch, useSelector } from "react-redux";
 import style from "./FormShow.module.css";
 import swal from "sweetalert";
+import NavBarTheater from "../NavBar/NavBarTheater";
 
 const FormShow = () => {
   const history = useHistory();
@@ -50,10 +51,9 @@ const FormShow = () => {
   const onSubmit = (data) => {
     swal({
       icon: "warning",
-      tittle: 'Confirmar',
-      buttons: ['Cancelar', 'Yes'],
-    })
-    .then((res) => {
+      tittle: "Confirmar",
+      buttons: ["Cancelar", "Yes"],
+    }).then((res) => {
       if (res) {
         const inputs = {
           ...input,
@@ -92,9 +92,7 @@ const FormShow = () => {
 
   return (
     <div className={style.formShowContainer}>
-      <Link to={`/theaterHome/${id}`}>
-        <button className="btn btn-secondary">Volver</button>
-      </Link>
+      <NavBarTheater id={id} img={theater?.image} />
 
       <div className={style.formShowCreate}>
         <div className="text-center padding">
@@ -312,11 +310,11 @@ const FormShow = () => {
           <div className="col-md-12">
             <label className="form-label col-lg-12">Asientos disponibles</label>
             <div className={style.seats}>
-            <SeatForm
-              seatsavailable={seatsavailable}
-              setSeatAvailable={setSeatAvailable}
-              form={form}
-            ></SeatForm>
+              <SeatForm
+                seatsavailable={seatsavailable}
+                setSeatAvailable={setSeatAvailable}
+                form={form}
+              ></SeatForm>
             </div>
 
             <small>

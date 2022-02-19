@@ -10,3 +10,30 @@
 .buttonContainer {
   margin-right: 5rem;
 }
+
+.profileImage {
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50%;
+}
+
+.left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+}
+
+@media (max-width: 768px) {
+  .profileImage {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+  }
+  .left {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+}

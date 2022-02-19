@@ -8,6 +8,7 @@ import {
 } from "../../redux/actions/index.js";
 import { useParams } from "react-router-dom";
 import style from "./SalesHistory.module.css";
+import Card from "react-bootstrap/Card";
 const SalesHistory = () => {
   const dispatch = useDispatch();
   const tickets = useSelector((state) => state.tickets);
@@ -26,32 +27,41 @@ const SalesHistory = () => {
   console.log("filter", filterShows);
   console.log("ticket", filterTicket);
 
-  let filterTicketSold = filterTicket?.map(e => e.sold === true);
-  console.log('filterTicketSold',filterTicketSold)
+  let filterTicketSold = filterTicket?.map((e) => e.sold === true);
+  console.log("filterTicketSold", filterTicketSold);
   let total = filterTicket?.map((e) => e.price);
   console.log("total", total);
   return (
     <div>
       <NavBarTheater />
-      {filterShows.length && filterTicket.length ? (
-        filterShows?.map((e, i) => {
-          return (
-            <div key={e.id}>
-              <h3>{e.name}</h3>
-              <h4>Cantidad de entradas:{filterTicketSold?.length} </h4>
-              <h4>
-                Total vendido: $
-                {total?.reduce(function (a, b) {
-                  return a + b;
-                })}{" "}
-              </h4>
-            </div>
-          );
-        })
-      ) : (
-        <h1>TODAVIA NO HAY VENTAS</h1>
-      )}
-      {/* <Footer /> */}
+      <div className={style.cardContainer}>
+        {filterShows.length && filterTicket.length ? (
+          filterShows?.map((e, i) => {
+            return (
+              <div key={e.id} className={style.card}>
+                <Card border="dark" style={{ width: "18rem" }}>
+                  <Card.Header>
+                    Cantidad de entradas:{filterTicketSold?.length}
+                  </Card.Header>
+                  <Card.Body>
+                    <Card.Title>{e.name}</Card.Title>
+                    <Card.Text>
+                      <h4>
+                        Total vendido: $
+                        {total?.reduce(function (a, b) {
+                          return a + b;
+                        })}
+                      </h4>
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </div>
+            );
+          })
+        ) : (
+          <h1>TODAVIA NO HAY VENTAS</h1>
+        )}
+      </div>
     </div>
   );
 };
