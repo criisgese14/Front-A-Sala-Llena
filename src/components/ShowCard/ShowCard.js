@@ -18,7 +18,7 @@ const ShowCard = ({
   score,
   idV,
 }) => {
-  let timer = `${date} ${time}`;
+  let timer = ` dias ${date} ${time}`;
 
   return (
     <div className={style.container}>

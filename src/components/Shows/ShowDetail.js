@@ -3,11 +3,9 @@ import { showDetail } from "../../redux/actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import style from "./ShowDetail.module.css";
-import logo from "../../assets/logo a sala llena-sinfondo.png";
-import Button from "react-bootstrap/Button";
-//import Timer from "../Timer/timer.js"
-import Footer from "../Footer/Footer.js";
 import Countdown from "react-countdown";
+import { Navbar, Container, Button } from "react-bootstrap";
+
 import { putTicket } from "../../redux/actions/index.js";
 
 const ShowDetail = () => {
@@ -33,7 +31,7 @@ const ShowDetail = () => {
       </div>;
     } else {
       return (
-        <div>
+        <div className={style.timer}>
           <p>{days}</p>
           <p>
             <small>Dias</small>
@@ -106,9 +104,18 @@ const ShowDetail = () => {
   return (
     <div className={style.detailContainer}>
       <div className={style.navDetail}>
-        <Link to="/">
-          <img className={style.logo} src={logo} alt="A sala llena" />
-        </Link>
+        <Navbar
+          className={style.heigthConfig}
+          bg="dark"
+          variant="dark"
+          expand={false}
+        >
+          <Container fluid>
+            <div className={style.left}>
+              <Navbar.Brand href="/">A Sala Llena</Navbar.Brand>
+            </div>
+          </Container>
+        </Navbar>
       </div>
 
       <div className={style.title}>
@@ -116,9 +123,13 @@ const ShowDetail = () => {
       </div>
 
       <div className={style.cardDetail}>
-        <div className={style.izq}>
+        <div className={style.first}>
           <div>
             <img src={show?.image} className={style.image} alt="img" />
+          </div>
+          <div className={style.description}>
+            <h3>Descripcion : </h3>
+            <p>{show?.summary}</p>
           </div>
         </div>
         <div className={style.der}>
@@ -159,7 +170,10 @@ const ShowDetail = () => {
               <h4>{porcentaje}%</h4>
             </div>
             <div className={style.btnContainer}>
-              <Link to={`/pasarela/${id}/${idV}`} style={{ textDecoration: "none" }}>
+              <Link
+                to={`/pasarela/${id}/${idV}`}
+                style={{ textDecoration: "none" }}
+              >
                 <Button
                   className={style.btn}
                   variant="primary"
@@ -169,10 +183,6 @@ const ShowDetail = () => {
                 </Button>
               </Link>
             </div>
-          </div>
-          <div className={style.inf}>
-            <h3>Descripcion : </h3>
-            <p>{show?.summary}</p>
           </div>
         </div>
       </div>

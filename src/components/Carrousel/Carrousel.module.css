@@ -1,6 +1,11 @@
 .carrouselContainer {
 }
 
+.image {
+  height: 20rem;
+  width: auto;
+}
+
 .carouselContent {
   /* display: flex;
   flex-direction: column;
@@ -46,5 +51,10 @@
   }
   .carrouselContainer :hover > .image {
     opacity: 1;
+  }
+  .image {
+    height: 14rem;
+    width: auto;
+    max-width: 100%;
   }
 }
