@@ -23,10 +23,16 @@ const FormPutViewer = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const [decod,setDecod] = useState('');
+
+  useEffect(async ()=>{
+    await setDecod(atob(id))
+    console.log('decod',decod)
+  },[id])
 
   useEffect(() => {
-    dispatch(getViewerDetail(id));
-  }, [dispatch, id]);
+    dispatch(getViewerDetail(decod));
+  }, [dispatch, decod]);
 
   const changeEdit = () => {
     edit === false ? setEdit(true) : setEdit(false);
@@ -44,7 +50,7 @@ const FormPutViewer = () => {
       buttons: ["Cancel", "Confirm"],
     }).then((res) => {
       if (res) {
-        dispatch(putViewer(id, cara));
+        dispatch(putViewer(decod, cara));
         swal("Usuario actualizado!", "", "success");
         setEdit(false);
         history.push(`/viewerHome/${id}`);
@@ -77,7 +83,7 @@ const FormPutViewer = () => {
   return (
     <div className={style.formViewerContainer}>
       <div className={style.nav}>
-        <NavBarPerfilViewer img={detail?.image} />
+        <NavBarPerfilViewer img={detail?.image} id={decod} />
       </div>
       <div className={style.btnContainer}>
         <h2>Actualizar perfil</h2>

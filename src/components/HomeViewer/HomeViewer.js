@@ -24,10 +24,17 @@ const HomeViewer = () => {
   const paginate = (number) => {
     setActualPage(number);
   };
+  const [decod,setDecod] = useState('');
+
+  useEffect(async ()=>{
+    await setDecod(atob(id))
+    
+  },[id])
+
   useEffect(() => {
-    dispatch(getViewerDetail(id));
+    dispatch(getViewerDetail(decod));
     dispatch(allShows());
-  }, [dispatch, id]);
+  }, [dispatch, decod]);
 
   const shows = allshows?.filter(
     (e) => e.theater?.province === detail?.province
@@ -52,7 +59,7 @@ const HomeViewer = () => {
       </div>
       <div className={style.showsContainer}>
         {actualShow?.length ? (
-          <Shows actualShow={actualShow} idV={id} />
+          <Shows actualShow={actualShow} idV={decod} />
         ) : (
           <p>...</p>
         )}

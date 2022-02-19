@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import NavBarTheater from "../NavBar/NavBarTheater";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -15,12 +15,18 @@ const HomeTheater = () => {
   const shows = useSelector((state) => state.shows);
   const theater = useSelector((state) => state.theatersDetail);
   let { id } = useParams();
+  const [decod,setDecod] = useState('');
+
+  useEffect(async ()=>{
+    await setDecod(atob(id))
+    console.log('decod',decod)
+  },[id])
 
   useEffect(() => {
-    dispatch(theaterDetail(id));
+    dispatch(theaterDetail(decod));
     dispatch(allTheaters());
     dispatch(allShows());
-  }, [dispatch, id]);
+  }, [dispatch, decod]);
 
   console.log("shows", shows);
   console.log("theater", theater);
@@ -30,7 +36,7 @@ const HomeTheater = () => {
 
   return (
     <div className={style.homeContainer}>
-      <NavBarTheater id={id} img={theater?.image} />
+      <NavBarTheater id={decod} img={theater?.image} />
 
       <div className={style.showsContainer}>
         {filterShows?.length ? (

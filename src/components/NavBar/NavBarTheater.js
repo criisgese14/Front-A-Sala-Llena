@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import useUser from "../../hooks/useUser";
 import style from "./NavBarTheater.module.css";
 import Dropdown from "react-bootstrap/Dropdown";
@@ -25,7 +25,7 @@ export default function NavBarTheater({ id, img }) {
       >
         <Container fluid>
           <div className={style.left}>
-            <Navbar.Brand href={`/theaterHome/${id}`}>
+            <Navbar.Brand href={`/theaterHome/${btoa(id)}`}>
               A Sala Llena
             </Navbar.Brand>
             <img className={style.profileImage} src={img} alt="img" />
@@ -39,16 +39,16 @@ export default function NavBarTheater({ id, img }) {
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                <Dropdown.Item href={`/create/${id}`}>
-                  <Button variant="outline-dark" href={`/create/${id}`}>
+                <Dropdown.Item href={`/create/${btoa(id)}`}>
+                  <Button variant="outline-dark" href={`/create/${btoa(id)}`}>
                     Agregar espectáculos
                   </Button>
                 </Dropdown.Item>
-                <Dropdown.Item href={`/salesHistory/${id}`}>
+                <Dropdown.Item href={`/salesHistory/${btoa(id)}`}>
                   <Button variant="outline-dark">Ventas</Button>
                 </Dropdown.Item>
                 <Dropdown.Item
-                  onClick={() => history.push(`/editProfileTheater/${id}`)}
+                  onClick={() => history.push(`/editProfileTheater/${btoa(id)}`)}
                 >
                   <Button variant="outline-dark">Perfil</Button>
                 </Dropdown.Item>

@@ -27,8 +27,15 @@ const EditProfileTheater = () => {
     edit === false ? setEdit(true) : setEdit(false);
   };
 
+  const [decod,setDecod] = useState('');
+
+  useEffect(async ()=>{
+    await setDecod(atob(id))
+    console.log('decod',decod)
+  },[id])
+
   useEffect(() => {
-    dispatch(theaterDetail(id));
+    dispatch(theaterDetail(decod));
   }, [dispatch]);
 
   function onSubmit(data) {
@@ -45,7 +52,7 @@ const EditProfileTheater = () => {
       buttons: ["Cancel", "Confirm"],
     }).then((res) => {
       if (res) {
-        dispatch(editProfileT(id, cara));
+        dispatch(editProfileT(decod, cara));
         swal("Teatro actualizado!", "", "success");
         setEdit(false);
         history.push(`/theaterHome/${id}`);
@@ -67,7 +74,7 @@ const EditProfileTheater = () => {
         swal("Teatro borrado con exito", {
           icon: "success",
         });
-        dispatch(deleteTheater(id));
+        dispatch(deleteTheater(decod));
         history.push("/");
       } else {
         swal("Tu teatro seguira con vida ✔👀!");
@@ -76,7 +83,7 @@ const EditProfileTheater = () => {
   }
   return (
     <div>
-      <NavBarTheater img={detail?.image} />
+      <NavBarTheater img={detail?.image} id={decod}/>
       <div className={style.formTheaterContainer}>
         <div>
           <button
@@ -104,7 +111,7 @@ const EditProfileTheater = () => {
                   readOnly="readonly"
                   type="text"
                   name="image"
-                  value={detail.image}
+                  value={detail?.image}
                   className="form-control my-2"
                 />
               ) : (
@@ -125,7 +132,7 @@ const EditProfileTheater = () => {
                   readOnly="readOnly"
                   type="text"
                   name="name"
-                  value={detail.name}
+                  value={detail?.name}
                   className="form-control my-2"
                 />
               ) : (
@@ -155,7 +162,7 @@ const EditProfileTheater = () => {
                   readOnly="readonly"
                   type="password"
                   name="password"
-                  value={detail.password}
+                  value={detail?.password}
                   className="form-control my-2"
                 />
               ) : (
@@ -186,7 +193,7 @@ const EditProfileTheater = () => {
                   readOnly="readOnly"
                   type="text"
                   name="adress"
-                  value={detail.adress}
+                  value={detail?.adress}
                   className="form-control my-2"
                 />
               ) : (
@@ -218,7 +225,7 @@ const EditProfileTheater = () => {
                   readOnly="readOnly"
                   type="number"
                   name="phoneNumber"
-                  value={detail.phoneNumber}
+                  value={detail?.phoneNumber}
                   className="form-control my-2"
                 />
               ) : (

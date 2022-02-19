@@ -20,16 +20,22 @@ const ViewerHistory = () => {
   const theater = useSelector((state) => state.theaters);
   const [button, setButton] = useState(true);
   const { id } = useParams();
+  const [decod,setDecod] = useState('');
 
   let showID;
   let theaterID;
 
+  useEffect(async ()=>{
+    await setDecod(atob(id))
+    console.log('decod',decod)
+  },[id])
+
   useEffect(() => {
     dispatch(allShows());
-    dispatch(getViewerDetail(id));
+    dispatch(getViewerDetail(decod));
     dispatch(getAllTickets());
     dispatch(allTheaters());
-  }, [dispatch, id]);
+  }, [dispatch, decod]);
 
   function onClick(e) {
     e.preventDefault();

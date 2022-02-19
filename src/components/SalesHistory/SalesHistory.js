@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import NavBarTheater from "../NavBar/NavBarTheater";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -15,12 +15,18 @@ const SalesHistory = () => {
   const show = useSelector((state) => state.shows);
   const theater = useSelector((state) => state.theatersDetail);
   const { id } = useParams();
+  const [decod,setDecod] = useState('');
+
+  useEffect(async ()=>{
+    await setDecod(atob(id))
+    console.log('decod',decod)
+  },[id])
 
   useEffect(() => {
     dispatch(getAllTickets());
     dispatch(allShows());
-    dispatch(theaterDetail(id));
-  }, [dispatch, id]);
+    dispatch(theaterDetail(decod));
+  }, [dispatch, decod]);
 
   let filterShows = show?.filter((e) => e.theaterId === theater?.id);
   let filterTicket = tickets?.filter((e) => e.show?.theaterId === theater?.id);
@@ -33,7 +39,7 @@ const SalesHistory = () => {
   console.log("total", total);
   return (
     <div>
-      <NavBarTheater />
+      <NavBarTheater id={decod} img={theater?.image}/>
       <div className={style.cardContainer}>
         {filterShows.length && filterTicket.length ? (
           filterShows?.map((e, i) => {

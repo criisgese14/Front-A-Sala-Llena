@@ -19,9 +19,18 @@ const ShowDetail = () => {
   });
   const [preciofinal, setPreciofinal] = useState("");
   const [porcentaje, setPorcentaje] = useState(null);
+  const [decodShowId,setDecodShowId] = useState('');
+  const [decodViewerId,setDecodViewerId] = useState('');
+
+  useEffect(async ()=>{
+    await setDecodShowId(atob(id))
+    await setDecodViewerId(atob(idV))
+    
+  },[id,idV])
+
   useEffect(() => {
-    dispatch(showDetail(id));
-  }, [dispatch, id]);
+    dispatch(showDetail(decodShowId));
+  }, [dispatch, decodShowId]);
 
   console.log(show);
   const renderer = ({ days, hours, minutes, seconds, completed }) => {

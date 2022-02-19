@@ -36,10 +36,16 @@ const FormShow = () => {
   const fechadepasado = new String(
     `${minfechaaño}-${minfechames1}-${maxfechadia}`
   );
+  const [decod,setDecod] = useState('');
+  
+  useEffect(async ()=>{
+    await setDecod(atob(id))
+    
+  },[id])
 
   useEffect(() => {
-    dispatch(theaterDetail(id));
-  }, [dispatch, id]);
+    dispatch(theaterDetail(decod));
+  }, [dispatch, decod]);
   const [input] = useState({
     theaterName: theater.name,
   });
@@ -92,7 +98,7 @@ const FormShow = () => {
 
   return (
     <div className={style.formShowContainer}>
-      <NavBarTheater id={id} img={theater?.image} />
+      <NavBarTheater id={decod} img={theater?.image} />
 
       <div className={style.formShowCreate}>
         <div className="text-center padding">
