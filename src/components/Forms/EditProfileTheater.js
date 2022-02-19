@@ -76,7 +76,7 @@ const EditProfileTheater = () => {
   }
   return (
     <div>
-      <NavBarTheater img={detail.image} />
+      <NavBarTheater img={detail?.image} />
       <div className={style.formTheaterContainer}>
         <div>
           <button
@@ -91,7 +91,7 @@ const EditProfileTheater = () => {
           <form onSubmit={handleSubmit(onSubmit)} className="row g-3">
             <div className="col-md-6">
               <img
-                src={detail.image}
+                src={detail?.image}
                 alt="imagen de perfil"
                 className={style.imagen}
               />

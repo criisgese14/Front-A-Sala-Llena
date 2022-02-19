@@ -9,6 +9,7 @@ const ShowCard = ({
   genre,
   length,
   image,
+  province,
   summery,
   ticketsQty,
   rated,
@@ -36,6 +37,7 @@ const ShowCard = ({
             <Card.Body>
               <Card.Title className={style.title}>{name}</Card.Title>
               <Card.Text>
+                <p className={style.subtitle}>{province}</p>
                 <p className={style.subtitle}>El espectaculo comienza en: </p>
                 <Countdown date={timer}>
                   <div>
@@ -59,6 +61,7 @@ const ShowCard = ({
               <Card.Body>
                 <Card.Title className={style.title}>{name}</Card.Title>
                 <Card.Text>
+                  <p className={style.subtitle}>{province}</p>
                   <p className={style.subtitle}>El espectaculo comienza en: </p>
                   <Countdown date={timer}>
                     <div>

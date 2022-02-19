@@ -10,6 +10,7 @@ const Shows = ({ actualShow, idV }) => {
           key={e.id}
           id={e.id}
           name={e.name}
+          province={e.theater.province}
           genre={e.genre}
           image={e.image}
           summery={e.summery}
