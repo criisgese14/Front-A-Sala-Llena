@@ -82,7 +82,7 @@ const FormPutViewer = () => {
       <div className={style.btnContainer}>
         <h2>Actualizar perfil</h2>
         <button onClick={changeEdit} className="btn btn-dark">
-          Edit
+          Editar
         </button>
       </div>
 

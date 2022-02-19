@@ -24,3 +24,9 @@
   justify-content: center;
   width: 30rem;
 }
+
+@media (max-width: 768px) {
+  .select {
+    width: 70vw;
+  }
+}

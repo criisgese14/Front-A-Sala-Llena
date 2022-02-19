@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { editProfileT, theaterDetail, deleteTheater } from "../../redux/actions";
-import Footer from "../Footer/Footer";
-import { useParams, useHistory, Link  } from "react-router-dom";
+import {
+  editProfileT,
+  theaterDetail,
+  deleteTheater,
+} from "../../redux/actions";
+import { useParams, useHistory } from "react-router-dom";
 import NavBarTheater from "../NavBar/NavBarTheater";
 import style from "./EditProfileTheater.module.css";
 import { useForm } from "react-hook-form";
@@ -12,7 +15,7 @@ const EditProfileTheater = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const { id } = useParams();
-  const  detail  = useSelector((state) => state.theatersDetail);
+  const detail = useSelector((state) => state.theatersDetail);
   const [edit, setEdit] = useState(false);
   const {
     register,
@@ -23,12 +26,10 @@ const EditProfileTheater = () => {
   const changeEdit = () => {
     edit === false ? setEdit(true) : setEdit(false);
   };
-  
 
   useEffect(() => {
     dispatch(theaterDetail(id));
   }, [dispatch]);
-
 
   function onSubmit(data) {
     const cara = {
@@ -36,17 +37,16 @@ const EditProfileTheater = () => {
       password: data.password,
       image: data.image,
       adress: data.adress,
-      phoneNumber: data.phoneNumber
+      phoneNumber: data.phoneNumber,
     };
     swal({
       title: "Estás seguro?",
       icon: "warning",
-      buttons: ['Cancel', 'Confirm'],
-    })
-    .then((res) => {
+      buttons: ["Cancel", "Confirm"],
+    }).then((res) => {
       if (res) {
         dispatch(editProfileT(id, cara));
-        swal("Teatro actualizado!", '', 'success');
+        swal("Teatro actualizado!", "", "success");
         setEdit(false);
         history.push(`/theaterHome/${id}`);
       } else {
@@ -62,8 +62,7 @@ const EditProfileTheater = () => {
       icon: "warning",
       buttons: true,
       dangerMode: true,
-    })
-    .then((willDelete) => {
+    }).then((willDelete) => {
       if (willDelete) {
         swal("Teatro borrado con exito", {
           icon: "success",
@@ -76,190 +75,200 @@ const EditProfileTheater = () => {
     });
   }
   return (
-    <div >
-      <NavBarTheater />
+    <div>
+      <NavBarTheater img={detail.image} />
       <div className={style.formTheaterContainer}>
-          <div>
-            <Link to={`/theaterHome/${id}`}>
-            <button type="button" className="btn btn-primary">Volver</button>
-            </Link>
-          </div>
-          <div className={style.btnContainer}>
-            <button onClick={changeEdit} className={style.btn} className="btn btn-primary">
-              Edit
-            </button>
-          </div>
+        <div>
+          <button
+            onClick={changeEdit}
+            className={style.btn}
+            className="btn btn-dark"
+          >
+            Editar
+          </button>
+        </div>
         <div className={style.formTheaterPut}>
-              <form onSubmit={handleSubmit(onSubmit)} className="row g-3">
-                <div className="col-md-6">
-                <img src={detail.image} alt="imagen de perfil" className={style.imagen}/>
-                </div>
+          <form onSubmit={handleSubmit(onSubmit)} className="row g-3">
+            <div className="col-md-6">
+              <img
+                src={detail.image}
+                alt="imagen de perfil"
+                className={style.imagen}
+              />
+            </div>
 
-                <div className="col-md-6">
-                <label className="form-label col-lg-12">Imagen de Perfil </label>
-                {edit === false ? (
-                  <input
-                    readOnly="readonly"
-                    type="text"
-                    name="image"
-                    value={detail.image}
-                    className="form-control my-2"
-                  />
-                ) : (
-                  <input
-                    type="url"
-                    name="image"
-                    placeholder="Ingresa una imagen"
-                    className="form-control my-2"
-                    {...register("image")}
-                  />
-                )}
-                </div>
+            <div className="col-md-6">
+              <label className="form-label col-lg-12">Imagen de Perfil </label>
+              {edit === false ? (
+                <input
+                  readOnly="readonly"
+                  type="text"
+                  name="image"
+                  value={detail.image}
+                  className="form-control my-2"
+                />
+              ) : (
+                <input
+                  type="url"
+                  name="image"
+                  placeholder="Ingresa una imagen"
+                  className="form-control my-2"
+                  {...register("image")}
+                />
+              )}
+            </div>
 
-                <div className="col-md-6">
-                <label className="form-label col-lg-12">Nombre</label>
-                {edit === false ? (
-                  <input
-                    readOnly="readOnly"
-                    type="text"
-                    name="name"
-                    value={detail.name}
-                    className="form-control my-2"
-                  />
-                ) : (
-                  <input
-                    type="text"
-                    name="name"
-                    className="form-control my-2"
-                    {...register("name", {
-                      required: {
-                        value: true,
-                        message: "El campo es requerido",
-                      },
-                    })}
-                  />
-                )}
-                {
-                    <span className="text-danger text-small d-block mb-2">
-                      {errors.name && errors.name.message}
-                    </span>
-                  }
-                  </div>
+            <div className="col-md-6">
+              <label className="form-label col-lg-12">Nombre</label>
+              {edit === false ? (
+                <input
+                  readOnly="readOnly"
+                  type="text"
+                  name="name"
+                  value={detail.name}
+                  className="form-control my-2"
+                />
+              ) : (
+                <input
+                  type="text"
+                  name="name"
+                  className="form-control my-2"
+                  {...register("name", {
+                    required: {
+                      value: true,
+                      message: "El campo es requerido",
+                    },
+                  })}
+                />
+              )}
+              {
+                <span className="text-danger text-small d-block mb-2">
+                  {errors.name && errors.name.message}
+                </span>
+              }
+            </div>
 
+            <div className="col-md-6">
+              <label className="form-label col-lg-12">Contraseña</label>
+              {edit === false ? (
+                <input
+                  readOnly="readonly"
+                  type="password"
+                  name="password"
+                  value={detail.password}
+                  className="form-control my-2"
+                />
+              ) : (
+                <input
+                  type="text"
+                  name="password"
+                  placeholder="Ingresa una nueva contraseña"
+                  className="form-control my-2"
+                  {...register("password", {
+                    required: {
+                      value: true,
+                      message: "El campo es requerido",
+                    },
+                  })}
+                />
+              )}
+              {
+                <span className="text-danger text-small d-block mb-2">
+                  {errors.password && errors.password.message}
+                </span>
+              }
+            </div>
 
-                <div className="col-md-6">
-                <label className="form-label col-lg-12">Contraseña</label>
-                {edit === false ? (
-                  <input
-                    readOnly="readonly"
-                    type="password"
-                    name="password"
-                    value={detail.password}
-                    className="form-control my-2"
-                  />
-                ) : (
-                  <input
-                    type="text"
-                    name="password"
-                    placeholder="Ingresa una nueva contraseña"
-                    className="form-control my-2"
-                    {...register("password", {
-                      required: {
-                        value: true,
-                        message: "El campo es requerido",
-                      },
-                    })}
-                  />
-                )}
-                {
-                    <span className="text-danger text-small d-block mb-2">
-                      {errors.password && errors.password.message}
-                    </span>
-                }
-                </div>
+            <div className="col-md-6">
+              <label className="form-label col-lg-12">Direccion</label>
+              {edit === false ? (
+                <input
+                  readOnly="readOnly"
+                  type="text"
+                  name="adress"
+                  value={detail.adress}
+                  className="form-control my-2"
+                />
+              ) : (
+                <input
+                  type="text"
+                  name="adress"
+                  className="form-control my-2"
+                  {...register("adress", {
+                    required: {
+                      value: true,
+                      message: "El campo es requerido",
+                    },
+                  })}
+                />
+              )}
+              {
+                <span className="text-danger text-small d-block mb-2">
+                  {errors.adress && errors.adress.message}
+                </span>
+              }
+            </div>
 
-                
-                
-                <div className="col-md-6">
-                <label className="form-label col-lg-12">Direccion</label>
-                {edit === false ? (
-                  <input
-                    readOnly="readOnly"
-                    type="text"
-                    name="adress"
-                    value={detail.adress}
-                    className="form-control my-2"
-                  />
-                ) : (
-                  <input
-                    type="text"
-                    name="adress"
-                    className="form-control my-2"
-                    {...register("adress", {
-                      required: {
-                        value: true,
-                        message: "El campo es requerido",
-                      },
-                    })}
-                  />
-                )}
-                {
-                    <span className="text-danger text-small d-block mb-2">
-                      {errors.adress && errors.adress.message}
-                    </span>
-                  }
-                  </div>
-
-                <div className="col-md-6">
-                <label className="form-label col-lg-12">Numero de Contacto </label>
-                {edit === false ? (
-                  <input
-                    readOnly="readOnly"
-                    type="number"
-                    name="phoneNumber"
-                    value={detail.phoneNumber}
-                    className="form-control my-2"
-                  />
-                ) : (
-                  <input
-                    type="number"
-                    name="phoneNumber"
-                    className="form-control my-2"
-                    {...register("phoneNumber", {
-                      required: {
-                        value: true,
-                        message: "El campo es requerido",
-                      },
-                    })}
-                  />
-                )}
-                {
-                    <span className="text-danger text-small d-block mb-2">
-                      {errors.phoneNumber && errors.phoneNumber.message}
-                    </span>
-                  }
-                  </div>
-                  <div >
-                {edit === false ? (
-                <button disabled type="submit" className={style.btn} className="btn btn-dark">
+            <div className="col-md-6">
+              <label className="form-label col-lg-12">
+                Numero de Contacto{" "}
+              </label>
+              {edit === false ? (
+                <input
+                  readOnly="readOnly"
+                  type="number"
+                  name="phoneNumber"
+                  value={detail.phoneNumber}
+                  className="form-control my-2"
+                />
+              ) : (
+                <input
+                  type="number"
+                  name="phoneNumber"
+                  className="form-control my-2"
+                  {...register("phoneNumber", {
+                    required: {
+                      value: true,
+                      message: "El campo es requerido",
+                    },
+                  })}
+                />
+              )}
+              {
+                <span className="text-danger text-small d-block mb-2">
+                  {errors.phoneNumber && errors.phoneNumber.message}
+                </span>
+              }
+            </div>
+            <div>
+              {edit === false ? (
+                <button
+                  disabled
+                  type="submit"
+                  className={style.btn}
+                  className="btn btn-dark"
+                >
                   Actualizar
                 </button>
-                ):(
-                <button  type="submit" className={style.btn} className="btn btn-dark">
+              ) : (
+                <button
+                  type="submit"
+                  className={style.btn}
+                  className="btn btn-dark"
+                >
                   Actualizar
-                </button>)}
-                </div>
-              </form>
-          </div>
-              <div className={style.btnContainer}>
-              <button onClick={handleSubmitDelete} className="btn btn-danger">
-              <span className=".glyphicon .glyphicon-remove"> Eliminar Teatro</span>
-              </button>
-              </div>
-            {/* <div className={style.footerContainer}>
-              <Footer />
-            </div> */}
-        
+                </button>
+              )}
+            </div>
+          </form>
+        </div>
+        <div className={style.btnContainer}>
+          <button onClick={handleSubmitDelete} className="btn btn-danger">
+            <span className=".glyphicon .glyphicon-remove">
+              Eliminar Teatro
+            </span>
+          </button>
+        </div>
       </div>
     </div>
   );
