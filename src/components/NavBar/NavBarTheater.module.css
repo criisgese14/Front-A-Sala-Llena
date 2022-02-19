@@ -1,52 +1,35 @@
-.navContainer {
-  display: flex;
-
-  gap: 30%;
+.buttonsContainer {
+  margin-right: 6rem;
 }
 
-.logo {
-  height: 5rem;
-  margin: 1rem;
-  width: auto;
+.heigthConfig {
+  height: 12rem;
+  margin-bottom: 3rem;
+}
+
+.left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+}
+
+.profileImage {
+  height: 6rem;
+  width: 6rem;
   border-radius: 50%;
-  box-shadow: 0 5px 25px rgb(255, 255, 255);
-  margin-bottom: 2rem;
-}
-
-.micuenta {
-  width: 100vw;
-  display: flex;
-  justify-content: end;
-  align-items: flex-start;
-  font-size: 1rem;
 }
 
 @media (max-width: 768px) {
-  .NavBarAllContainer {
-    display: flex;
-    /* gap: 40%; */
-    border: 2px solid red;
-    justify-content: space-between;
-  }
-  .column {
-    display: flex;
-    flex-direction: column;
-    width: 6rem;
-    margin-bottom: 2rem;
-  }
-
-  .logo {
-    height: 5rem;
-    width: auto;
+  .profileImage {
+    height: 3rem;
+    width: 3rem;
     border-radius: 50%;
-    box-shadow: 0 5px 25px rgb(255, 255, 255);
-    margin-bottom: 2rem;
   }
-
-  .miCuenta {
+  .left {
+    width: 100%;
     display: flex;
-    justify-content: end;
-    align-items: flex-start;
-    font-size: 1rem;
+    justify-content: space-between;
+    margin-bottom: 2rem;
   }
 }

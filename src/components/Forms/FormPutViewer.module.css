@@ -1,19 +1,16 @@
-.nav {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 2rem;
-}
-
 .formViewerContainer {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  height:auto;
-  margin: 1rem;
-  
+  height: auto;
+}
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: rem;
 }
 
-.formViewerPut{
+.formViewerPut {
   display: flex;
   flex-direction: column;
   /* border: 0.3rem solid rgba(20,11,14,0.76);
@@ -28,11 +25,10 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
-.imagen{
+.imagen {
   height: 5rem;
 }
 
-.btnContainer{
+.btnContainer {
   padding: 1rem;
-  
 }

@@ -4,12 +4,13 @@ import style from "./Newsletter.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { allTheaters, putViewer, createFavorites } from "../../redux/actions";
 import { useParams } from "react-router-dom";
-import Footer from "../Footer/Footer";
 import swal from "sweetalert";
 import { Form, Button } from "react-bootstrap";
 
 const Newsletter = () => {
   const theaters = useSelector((state) => state.theaters);
+  const detail = useSelector((state) => state.viewerDetail);
+
   const dispatch = useDispatch();
   const { id } = useParams();
   const [input, setInput] = useState({
@@ -53,7 +54,7 @@ const Newsletter = () => {
   return (
     <div>
       <div className={style.navContainer}>
-        <NavBarPerfilViewer />
+        <NavBarPerfilViewer img={detail?.image} />
       </div>
       <div className={style.newsletter}>
         <h2 className={style.title}>

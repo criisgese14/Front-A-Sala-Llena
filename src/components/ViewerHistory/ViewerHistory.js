@@ -10,7 +10,7 @@ import {
 import NavBarPerfilViewer from "../NavBar/NavBarPerfilViewer.js";
 import Review from "../ReviewV/ReviewV.js";
 import style from "./ViewerHistory.module.css";
-import { Button } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 
 const ViewerHistory = () => {
   const dispatch = useDispatch();
@@ -74,29 +74,39 @@ const ViewerHistory = () => {
   return (
     <div>
       <div className={style.navContainer}>
-        <NavBarPerfilViewer />
+        <NavBarPerfilViewer img={viewer?.image} />
       </div>
-      <div className={style.card}>
+      <h2>Opioniones</h2>
+
+      <div className={style.container}>
         {filterShow?.length && filterTicket?.length ? (
           filterShow?.map((e) => {
             return (
               <div key={e.id}>
-                <h3>{e.name}</h3>
-                <p>{filterTheater?.name} </p>
-                <p>
-                  Funcion: {e.date} {e.time}
-                </p>
-                <h4>Cantidad: {filterTicket?.length}</h4>
-                <h4>
-                  Total: $
-                  {total?.reduce(function (a, b) {
-                    return a + b;
-                  })}{" "}
-                </h4>
+                <div className={style.card}>
+                  <Card border="dark" style={{ width: "18rem" }}>
+                    <Card.Header>{filterTheater?.name}</Card.Header>
+                    <Card.Body>
+                      <Card.Title>{e.name}</Card.Title>
+                      <Card.Text>
+                        <p>
+                          Funcion: {e.date} {e.time}
+                        </p>
+                        <h5>Cantidad: {filterTicket?.length}</h5>
+                        <h5>
+                          Total: $
+                          {total?.reduce(function (a, b) {
+                            return a + b;
+                          })}
+                        </h5>
+                      </Card.Text>
+                    </Card.Body>
+                  </Card>
+                </div>
+                <Button variant="dark" onClick={onClick}>
+                  Agrega tu opinion
+                </Button>
                 <div>
-                  <Button variant="dark" onClick={onClick}>
-                    Review
-                  </Button>
                   {!button ? (
                     <Review
                       nameTheater={filterTheater?.name}
@@ -113,6 +123,7 @@ const ViewerHistory = () => {
           <h1>NO HAY ENTRADAS COMPRADAS</h1>
         )}
       </div>
+      <br />
     </div>
   );
 };

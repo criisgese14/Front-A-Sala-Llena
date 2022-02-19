@@ -1,51 +1,59 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { putViewer, getViewerDetail } from "../../redux/actions/index.js";
 import { useParams } from "react-router-dom";
 import style from "./ResetPasswordViewer.module.css";
 import { useForm } from "react-hook-form";
 import swal from "sweetalert";
+import { Navbar, Container } from "react-bootstrap";
 
 const ResetPasswordViewer = () => {
   const dispatch = useDispatch();
   let history = useHistory();
   const { id } = useParams();
-  const detail = useSelector((state) => state.viewerDetail);
   const {
     register,
     handleSubmit,
     formState: { errors },
-    watch
+    watch,
   } = useForm();
   const password = useRef({});
-  password.current = watch("password", "")
+  password.current = watch("password", "");
 
   useEffect(() => {
     dispatch(getViewerDetail(id));
   }, [dispatch, id]);
 
-  
-
   function onSubmit(data) {
-    const input={
+    const input = {
       password: data.password,
-    }
-    console.log(input)
+    };
+    console.log(input);
     dispatch(putViewer(id, input));
-    swal("Contraseña actualizada!", '', 'success');
-    history.push("/loginviewer")
+    swal("Contraseña actualizada!", "", "success");
+    history.push("/loginviewer");
   }
 
   return (
     <div className={style.ResetViewerContainer}>
-      <div >
-        <h1>Actualizar contraseña</h1>
+      <Navbar
+        className={style.heigthConfig}
+        bg="dark"
+        variant="dark"
+        expand={false}
+      >
+        <Container fluid>
+          <Navbar.Brand href="/">A Sala Llena</Navbar.Brand>
+        </Container>
+      </Navbar>
+
+      <div>
+        <h2>Actualizar contraseña</h2>
       </div>
 
       <div className={style.ResetViewerPut}>
         <form onSubmit={handleSubmit(onSubmit)} className={style.formContainer}>
-
           <label>Nueva Contraseña</label>
           <input
             title="Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos."
@@ -58,10 +66,6 @@ const ResetPasswordViewer = () => {
                 value: true,
                 message: "El campo es requerido",
               },
-              // pattern: {
-              //     value: /(?=(.*[0-9]))(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/,
-              //     message: "Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos."
-              // }
             })}
           />
           {
@@ -69,8 +73,8 @@ const ResetPasswordViewer = () => {
               {errors.password && errors.password.message}
             </span>
           }
-          
-          <br/>
+
+          <br />
           <label>Repite tu contraseña</label>
           <input
             title="Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos."
@@ -83,12 +87,9 @@ const ResetPasswordViewer = () => {
                 value: true,
                 message: "El campo es requerido",
               },
-              // pattern: {
-              //     value: /(?=(.*[0-9]))(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/,
-              //     message: "Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos."
-              // }
-              validate: value =>
-              value === password.current || "La contraseña debe coincidir"
+
+              validate: (value) =>
+                value === password.current || "La contraseña debe coincidir",
             })}
           />
           {
@@ -96,10 +97,11 @@ const ResetPasswordViewer = () => {
               {errors.passwordrepeat && errors.passwordrepeat.message}
             </span>
           }
-
-          <button type="submit" className="btn btn-dark">
-            Actualizar
-          </button>
+          <div className={style.btnContainer}>
+            <button type="submit" className="btn btn-dark">
+              Actualizar
+            </button>
+          </div>
         </form>
       </div>
     </div>

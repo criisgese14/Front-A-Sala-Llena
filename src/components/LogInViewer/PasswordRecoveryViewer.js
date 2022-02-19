@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { postPasswordRecoveryViewer } from "../../redux/actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllViewers } from "../../redux/actions/index.js";
@@ -33,7 +32,6 @@ const PasswordRecoveryViewer = () => {
       window.location.href = `http://localhost:3000`;
       setInput("");
     } else {
-      // alert("Email no registrado");
       swal("", "Este email no esta registrado!", "error");
     }
   }

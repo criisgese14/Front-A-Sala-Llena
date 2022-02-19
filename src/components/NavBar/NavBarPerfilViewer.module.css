@@ -10,3 +10,13 @@
 .buttonContainer {
   margin-right: 5rem;
 }
+
+.profileImage {
+  height: 5rem;
+  border-radius: 50%;
+}
+
+.left {
+  display: flex;
+  gap: 3rem;
+}
