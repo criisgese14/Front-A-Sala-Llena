@@ -29,6 +29,10 @@ export default function RedirectCheckout() {
       }
     }
     console.log(total)
+    function printing() {
+        setTimeout(() => 10000)
+        window.print();
+    }
 
     return (
         <div>
@@ -49,12 +53,12 @@ export default function RedirectCheckout() {
                 <Link to={`/viewerHome/${idV}`}>
                     <button type="button" className="btn btn-primary">Volver</button>
                 </Link>
-                <div>
+                {/* <div>
                     <Link to={codigo} target='_blank' download>Download</Link>
-                </div>
-                {/* <form method="get"  target="_blank" action={codigo}>
-                    <button type="submit">Download</button>
-                </form> */}
+                </div> */}
+                <form>
+                        <button type="button" className="btn btn-primary" onClick={() => printing()}>Imprimir o Descargar</button>
+                </form>
             </div>
         </div>
     )
