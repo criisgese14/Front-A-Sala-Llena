@@ -57,7 +57,7 @@ export default function RedirectCheckout() {
                     <Link to={codigo} target='_blank' download>Download</Link>
                 </div> */}
                 <form>
-                        <button type="button" onClick={() => printing()}>Imprimir o Descargar</button>
+                        <button type="button" className="btn btn-primary" onClick={() => printing()}>Imprimir o Descargar</button>
                 </form>
             </div>
         </div>
