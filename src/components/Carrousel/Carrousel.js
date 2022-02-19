@@ -5,7 +5,7 @@ import style from "./Carrousel.module.css";
 const CarouselContainer = ({ allshows }) => {
   const fitltershow = allshows?.filter(show => show.released === false)
   
-  let ultimos = fitltershow.length >= 5?fitltershow.slice(fitltershow.length - 5): fitltershow;
+  let ultimos = fitltershow?.length >= 5?fitltershow.slice(fitltershow?.length - 5): fitltershow;
   
   
   console.log(fitltershow, "Filtrados")
