@@ -104,7 +104,17 @@ const LogInTheatres = () => {
               Nunca compartiremos esta información
             </Form.Text>
           </Form.Group>
-
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="password"
+              value={input.password}
+              name="password"
+              onChange={handleChange}
+            />
+            {errors.password && <p>{errors.password}</p>}
+          </Form.Group>
             <Button variant="dark" type="submit" onClick={handleSubmit}>
               Iniciar Sesion
             </Button>

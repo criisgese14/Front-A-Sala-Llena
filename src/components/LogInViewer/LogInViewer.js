@@ -77,6 +77,19 @@ const LogInViewer = () => {
     setInput({ email: "", password: "" });
   }
 
+  function handleChange(e) {
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
+    });
+    setErrors(
+      validate({
+        ...input,
+        [e.target.name]: e.target.value,
+      })
+    );
+  }
+
   return (
     <div>
       {/* <div className={style.header}>
@@ -167,6 +180,7 @@ const LogInViewer = () => {
             />
             {errors.password && <p>{errors.password}</p>}
           </Form.Group>
+          
           
             <Button variant="dark" type="submit" onClick={handleSubmit}>
               Iniciar Sesion
