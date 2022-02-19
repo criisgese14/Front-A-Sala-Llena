@@ -19,14 +19,13 @@ const ShowDetail = () => {
   });
   const [preciofinal, setPreciofinal] = useState("");
   const [porcentaje, setPorcentaje] = useState(null);
-  const [decodShowId,setDecodShowId] = useState('');
-  const [decodViewerId,setDecodViewerId] = useState('');
+  const [decodShowId, setDecodShowId] = useState("");
+  const [decodViewerId, setDecodViewerId] = useState("");
 
-  useEffect(async ()=>{
-    await setDecodShowId(atob(id))
-    await setDecodViewerId(atob(idV))
-    
-  },[id,idV])
+  useEffect(async () => {
+    await setDecodShowId(atob(id));
+    await setDecodViewerId(atob(idV));
+  }, [id, idV]);
 
   useEffect(() => {
     dispatch(showDetail(decodShowId));
@@ -43,22 +42,22 @@ const ShowDetail = () => {
         <div className={style.timer}>
           <p>{days}</p>
           <p>
-            <small>Dias</small>
+            <small> Dias</small>
           </p>
           <span>:</span>
-          <p>{hours}</p>
+          <p>{hours} </p>
           <p>
-            <small>Horas</small>
+            <small> Horas</small>
           </p>
           <span>:</span>
           <p>{minutes}</p>
           <p>
-            <small>Minutos</small>
+            <small> Minutos</small>
           </p>
           <span>:</span>
           <p>{seconds}</p>
           <p>
-            <small>Segundos</small>
+            <small> Segundos</small>
           </p>
         </div>
       );
@@ -132,7 +131,7 @@ const ShowDetail = () => {
       </div>
 
       <div className={style.cardDetail}>
-        <div className={style.first}>
+        <div>
           <div>
             <img src={show?.image} className={style.image} alt="img" />
           </div>
@@ -143,40 +142,55 @@ const ShowDetail = () => {
         </div>
         <div className={style.der}>
           <div className={style.datos}>
-            <div>
-              <h3>Tipo de publico: </h3>
-              <h4>{show?.rated} </h4>
-              <h3>Duracion: </h3>
-              <h4>{show?.length} </h4>
-              <h3>Genero: </h3>
-              <h4>{show?.genre} </h4>
-              {/* <Timer newDate={dateTimer} newTime={timeTimer} price={precio}/> */}
+            <div className={style.first}>
               <div>
-                <Countdown
-                  date={dateTimer}
-                  renderer={renderer}
-                  onTick={onStart}
-                >
-                  <div>
-                    <p>La obra ya ha comenzado!</p>
-                  </div>
-                </Countdown>
+                <h3>Tipo de publico </h3>
+                <h4>{show?.rated} </h4>
+              </div>
+              <div>
+                <h3>Duracion </h3>
+                <h4>{show?.length} </h4>
+              </div>
+              <div>
+                <h3>Genero </h3>
+                <h4>{show?.genre} </h4>
               </div>
             </div>
-            <div>
-              <h3>Entradas disponibles: </h3>
-              <div></div>
-              <h4>{show?.ticketsQty} </h4>
-              <h3>Fecha: </h3>
-              <h4>{show?.date} </h4>
-              <h3>Hora: </h3>
-              <h4>{show?.time} </h4>
-              <h3>Precio Original: </h3>
-              <s>${show?.originPrice}</s>
-              <h3>Precio Reducido:</h3>
-              <h4>${preciofinal}</h4>
-              <h3>Porcentaje de descuento actual:</h3>
-              <h4>{porcentaje}%</h4>
+            <div className={style.timerContainer}>
+              <h3>Este show comienza en</h3>
+              <Countdown date={dateTimer} renderer={renderer} onTick={onStart}>
+                <div>
+                  <p>La obra ya ha comenzado!</p>
+                </div>
+              </Countdown>
+            </div>
+            <div className={style.first}>
+              <div>
+                <h3>Entradas disponibles: </h3>
+                <h4>{show?.ticketsQty} </h4>
+              </div>
+              <div>
+                <h3>Fecha: </h3>
+                <h4>{show?.date} </h4>
+              </div>
+              <div>
+                <h3>Hora: </h3>
+                <h4>{show?.time} </h4>
+              </div>
+            </div>
+            <div className={style.first}>
+              <div>
+                <h3>Precio Original: </h3>
+                <s>${show?.originPrice}</s>
+              </div>
+              <div>
+                <h3>Precio Reducido:</h3>
+                <h4>${preciofinal}</h4>
+              </div>
+              <div>
+                <h3>Porcentaje de descuento actual:</h3>
+                <h4>{porcentaje}%</h4>
+              </div>
             </div>
             <div className={style.btnContainer}>
               <Link
