@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import { postPasswordRecoveryViewer } from "../../redux/actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllViewers } from "../../redux/actions/index.js";
-import logo from "../../assets/logo a sala llena-sinfondo.png";
 import style from "./LoginViewer.module.css";
+import { Navbar, Form, Container, Button } from "react-bootstrap";
+
 import swal from "sweetalert";
 
 const PasswordRecoveryViewer = () => {
@@ -38,25 +39,33 @@ const PasswordRecoveryViewer = () => {
   }
 
   return (
-    <div className={style.loginContainer}>
-      <div className={style.header}>
-        <Link to="/">
-          <img className={style.logo} src={logo} alt="A sala llena" />
-        </Link>
-      </div>
-      <div className={style.formContainer}>
-        <h2>Ingresa tu correo electronico</h2>
-        <form className={style.inputs} onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Email..."
-            value={input.email}
-            name="email"
-            onChange={inputChange}
-          />
-
-          <button type="submit">Enviar</button>
-        </form>
+    <div>
+      <Navbar
+        className={style.heigthConfig}
+        bg="dark"
+        variant="dark"
+        expand={false}
+      >
+        <Container fluid>
+          <Navbar.Brand href="/">A Sala Llena</Navbar.Brand>
+        </Container>
+      </Navbar>
+      <h2>Ingresa tu correo electronico</h2>
+      <div className={style.loginContainer}>
+        <Form>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Control
+              type="text"
+              placeholder="Email..."
+              value={input.email}
+              name="email"
+              onChange={inputChange}
+            />
+          </Form.Group>
+          <Button variant="dark" type="submit" onClick={handleSubmit}>
+            Enviar
+          </Button>
+        </Form>
       </div>
     </div>
   );
