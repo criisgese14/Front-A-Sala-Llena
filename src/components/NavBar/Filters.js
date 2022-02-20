@@ -8,9 +8,13 @@ import {
   filterPerTheater,
   filterPerRated,
   // filterPerTicketsQty,
+  allShows
 } from "../../redux/actions";
 import style from "./Filters.module.css";
 import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import { FiRefreshCw } from "react-icons/fi";
+
 
 export default function Filters({ setActualPage, setOrder }) {
   const dispatch = useDispatch();
@@ -20,6 +24,11 @@ export default function Filters({ setActualPage, setOrder }) {
     dispatch(allTheaters());
     // dispatch(allShows());
   }, [dispatch]);
+
+  function handleClick(e) {
+    e.preventDefault();
+    dispatch(allShows());
+  }
 
   function handleFilterProvince(prov) {
     prov.preventDefault();
@@ -167,6 +176,16 @@ export default function Filters({ setActualPage, setOrder }) {
           onChange={(e) => handleFilterTicketsQty(e)}
         />
       </div> */}
+      <div>
+        <br/>
+        <Button
+            variant="secondary"
+            id="button-addon2"
+            type="submit"
+            onClick={(e) => handleClick(e)}
+        ><FiRefreshCw />
+        </Button>
+      </div>
     </div>
   );
 }
