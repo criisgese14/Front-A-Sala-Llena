@@ -27,13 +27,12 @@ export default function Filters({ setActualPage, setOrder }) {
     setActualPage(1);
     setOrder(`Filter by ${prov.target.value}`);
   }
- 
+
   function handleFilterTheater(e) {
     e.preventDefault();
     dispatch(filterPerTheater(e.target.value));
     setActualPage(1);
     setOrder(e.target.value);
-
   }
   function handleFilterGenre(e) {
     e.preventDefault();
