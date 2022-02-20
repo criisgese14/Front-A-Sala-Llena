@@ -45,7 +45,9 @@ const PasswordRecoveryViewer = () => {
         expand={false}
       >
         <Container fluid>
-          <Navbar.Brand href="/">A Sala Llena</Navbar.Brand>
+          <Navbar.Brand href="/">
+            <p className={style.logo}>A Sala Llena</p>
+          </Navbar.Brand>
         </Container>
       </Navbar>
       <h2>Ingresa tu correo electronico</h2>
