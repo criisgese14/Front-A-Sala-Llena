@@ -161,9 +161,14 @@ const FormViewers = () => {
           <select
             className="form-control"
             name="province"
-            {...register("province", {})}
+            {...register("province", {
+              required: {
+                value: true,
+                message: "El campo es requerido",
+              },
+            })}
           >
-            <option default>Seleccione una Provincia</option>
+            <option selected disabled="disabled" value="">Seleccione una Provincia</option>
             <option>Buenos Aires</option>
             <option>Cordoba</option>
             <option>Santa Fe</option>
@@ -189,6 +194,9 @@ const FormViewers = () => {
             <option>Tucuman</option>
             <option>CABA</option>
           </select>
+          <span className="text-danger text-small d-block mb-2">
+              {errors.province && errors.province.message}
+            </span>
           </div>
           <div>
           <button className="btn btn-dark">Enviar</button>

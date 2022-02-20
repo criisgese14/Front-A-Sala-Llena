@@ -168,9 +168,14 @@ const FormTheater = () => {
             <select
               className="form-control my-2"
               name="province"
-              {...register("province", {})}
+              {...register("province", {
+                required: {
+                  value: true,
+                  message: "El campo es requerido",
+                },
+              })}
             >
-              <option default>Seleccione una Provincia</option>
+              <option selected disabled="disabled" value="">Seleccione una Provincia</option>
               <option>Buenos Aires</option>
               <option>Cordoba</option>
               <option>Santa Fe</option>
@@ -197,7 +202,7 @@ const FormTheater = () => {
               <option>CABA</option>
             </select>
             <span className="text-danger text-small d-block mb-2">
-              {errors.genre && errors.genre.message}
+              {errors.province && errors.province.message}
             </span>
           </div>
           

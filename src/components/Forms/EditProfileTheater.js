@@ -36,7 +36,7 @@ const EditProfileTheater = () => {
 
   useEffect(() => {
     dispatch(theaterDetail(decod));
-  }, [dispatch]);
+  }, [dispatch, decod]);
 
   function onSubmit(data) {
     const cara = {
