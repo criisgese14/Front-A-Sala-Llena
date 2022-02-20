@@ -1,10 +1,10 @@
 import React, { useRef } from "react";
 import { createTheater } from "../../redux/actions";
 import { useForm } from "react-hook-form";
-import Footer from "../Footer/Footer";
 import swal from "sweetalert";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import style from "./FormTheater.module.css";
+import { Navbar, Container } from "react-bootstrap";
 
 const FormTheater = () => {
   const {
@@ -28,20 +28,29 @@ const FormTheater = () => {
       phoneNumber: data.phoneNumber,
     };
     createTheater(inputs);
-    swal("Teatro creado con exito", '', 'success');
+    swal("Teatro creado con exito", "", "success");
     history.push("/loginteatres");
   };
   return (
     <div className={style.formTheaterContainer}>
-      <Link to={`/loginteatres`}>
-        <button type="button" className="btn btn-secondary">
-          Volver
-        </button>
-      </Link>
+      <div className={style.navDetail}>
+        <Navbar
+          className={style.heigthConfig}
+          bg="dark"
+          variant="dark"
+          expand={false}
+        >
+          <Container fluid>
+            <div className={style.left}>
+              <Navbar.Brand href="/">A Sala Llena</Navbar.Brand>
+            </div>
+          </Container>
+        </Navbar>
+      </div>
 
       <div className={style.formTheaterCreate}>
         <form onSubmit={handleSubmit(onSubmit)} className="row g-3">
-          <h3>Registra tu Teatro</h3>
+          <h3 className={style.title}>Registra tu Teatro</h3>
           <div className="col-md-12">
             <label className="form-label col-lg-12">Nombre</label>
             <input
@@ -175,7 +184,9 @@ const FormTheater = () => {
                 },
               })}
             >
-              <option selected disabled="disabled" value="">Seleccione una Provincia</option>
+              <option selected disabled="disabled" value="">
+                Seleccione una Provincia
+              </option>
               <option>Buenos Aires</option>
               <option>Cordoba</option>
               <option>Santa Fe</option>
@@ -205,7 +216,7 @@ const FormTheater = () => {
               {errors.province && errors.province.message}
             </span>
           </div>
-          
+
           <div className="col-md-6">
             <label className="form-label col-lg-12">Numero de telefono</label>
             <input
