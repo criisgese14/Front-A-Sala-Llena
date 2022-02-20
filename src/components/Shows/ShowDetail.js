@@ -28,7 +28,9 @@ const ShowDetail = () => {
   }, [id, idV]);
 
   useEffect(() => {
-    dispatch(showDetail(decodShowId));
+    if(decodShowId > 0){
+      dispatch(showDetail(decodShowId));
+    }
   }, [dispatch, decodShowId]);
   console.log('decodShowId',decodShowId)
   console.log(show);
