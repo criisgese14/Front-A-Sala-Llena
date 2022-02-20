@@ -20,15 +20,15 @@ const ViewerHistory = () => {
   const theater = useSelector((state) => state.theaters);
   const [button, setButton] = useState(true);
   const { id } = useParams();
-  const [decod,setDecod] = useState('');
+  const [decod, setDecod] = useState("");
 
   let showID;
   let theaterID;
 
-  useEffect(async ()=>{
-    await setDecod(atob(id))
-    console.log('decod',decod)
-  },[id])
+  useEffect(async () => {
+    await setDecod(atob(id));
+    console.log("decod", decod);
+  }, [id]);
 
   useEffect(() => {
     dispatch(allShows());
@@ -80,7 +80,7 @@ const ViewerHistory = () => {
   return (
     <div>
       <div className={style.navContainer}>
-        <NavBarPerfilViewer img={viewer?.image} />
+        <NavBarPerfilViewer img={viewer?.image} name={viewer?.name} />
       </div>
       <h2>Opioniones</h2>
 

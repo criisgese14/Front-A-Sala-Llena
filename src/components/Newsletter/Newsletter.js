@@ -17,12 +17,12 @@ const Newsletter = () => {
     isSubscribed: false,
     nameTheater: "",
   });
-  const [decod,setDecod] = useState('');
+  const [decod, setDecod] = useState("");
 
-  useEffect(async ()=>{
-    await setDecod(atob(id))
-    console.log('decod',decod)
-  },[id])
+  useEffect(async () => {
+    await setDecod(atob(id));
+    console.log("decod", decod);
+  }, [id]);
 
   useEffect(() => {
     dispatch(allTheaters());
@@ -52,8 +52,8 @@ const Newsletter = () => {
     console.log(input);
     swal({
       icon: "success",
-      text:"Gracias por suscribirte!", 
-      buttons: false
+      text: "Gracias por suscribirte!",
+      buttons: false,
     });
     setInput({
       isSubscribed: false,
@@ -64,7 +64,7 @@ const Newsletter = () => {
   return (
     <div>
       <div className={style.navContainer}>
-        <NavBarPerfilViewer img={detail?.image} />
+        <NavBarPerfilViewer img={detail?.image} name={detail?.name} />
       </div>
       <div className={style.newsletter}>
         <h2 className={style.title}>

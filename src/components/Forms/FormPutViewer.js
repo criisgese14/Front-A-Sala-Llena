@@ -94,7 +94,11 @@ const FormPutViewer = () => {
   return (
     <div className={style.formViewerContainer}>
       <div className={style.nav}>
-        <NavBarPerfilViewer img={detail?.image} id={decod} name={style.name} />
+        <NavBarPerfilViewer
+          img={detail?.image}
+          id={decod}
+          name={detail?.name}
+        />
       </div>
       <div className={style.btnContainer}>
         <h2>Actualizar perfil</h2>
