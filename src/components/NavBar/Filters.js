@@ -27,13 +27,12 @@ export default function Filters({ setActualPage, setOrder }) {
     setActualPage(1);
     setOrder(`Filter by ${prov.target.value}`);
   }
- 
+
   function handleFilterTheater(e) {
     e.preventDefault();
     dispatch(filterPerTheater(e.target.value));
     setActualPage(1);
     setOrder(e.target.value);
-
   }
   function handleFilterGenre(e) {
     e.preventDefault();
@@ -120,6 +119,7 @@ export default function Filters({ setActualPage, setOrder }) {
           <option defaultValue="" hidden>
             Género
           </option>
+          <option value="all">Todos</option>
           <option>Comedia</option>
           <option>Drama</option>
           <option>Tragedia</option>
@@ -141,7 +141,8 @@ export default function Filters({ setActualPage, setOrder }) {
           <option defaultValue="" hidden>
             Clasificación
           </option>
-          <option value="Todas las edades">Todas las edades</option>
+          <option value="all">Todas</option>
+          <option value="Todas las edades">Apta para todo público</option>
           <option value="Apta para mayores de 13 años">
             Apta para mayores de 13 años
           </option>

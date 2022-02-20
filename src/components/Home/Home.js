@@ -13,8 +13,8 @@ export default function Home() {
   const allshows = useSelector((state) => state.shows);
   const [, setOrder] = useState("");
   const [actualPage, setActualPage] = useState(1);
-  const [qty] = useState(6);
-  const iLastShow = actualPage * qty; //6
+  const [qty] = useState(8);
+  const iLastShow = actualPage * qty; //8
   const iFirstShow = iLastShow - qty;
   const actualShow = allshows?.slice(iFirstShow, iLastShow);
 
