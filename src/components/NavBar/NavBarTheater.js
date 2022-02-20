@@ -26,7 +26,7 @@ export default function NavBarTheater({ id, img, name }) {
       >
         <Container fluid>
           <Navbar.Brand href={`/theaterHome/${btoa(id)}`}>
-            A Sala Llena
+            <p className={style.logo}>A Sala Llena</p>
           </Navbar.Brand>
           <div className={style.profileContainer}>
             <img className={style.profileImage} src={img} alt="img" />

@@ -88,6 +88,12 @@ h3 {
   margin-top: 2rem;
 }
 
+.logo {
+  font-family: Lobster Two;
+  font-size: 2.5rem;
+  margin-left: 1rem;
+}
+
 @media (max-width: 768px) {
   .boxSummary {
     width: 90vw;
