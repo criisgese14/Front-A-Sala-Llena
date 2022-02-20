@@ -28,7 +28,7 @@ const LogInTheatres = () => {
   const dispatch = useDispatch();
   const [input, setInput] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
-  const { hasLoginError, login, googleLoginTheater,idT, statusIdT } = useUser();
+  const { hasLoginError, hasLoginErrorG,login, googleLoginTheater,idT, statusIdT } = useUser();
   const theaters = useSelector((state) => state.theaters);
   //const [idT,setIdT] = useState('')
 
@@ -142,7 +142,7 @@ const LogInTheatres = () => {
             onFailure={handleFailure}
             cookiePolicy={"single_host_origin"}
           />
-          {hasLoginError && <strong>Usuario invalido</strong>}
+          {hasLoginErrorG && <strong>Usuario invalido</strong>}
           </form>
         }
         

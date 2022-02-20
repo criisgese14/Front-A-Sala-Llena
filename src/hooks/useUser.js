@@ -6,6 +6,7 @@ import { loginTheater, loginViewer } from "../redux/actions/index.js";
 const useUser = () => {
   const { status, setStatus,loginData,setLoginData,id,setId,error,setError} = useContext(Context);
   const [state, setState] = useState({ loading: false, error: false });
+  const [stateG, setStateG] = useState({ loading: false, error: false });
   const [idV,setIdV] = useState('');
   const [idT,setIdT] = useState('');
   const [statusIdV,setStatusIdV] = useState('');
@@ -80,7 +81,7 @@ const useUser = () => {
       sessionStorage.setItem('id', JSON.stringify(data.id));
       setIdV(window.sessionStorage.getItem('id').valueOf())
     }else{
-      setState({ loading: false, error: true });
+      setStateG({ loading: false, error: true });
     }
     
     } catch (err) {
@@ -112,7 +113,7 @@ const useUser = () => {
       sessionStorage.setItem('id', JSON.stringify(data.id));
       setIdT(window.sessionStorage.getItem('id').valueOf())
     }else{
-      setState({ loading: false, error: true });
+      setStateG({ loading: false, error: true });
     }
     
     
@@ -135,6 +136,7 @@ const useUser = () => {
     isLogged: Boolean(status),
     isLoginLoading: state.loading,
     hasLoginError: state.error,
+    hasLoginErrorG: stateG.error,
     login,
     logout,
     loginviewer,
