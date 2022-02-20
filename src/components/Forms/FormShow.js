@@ -334,11 +334,20 @@ const FormShow = () => {
           </div>
 
           <br />
-          <div className="col-md-12">
+          {seatsavailable.length === 0 ?
+          <div  className="col-md-12">
+            <button disabled className="btn btn-dark" type="submit">
+              Agregar Espectaculo
+            </button>
+          </div>
+          :
+          <div  className="col-md-12">
+            
             <button className="btn btn-dark" type="submit">
               Agregar Espectaculo
             </button>
           </div>
+          }
         </form>
       </div>
     </div>
