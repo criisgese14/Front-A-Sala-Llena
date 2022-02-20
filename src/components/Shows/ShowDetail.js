@@ -127,6 +127,7 @@ const ShowDetail = () => {
           </Container>
         </Navbar>
       </div>
+
       <div className={style.title}>
         <h1>{show?.name}</h1>
       </div>
@@ -143,7 +144,7 @@ const ShowDetail = () => {
         </div>
         {/* //-------------------Timer--------------- */}
         <div className={style.timerContainer}>
-          <h2>Este show comienza en</h2>
+          <h2 className={style.highlight}>Este show comienza en</h2>
           <Countdown date={dateTimer} renderer={renderer} onTick={onStart}>
             <div>
               <p>La obra ya ha comenzado!</p>
@@ -176,7 +177,7 @@ const ShowDetail = () => {
               <s>${show?.originPrice}</s>
             </div>
             <div className={style.box1}>
-              <h2>Precio Reducido</h2>
+              <h2 className={style.highlight}>Precio Reducido</h2>
               <h3>${preciofinal}</h3>
             </div>
             <div className={style.box1}>
