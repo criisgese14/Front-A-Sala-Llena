@@ -15,8 +15,8 @@ const HomeViewer = () => {
   const allshows = useSelector((state) => state.shows);
   const [, setOrder] = useState("");
   const [actualPage, setActualPage] = useState(1);
-  const [qty] = useState(6);
-  const iLastShow = actualPage * qty; //6
+  const [qty] = useState(8);
+  const iLastShow = actualPage * qty; //8
   const iFirstShow = iLastShow - qty;
   const actualShow = allshows?.slice(iFirstShow, iLastShow);
   const detail = useSelector((state) => state.viewerDetail);
