@@ -24,12 +24,11 @@ const HomeViewer = () => {
   const paginate = (number) => {
     setActualPage(number);
   };
-  const [decod,setDecod] = useState('');
+  const [decod, setDecod] = useState("");
 
-  useEffect(async ()=>{
-    await setDecod(atob(id))
-    
-  },[id])
+  useEffect(async () => {
+    await setDecod(atob(id));
+  }, [id]);
 
   useEffect(() => {
     dispatch(getViewerDetail(decod));
@@ -48,6 +47,7 @@ const HomeViewer = () => {
           setActualPage={setActualPage}
           setOrder={setOrder}
           img={detail?.image}
+          name={detail?.name}
         />
       </div>
       <div className={style.carouselContainer}>

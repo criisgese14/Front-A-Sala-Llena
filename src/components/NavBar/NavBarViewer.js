@@ -8,7 +8,7 @@ import Filters from "./Filters";
 import { Navbar, Offcanvas, Container, Button } from "react-bootstrap";
 import SearchBar from "../SearchBar/SearchBar.js";
 
-export default function NavBarViewer({ img }) {
+export default function NavBarViewer({ img, name }) {
   const { logout } = useUser();
   const { id } = useParams();
 
@@ -27,8 +27,9 @@ export default function NavBarViewer({ img }) {
       >
         <Container fluid>
           <Navbar.Brand href={`/viewerHome/${id}`}>A Sala Llena</Navbar.Brand>
-          <div>
+          <div className={style.profileContainer}>
             <img className={style.profileImage} src={img} alt="img" />
+            <p className={style.name}>Hola {name}!</p>
           </div>
           <div className={style.searchContainer}>
             <SearchBar />

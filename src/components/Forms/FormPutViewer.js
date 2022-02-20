@@ -23,12 +23,12 @@ const FormPutViewer = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const [decod,setDecod] = useState('');
+  const [decod, setDecod] = useState("");
 
-  useEffect(async ()=>{
-    await setDecod(atob(id))
-    console.log('decod',decod)
-  },[id])
+  useEffect(async () => {
+    await setDecod(atob(id));
+    console.log("decod", decod);
+  }, [id]);
 
   useEffect(() => {
     dispatch(getViewerDetail(decod));
@@ -52,16 +52,16 @@ const FormPutViewer = () => {
       if (res) {
         dispatch(putViewer(decod, cara));
         swal({
-          text: 'usuario actualizado con exito',
-          icon: 'success',
-          buttons: false
+          text: "usuario actualizado con exito",
+          icon: "success",
+          buttons: false,
         });
         setEdit(false);
         history.push(`/viewerHome/${id}`);
       } else {
         swal({
-          title:'Revisa bien tus cambios👀',
-          buttons:false
+          title: "Revisa bien tus cambios👀",
+          buttons: false,
         });
       }
     });
@@ -72,20 +72,20 @@ const FormPutViewer = () => {
       title: "Estas seguro?",
       text: "Una vez borrado, no lo podras recuperar!",
       icon: "warning",
-      buttons: ['Cancel', 'Confirm'],
+      buttons: ["Cancel", "Confirm"],
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
         swal("Usuario borrado con exito", {
           icon: "success",
-          button:false
+          button: false,
         });
         dispatch(deleteViewer(decod));
         history.push("/");
       } else {
         swal({
-          title:"Tu perfil seguira con vida ✔👀!",
-          button:false
+          title: "Tu perfil seguira con vida ✔👀!",
+          button: false,
         });
       }
     });
@@ -94,7 +94,7 @@ const FormPutViewer = () => {
   return (
     <div className={style.formViewerContainer}>
       <div className={style.nav}>
-        <NavBarPerfilViewer img={detail?.image} id={decod} />
+        <NavBarPerfilViewer img={detail?.image} id={decod} name={style.name} />
       </div>
       <div className={style.btnContainer}>
         <h2>Actualizar perfil</h2>

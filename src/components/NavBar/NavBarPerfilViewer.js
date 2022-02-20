@@ -5,7 +5,7 @@ import { Dropdown, Navbar, Container, Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import style from "./NavBarPerfilViewer.module.css";
 
-const NavBarPerfilViewer = ({ img }) => {
+const NavBarPerfilViewer = ({ img, name }) => {
   const { id } = useParams();
   const { logout } = useUser();
 
@@ -25,7 +25,10 @@ const NavBarPerfilViewer = ({ img }) => {
         <Container fluid>
           <div className={style.left}>
             <Navbar.Brand href={`/viewerHome/${id}`}>A Sala Llena</Navbar.Brand>
-            <img className={style.profileImage} src={img} alt="img" />
+            <div className={style.profileContainer}>
+              <img className={style.profileImage} src={img} alt="img" />
+              <p className={style.name}>Hola {name}!</p>
+            </div>
           </div>
           <div className={style.buttonContainer}>
             <Dropdown>
