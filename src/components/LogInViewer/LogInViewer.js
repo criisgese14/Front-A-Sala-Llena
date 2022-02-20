@@ -28,7 +28,7 @@ const LogInViewer = () => {
   const dispatch = useDispatch();
   const [input, setInput] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
-  const { hasLoginError, loginviewer,googleLoginViewer,idV, statusIdV} = useUser();
+  const { hasLoginError,hasLoginErrorG, loginviewer,googleLoginViewer,idV, statusIdV} = useUser();
   const viewers = useSelector((state) => state.viewers);
   
 
@@ -212,7 +212,7 @@ const LogInViewer = () => {
           cookiePolicy={"single_host_origin"}
           />
           
-          {hasLoginError && <strong>Usuario invalido</strong>}
+          {hasLoginErrorG && <strong>Usuario invalido</strong>}
           </form>
         }
         

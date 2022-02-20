@@ -16,7 +16,8 @@ export default function Home() {
   const [qty] = useState(8);
   const iLastShow = actualPage * qty; //8
   const iFirstShow = iLastShow - qty;
-  const actualShow = allshows?.slice(iFirstShow, iLastShow);
+  const filterShow = allshows?.filter(e => e.released === false);
+  const actualShow = filterShow?.slice(iFirstShow, iLastShow);
 
   console.log(actualShow);
   const paginate = (number) => {
@@ -31,9 +32,9 @@ export default function Home() {
       <div className={style.navContainer}>
         <NavBarAll setActualPage={setActualPage} setOrder={setOrder} />
       </div>
-      {allshows.length === 0? <p></p>: 
+      {filterShow?.length === 0? <p></p>: 
       <div className={style.carouselContainer}>
-        <CarouselContainer allshows={allshows} />
+        <CarouselContainer allshows={filterShow} />
       </div>
       }
       
@@ -48,7 +49,7 @@ export default function Home() {
       </div>
 
       <div className={style.paginate}>
-        <Paginate qty={qty} allshows={allshows?.length} paginate={paginate} />
+        <Paginate qty={qty} allshows={filterShow?.length} paginate={paginate} />
       </div>
       <div className={style.carouselContainer}>
         <CarrouselReview />
