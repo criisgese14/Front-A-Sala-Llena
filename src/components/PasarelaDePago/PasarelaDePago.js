@@ -46,8 +46,10 @@ const PasarelaDePago =  ({props}) => {
       </Link>
         <h3>Pasarela se Pago</h3>   
         <label>Selecciona # de entradas</label>    
-        <input name='seatnumber' type={'number'} onChange={(e)=>{onChange(e)}}></input>
+        <input name='seatnumber' min={0} max={show?show.length:80} type={'number'} onChange={(e)=>{onChange(e)}}></input>
+        <div className={style.seat}>
         <Seat seatsNumber={seatNumber} show={show} id={decodShowId} idV={decodViewerId}/>
+        </div>
         
     </div>
   )

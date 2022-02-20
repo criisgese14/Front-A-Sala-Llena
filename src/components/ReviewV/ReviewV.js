@@ -25,12 +25,20 @@ const Review = ({ nameTheater, nameShow, nameViewer, status }) => {
           nameViewer
         )
       );
-      swal("Enviado! Muchas gracias!", "", "success");
+      swal({
+        title:"Enviado! Muchas gracias!", 
+        icon: "success",
+        button: false
+      });
       setTheaterScore("");
       setShowScore("");
       review("");
     } else {
-      swal("Todavia no se puede valorar esta obra", "", "error");
+      swal({
+        icon: 'error',
+        text: "Todavia no se puede valorar esta obra",  
+        button: false
+      });
     }
   }
 
@@ -175,8 +183,7 @@ const Review = ({ nameTheater, nameShow, nameViewer, status }) => {
             onChange={onChangeReview}
           ></textarea>
         </div>
-
-        <Button variant="dark">Agrega tu opinion</Button>
+        <Button type='onSubmit' variant="dark">Agrega tu opinion</Button>
       </form>
     </div>
   );

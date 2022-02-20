@@ -6,3 +6,8 @@
     border-radius: 50%;
     box-shadow: 0 5px 25px rgb(255, 255, 255);
   }
+.seat{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
