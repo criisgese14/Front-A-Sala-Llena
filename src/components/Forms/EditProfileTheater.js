@@ -27,12 +27,12 @@ const EditProfileTheater = () => {
     edit === false ? setEdit(true) : setEdit(false);
   };
 
-  const [decod,setDecod] = useState('');
+  const [decod, setDecod] = useState("");
 
-  useEffect(async ()=>{
-    await setDecod(atob(id))
-    console.log('decod',decod)
-  },[id])
+  useEffect(async () => {
+    await setDecod(atob(id));
+    console.log("decod", decod);
+  }, [id]);
 
   useEffect(() => {
     dispatch(theaterDetail(decod));
@@ -83,7 +83,7 @@ const EditProfileTheater = () => {
   }
   return (
     <div>
-      <NavBarTheater img={detail?.image} id={decod}/>
+      <NavBarTheater img={detail?.image} id={decod} name={detail?.name} />
       <div className={style.formTheaterContainer}>
         <div>
           <button

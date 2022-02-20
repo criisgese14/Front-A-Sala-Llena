@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavBarTheater from "../NavBar/NavBarTheater";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -15,12 +15,12 @@ const SalesHistory = () => {
   const show = useSelector((state) => state.shows);
   const theater = useSelector((state) => state.theatersDetail);
   const { id } = useParams();
-  const [decod,setDecod] = useState('');
+  const [decod, setDecod] = useState("");
 
-  useEffect(async ()=>{
-    await setDecod(atob(id))
-    console.log('decod',decod)
-  },[id])
+  useEffect(async () => {
+    await setDecod(atob(id));
+    console.log("decod", decod);
+  }, [id]);
 
   useEffect(() => {
     dispatch(getAllTickets());
@@ -28,17 +28,17 @@ const SalesHistory = () => {
     dispatch(theaterDetail(decod));
   }, [dispatch, decod]);
 
-  let filterShows = show?.filter((e) => e.theaterId === theater?.id && e.released === true);
-  
-  console.log("filter", filterShows);
-  
+  let filterShows = show?.filter(
+    (e) => e.theaterId === theater?.id && e.released === true
+  );
 
-  
+  console.log("filter", filterShows);
+
   let total;
   console.log("total", total);
   return (
     <div>
-      <NavBarTheater id={decod} img={theater?.image}/>
+      <NavBarTheater id={decod} img={theater?.image} name={theater?.name} />
       <div className={style.cardContainer}>
         {filterShows.length ? (
           filterShows?.map((e, i) => {
@@ -52,8 +52,7 @@ const SalesHistory = () => {
                     <Card.Title>{e.name}</Card.Title>
                     <Card.Text>
                       <p>
-                        Total vendido: $
-                        {e.tickets?.map(p => p.price)}
+                        Total vendido: ${e.tickets?.map((p) => p.price)}
                         {/*total?.reduce(function (a, b) {
                           return a + b;
                         })*/}

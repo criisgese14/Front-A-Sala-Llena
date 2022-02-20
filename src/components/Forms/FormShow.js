@@ -36,12 +36,11 @@ const FormShow = () => {
   const fechadepasado = new String(
     `${minfechaaño}-${minfechames1}-${maxfechadia}`
   );
-  const [decod,setDecod] = useState('');
-  
-  useEffect(async ()=>{
-    await setDecod(atob(id))
-    
-  },[id])
+  const [decod, setDecod] = useState("");
+
+  useEffect(async () => {
+    await setDecod(atob(id));
+  }, [id]);
 
   useEffect(() => {
     dispatch(theaterDetail(decod));
@@ -87,15 +86,15 @@ const FormShow = () => {
         }
         swal("Espectaculo agregado!", {
           icon: "success",
-          buttons: false
+          buttons: false,
         });
         postNewsletterShow(theater.name);
         history.push(`/theaterHome/${id}`);
       } else {
         swal({
-          title: 'Tranquilo!',
-          text:'Tomate tu tiempo',
-          buttons: false
+          title: "Tranquilo!",
+          text: "Tomate tu tiempo",
+          buttons: false,
         });
       }
     });
@@ -103,7 +102,7 @@ const FormShow = () => {
 
   return (
     <div className={style.formShowContainer}>
-      <NavBarTheater id={decod} img={theater?.image} />
+      <NavBarTheater id={decod} img={theater?.image} name={theater?.name} />
 
       <div className={style.formShowCreate}>
         <div className="text-center padding">
@@ -334,20 +333,19 @@ const FormShow = () => {
           </div>
 
           <br />
-          {seatsavailable.length === 0 ?
-          <div  className="col-md-12">
-            <button disabled className="btn btn-dark" type="submit">
-              Agregar Espectaculo
-            </button>
-          </div>
-          :
-          <div  className="col-md-12">
-            
-            <button className="btn btn-dark" type="submit">
-              Agregar Espectaculo
-            </button>
-          </div>
-          }
+          {seatsavailable.length === 0 ? (
+            <div className="col-md-12">
+              <button disabled className="btn btn-dark" type="submit">
+                Agregar Espectaculo
+              </button>
+            </div>
+          ) : (
+            <div className="col-md-12">
+              <button className="btn btn-dark" type="submit">
+                Agregar Espectaculo
+              </button>
+            </div>
+          )}
         </form>
       </div>
     </div>
