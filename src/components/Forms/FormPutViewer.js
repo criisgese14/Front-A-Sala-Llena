@@ -80,7 +80,7 @@ const FormPutViewer = () => {
           icon: "success",
           button:false
         });
-        dispatch(deleteViewer(id));
+        dispatch(deleteViewer(decod));
         history.push("/");
       } else {
         swal({
