@@ -1,4 +1,4 @@
-import React, { useRef,useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import {
   postShow,
@@ -37,12 +37,11 @@ const FormShow = () => {
   const fechadepasado = new String(
     `${minfechaaño}-${minfechames1}-${maxfechadia}`
   );
-  const [decod,setDecod] = useState('');
-  
-  useEffect(async ()=>{
-    await setDecod(atob(id))
-    
-  },[id])
+  const [decod, setDecod] = useState("");
+
+  useEffect(async () => {
+    await setDecod(atob(id));
+  }, [id]);
 
   useEffect(() => {
     dispatch(theaterDetail(decod));
@@ -88,15 +87,15 @@ const FormShow = () => {
         }
         swal("Espectaculo agregado!", {
           icon: "success",
-          buttons: false
+          buttons: false,
         });
         postNewsletterShow(theater.name);
         history.push(`/theaterHome/${id}`);
       } else {
         swal({
-          title: 'Tranquilo!',
-          text:'Tomate tu tiempo',
-          buttons: false
+          title: "Tranquilo!",
+          text: "Tomate tu tiempo",
+          buttons: false,
         });
       }
     });
@@ -104,7 +103,7 @@ const FormShow = () => {
 
   return (
     <div className={style.formShowContainer}>
-      <NavBarTheater id={decod} img={theater?.image} />
+      <NavBarTheater id={decod} img={theater?.image} name={theater?.name} />
 
       <div className={style.formShowCreate}>
         <div className="text-center padding">
@@ -202,7 +201,6 @@ const FormShow = () => {
                 },
               })}
             >
-              
               <option selected disabled="disabled" value="">
                 Selecciona el Tipo de Publico
               </option>
@@ -327,10 +325,11 @@ const FormShow = () => {
                 setSeatAvailable={setSeatAvailable}
                 form={form}
                 {...register("seatsavailable", {
-                  validate: ()=> seatsavailable?.length !==0 || "Selecciona las butacas disponibles"
+                  validate: () =>
+                    seatsavailable?.length !== 0 ||
+                    "Selecciona las butacas disponibles",
                 })}
               ></SeatForm>
-              
             </div>
             <span className="text-danger text-small d-block mb-2">
               {errors.seatsavailable && errors.seatsavailable.message}
@@ -341,14 +340,12 @@ const FormShow = () => {
           </div>
 
           <br />
-          
-          <div  className="col-md-12">
 
+          <div className="col-md-12">
             <button className="btn btn-dark" type="submit">
               Agregar Espectaculo
             </button>
           </div>
-          
         </form>
       </div>
     </div>
