@@ -112,7 +112,9 @@ const ShowDetailHome = () => {
         >
           <Container fluid>
             <div className={style.left}>
-              <Navbar.Brand href="/">A Sala Llena</Navbar.Brand>
+              <Navbar.Brand href="/">
+                <p className={style.logo}>A Sala Llena</p>
+              </Navbar.Brand>
             </div>
           </Container>
         </Navbar>
@@ -123,63 +125,6 @@ const ShowDetailHome = () => {
       </div>
       {/* //-------------------card---------------- */}
 
-      {/* <div className={style.cardDetail}>
-        <div className={style.izq}>
-          <div>
-            <img src={show.image} className={style.image} alt="img" />
-          </div>
-        </div>
-        <div className={style.der}>
-          <div className={style.datos}>
-            <div>
-              <h3>Tipo de publico: </h3>
-              <h4>{show.rated} </h4>
-              <h3>Duracion: </h3>
-              <h4>{show.length} </h4>
-              <h3>Genero: </h3>
-              <h4>{show.genre} </h4>
-              <div>
-                <Countdown
-                  date={dateTimer}
-                  renderer={renderer}
-                  onTick={onStart}
-                >
-                  <div>
-                    <p>La obra ya ha comenzado!</p>
-                  </div>
-                </Countdown>
-              </div>
-            </div>
-            <div>
-              <h3>Entradas disponibles: </h3>
-              <div></div>
-              <h4>{show.ticketsQty} </h4>
-              <h3>Fecha: </h3>
-              <h4>{show.date} </h4>
-              <h3>Hora: </h3>
-              <h4>{show.time} </h4>
-              <h3>Precio Original: </h3>
-              <s>${show.originPrice}</s>
-              <h3>Precio Reducido:</h3>
-              <h4>${preciofinal}</h4>
-              <h3>Porcentaje de descuento actual:</h3>
-              <h4>{porcentaje}%</h4>
-            </div>
-            <div className={style.btnContainer}>
-              <Link to="/loginviewer" style={{ textDecoration: "none" }}>
-                <Button
-                  className={style.btn}
-                  variant="primary"
-                  onClick={onSubmit}
-                >
-                  Comprar
-                </Button>
-              </Link>
-            </div>
-          </div>
-      
-        </div>
-      </div> */}
       <div className={style.cardDetail}>
         <div>
           <div>
