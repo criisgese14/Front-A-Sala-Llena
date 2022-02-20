@@ -50,7 +50,11 @@ const Newsletter = () => {
     dispatch(putViewer(decod, { isSubscribed: input.isSubscribed }));
     dispatch(createFavorites(decod, { nameTheater: input.nameTheater }));
     console.log(input);
-    swal("Gracias por suscribirte!", "", "succes");
+    swal({
+      icon: "success",
+      text:"Gracias por suscribirte!", 
+      buttons: false
+    });
     setInput({
       isSubscribed: false,
       nameTheater: "",

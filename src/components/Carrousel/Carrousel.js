@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 import style from "./Carrousel.module.css";
 
 const CarouselContainer = ({ allshows }) => {
-  const fitltershow = allshows?.filter((show) => show.released === false);
+  let fitltershow = allshows?.filter((show) => show.released === false);
 
   let ultimos =
     fitltershow?.length >= 5
-      ? fitltershow.slice(fitltershow?.length - 5)
+      ? fitltershow?.slice(fitltershow.length - 5)
       : fitltershow;
 
   console.log(fitltershow, "Filtrados");

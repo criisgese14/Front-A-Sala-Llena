@@ -45,37 +45,48 @@ const FormPutViewer = () => {
       image: data.image,
     };
     swal({
-      title: "Estás seguro?",
+      title: "Porfavor confirma tus cambios?",
       icon: "warning",
       buttons: ["Cancel", "Confirm"],
     }).then((res) => {
       if (res) {
         dispatch(putViewer(decod, cara));
-        swal("Usuario actualizado!", "", "success");
+        swal({
+          text: 'usuario actualizado con exito',
+          icon: 'success',
+          buttons: false
+        });
         setEdit(false);
         history.push(`/viewerHome/${id}`);
       } else {
-        swal("Revisa bien tus cambios👀!");
+        swal({
+          title:'Revisa bien tus cambios👀',
+          buttons:false
+        });
       }
     });
   }
 
   function handleSubmitDelete(event) {
     swal({
-      title: "Estás seguro?",
+      title: "Estas seguro?",
       text: "Una vez borrado, no lo podras recuperar!",
       icon: "warning",
-      buttons: true,
+      buttons: ['Cancel', 'Confirm'],
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
         swal("Usuario borrado con exito", {
           icon: "success",
+          button:false
         });
         dispatch(deleteViewer(id));
         history.push("/");
       } else {
-        swal("Tu perfil seguira con vida ✔👀!");
+        swal({
+          title:"Tu perfil seguira con vida ✔👀!",
+          button:false
+        });
       }
     });
   }

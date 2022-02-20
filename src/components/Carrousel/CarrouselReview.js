@@ -17,19 +17,19 @@ const CarrouselReview = () => {
       {ultimos?.map((e, i) => (
         <Carousel.Item key={e.id}>
           <div className="ContainerReview" key={e.id}>
-            <div>
-              <p className={style.review}>"{e.review}"</p>
+            <div className={style.card}>
+              <h3 className={style.review}>"{e.review}"</h3>
               <div className={style.scoreContainer}>
-                <h5>{e.show.name}</h5>
-                <p>{e.showScore} puntos</p>
+                <h6>{e.show.name}</h6>
+                <h6>{e.showScore} puntos</h6>
               </div>
               <div className={style.scoreContainer}>
-                <h5>{e.theater.name}</h5>
-                <p>{e.theaterScore} puntos</p>
+                <h6>{e.theater.name}</h6>
+                <h6>{e.theaterScore} puntos</h6>
               </div>
-            </div>
-            <div>
-              <h5>{e.viewer.name}</h5>
+              <div>
+                <h5>{e.viewer.name}</h5>
+              </div>
             </div>
           </div>
           {/* <Link to={`/showDetail/${e.show.id}`} style={{ textDecoration: "none" }}>

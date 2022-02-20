@@ -56,8 +56,8 @@ const FormShow = () => {
 
   const onSubmit = (data) => {
     swal({
+      text: "Confirmar",
       icon: "warning",
-      tittle: "Confirmar",
       buttons: ["Cancelar", "Yes"],
     }).then((res) => {
       if (res) {
@@ -87,11 +87,16 @@ const FormShow = () => {
         }
         swal("Espectaculo agregado!", {
           icon: "success",
+          buttons: false
         });
         postNewsletterShow(theater.name);
         history.push(`/theaterHome/${id}`);
       } else {
-        swal("Tomate tu tiempo");
+        swal({
+          title: 'Tranquilo!',
+          text:'Tomate tu tiempo',
+          buttons: false
+        });
       }
     });
   };
@@ -329,11 +334,20 @@ const FormShow = () => {
           </div>
 
           <br />
-          <div className="col-md-12">
+          {seatsavailable.length === 0 ?
+          <div  className="col-md-12">
+            <button disabled className="btn btn-dark" type="submit">
+              Agregar Espectaculo
+            </button>
+          </div>
+          :
+          <div  className="col-md-12">
+            
             <button className="btn btn-dark" type="submit">
               Agregar Espectaculo
             </button>
           </div>
+          }
         </form>
       </div>
     </div>

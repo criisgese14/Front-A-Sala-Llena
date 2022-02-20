@@ -3,6 +3,7 @@ import style from "./Seat.module.css";
 import { useSelector } from "react-redux";
 import Checkout from '../Checkout/Checkout';
 import swal from "sweetalert";
+import { Button } from "bootstrap";
 
 const MySeats = ({ seatsNumber, setSeatAvailable, seatsavailable, form, preciofinal, setPreciofinal, id, idV }) => {
   const { showdetail } = useSelector((s) => s);
@@ -36,11 +37,17 @@ const MySeats = ({ seatsNumber, setSeatAvailable, seatsavailable, form, preciofi
     } else if (selected.includes(silla)) {
       setSelected(selected.filter((el) => el !== silla));
       setAvailable([...available, silla]);
-    } else if (selected.length === seatsNumber) {
+    }else if(seatsNumber==0){
       swal({
-        tittle: "No puedes escoger más tickets",
+        text: "Indica cuantos asientos quieres",
         icon: 'error',
-        time: 2000
+        button: false
+      });
+    } else if (selected.length == seatsNumber) {
+      swal({
+        text: "No puedes escoger más tickets",
+        icon: 'error',
+        button: false
       });
     }
   };
