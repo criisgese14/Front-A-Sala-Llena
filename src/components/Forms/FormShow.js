@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef,useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import {
   postShow,
@@ -23,6 +23,7 @@ const FormShow = () => {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm();
   const minfecha = new Date(Date());
   const minfechaaño = minfecha.getFullYear();
@@ -201,7 +202,7 @@ const FormShow = () => {
                 },
               })}
             >
-              {" "}
+              
               <option selected disabled="disabled" value="">
                 Selecciona el Tipo de Publico
               </option>
@@ -325,29 +326,29 @@ const FormShow = () => {
                 seatsavailable={seatsavailable}
                 setSeatAvailable={setSeatAvailable}
                 form={form}
+                {...register("seatsavailable", {
+                  validate: ()=> seatsavailable?.length !==0 || "Selecciona las butacas disponibles"
+                })}
               ></SeatForm>
+              
             </div>
-
+            <span className="text-danger text-small d-block mb-2">
+              {errors.seatsavailable && errors.seatsavailable.message}
+            </span>
             <small>
               Selecciona los asientos disponibles para el espectaculo
             </small>
           </div>
 
           <br />
-          {seatsavailable.length === 0 ?
+          
           <div  className="col-md-12">
-            <button disabled className="btn btn-dark" type="submit">
-              Agregar Espectaculo
-            </button>
-          </div>
-          :
-          <div  className="col-md-12">
-            
+
             <button className="btn btn-dark" type="submit">
               Agregar Espectaculo
             </button>
           </div>
-          }
+          
         </form>
       </div>
     </div>
