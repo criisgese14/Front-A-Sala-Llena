@@ -40,7 +40,7 @@ const LogInTheatres = () => {
     (e) => e.email === input.email && e.password === input.password
   );
   console.log(filterTheater);
-
+  console.log('idT',idT)
   const handleFailure = (response) => {
     swal({
       tittle: response,
@@ -131,9 +131,10 @@ const LogInTheatres = () => {
           </Link>
         </div>
         <Link to="/passwordRecoveryTheater">¿Olvidaste tu contraseña?</Link>
-        {idT ? (
+        {idT > 0 ? 
           <Redirect to={`/theaterHome/${btoa(idT)}`} />
-        ) : (
+         :  
+          <form>
           <GoogleLogin
             clientId="506901482868-h6pf1ffiuv7vicavl8btlunj18oeamjr.apps.googleusercontent.com"
             buttonText="Log in with Google"
@@ -141,7 +142,10 @@ const LogInTheatres = () => {
             onFailure={handleFailure}
             cookiePolicy={"single_host_origin"}
           />
-        )}
+          {hasLoginError && <strong>Usuario invalido</strong>}
+          </form>
+        }
+        
       </div>
     </div>
   );

@@ -16,6 +16,9 @@ export function UserContextProvider ({children}) {
     () => window.sessionStorage.getItem('id')
   )
   ;
+  const [error,setError] = useState(
+    () => window.sessionStorage.getItem('error')
+  )
   
   
 
@@ -25,7 +28,9 @@ export function UserContextProvider ({children}) {
     loginData,
     setLoginData,
     id,
-    setId
+    setId,
+    error,
+    setError
   }}>
     {children}
   </Context.Provider>

@@ -30,11 +30,11 @@ const LogInViewer = () => {
   const [errors, setErrors] = useState({});
   const { hasLoginError, loginviewer,googleLoginViewer,idV, statusIdV} = useUser();
   const viewers = useSelector((state) => state.viewers);
-  //const [idV,setIdV] = useState('')
+  
 
   
   console.log('statusIdV',statusIdV)
-
+  console.log('hasLoginError',hasLoginError)
   useEffect(() => {
     dispatch(getAllViewers());
   }, [dispatch]);
@@ -201,15 +201,19 @@ const LogInViewer = () => {
         </div>
         <Link to="/passwordRecoveryViewer">¿Olvidaste tu contraseña?</Link>
         {
-          idV ? 
+          idV > 0 ? 
             <Redirect to={`/viewerHome/${btoa(idV)}`}/> :
+          <form>
           <GoogleLogin
           clientId="506901482868-h6pf1ffiuv7vicavl8btlunj18oeamjr.apps.googleusercontent.com"
           buttonText="Log in with Google"
           onSuccess={handleLogin}
           onFailure={handleFailure}
           cookiePolicy={"single_host_origin"}
-        />
+          />
+          
+          {hasLoginError && <strong>Usuario invalido</strong>}
+          </form>
         }
         
       </div>

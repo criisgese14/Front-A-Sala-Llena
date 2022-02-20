@@ -4,12 +4,13 @@ import { loginTheater, loginViewer } from "../redux/actions/index.js";
 
 
 const useUser = () => {
-  const { status, setStatus,loginData,setLoginData,id,setId} = useContext(Context);
+  const { status, setStatus,loginData,setLoginData,id,setId,error,setError} = useContext(Context);
   const [state, setState] = useState({ loading: false, error: false });
   const [idV,setIdV] = useState('');
   const [idT,setIdT] = useState('');
   const [statusIdV,setStatusIdV] = useState('');
   const [statusIdT,setStatusIdT] = useState('');
+  const [errorG,setErrorG] = useState('');
   
 
   const login = useCallback(
@@ -59,7 +60,8 @@ const useUser = () => {
   );
 
   const googleLoginViewer = async (googleData) => {
-    const res = await fetch('http://localhost:3001/login/google/viewer', {
+    try {
+      const res = await fetch('http://localhost:3001/login/google/viewer', {
       method: 'POST',
       body: JSON.stringify({
         token: googleData.tokenId,
@@ -70,11 +72,25 @@ const useUser = () => {
     });
   
     const data = await res.json();
-    setLoginData(data.token);
     
-    sessionStorage.setItem('loginData', JSON.stringify(data.token));
-    sessionStorage.setItem('id', JSON.stringify(data.id));
-    setIdV(window.sessionStorage.getItem('id').valueOf())
+    if(JSON.stringify(data.id) > 0){
+      setLoginData(data.token);
+      
+      sessionStorage.setItem('loginData', JSON.stringify(data.token));
+      sessionStorage.setItem('id', JSON.stringify(data.id));
+      setIdV(window.sessionStorage.getItem('id').valueOf())
+    }else{
+      setState({ loading: false, error: true });
+    }
+    
+    } catch (err) {
+          window.sessionStorage.removeItem("loginData");
+          window.sessionStorage.removeItem("id");
+          
+          setState({ loading: false, error: true });
+          console.error(err);
+    }
+    
   };
   
   const googleLoginTheater = async (googleData) => {
@@ -89,11 +105,16 @@ const useUser = () => {
     });
   
     const data = await res.json();
-    setLoginData(data.token);
+    if(JSON.stringify(data.id) > 0){
+      setLoginData(data.token);
+      
+      sessionStorage.setItem('loginData', JSON.stringify(data.token));
+      sessionStorage.setItem('id', JSON.stringify(data.id));
+      setIdT(window.sessionStorage.getItem('id').valueOf())
+    }else{
+      setState({ loading: false, error: true });
+    }
     
-    sessionStorage.setItem('loginData', JSON.stringify(data.token));
-    sessionStorage.setItem('id', JSON.stringify(data.id));
-    setIdT(window.sessionStorage.getItem('id').valueOf())
     
   };
  

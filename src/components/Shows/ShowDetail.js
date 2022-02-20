@@ -30,7 +30,7 @@ const ShowDetail = () => {
   useEffect(() => {
     dispatch(showDetail(decodShowId));
   }, [dispatch, decodShowId]);
-
+  console.log('decodShowId',decodShowId)
   console.log(show);
   const renderer = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
