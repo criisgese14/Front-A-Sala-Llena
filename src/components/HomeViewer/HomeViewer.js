@@ -61,7 +61,7 @@ const HomeViewer = () => {
         {actualShow?.length ? (
           <Shows actualShow={actualShow} idV={decod} />
         ) : (
-          <p>...</p>
+          <p>No hay espectáculos que coincidan</p>
         )}
       </div>
       <div className={style.paginate}>
