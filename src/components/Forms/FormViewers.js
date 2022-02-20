@@ -1,12 +1,15 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { postViewer } from "../../redux/actions/index.js";
 import { useForm } from "react-hook-form";
 import { useHistory, Link } from "react-router-dom";
 import swal from "sweetalert";
 import style from "./FormViewers.module.css";
 import { Navbar, Container } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllViewers } from "../../redux/actions/index.js";
 
 const FormViewers = () => {
+  const dispatch = useDispatch();
   const history = useHistory();
   const {
     register,
@@ -15,7 +18,20 @@ const FormViewers = () => {
     watch,
   } = useForm();
   const password = useRef({});
+  const email = useRef({})
   password.current = watch("password", "");
+  email.current = watch("email", "");
+  const viewers = useSelector((state) => state.viewers);
+
+  useEffect(()=>{
+    dispatch(getAllViewers())
+  }, [dispatch])
+
+  let valido
+  valido = viewers?.find((e) => e.email === email.current)
+
+
+
   const onSubmit = (data) => {
     const inputs = {
       name: data.name,
@@ -60,6 +76,7 @@ const FormViewers = () => {
                   value: true,
                   message: "El campo es requerido",
                 },
+                
               })}
             />
             {
@@ -86,6 +103,7 @@ const FormViewers = () => {
                   value: /\S+@\S+\.\S+/,
                   message: "Este formato de correo no es el adecuado",
                 },
+                validate: ()=> valido === undefined|| "Este correo ya existe",
               })}
             />
             {

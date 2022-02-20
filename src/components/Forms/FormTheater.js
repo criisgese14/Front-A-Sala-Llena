@@ -1,12 +1,15 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { createTheater } from "../../redux/actions";
 import { useForm } from "react-hook-form";
 import swal from "sweetalert";
 import { useHistory } from "react-router-dom";
 import style from "./FormTheater.module.css";
 import { Navbar, Container } from "react-bootstrap";
+import { allTheaters } from "../../redux/actions/index.js";
+import { useDispatch, useSelector } from "react-redux";
 
 const FormTheater = () => {
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -15,7 +18,17 @@ const FormTheater = () => {
   } = useForm();
   const password = useRef({});
   password.current = watch("password", "");
+  const email = useRef({})
+  email.current = watch("email", "");
   let history = useHistory();
+  const theaters = useSelector((state) => state.theaters);
+  useEffect(()=>{
+    dispatch(allTheaters())
+  }, [dispatch])
+  let valido
+  valido = theaters?.find((e) => e.email === email.current)
+
+
   const onSubmit = (data) => {
     let inputs = {
       name: data.name,
@@ -88,6 +101,7 @@ const FormTheater = () => {
                   value: /\S+@\S+\.\S+/,
                   message: "Este formato de correo no es el adecuado",
                 },
+                validate: ()=> valido === undefined|| "Este correo ya existe",
               })}
             />
             {
