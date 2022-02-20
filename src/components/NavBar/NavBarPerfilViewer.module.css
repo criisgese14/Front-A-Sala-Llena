@@ -16,6 +16,10 @@
   width: 6rem;
   border-radius: 50%;
 }
+.name {
+  color: rgb(255, 255, 255);
+  margin-top: 1rem;
+}
 
 .left {
   display: flex;
@@ -35,5 +39,10 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 2rem;
+  }
+  .profileContainer {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 2rem;
   }
 }
