@@ -64,11 +64,11 @@ export default function Filters({ setActualPage, setOrder }) {
           </option>
           <option value="all">Todas</option>
           <option value="Buenos Aires">Buenos Aires</option>
-          <option value="Cordoba">Cordoba</option>
-          <option value="Santa Fe">Santa Fe</option>
+          <option value="CABA">CABA</option>
           <option value="Catamarca">Catamarca</option>
           <option value="Chaco">Chaco</option>
           <option value="Chubut">Chubut</option>
+          <option value="Cordoba">Cordoba</option>
           <option value="Corrientes">Corrientes</option>
           <option value="Entre Rios">Entre Rios</option>
           <option value="Formosa">Formosa</option>
@@ -83,10 +83,10 @@ export default function Filters({ setActualPage, setOrder }) {
           <option value="San Juan">San Juan</option>
           <option value="San Luis">San Luis</option>
           <option value="Santa Cruz">Santa Cruz</option>
+          <option value="Santa Fe">Santa Fe</option>
           <option value="Santiago del Estero">Santiago del Estero</option>
           <option value="Tierra del Fuego">Tierra del Fuego</option>
           <option value="Tucuman">Tucuman</option>
-          <option value="CABA">CABA</option>
         </Form.Select>
       </div>
       <br />
@@ -121,13 +121,13 @@ export default function Filters({ setActualPage, setOrder }) {
           </option>
           <option value="all">Todos</option>
           <option>Comedia</option>
+          <option>Danza</option>
           <option>Drama</option>
+          <option>Monologo</option>
+          <option>Musical</option>
+          <option>Ópera</option>
           <option>Tragedia</option>
           <option>Tragicomedia</option>
-          <option>Monologo</option>
-          <option>Ópera</option>
-          <option>Musical</option>
-          <option>Danza</option>
         </Form.Select>
       </div>
       <br />
