@@ -7,10 +7,10 @@ const Footer = () => {
     <div className={style.footerContainer}>
       <div className={style.linksContainer}>
         <a className={style.links} href="/privacyPolicy">
-          Politicas de Privacidad
+          Políticas de Privacidad
         </a>
         <a className={style.links} href="/termsConditions">
-          Terminos y Condiciones
+          Términos y Condiciones
         </a>
       </div>
       <div className={style.data}>

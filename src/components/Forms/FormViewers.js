@@ -18,19 +18,17 @@ const FormViewers = () => {
     watch,
   } = useForm();
   const password = useRef({});
-  const email = useRef({})
+  const email = useRef({});
   password.current = watch("password", "");
   email.current = watch("email", "");
   const viewers = useSelector((state) => state.viewers);
 
-  useEffect(()=>{
-    dispatch(getAllViewers())
-  }, [dispatch])
+  useEffect(() => {
+    dispatch(getAllViewers());
+  }, [dispatch]);
 
-  let valido
-  valido = viewers?.find((e) => e.email === email.current)
-
-
+  let valido;
+  valido = viewers?.find((e) => e.email === email.current);
 
   const onSubmit = (data) => {
     const inputs = {
@@ -56,7 +54,9 @@ const FormViewers = () => {
         >
           <Container fluid>
             <div className={style.left}>
-              <Navbar.Brand href="/">A Sala Llena</Navbar.Brand>
+              <Navbar.Brand href="/">
+                <p className={style.logo}>A Sala Llena</p>
+              </Navbar.Brand>
             </div>
           </Container>
         </Navbar>
@@ -76,7 +76,6 @@ const FormViewers = () => {
                   value: true,
                   message: "El campo es requerido",
                 },
-                
               })}
             />
             {
@@ -92,7 +91,7 @@ const FormViewers = () => {
               title="ejemplo: usuario@nombre.com"
               type="text"
               name="email"
-              placeholder="Ingrese su Correo Electronico"
+              placeholder="Ingrese su Correo Electrónico"
               className="form-control my-2"
               {...register("email", {
                 required: {
@@ -103,7 +102,7 @@ const FormViewers = () => {
                   value: /\S+@\S+\.\S+/,
                   message: "Este formato de correo no es el adecuado",
                 },
-                validate: ()=> valido === undefined|| "Este correo ya existe",
+                validate: () => valido === undefined || "Este correo ya existe",
               })}
             />
             {
