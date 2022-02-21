@@ -50,7 +50,7 @@ const PasswordRecoveryTheater = () => {
         </Container>
       </Navbar>
       <div className={style.bodyContainer}>
-        <h2>Ingresa tu correo electronico</h2>
+        <h2>Ingresa tu correo electrónico</h2>
         <div className={style.loginContainer}>
           <Form>
             <Form.Group className="mb-3" controlId="formBasicEmail">

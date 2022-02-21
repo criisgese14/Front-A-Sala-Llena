@@ -59,7 +59,7 @@ const Review = ({ nameTheater, nameShow, nameViewer, status }) => {
       <br></br>
       <form onSubmit={handleSubmit} className={style.formContainer}>
         <fieldset>
-          <legend>¿Como calificarias al teatro?</legend>
+          <legend>¿Cómo calificarías al teatro?</legend>
           <br></br>
           <label>
             <input
@@ -110,7 +110,7 @@ const Review = ({ nameTheater, nameShow, nameViewer, status }) => {
 
         <br></br>
         <fieldset>
-          <legend>¿Como calificarias la obra?</legend>
+          <legend>¿Cómo calificarías la obra?</legend>
           <br></br>
           <label>
             <input
@@ -175,7 +175,7 @@ const Review = ({ nameTheater, nameShow, nameViewer, status }) => {
           ></textarea>
         </div>
         <Button type="onSubmit" variant="dark">
-          Agrega tu opinion
+          Enviar
         </Button>
       </form>
     </div>
