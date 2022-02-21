@@ -1,9 +1,7 @@
 import React from "react";
 import { checkoutPay } from "../../redux/actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 import style from "./Checkout.module.css";
-import swal from "sweetalert";
 
 export default function Checkout({
   price,
@@ -23,12 +21,9 @@ export default function Checkout({
   const dispatch = useDispatch();
   const tickets = useSelector((state) => state.tickets);
   console.log(tickets);
-  const history = useHistory();
 
   var equalShowId = tickets?.filter((t) => t?.showId === Number(showId));
-  console.log(equalShowId); // me trae solo los tickets de los asientos disponibles
-  //var total = equalShowId?.price * seatNumber?.length;
-  console.log("equalShowId", equalShowId);
+  // console.log(equalShowId); // me trae solo los tickets de los asientos disponibles
   var total = 0;
   if (seatNumber.length > 0) {
     for (var i = 0; i < 1; i++) {

@@ -444,9 +444,9 @@ export function checkoutPay({ seatNumber, showId, idViewer }) {
   };
 }
 
-export function getTicketPay({ seatNumber, showId, idViewer }) {
+export function getTicketPay({ seatNumber, showId, idViewer, status }) {
   return async function (dispatch) {
-    var resp = await axios.get(`http://localhost:3001/tickets/finish/${showId}/${idViewer}/${seatNumber}`)
+    var resp = await axios.get(`http://localhost:3001/tickets/finish/${showId}/${idViewer}/${seatNumber}/${status}`)
       return dispatch({
         type: GET_TICKET_PAY,
         payload: resp.data

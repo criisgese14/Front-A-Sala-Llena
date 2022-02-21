@@ -10,11 +10,15 @@ export default function RedirectCheckout() {
     const {id, idV, seatNumber} = useParams();
     const showId = id;
     const idViewer = idV;
+    const queryParams = window.location.search;
+    const statusQuery = new URLSearchParams(queryParams)
+    const status = statusQuery.get('status')
+    // console.log(status)
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(showDetail(id));
-        dispatch(getTicketPay({ seatNumber, showId, idViewer }));
-    }, [dispatch, id, showId, idViewer, seatNumber])
+        dispatch(getTicketPay({ seatNumber, showId, idViewer, status }));
+    }, [dispatch, id, showId, idViewer, seatNumber, status])
     const viewers = useSelector((state) => state.viewers);
     const findViewer = viewers?.find((v) => v.id === idV);
     const showdetail = useSelector((state) => state.showdetail);
