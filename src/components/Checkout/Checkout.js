@@ -54,7 +54,7 @@ export default function Checkout({
           Confirmar pago
         </button>
         {link && 
-          window.open(link)
+          window.open(link, '_self')
         }
       </div>
       <br />
