@@ -169,7 +169,7 @@ const FormViewers = () => {
           <div className="col-md-6">
             <label>Imagen de perfil</label>
             <input
-              type="file"
+              type="url"
               width="100"
               height="30"
               name="image"
