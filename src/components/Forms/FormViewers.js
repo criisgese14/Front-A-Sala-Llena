@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { postViewer } from "../../redux/actions/index.js";
 import { useForm } from "react-hook-form";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import swal from "sweetalert";
 import style from "./FormViewers.module.css";
 import { Navbar, Container } from "react-bootstrap";
@@ -181,7 +181,7 @@ const FormViewers = () => {
           </div>
 
           <div className="col-md-6">
-            <label>Selecciona la Provincia</label>
+            <label>Seleccione la Provincia</label>
 
             <select
               className="form-control"
@@ -230,7 +230,6 @@ const FormViewers = () => {
           </div>
         </form>
       </div>
-      {/* <Footer/> */}
     </div>
   );
 };

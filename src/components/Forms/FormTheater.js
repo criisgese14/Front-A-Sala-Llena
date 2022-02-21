@@ -64,7 +64,7 @@ const FormTheater = () => {
 
       <div className={style.formTheaterCreate}>
         <form onSubmit={handleSubmit(onSubmit)} className="row g-3">
-          <h3 className={style.title}>Registra tu Teatro</h3>
+          <h3 className={style.title}>Registrá tu Teatro</h3>
           <div className="col-md-12">
             <label className="form-label col-lg-12">Nombre</label>
             <input
@@ -144,11 +144,6 @@ const FormTheater = () => {
                   value: true,
                   message: "El campo es requerido",
                 },
-                // pattern: {
-                //   value: /(?=(.*[0-9]))(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/,
-                //   message:
-                //     "Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos.",
-                // },
               })}
             />
             {
@@ -171,11 +166,7 @@ const FormTheater = () => {
                   value: true,
                   message: "El campo es requerido",
                 },
-                // pattern: {
-                //   value: /(?=(.*[0-9]))(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/,
-                //   message:
-                //     "Debe tener una letra minúscula, una letra mayúscula, un número, mínimo 8 dígitos.",
-                // },
+
                 validate: (value) =>
                   value === password.current || "La contraseña debe coincidir",
               })}
@@ -233,12 +224,12 @@ const FormTheater = () => {
           </div>
 
           <div className="col-md-6">
-            <label className="form-label col-lg-12">Numero de telefono</label>
+            <label className="form-label col-lg-12">Número de teléfono</label>
             <input
-              title="No se pueden numero negativos ni decimales"
+              title="No se pueden número negativos ni decimales"
               type="text"
               name="phoneNumber"
-              placeholder="Numero de telefono"
+              placeholder="Número de teléfono"
               className="form-control "
               {...register("phoneNumber", {
                 required: {
@@ -247,7 +238,7 @@ const FormTheater = () => {
                 },
                 pattern: {
                   value: /^(0|[1-9][0-9]*)$/,
-                  message: "No se pueden numero negativos ni decimales",
+                  message: "No se pueden usar números negativos ni decimales",
                 },
               })}
             />
@@ -257,11 +248,11 @@ const FormTheater = () => {
           </div>
 
           <div className="col-md-12">
-            <label className="form-label ">Direccion</label>
+            <label className="form-label ">Dirección</label>
             <input
               type="text"
               name="adress"
-              placeholder="Direccion del Teatro"
+              placeholder="Dirección del Teatro"
               className="form-control "
               {...register("adress", {
                 required: {
@@ -295,7 +286,6 @@ const FormTheater = () => {
           </div>
         </form>
       </div>
-      {/* <Footer/> */}
     </div>
   );
 };
