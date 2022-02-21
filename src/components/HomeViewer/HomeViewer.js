@@ -61,7 +61,10 @@ const HomeViewer = () => {
         {actualShow?.length ? (
           <Shows actualShow={actualShow} idV={decod} />
         ) : (
+          <div>
+          <img src='https://media.giphy.com/media/q15kbCtGFqwx8wYx1n/giphy.gif' alt='img'/>
           <p>No hay espectáculos que coincidan</p>
+          </div>
         )}
       </div>
       <div className={style.paginate}>

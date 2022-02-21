@@ -33,7 +33,7 @@ export default function Home() {
         <NavBarAll setActualPage={setActualPage} setOrder={setOrder} />
       </div>
       {filterShow?.length === 0 ? (
-        <p></p>
+        <img src='https://media.giphy.com/media/q15kbCtGFqwx8wYx1n/giphy.gif' alt='img'/>
       ) : (
         <div className={style.carouselContainer}>
           <CarouselContainer allshows={filterShow} />
@@ -46,7 +46,7 @@ export default function Home() {
             <Shows actualShow={actualShow} />
           </div>
         ) : (
-          <p>En este momento no hay espectáculos con esos filtros</p>
+          <img src='https://media.giphy.com/media/q15kbCtGFqwx8wYx1n/giphy.gif' alt='img'/>
         )}
       </div>
 

@@ -64,7 +64,10 @@ const SalesHistory = () => {
             );
           })
         ) : (
-          <h1>TODAVIA NO HAY VENTAS</h1>
+          <div>
+          <img src='https://media.giphy.com/media/q15kbCtGFqwx8wYx1n/giphy.gif' alt='img'/>
+          <p>No hay ventas para mostrar</p>
+          </div>
         )}
       </div>
     </div>

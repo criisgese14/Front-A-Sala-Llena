@@ -126,7 +126,10 @@ const ViewerHistory = () => {
             );
           })
         ) : (
-          <h1>NO HAY ENTRADAS COMPRADAS</h1>
+          <div>
+          <img src='https://media.giphy.com/media/q15kbCtGFqwx8wYx1n/giphy.gif' alt='img'/>
+          <p>No hay shows para mostrar</p>
+          </div>
         )}
       </div>
       <br />

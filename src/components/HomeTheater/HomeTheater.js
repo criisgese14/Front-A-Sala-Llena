@@ -52,7 +52,10 @@ const HomeTheater = () => {
             />
           ))
         ) : (
-          <h1>NO HAY SHOWS AGREGADOS</h1>
+          <div>
+          <img src='https://media.giphy.com/media/q15kbCtGFqwx8wYx1n/giphy.gif' alt='img'/>
+          <p>NO HAY SHOWS PARA MOSTRAR</p>
+          </div>
         )}
       </div>
       {/* <div className={style.footerContainer}>
