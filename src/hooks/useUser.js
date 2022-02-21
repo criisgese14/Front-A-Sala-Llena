@@ -6,7 +6,7 @@ import { loginTheater, loginViewer } from "../redux/actions/index.js";
 const useUser = () => {
   const { status, setStatus,loginData,setLoginData,id,setId,error,setError} = useContext(Context);
   const [state, setState] = useState({ loading: false, error: false });
-  const [stateG, setStateG] = useState({ loading: false, error: false });
+  const [stateG, setStateG] = useState(false);
   const [idV,setIdV] = useState('');
   const [idT,setIdT] = useState('');
   const [statusIdV,setStatusIdV] = useState('');
@@ -19,12 +19,17 @@ const useUser = () => {
       setState({ loading: true, error: false });
       loginTheater(input)
         .then((data) => {
-          window.sessionStorage.setItem("status", data.isLogged);
+          if(data.error){
+            setState(true);
+          }else{
+            window.sessionStorage.setItem("status", data.isLogged);
           window.sessionStorage.setItem("id", data.id);
           
-          setState({ loading: false, error: false });
+          
           setStatus(data.isLogged);
           setStatusIdT(window.sessionStorage.getItem('id').valueOf())
+          }
+          
         })
         .catch((err) => {
           window.sessionStorage.removeItem("status");
@@ -42,22 +47,26 @@ const useUser = () => {
       setState({ loading: true, error: false });
       loginViewer(input)
         .then((data) => {
-          window.sessionStorage.setItem("status", data.isLogged);
+          if(data.error){
+            setState(true);
+          }else{
+            
+            window.sessionStorage.setItem("status", data.isLogged);
           window.sessionStorage.setItem("id", data.id);
-          setState({ loading: false, error: false });
+          
           setStatus(data.isLogged);
           setStatusIdV(window.sessionStorage.getItem('id').valueOf())
+          }
+          
           
         })
         .catch((err) => {
           window.sessionStorage.removeItem("status");
           window.sessionStorage.removeItem("id");
-          
           setState({ loading: false, error: true });
           console.error(err);
         });
-    },
-    [setStatus]
+    },[setStatus]
   );
 
   const googleLoginViewer = async (googleData) => {
