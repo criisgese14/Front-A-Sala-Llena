@@ -82,6 +82,7 @@ h3 {
 .timer {
   display: flex;
   gap: 0.3rem;
+  
 }
 
 .btn {

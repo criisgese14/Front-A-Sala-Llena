@@ -32,8 +32,7 @@ const ShowDetail = () => {
       dispatch(showDetail(decodShowId));
     }
   }, [dispatch, decodShowId]);
-  console.log("decodShowId", decodShowId);
-  console.log(show);
+  
   const renderer = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
       <div>
@@ -70,27 +69,31 @@ const ShowDetail = () => {
       dia: days,
       hora: hours,
     });
+    console.log(tiempo.dia)
     numerodeporcentaje();
   };
 
   function numerodeporcentaje() {
-    if (tiempo.dia === 0 && tiempo.hora < 6) {
+    
+    if (tiempo.dia === 0 && tiempo.hora < 12) {
       setPorcentaje(10);
       porcentajefuncion(porcentaje);
-    } else if (tiempo.dia === 0 && tiempo.hora < 12) {
+    } else if (tiempo.dia === 0 && tiempo.hora > 12) {
       setPorcentaje(15);
       porcentajefuncion(porcentaje);
-    } else if (tiempo.dia === 0 && tiempo.hora > 12) {
+    } else if (tiempo.dia === 1 && tiempo.hora < 12 ) {
       setPorcentaje(20);
       porcentajefuncion(porcentaje);
     } else if (tiempo.dia === 1 && tiempo.hora > 12) {
       setPorcentaje(25);
       porcentajefuncion(porcentaje);
-    } else {
+    } else if (tiempo.dia >= 2 && tiempo.hora >= 0){
       setPorcentaje(30);
       porcentajefuncion(porcentaje);
     }
   }
+
+  console.log(tiempo.dia , "dia");
 
   const onSubmit = () => {
     for (let i = 0; i < show?.tickets.length; i++) {
@@ -100,7 +103,7 @@ const ShowDetail = () => {
         price: preciofinal,
       };
       dispatch(putTicket(show?.tickets[i].id, tickets));
-      console.log(tickets, "tikeron");
+      
     }
   };
 
