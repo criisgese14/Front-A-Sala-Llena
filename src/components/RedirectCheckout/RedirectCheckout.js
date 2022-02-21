@@ -1,7 +1,7 @@
 import React, { useEffect,useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, Link } from "react-router-dom";
-import { showDetail } from "../../redux/actions";
+import { getTicketPay, showDetail } from "../../redux/actions";
 import NavBarPerfilViewer from "../NavBar/NavBarPerfilViewer";
 import codigo from "../../assets/codigoQr.jpg";
 import style from "./RedirectCheckout.module.css";
@@ -16,8 +16,7 @@ export default function RedirectCheckout() {
     await setDecodId(atob(id));
     await setDecodIdV(atob(idV));
   }, [id,idV]);
-  console.log('decodId',Number(decodId))
-  console.log('decodIdV',Number(decodIdV))
+  
   useEffect(() => {
     if(Number(decodId)){
       dispatch(showDetail(Number(decodId)));
@@ -40,7 +39,6 @@ export default function RedirectCheckout() {
       var total = price[i] * seats?.length;
     }
   }
-  console.log(total);
   function printing() {
     setTimeout(() => 10000);
     window.print();

@@ -2,7 +2,7 @@
   background: linear-gradient(#adabadd8, #000000) fixed;
   bottom: 0;
   margin: 0;
-  height: 10rem;
+  height: 11.4rem;
   width: 100vw;
   color: white;
   display: flex;
@@ -31,4 +31,7 @@
 }
 
 @media (max-width: 768px) {
+  .linksContainer {
+    gap: 1rem;
+  }
 }

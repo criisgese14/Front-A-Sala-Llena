@@ -96,7 +96,7 @@ const ViewerHistory = () => {
                       <Card.Title>{e.name}</Card.Title>
                       <Card.Text>
                         <p>
-                          Funcion: {e.date} {e.time}
+                          Función: {e.date} {e.time}
                         </p>
                         <h5>Cantidad: {filterTicket?.length}</h5>
                         <h5>
@@ -110,7 +110,7 @@ const ViewerHistory = () => {
                   </Card>
                 </div>
                 <Button variant="dark" onClick={onClick}>
-                  Agrega tu opinion
+                  Agrega tu opinión
                 </Button>
                 <div>
                   {!button ? (
