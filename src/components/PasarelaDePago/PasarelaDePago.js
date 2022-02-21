@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import Seat from "../Seats/Seats";
 import { useDispatch, useSelector } from "react-redux";
 import { showDetail, getAllTickets } from "../../redux/actions/index.js";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import style from "./PasarelaDePago.module.css";
-import { Navbar, Container,} from "react-bootstrap";
+import { Navbar, Container } from "react-bootstrap";
 
 const PasarelaDePago = ({ props }) => {
   const [seatNumber, setSeatNumber] = useState(0);
@@ -46,16 +46,24 @@ const PasarelaDePago = ({ props }) => {
           </Navbar.Brand>
         </Container>
       </Navbar>
-      <h2 className={style.title}>Pasarela se Pago</h2>
+      <h2 className={style.title}>Pasarela de Pago</h2>
       <div className={style.tickets}>
         <label>Cantidad de entradas</label>
         <div className={style.containerSeatsNumber}>
-          <div className={`${style.operation} ${style.less}`} 
-              onClick={seatNumber>0?()=>setSeatNumber(seatNumber - 1):null}
+          <div
+            className={`${style.operation} ${style.less}`}
+            onClick={
+              seatNumber > 0 ? () => setSeatNumber(seatNumber - 1) : null
+            }
           />
           <label>{seatNumber}</label>
-          <div className={`${style.operation} ${style.sum}`} 
-                onClick={sillas && seatNumber<sillas.length?()=>setSeatNumber(seatNumber + 1):null}
+          <div
+            className={`${style.operation} ${style.sum}`}
+            onClick={
+              sillas && seatNumber < sillas.length
+                ? () => setSeatNumber(seatNumber + 1)
+                : null
+            }
           />
         </div>
       </div>

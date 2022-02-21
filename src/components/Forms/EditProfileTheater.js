@@ -187,7 +187,7 @@ const EditProfileTheater = () => {
             </div>
 
             <div className="col-md-6">
-              <label className="form-label col-lg-12">Direccion</label>
+              <label className="form-label col-lg-12">Dirección</label>
               {edit === false ? (
                 <input
                   readOnly="readOnly"
@@ -218,7 +218,7 @@ const EditProfileTheater = () => {
 
             <div className="col-md-6">
               <label className="form-label col-lg-12">
-                Numero de Contacto{" "}
+                Número de Contacto{" "}
               </label>
               {edit === false ? (
                 <input

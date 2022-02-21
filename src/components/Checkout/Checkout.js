@@ -38,7 +38,7 @@ export default function Checkout({
   return (
     <div>
       <div className={style.inputContainer}>
-        <label>Numero de entradas</label>
+        <label>Número de entradas</label>
         <input
           value={selected}
           disabled
@@ -53,9 +53,7 @@ export default function Checkout({
         <button className="btn btn-dark" onClick={(e) => buttonMp(e)}>
           Confirmar pago
         </button>
-        {link && 
-          window.open(link)
-        }
+        {link && window.open(link)}
       </div>
       <br />
     </div>
