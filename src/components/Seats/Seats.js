@@ -3,7 +3,6 @@ import style from "./Seat.module.css";
 import { useSelector } from "react-redux";
 import Checkout from "../Checkout/Checkout";
 import swal from "sweetalert";
-import { Button } from "bootstrap";
 
 const MySeats = ({
   seatsNumber,
@@ -48,13 +47,13 @@ const MySeats = ({
       setAvailable([...available, silla]);
     } else if (seatsNumber == 0) {
       swal({
-        text: "Indica cuantos asientos quieres",
+        text: "Indique cuantos asientos quiere",
         icon: "error",
         button: false,
       });
     } else if (selected.length == seatsNumber) {
       swal({
-        text: "No puedes escoger más tickets",
+        text: "No puede escoger más tickets",
         icon: "error",
         button: false,
       });
