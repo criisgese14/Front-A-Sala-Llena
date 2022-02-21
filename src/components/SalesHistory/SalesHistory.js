@@ -29,7 +29,7 @@ const SalesHistory = () => {
   }, [dispatch, decod]);
 
   let filterShows = show?.filter(
-    (e) => e.theaterId === theater?.id && e.released === true
+    (e) => e.theaterId === theater?.id 
   );
 
   console.log("filter", filterShows);
@@ -52,7 +52,7 @@ const SalesHistory = () => {
                     <Card.Title>{e.name}</Card.Title>
                     <Card.Text>
                       <p>
-                        Total vendido: ${e.tickets?.map((p) => p.price)}
+                        Total vendido: ${e.total}
                         {/*total?.reduce(function (a, b) {
                           return a + b;
                         })*/}
