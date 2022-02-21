@@ -31,32 +31,25 @@ const ShowDetailHome = () => {
     } else {
       return (
         <div className={style.timer}>
-          <div>
-          <p>{days}</p>
-          <small>Dias</small>
-          </div>
-
+          <h3>{days}</h3>
+          <h3>
+            <small> Dias</small>
+          </h3>
           <span>:</span>
-
-          <div>
-          <p>{hours}</p>
-          <small>Horas</small>
-          </div>
-
+          <h3>{hours} </h3>
+          <h3>
+            <small> Horas</small>
+          </h3>
           <span>:</span>
-
-          <div>
-          <p>{minutes}</p>
-          <small>Minutos</small>
-          </div>
-
+          <h3>{minutes}</h3>
+          <h3>
+            <small> Minutos</small>
+          </h3>
           <span>:</span>
-
-          <div>
-          <p>{seconds}</p>
-          <small>Segundos</small>
-          </div>
-
+          <h3>{seconds}</h3>
+          <h3>
+            <small> Segundos</small>
+          </h3>
         </div>
       );
     }
@@ -82,7 +75,7 @@ const ShowDetailHome = () => {
     } else if (tiempo.dia === 1 && tiempo.hora > 12) {
       setPorcentaje(25);
       porcentajefuncion(porcentaje);
-    } else if (tiempo.dia >= 2 && tiempo.hora >= 0){
+    } else if (tiempo.dia >= 2 && tiempo.hora >= 0) {
       setPorcentaje(30);
       porcentajefuncion(porcentaje);
     }
@@ -138,7 +131,7 @@ const ShowDetailHome = () => {
             <img src={show?.image} className={style.image} alt="img" />
           </div>
           <div className={style.boxSummary}>
-            <h3>Descripcion</h3>
+            <h3>Descripción</h3>
             <p>{show?.summary}</p>
           </div>
         </div>
@@ -156,15 +149,15 @@ const ShowDetailHome = () => {
         <div className={style.datos}>
           <div className={style.first}>
             <div className={style.box}>
-              <h3>Tipo de publico </h3>
+              <h3>Tipo de público </h3>
               <h4>{show?.rated} </h4>
             </div>
             <div className={style.box}>
-              <h3>Duracion </h3>
+              <h3>Duración </h3>
               <h4>{show?.length} </h4>
             </div>
             <div className={style.box}>
-              <h3>Genero </h3>
+              <h3>Género </h3>
               <h4>{show?.genre} </h4>
             </div>
           </div>

@@ -38,7 +38,7 @@ export default function Checkout({
   return (
     <div>
       <div className={style.inputContainer}>
-        <label>Numero de entradas</label>
+        <label>Número de entradas</label>
         <input
           value={selected}
           disabled
