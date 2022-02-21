@@ -36,7 +36,6 @@ const Newsletter = () => {
     });
   }
   const HandleCheck = (e) => {
-    e.preventDefault();
     if (e.target.checked) {
       setInput((prevInput) => ({
         ...prevInput,
