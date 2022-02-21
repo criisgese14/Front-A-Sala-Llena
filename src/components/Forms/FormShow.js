@@ -85,7 +85,7 @@ const FormShow = () => {
           console.log("ticket", tickets);
           postTicket(tickets);
         }
-        swal("Espectaculo agregado!", {
+        swal("Espectáculo agregado!", {
           icon: "success",
           buttons: false,
         });
@@ -94,7 +94,7 @@ const FormShow = () => {
       } else {
         swal({
           title: "Tranquilo!",
-          text: "Tomate tu tiempo",
+          text: "Tómate tu tiempo",
           buttons: false,
         });
       }
@@ -114,7 +114,7 @@ const FormShow = () => {
           <div className="col-md-12">
             <label className="form-label">Nombre</label>
             <input
-              title="Nombre del Espectaculo"
+              title="Nombre del Espectáculo"
               type="text"
               name="name"
               placeholder="Nombre de la obra"
@@ -133,7 +133,7 @@ const FormShow = () => {
           <div className="col-md-12">
             <label className="form-label">Descripcion</label>
             <textarea
-              title="Descripcion del espectaculo 1000 caracteres max"
+              title="Descripción del espectáculo 1000 caracteres max"
               type="text"
               name="summary"
               width="100"
@@ -148,7 +148,7 @@ const FormShow = () => {
                 },
                 maxLength: {
                   value: 1000,
-                  message: "No se pueden mas de 1000 caracteres",
+                  message: "No se pueden más de 1000 caracteres",
                 },
               })}
             />
@@ -171,7 +171,7 @@ const FormShow = () => {
               })}
             >
               <option selected disabled="disabled" value="">
-                Selecciona un genero
+                Selecciona un género
               </option>
 
               <option>Comedia</option>
@@ -189,7 +189,7 @@ const FormShow = () => {
           </div>
 
           <div className="col-md-6">
-            <label className="form-label col-lg-12">Tipo de Publico</label>
+            <label className="form-label col-lg-12">Tipo de Público</label>
             <select
               defaultValue=""
               name="rated"
@@ -237,7 +237,7 @@ const FormShow = () => {
           <div className="col-md-4">
             <label className="form-label col-lg-12">Duracion</label>
             <input
-              title="No se admiten numeros negativos ni decimales"
+              title="No se admiten números negativos ni decimales"
               type="number"
               name="length"
               placeholder="Minutos de la Obra"
@@ -335,7 +335,7 @@ const FormShow = () => {
               {errors.seatsavailable && errors.seatsavailable.message}
             </span>
             <small>
-              Selecciona los asientos disponibles para el espectaculo
+              Selecciona los asientos disponibles para el espectáculo
             </small>
           </div>
 
@@ -343,7 +343,7 @@ const FormShow = () => {
 
           <div className="col-md-12">
             <button className="btn btn-dark" type="submit">
-              Agregar Espectaculo
+              Agregar Espectáculo
             </button>
           </div>
         </form>

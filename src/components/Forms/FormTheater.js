@@ -41,7 +41,7 @@ const FormTheater = () => {
       phoneNumber: data.phoneNumber,
     };
     createTheater(inputs);
-    swal("Teatro creado con exito", "", "success");
+    swal("Teatro creado con éxito", "", "success");
     history.push("/loginteatres");
   };
   return (

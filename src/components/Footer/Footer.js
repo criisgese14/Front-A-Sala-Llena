@@ -13,11 +13,10 @@ const Footer = () => {
           Terminos y Condiciones
         </a>
       </div>
-      <h5>Contacto</h5>
-      <p>Buenos Aires, Argentina</p>
-      <p>Copyright © 2022 - A Sala Llena</p>
-      <div className={style.logoContainer}>
-        <img className={style.img} src={img} alt="img" />
+      <div className={style.data}>
+        <h5>Contacto</h5>
+        <p>Buenos Aires, Argentina</p>
+        <p>Copyright © 2022 - A Sala Llena</p>
       </div>
     </div>
   );

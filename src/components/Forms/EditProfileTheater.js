@@ -65,19 +65,19 @@ const EditProfileTheater = () => {
   function handleSubmitDelete() {
     swal({
       title: "Estás seguro?",
-      text: "Una vez borrado, no lo podras recuperar!",
+      text: "Una vez borrado, no lo podrás recuperar!",
       icon: "warning",
       buttons: true,
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        swal("Teatro borrado con exito", {
+        swal("Teatro borrado con éxito", {
           icon: "success",
         });
         dispatch(deleteTheater(decod));
         history.push("/");
       } else {
-        swal("Tu teatro seguira con vida ✔👀!");
+        swal("Tu teatro seguirá con vida ✔👀!");
       }
     });
   }

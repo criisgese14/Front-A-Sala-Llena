@@ -43,10 +43,8 @@ const LogInViewer = () => {
     dispatch(getAllViewers());
   }, [dispatch]);
 
-  const filterViewer = viewers?.find(
-    (e) => e.email === input.email && e.password === input.password
-  );
-  console.log(filterViewer);
+  
+  //console.log(filterViewer);
 
   const handleFailure = (response) => {
     swal(response, "", "error");
@@ -75,18 +73,9 @@ const LogInViewer = () => {
     setInput({ email: "", password: "" });
   }
 
-  function handleChange(e) {
-    setInput({
-      ...input,
-      [e.target.name]: e.target.value,
-    });
-    setErrors(
-      validate({
-        ...input,
-        [e.target.name]: e.target.value,
-      })
-    );
-  }
+  //const filterViewer = viewers?.find((e) => e.email === input.email && e.password === input.password);
+
+  
 
   return (
     <div>
@@ -141,6 +130,7 @@ const LogInViewer = () => {
               </Button>
             </Form>
             {hasLoginError && <strong>Usuario o contraseña invalidos</strong>}
+            
           </form>
         )}
 
