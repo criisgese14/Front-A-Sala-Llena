@@ -3,7 +3,7 @@ import { postPasswordRecoveryTheater } from "../../redux/actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
 import { allTheaters } from "../../redux/actions/index.js";
 import { Navbar, Form, Container, Button } from "react-bootstrap";
-import style from "./LoginTheaters.module.css";
+import style from "./PasswordRecoveryTheater.module.css";
 import swal from "sweetalert";
 
 const PasswordRecoveryTheater = () => {
@@ -49,22 +49,24 @@ const PasswordRecoveryTheater = () => {
           </Navbar.Brand>
         </Container>
       </Navbar>
-      <h2>Ingresa tu correo electronico</h2>
-      <div className={style.loginContainer}>
-        <Form>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Control
-              type="text"
-              placeholder="Email..."
-              value={input.email}
-              name="email"
-              onChange={inputChange}
-            />
-          </Form.Group>
-          <Button variant="dark" type="submit" onClick={handleSubmit}>
-            Enviar
-          </Button>
-        </Form>
+      <div className={style.bodyContainer}>
+        <h2>Ingresa tu correo electronico</h2>
+        <div className={style.loginContainer}>
+          <Form>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Control
+                type="text"
+                placeholder="Email..."
+                value={input.email}
+                name="email"
+                onChange={inputChange}
+              />
+            </Form.Group>
+            <Button variant="dark" type="submit" onClick={handleSubmit}>
+              Enviar
+            </Button>
+          </Form>
+        </div>
       </div>
     </div>
   );

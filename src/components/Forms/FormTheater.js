@@ -18,16 +18,15 @@ const FormTheater = () => {
   } = useForm();
   const password = useRef({});
   password.current = watch("password", "");
-  const email = useRef({})
+  const email = useRef({});
   email.current = watch("email", "");
   let history = useHistory();
   const theaters = useSelector((state) => state.theaters);
-  useEffect(()=>{
-    dispatch(allTheaters())
-  }, [dispatch])
-  let valido
-  valido = theaters?.find((e) => e.email === email.current)
-
+  useEffect(() => {
+    dispatch(allTheaters());
+  }, [dispatch]);
+  let valido;
+  valido = theaters?.find((e) => e.email === email.current);
 
   const onSubmit = (data) => {
     let inputs = {
@@ -55,7 +54,9 @@ const FormTheater = () => {
         >
           <Container fluid>
             <div className={style.left}>
-              <Navbar.Brand href="/">A Sala Llena</Navbar.Brand>
+              <Navbar.Brand href="/">
+                <p className={style.logo}>A Sala Llena</p>
+              </Navbar.Brand>
             </div>
           </Container>
         </Navbar>
@@ -90,7 +91,7 @@ const FormTheater = () => {
               title="ejemplo: usuario@nombre.com"
               type="text"
               name="email"
-              placeholder="Ingrese su Correo Electronico"
+              placeholder="Ingrese su Correo Electrónico"
               className="form-control my-2"
               {...register("email", {
                 required: {
@@ -101,7 +102,7 @@ const FormTheater = () => {
                   value: /\S+@\S+\.\S+/,
                   message: "Este formato de correo no es el adecuado",
                 },
-                validate: ()=> valido === undefined|| "Este correo ya existe",
+                validate: () => valido === undefined || "Este correo ya existe",
               })}
             />
             {

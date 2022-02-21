@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { postPasswordRecoveryViewer } from "../../redux/actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllViewers } from "../../redux/actions/index.js";
-import style from "./LoginViewer.module.css";
+import style from "./PasswordRecoveryViewer.module.css";
 import { Navbar, Form, Container, Button } from "react-bootstrap";
 
 import swal from "sweetalert";
@@ -50,22 +50,24 @@ const PasswordRecoveryViewer = () => {
           </Navbar.Brand>
         </Container>
       </Navbar>
-      <h2>Ingresa tu correo electronico</h2>
-      <div className={style.loginContainer}>
-        <Form>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Control
-              type="text"
-              placeholder="Email..."
-              value={input.email}
-              name="email"
-              onChange={inputChange}
-            />
-          </Form.Group>
-          <Button variant="dark" type="submit" onClick={handleSubmit}>
-            Enviar
-          </Button>
-        </Form>
+      <div className={style.bodyContainer}>
+        <h2>Ingresa tu correo electronico</h2>
+        <div className={style.loginContainer}>
+          <Form>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Control
+                type="text"
+                placeholder="Email..."
+                value={input.email}
+                name="email"
+                onChange={inputChange}
+              />
+            </Form.Group>
+            <Button variant="dark" type="submit" onClick={handleSubmit}>
+              Enviar
+            </Button>
+          </Form>
+        </div>
       </div>
     </div>
   );
