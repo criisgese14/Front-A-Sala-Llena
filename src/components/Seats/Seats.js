@@ -79,11 +79,11 @@ const MySeats = ({
           <ul className={style.showcase}>
             <li>
               <div className={style.seat}></div>
-              <small>Occupied</small>
+              <small>Ocupado</small>
             </li>
             <li>
               <div className={`${style.seat} ${style.selected}`}></div>
-              <small>Selected</small>
+              <small>Seleccionado</small>
             </li>
           </ul>
         ) : (
