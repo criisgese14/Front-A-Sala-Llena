@@ -444,6 +444,16 @@ export function checkoutPay({ seatNumber, showId, idViewer }) {
   };
 }
 
+export function getTicketPay({ seatNumber, showId, idViewer }) {
+  return async function (dispatch) {
+    var resp = await axios.get(`http://localhost:3001/tickets/pay/${showId}/${idViewer}/${seatNumber}`)
+      return dispatch({
+        type: GET_TICKET_PAY,
+        payload: resp.data
+      })
+  }
+}
+
 export function postNewsletterShow(nameTheater) {
   try {
     const postshow = axios.post("http://localhost:3001/newsletter", {
@@ -519,3 +529,4 @@ export const GET_ALL_REVIEW = "GET_ALL_REVIEW";
 export const POST_PASSWORD_RECOVERY_VIEWER = "POST_PASSWORD_RECOVERY_VIEWER";
 export const POST_PASSWORD_RECOVERY_THEATER = "POST_PASSWORD_RECOVERY_THEATER";
 export const DELETE_THEATRER = "DELETE_THEATRER";
+export const GET_TICKET_PAY = "GET_TICKET_PAY";

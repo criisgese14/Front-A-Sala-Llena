@@ -1,16 +1,19 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, Link } from "react-router-dom";
-import { showDetail } from "../../redux/actions";
+import { getTicketPay, showDetail } from "../../redux/actions";
 import NavBarPerfilViewer from "../NavBar/NavBarPerfilViewer";
 import codigo from "../../assets/codigoQr.jpg";
 
 export default function RedirectCheckout() {
     const {id, idV, seatNumber} = useParams();
+    const showId = id;
+    const idViewer = idV;
     const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(showDetail(id))
-    }, [dispatch,id])
+        dispatch(showDetail(id));
+        dispatch(getTicketPay({ seatNumber, showId, idViewer }));
+    }, [dispatch, id, showId, idViewer, seatNumber])
     const viewers = useSelector((state) => state.viewers);
     const findViewer = viewers?.find((v) => v.id === idV);
     const showdetail = useSelector((state) => state.showdetail);

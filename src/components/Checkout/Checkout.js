@@ -1,7 +1,9 @@
 import React from "react";
 import { checkoutPay } from "../../redux/actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import style from "./Checkout.module.css";
+import swal from "sweetalert";
 
 export default function Checkout({
   price,
@@ -21,6 +23,7 @@ export default function Checkout({
   const dispatch = useDispatch();
   const tickets = useSelector((state) => state.tickets);
   console.log(tickets);
+  const history = useHistory();
 
   var equalShowId = tickets?.filter((t) => t?.showId === Number(showId));
   console.log(equalShowId); // me trae solo los tickets de los asientos disponibles
@@ -55,7 +58,9 @@ export default function Checkout({
         <button className="btn btn-dark" onClick={(e) => buttonMp(e)}>
           Confirmar pago
         </button>
-        {link && window.open(link)}
+        {link && 
+          window.open(link)
+        }
       </div>
       <br />
     </div>
