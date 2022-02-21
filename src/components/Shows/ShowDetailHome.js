@@ -31,25 +31,32 @@ const ShowDetailHome = () => {
     } else {
       return (
         <div className={style.timer}>
+          <div>
           <p>{days}</p>
-          <p>
-            <small>Dias</small>
-          </p>
+          <small>Dias</small>
+          </div>
+
           <span>:</span>
+
+          <div>
           <p>{hours}</p>
-          <p>
-            <small>Horas</small>
-          </p>
+          <small>Horas</small>
+          </div>
+
           <span>:</span>
+
+          <div>
           <p>{minutes}</p>
-          <p>
-            <small>Minutos</small>
-          </p>
+          <small>Minutos</small>
+          </div>
+
           <span>:</span>
+
+          <div>
           <p>{seconds}</p>
-          <p>
-            <small>Segundos</small>
-          </p>
+          <small>Segundos</small>
+          </div>
+
         </div>
       );
     }
@@ -63,19 +70,19 @@ const ShowDetailHome = () => {
   };
 
   function numerodeporcentaje() {
-    if (tiempo.dia === 0 && tiempo.hora < 6) {
+    if (tiempo.dia === 0 && tiempo.hora < 12) {
       setPorcentaje(10);
       porcentajefuncion(porcentaje);
-    } else if (tiempo.dia === 0 && tiempo.hora < 12) {
+    } else if (tiempo.dia === 0 && tiempo.hora > 12) {
       setPorcentaje(15);
       porcentajefuncion(porcentaje);
-    } else if (tiempo.dia === 0 && tiempo.hora > 12) {
+    } else if (tiempo.dia === 1 && tiempo.hora < 12) {
       setPorcentaje(20);
       porcentajefuncion(porcentaje);
     } else if (tiempo.dia === 1 && tiempo.hora > 12) {
       setPorcentaje(25);
       porcentajefuncion(porcentaje);
-    } else {
+    } else if (tiempo.dia >= 2 && tiempo.hora >= 0){
       setPorcentaje(30);
       porcentajefuncion(porcentaje);
     }

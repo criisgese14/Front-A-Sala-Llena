@@ -63,6 +63,7 @@ const FormShow = () => {
       if (res) {
         const inputs = {
           ...input,
+          seatsAvailable: seatsavailable,
           theaterName: theater.name,
           name: data.name,
           summary: data.summary,
@@ -208,7 +209,6 @@ const FormShow = () => {
               <option>Apta para mayores de 13 años</option>
               <option>Apta para mayores de 16 años</option>
               <option>Apta para mayores de 18 años</option>
-              <option>Exhibición condicionada</option>
             </select>
             <span className="text-danger text-small d-block mb-2">
               {errors.rated && errors.rated.message}
