@@ -23,12 +23,17 @@ export default function RedirectCheckout() {
   }, [id,idV]);
   
   useEffect(() => {
-    if(Number(decodId)){
-      dispatch(showDetail(Number(decodId)));
-      dispatch(getTicketPay({ seatNumber, decodIdN, decodIdVn, status }));
+    if(decodIdN > 0){
+      dispatch(showDetail(decodIdN));
     }
-    
-  }, [dispatch, decodId]);
+    }, [dispatch, decodId]);
+
+    useEffect(()=>{
+      if(decodIdN > 0 && decodIdVn > 0){
+      
+        dispatch(getTicketPay({ seatNumber, decodIdN, decodIdVn, status }));
+      }
+    })
 
   const viewers = useSelector((state) => state.viewers);
   const findViewer = viewers?.find((v) => v.id === Number(decodIdV));
