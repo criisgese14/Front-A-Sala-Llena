@@ -39,7 +39,7 @@ export default function Checkout({
   const [preciofinal, setPreciofinal] = useState("");
   var ticketPrice = Number(preciofinal);
   const [porcentaje, setPorcentaje] = useState(null);
-  const [decodShowId] = useState("");
+  //const [decodShowId] = useState("");
   const newrelased = {
     released: true,
   };
@@ -88,7 +88,7 @@ export default function Checkout({
     numerodeporcentaje();
   };
   const handleComplete  = ()=>{
-    dispatch(putShow(decodShowId, newrelased));
+    dispatch(putShow(showId, newrelased));
     
   }
 

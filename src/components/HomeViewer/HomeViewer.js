@@ -24,16 +24,14 @@ const HomeViewer = () => {
   const paginate = (number) => {
     setActualPage(number);
   };
-  const [decod, setDecod] = useState("");
+  
   let img = window.sessionStorage.getItem("img").valueOf();
-  useEffect(async () => {
-    await setDecod(atob(id));
-  }, [id]);
+  
 
   useEffect(() => {
-    dispatch(getViewerDetail(decod));
+    dispatch(getViewerDetail(id));
     dispatch(allShows());
-  }, [dispatch, decod]);
+  }, [dispatch, id]);
 
   const shows = allshows?.filter(
     (e) => e.theater?.province === detail?.province
@@ -52,14 +50,14 @@ const HomeViewer = () => {
       </div>
       <div className={style.carouselContainer}>
         {shows?.length > 0 ? (
-          <CarouselContainer allshows={shows} decod={decod} />
+          <CarouselContainer allshows={shows} decod={id} />
         ) : (
-          <CarouselContainer allshows={allshows} decod={decod} />
+          <CarouselContainer allshows={allshows} decod={id} />
         )}
       </div>
       <div className={style.showsContainer}>
         {actualShow?.length ? (
-          <Shows actualShow={actualShow} idV={decod} />
+          <Shows actualShow={actualShow} idV={id} />
         ) : (
           <div className={style.noShows}>
             <img

@@ -16,19 +16,16 @@ const HomeTheater = () => {
   const shows = useSelector((state) => state.shows);
   const theater = useSelector((state) => state.theatersDetail);
   let { id } = useParams();
-  const [decod, setDecod] = useState("");
+  
   let img = window.sessionStorage.getItem("img").valueOf();
   console.log("img", img);
-  useEffect(async () => {
-    await setDecod(atob(id));
-    console.log("decod", decod);
-  }, [id]);
+  
 
   useEffect(() => {
-    dispatch(theaterDetail(decod));
+    dispatch(theaterDetail(id));
     dispatch(allTheaters());
     dispatch(allShows());
-  }, [dispatch, decod]);
+  }, [dispatch, id]);
 
   console.log("shows", shows);
   console.log("theater", theater);
@@ -38,7 +35,7 @@ const HomeTheater = () => {
 
   return (
     <div className={style.homeContainer}>
-      <NavBarTheater id={decod} img={img} name={theater?.name} />
+      <NavBarTheater id={id} img={img} name={theater?.name} />
 
       <div className={style.showsContainer}>
         {filterShows?.length ? (

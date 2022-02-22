@@ -9,38 +9,30 @@ import style from "./RedirectCheckout.module.css";
 export default function RedirectCheckout() {
   const { id, idV, seatNumber } = useParams();
   const dispatch = useDispatch();
-  const [decodId,setDecodId] = useState();
-  const [decodIdV,setDecodIdV] = useState();
+  
   const queryParams = window.location.search;
   const statusQuery = new URLSearchParams(queryParams)
   const status = statusQuery.get('status')
   // console.log(status)
-  const decodIdN = Number(decodId)
-  const decodIdVn = Number(decodIdV)
-  useEffect(async () => {
-    await setDecodId(atob(id));
-    await setDecodIdV(atob(idV));
-  }, [id,idV]);
+  
+  
+  
   
   useEffect(() => {
-    if(decodIdN > 0){
-      dispatch(showDetail(decodIdN));
-    }
-    }, [dispatch, decodId]);
+    dispatch(showDetail(id));
+  }, [dispatch, id]);
 
     useEffect(()=>{
-      if(decodIdN > 0 && decodIdVn > 0){
+      dispatch(getTicketPay({ seatNumber, id, idV, status }));
       
-        dispatch(getTicketPay({ seatNumber, decodIdN, decodIdVn, status }));
-      }
     })
 
   const viewers = useSelector((state) => state.viewers);
-  const findViewer = viewers?.find((v) => v.id === Number(decodIdV));
+  const findViewer = viewers?.find((v) => v.id === idV);
   const showdetail = useSelector((state) => state.showdetail);
   const tickets = showdetail?.tickets;
   const price = tickets?.map((t) => t.price);
-  var equalShowId = tickets?.filter((t) => t?.showId === Number(decodId));
+  var equalShowId = tickets?.filter((t) => t?.showId === id);
   console.log(equalShowId); // me trae solo los tickets de los asientos disponibles
   // console.log(seatNumber)//quedo como un string con los asientos separados por ,
   var seats = seatNumber.split(",");

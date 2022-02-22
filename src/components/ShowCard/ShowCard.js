@@ -33,7 +33,7 @@ const ShowCard = ({
     <div className={style.container}>
       {idV ? (
         <Link
-          to={`/showDetail/${btoa(id)}/${btoa(idV)}`}
+          to={`/showDetail/${id}/${idV}`}
           style={{ textDecoration: "none" }}
         >
           <Card

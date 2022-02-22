@@ -15,18 +15,14 @@ const SalesHistory = () => {
   const show = useSelector((state) => state.shows);
   const theater = useSelector((state) => state.theatersDetail);
   const { id } = useParams();
-  const [decod, setDecod] = useState("");
+  
   let img = window.sessionStorage.getItem("img").valueOf();
-  useEffect(async () => {
-    await setDecod(atob(id));
-    console.log("decod", decod);
-  }, [id]);
-
+  
   useEffect(() => {
     dispatch(getAllTickets());
     dispatch(allShows());
-    dispatch(theaterDetail(decod));
-  }, [dispatch, decod]);
+    dispatch(theaterDetail(id));
+  }, [dispatch, id]);
 
   let filterShows = show?.filter((e) => e.theaterId === theater?.id);
 
@@ -42,7 +38,7 @@ const SalesHistory = () => {
 
   return (
     <div>
-      <NavBarTheater id={decod} img={img} name={theater?.name} />
+      <NavBarTheater id={id} img={img} name={theater?.name} />
       <div className={style.totalSales}>
         <h1>
           Venta total al día de hoy:<b> ${finalTotal}</b>
