@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { showDetail } from "../../redux/actions/index.js";
+import { showDetail, totalPrice } from "../../redux/actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import style from "./ShowDetail.module.css";
@@ -102,6 +102,7 @@ const ShowDetail = () => {
         price: preciofinal,
       };
       dispatch(putTicket(show?.tickets[i].id, tickets));
+      dispatch(totalPrice(preciofinal));
     }
   };
 
