@@ -23,7 +23,7 @@ export default function RedirectCheckout() {
       dispatch(allShows());
       dispatch(getAllViewers())
       // dispatch(totalPrice())
-    
+    window.localStorage.removeItem('show')
   }, [dispatch, decodId]);
 
     useEffect(()=>{
