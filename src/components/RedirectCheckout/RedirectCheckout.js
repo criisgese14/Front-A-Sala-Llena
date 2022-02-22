@@ -11,7 +11,12 @@ export default function RedirectCheckout() {
   const dispatch = useDispatch();
   const [decodId,setDecodId] = useState();
   const [decodIdV,setDecodIdV] = useState();
-
+  const queryParams = window.location.search;
+  const statusQuery = new URLSearchParams(queryParams)
+  const status = statusQuery.get('status')
+  // console.log(status)
+  const decodIdN = Number(decodId)
+  const decodIdVn = Number(decodIdV)
   useEffect(async () => {
     await setDecodId(atob(id));
     await setDecodIdV(atob(idV));
@@ -20,6 +25,7 @@ export default function RedirectCheckout() {
   useEffect(() => {
     if(Number(decodId)){
       dispatch(showDetail(Number(decodId)));
+      dispatch(getTicketPay({ seatNumber, decodIdN, decodIdVn, status }));
     }
     
   }, [dispatch, decodId]);
