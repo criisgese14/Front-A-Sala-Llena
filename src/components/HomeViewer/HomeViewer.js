@@ -25,7 +25,7 @@ const HomeViewer = () => {
     setActualPage(number);
   };
   const [decod, setDecod] = useState("");
-
+  let img = window.sessionStorage.getItem('img').valueOf();
   useEffect(async () => {
     await setDecod(atob(id));
   }, [id]);
@@ -46,7 +46,7 @@ const HomeViewer = () => {
         <NavBarViewer
           setActualPage={setActualPage}
           setOrder={setOrder}
-          img={detail?.image}
+          img={img}
           name={detail?.name}
         />
       </div>
