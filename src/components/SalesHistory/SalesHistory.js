@@ -31,10 +31,13 @@ const SalesHistory = () => {
   let filterShows = show?.filter(
     (e) => e.theaterId === theater?.id 
   );
-
+  
   let total = filterShows?.map(e => e.total)
   console.log('total', total)
-
+  let finalTotal;
+  if(total?.length > 0){
+    finalTotal = total?.reduce(function (a, b) {return a + b;})
+  }
   console.log("filter", filterShows);
 
   
@@ -42,9 +45,7 @@ const SalesHistory = () => {
     <div>
       <NavBarTheater id={decod} img={theater?.image} name={theater?.name} />
       <div className={style.cardContainer}>
-        <h1>Venta total al día de hoy: ${total?.reduce(function (a, b) {
-                          return a + b;
-                        })} </h1>
+      <h1>Venta total al día de hoy: ${finalTotal} </h1>
         {filterShows.length ? (
           filterShows?.map((e, i) => {
             return (
