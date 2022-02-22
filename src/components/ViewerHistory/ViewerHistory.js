@@ -21,7 +21,7 @@ const ViewerHistory = () => {
   const [button, setButton] = useState(true);
   const { id } = useParams();
   const [decod, setDecod] = useState("");
-
+  let img = window.sessionStorage.getItem('img').valueOf();
   let showID;
   let theaterID;
 
@@ -80,7 +80,7 @@ const ViewerHistory = () => {
   return (
     <div>
       <div className={style.navContainer}>
-        <NavBarPerfilViewer img={viewer?.image} name={viewer?.name} />
+        <NavBarPerfilViewer img={img} name={viewer?.name} />
       </div>
       <h2>Opiniones</h2>
 

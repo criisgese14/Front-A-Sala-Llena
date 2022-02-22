@@ -9,6 +9,7 @@ import {
 } from "../../redux/actions/index.js";
 import ShowCardTheater from "../ShowCard/ShowCardTheater.js";
 import style from "./HomeTheater.module.css";
+import useUser from "../../hooks/useUser";
 
 const HomeTheater = () => {
   const dispatch = useDispatch();
@@ -16,7 +17,8 @@ const HomeTheater = () => {
   const theater = useSelector((state) => state.theatersDetail);
   let { id } = useParams();
   const [decod, setDecod] = useState("");
-
+  let img = window.sessionStorage.getItem("img").valueOf();
+  console.log("img", img);
   useEffect(async () => {
     await setDecod(atob(id));
     console.log("decod", decod);
@@ -36,7 +38,7 @@ const HomeTheater = () => {
 
   return (
     <div className={style.homeContainer}>
-      <NavBarTheater id={decod} img={theater?.image} name={theater?.name} />
+      <NavBarTheater id={decod} img={img} name={theater?.name} />
 
       <div className={style.showsContainer}>
         {filterShows?.length ? (
@@ -52,15 +54,12 @@ const HomeTheater = () => {
             />
           ))
         ) : (
-          <div>
-          {/*<img src='https://media.giphy.com/media/q15kbCtGFqwx8wYx1n/giphy.gif' alt='img'/>*/}
-          <p>NO HAY SHOWS PARA MOSTRAR</p>
+          <div className={style.noShows}>
+            {/*<img src='https://media.giphy.com/media/q15kbCtGFqwx8wYx1n/giphy.gif' alt='img'/>*/}
+            <p>NO HAY SHOWS PARA MOSTRAR</p>
           </div>
         )}
       </div>
-      {/* <div className={style.footerContainer}>
-        <Footer />
-      </div> */}
     </div>
   );
 };
