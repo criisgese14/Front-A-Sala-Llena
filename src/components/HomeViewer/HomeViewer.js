@@ -52,9 +52,9 @@ const HomeViewer = () => {
       </div>
       <div className={style.carouselContainer}>
         {shows?.length > 0 ? (
-          <CarouselContainer allshows={shows} />
+          <CarouselContainer allshows={shows} decod={decod}/>
         ) : (
-          <CarouselContainer allshows={allshows} />
+          <CarouselContainer allshows={allshows} decod={decod}/>
         )}
       </div>
       <div className={style.showsContainer}>
