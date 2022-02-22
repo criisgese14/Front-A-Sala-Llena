@@ -17,8 +17,8 @@ const HomeTheater = () => {
   const theater = useSelector((state) => state.theatersDetail);
   let { id } = useParams();
   const [decod, setDecod] = useState("");
-  let img = window.sessionStorage.getItem('img').valueOf()
-  console.log('img',img)
+  let img = window.sessionStorage.getItem("img").valueOf();
+  console.log("img", img);
   useEffect(async () => {
     await setDecod(atob(id));
     console.log("decod", decod);
@@ -29,8 +29,6 @@ const HomeTheater = () => {
     dispatch(allTheaters());
     dispatch(allShows());
   }, [dispatch, decod]);
-
-  
 
   console.log("shows", shows);
   console.log("theater", theater);
@@ -56,15 +54,12 @@ const HomeTheater = () => {
             />
           ))
         ) : (
-          <div>
-          {/*<img src='https://media.giphy.com/media/q15kbCtGFqwx8wYx1n/giphy.gif' alt='img'/>*/}
-          <p>NO HAY SHOWS PARA MOSTRAR</p>
+          <div className={style.noShows}>
+            {/*<img src='https://media.giphy.com/media/q15kbCtGFqwx8wYx1n/giphy.gif' alt='img'/>*/}
+            <p>NO HAY SHOWS PARA MOSTRAR</p>
           </div>
         )}
       </div>
-      {/* <div className={style.footerContainer}>
-        <Footer />
-      </div> */}
     </div>
   );
 };
