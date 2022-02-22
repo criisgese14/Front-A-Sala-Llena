@@ -45,7 +45,9 @@ const SalesHistory = () => {
     <div>
       <NavBarTheater id={decod} img={theater?.image} name={theater?.name} />
       <div className={style.cardContainer}>
-      <h1>Venta total al día de hoy: ${finalTotal} </h1>
+        <div>
+          <h1>Venta total al día de hoy: ${finalTotal} </h1>
+        </div>
         {filterShows.length ? (
           filterShows?.map((e, i) => {
             return (
