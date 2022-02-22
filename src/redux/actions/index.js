@@ -133,34 +133,11 @@ export function getViewerDetail(id) {
   };
 }
 
-//export function loginTheater ({ email, password }) {
-//    console.log(email)
-//    return fetch('http://localhost:3001/login/theater', {
-//      method: 'POST',
-//      headers: {
-//        "Content-Type": "application/json"
-//      },
-//      body: JSON.stringify({email, password})
-//
-//    }).then(res => {
-//      if (!res.ok) throw new Error('Response is NOT ok')
-//      return res.json()
-//    }).then(res => {
-//      const { jwt } = res
-//      return jwt
-//    })
-//  }
-
 export function loginTheater({ email, password }) {
   console.log(email);
   return (
     axios
       .post("http://localhost:3001/login/theater", { email, password })
-
-      //.then(res => {
-      //  if (!res.ok) throw new Error('Response is NOT ok')
-      //  return res.json()
-      //})
       .then((res) => {
         return res.data;
       })
@@ -187,6 +164,17 @@ export function putTicket(id, nuevoticket) {
       .then((response) => response.data)
       .then((data) => {
         dispatch({ type: PUT_TICKET, payload: data });
+      });
+  };
+}
+
+export function putShow(id, nuevoshow) {
+  return function (dispatch) {
+    return axios
+      .put(`http://localhost:3001/shows/${id}`, nuevoshow)
+      .then((response) => response.data)
+      .then((data) => {
+        dispatch({ type: PUT_SHOW, payload: data });
       });
   };
 }
@@ -224,33 +212,13 @@ export function deleteTheater(id) {
   };
 }
 
-//export function loginViewer ({ email, password }) {
-//    console.log(email)
-//    return fetch('http://localhost:3001/login/viewer', {
-//      method: 'POST',
-//      headers: {
-//        "Content-Type": "application/json"
-//      },
-//      body: JSON.stringify({email, password})
-//
-//    }).then(res => {
-//      if (!res.ok) throw new Error('Response is NOT ok')
-//      return res.json()
-//    }).then(res => {
-//      const { jwt } = res
-//      return jwt
-//    })
-//  }
 
 export function loginViewer({ email, password }) {
   console.log(email);
   return (
     axios
       .post("http://localhost:3001/login/viewer", { email, password })
-      //.then(res => {
-      //  if (!res.ok) throw new Error('Response is NOT ok')
-      //  return res.json()
-      //})
+      
       .then((res) => {
         return res.data;
       })
@@ -275,21 +243,6 @@ export function getShowByName(name) {
     }
   };
 }
-
-// export function editProfileT(payload) {
-//   return async function (dispatch) {
-//     try {
-//       const { data } = await axios.put(
-//         `http://localhost:3001/theaters/${payload.id}`,
-//         payload
-//       );
-//       alert(data);
-//       return dispatch({ type: PUT_PROFILE_THEATER });
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   };
-// }
 
 export function editProfileT(id, changes) {
   return function (dispatch) {
@@ -376,57 +329,6 @@ export function postReview(
   }
 }
 
-// export function checkoutPay(id) {
-// console.log(id)
-// // var script = document.createElement('script');
-// //         script.src = "https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";
-// //         // const attr_data_preference = document.createAttribute('data-preference-id') //Crea un nodo atribute
-// //         // attr_data_preference.value = id.id
-// //         // script.setAttributeNode(script);
-// //         script.type = "text/javascript";
-// //         script.dataset.preferenceId =  axios
-// //         .post ('http://localhost:3001/tickets/pay', {id}).preferenceId;
-// //         document.getElementById("button-checkout").innerHTML = "";
-// //         document.querySelector("#button-checkout").appendChild(script);
-// return (
-//     axios.post ('http://localhost:3001/tickets/pay', {id})
-//         .then((res) => {
-//             console.log(res.data)
-//             return res.data
-//         })
-//         .catch((e) => console.log(e))
-// )
-
-// return async function (dispatch) {
-//     try{
-//         const pay = await axios.post ('http://localhost:3001/tickets/pay', {id})
-
-//         var script = document.createElement('script');
-//         script.src = "https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";
-//         // const attr_data_preference = document.createAttribute('data-preference-id') //Crea un nodo atribute
-//       // attr_data_preference.value = id.id
-//         // script.setAttributeNode(script);
-//         script.type = "text/javascript";
-//         script.dataset.preferenceId = pay.preferenceId;
-//         document.getElementById("button-checkout").innerHTML = "";
-//         document.querySelector("#button-checkout").appendChild(script);
-//         // var key = pay.data
-//         // console.log(key)
-//         // window.location.href = 'https://sandbox.mercadopago.com.ar/checkout/v1/redirect?pref_id=672708410-642e44a0-3182-4983-b7d7-3e01eebce9e5'
-//         // console.log(window.location)
-//         dispatch({
-//             type: CHECKOUT_PAY,
-//             payload: pay.data,
-//             // key
-//         })
-//         // window.location = pay.data.redirect
-//     } catch(e) {
-//         console.log(e)
-//     }
-// }
-
-// }
-
 export function checkoutPay({ seatNumber, showId, idViewer }) {
   return function (dispatch) {
     axios
@@ -444,9 +346,9 @@ export function checkoutPay({ seatNumber, showId, idViewer }) {
   };
 }
 
-export function getTicketPay({ seatNumber, showId, idViewer, status }) {
+export function getTicketPay({ seatNumber, decodIdN, decodIdVn, status }) {
   return async function (dispatch) {
-    var resp = await axios.get(`http://localhost:3001/tickets/finish/${showId}/${idViewer}/${seatNumber}/${status}`)
+    var resp = await axios.get(`http://localhost:3001/tickets/finish/${decodIdN}/${decodIdVn}/${seatNumber}/${status}`)
       return dispatch({
         type: GET_TICKET_PAY,
         payload: resp.data
@@ -530,3 +432,4 @@ export const POST_PASSWORD_RECOVERY_VIEWER = "POST_PASSWORD_RECOVERY_VIEWER";
 export const POST_PASSWORD_RECOVERY_THEATER = "POST_PASSWORD_RECOVERY_THEATER";
 export const DELETE_THEATRER = "DELETE_THEATRER";
 export const GET_TICKET_PAY = "GET_TICKET_PAY";
+export const PUT_SHOW = "PUT_SHOW";

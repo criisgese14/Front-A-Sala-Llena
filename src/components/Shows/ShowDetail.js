@@ -5,7 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import style from "./ShowDetail.module.css";
 import Countdown from "react-countdown";
 import { Navbar, Container, Button } from "react-bootstrap";
-
+import {putShow} from "../../redux/actions/index.js";
 import { putTicket } from "../../redux/actions/index.js";
 
 const ShowDetail = () => {
@@ -21,7 +21,9 @@ const ShowDetail = () => {
   const [porcentaje, setPorcentaje] = useState(null);
   const [decodShowId, setDecodShowId] = useState("");
   const [decodViewerId, setDecodViewerId] = useState("");
-
+  const newrelased = {
+    released: true,
+  };
   useEffect(async () => {
     await setDecodShowId(atob(id));
     await setDecodViewerId(atob(idV));
@@ -35,31 +37,28 @@ const ShowDetail = () => {
 
   const renderer = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
-      <div>
+      return (<div>
         <p>La obra ya ha comenzado!</p>
-      </div>;
+      </div>);
     } else {
       return (
         <div className={style.timer}>
+          <div className={style.timercont}>
           <h3>{days}</h3>
-          <h3>
-            <small> Dias</small>
-          </h3>
-          <span>:</span>
+          <span className="text-muted"> Dias    </span>
+          </div>
+          <div className={style.timercont}>
           <h3>{hours} </h3>
-          <h3>
-            <small> Horas</small>
-          </h3>
-          <span>:</span>
+          <span className="text-muted"> Horas   </span>
+          </div>
+          <div className={style.timercont}>
           <h3>{minutes}</h3>
-          <h3>
-            <small> Minutos</small>
-          </h3>
-          <span>:</span>
+          <span className="text-muted"> Minutos </span>
+          </div>
+          <div className={style.timercont}>
           <h3>{seconds}</h3>
-          <h3>
-            <small> Segundos</small>
-          </h3>
+          <span className="text-muted">Segundos</span>
+          </div>
         </div>
       );
     }
@@ -72,6 +71,10 @@ const ShowDetail = () => {
     console.log(tiempo.dia);
     numerodeporcentaje();
   };
+  const handleComplete  = ()=>{
+    dispatch(putShow(decodShowId, newrelased));
+    
+  }
 
   function numerodeporcentaje() {
     if (tiempo.dia === 0 && tiempo.hora < 12) {
@@ -148,10 +151,7 @@ const ShowDetail = () => {
         {/* //-------------------Timer--------------- */}
         <div className={style.timerContainer}>
           <h2 className={style.highlight}>Este show comienza en</h2>
-          <Countdown date={dateTimer} renderer={renderer} onTick={onStart}>
-            <div>
-              <p>La obra ya ha comenzado!</p>
-            </div>
+          <Countdown date={dateTimer} renderer={renderer} onTick={onStart} onComplete={handleComplete}>
           </Countdown>
         </div>
         {/* //-------------------1row---------------- */}
@@ -192,7 +192,7 @@ const ShowDetail = () => {
           <div className={style.first}>
             <div className={style.box}>
               <h3>Entradas disponibles</h3>
-              <h4>{show?.ticketsQty} </h4>
+              <h4>{show?.seatsAvailable?.length} </h4>
             </div>
             <div className={style.box}>
               <h3>Fecha</h3>
