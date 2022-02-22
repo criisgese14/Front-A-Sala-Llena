@@ -127,8 +127,8 @@ const ViewerHistory = () => {
           })
         ) : (
           <div>
-          <img src='https://media.giphy.com/media/q15kbCtGFqwx8wYx1n/giphy.gif' alt='img'/>
-          <p>No hay shows para mostrar</p>
+          {/*<img src='https://media.giphy.com/media/q15kbCtGFqwx8wYx1n/giphy.gif' alt='img'/>*/}
+          <p>NO HAY SHOWS PARA MOSTRAR</p>
           </div>
         )}
       </div>
