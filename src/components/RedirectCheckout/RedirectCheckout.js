@@ -1,6 +1,6 @@
 import React, { useEffect,useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getTicketPay, showDetail } from "../../redux/actions";
 import NavBarPerfilViewer from "../NavBar/NavBarPerfilViewer";
 import codigo from "../../assets/codigoQr.jpg";
@@ -73,14 +73,6 @@ export default function RedirectCheckout() {
             <img className={style.codigoQr} src={codigo} alt="cogido" />
           </div>
         </div>
-        <div className={style.btnContainer}>
-          <Link to={`/viewerHome/${idV}`}>
-            <button type="button" className="btn btn-dark">
-              Volver
-            </button>
-          </Link>
-        </div>
-
         <form>
           <div className={style.btnContainer}>
             <button
