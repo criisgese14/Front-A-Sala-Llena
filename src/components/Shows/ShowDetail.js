@@ -195,7 +195,7 @@ const ShowDetail = () => {
           <div className={style.first}>
             <div className={style.box}>
               <h3>Entradas disponibles</h3>
-              <h4>{show?.ticketsQty} </h4>
+              <h4>{show?.seatsAvailable?.length} </h4>
             </div>
             <div className={style.box}>
               <h3>Fecha</h3>
