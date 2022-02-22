@@ -32,7 +32,6 @@ export default function Checkout({
     dispatch(checkoutPay({ seatNumber, showId, idViewer }));
   }
 
-  //--------------> reloj para sacar porcentaje y precio-----------------
   const [tiempo, setTiempo] = useState({
     dia: 0,
     hora: 0,
@@ -119,7 +118,6 @@ export default function Checkout({
   }
 
   let dateTimer = `${show?.date} ${show?.time}`;
-  //-----------------------------------------------
 
   return (
     <div>
