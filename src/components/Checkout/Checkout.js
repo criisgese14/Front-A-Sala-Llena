@@ -27,29 +27,28 @@ export default function Checkout({
   // var equalShowId = show?.filter((s) => s?.showId === Number(showId));
 
   // console.log(equalShowId); // me trae solo los tickets de los asientos disponibles
-  // var total = 0;
-  // if (seatNumber.length > 0) {
-  //   for (var i = 0; i < 1; i++) {
-  //     total = equalShowId[i]?.price * seatNumber?.length;
-  //   }
-  // }
 
   function buttonMp() {
     dispatch(checkoutPay({ seatNumber, showId, idViewer }));
   }
 
-
-
+  //--------------> reloj para sacar porcentaje y precio-----------------
   const [tiempo, setTiempo] = useState({
     dia: 0,
     hora: 0,
   });
   const [preciofinal, setPreciofinal] = useState("");
+  var ticketPrice = Number(preciofinal);
   const [porcentaje, setPorcentaje] = useState(null);
   const [decodShowId] = useState("");
   const newrelased = {
     released: true,
   };
+
+  var total = 0;
+  if (seatNumber.length > 0) {
+      total = ticketPrice * seatNumber?.length;
+    }
   
   const renderer = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
@@ -87,7 +86,6 @@ export default function Checkout({
       dia: days,
       hora: hours,
     });
-    console.log(tiempo.dia);
     numerodeporcentaje();
   };
   const handleComplete  = ()=>{
@@ -121,6 +119,7 @@ export default function Checkout({
   }
 
   let dateTimer = `${show?.date} ${show?.time}`;
+  //-----------------------------------------------
 
   return (
     <div>
@@ -135,7 +134,7 @@ export default function Checkout({
       <div className={style.inputContainer}>
         <label>Total</label>
         {/* <input disabled value={preciofinal * seatNumber.length}></input> */}
-        <h3>${preciofinal * seatNumber.length}</h3>
+        <h3>${total}</h3>
       </div>
       <div>
         <button className="btn btn-dark" onClick={(e) => buttonMp(e)}>
