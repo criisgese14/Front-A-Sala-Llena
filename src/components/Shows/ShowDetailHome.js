@@ -7,6 +7,7 @@ import Countdown from "react-countdown";
 import { putTicket } from "../../redux/actions/index.js";
 import swal from "sweetalert";
 import { Navbar, Container, Button } from "react-bootstrap";
+import {putShow} from "../../redux/actions/index.js";
 
 const ShowDetailHome = () => {
   const show = useSelector((state) => state.showdetail);
@@ -18,6 +19,10 @@ const ShowDetailHome = () => {
   });
   const [preciofinal, setPreciofinal] = useState("");
   const [porcentaje, setPorcentaje] = useState(null);
+
+  const newrelased = {
+    released: true,
+  };
   useEffect(() => {
     dispatch(showDetail(idShow));
   }, [dispatch, idShow]);
@@ -25,9 +30,11 @@ const ShowDetailHome = () => {
   console.log(show);
   const renderer = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
-      <div>
+      return (<div>
         <p>La obra ya ha comenzado!</p>
-      </div>;
+      </div>)
+      ;
+      
     } else {
       return (
         <div className={style.timer}>
@@ -61,6 +68,11 @@ const ShowDetailHome = () => {
     });
     numerodeporcentaje();
   };
+  
+  const handleComplete  = ()=>{
+    dispatch(putShow(idShow, newrelased));
+    
+  }
 
   function numerodeporcentaje() {
     if (tiempo.dia === 0 && tiempo.hora < 12) {
@@ -138,10 +150,10 @@ const ShowDetailHome = () => {
         {/* //-------------------Timer--------------- */}
         <div className={style.timerContainer}>
           <h2 className={style.highlight}>Este show comienza en</h2>
-          <Countdown date={dateTimer} renderer={renderer} onTick={onStart}>
-            <div>
-              <p>La obra ya ha comenzado!</p>
-            </div>
+          <Countdown date={dateTimer} renderer={renderer} onTick={onStart} onComplete={handleComplete} >
+          
+            
+            
           </Countdown>
         </div>
         {/* //-------------------1row---------------- */}
