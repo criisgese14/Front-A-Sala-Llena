@@ -34,7 +34,7 @@ const SalesHistory = () => {
   
   let total = filterShows?.map(e => e.total)
   console.log('total', total)
-  let finalTotal;
+  let finalTotal = 0;
   if(total?.length > 0){
     finalTotal = total?.reduce(function (a, b) {return a + b;})
   }
@@ -71,8 +71,8 @@ const SalesHistory = () => {
           })
         ) : (
           <div>
-          {/*<img src='https://media.giphy.com/media/q15kbCtGFqwx8wYx1n/giphy.gif' alt='img'/>*/}
-          <p>NO HAY VENTAS PARA MOSTRAR</p>
+          <img src='https://media.giphy.com/media/q15kbCtGFqwx8wYx1n/giphy.gif' alt='img'/>
+          {/*<p>NO HAY VENTAS PARA MOSTRAR</p>*/}
           </div>
         )}
       </div>
