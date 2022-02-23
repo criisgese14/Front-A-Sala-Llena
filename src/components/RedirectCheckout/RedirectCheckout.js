@@ -19,14 +19,14 @@ export default function RedirectCheckout() {
   
   useEffect(() => {
     
-      dispatch(showDetail(id));
+      dispatch(showDetail(idV));
       dispatch(allShows());
       dispatch(getAllViewers())
-      dispatch(getViewerDetail(idV))
+      dispatch(getViewerDetail(id))
       // dispatch(totalPrice())
       dispatch(getTicketPay({ seatNumber, id, idV, status }));
     window.localStorage.removeItem('show')
-  }, [dispatch, id]);
+  }, []);
 
     
     console.log('id',id)
