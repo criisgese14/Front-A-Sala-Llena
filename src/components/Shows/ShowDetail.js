@@ -204,7 +204,7 @@ const ShowDetail = () => {
           {/* //---------------------------------- */}
 
           <div className={style.btnContainer}>
-          {show?.seatsAvailable?.length > 0 ? (
+          {show?.seatsAvailable?.length > 0 && show?.released === false? (
             <Link
               to={`/pasarela/${id}/${idV}`}
               style={{ textDecoration: "none" }}
