@@ -1,7 +1,7 @@
 import React, { useEffect,useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getTicketPay, showDetail, allShows, getAllViewers } from "../../redux/actions";
+import { getTicketPay, showDetail, allShows, getAllViewers,getViewerDetail } from "../../redux/actions";
 import NavBarPerfilViewer from "../NavBar/NavBarPerfilViewer";
 import codigo from "../../assets/codigoQr.jpg";
 import style from "./RedirectCheckout.module.css";
@@ -22,25 +22,26 @@ export default function RedirectCheckout() {
       dispatch(showDetail(id));
       dispatch(allShows());
       dispatch(getAllViewers())
+      dispatch(getViewerDetail(idV))
       // dispatch(totalPrice())
+      dispatch(getTicketPay({ seatNumber, id, idV, status }));
     window.localStorage.removeItem('show')
-  }, [dispatch, decodId]);
+  }, [dispatch, id]);
 
-    useEffect(()=>{
-      
-        dispatch(getTicketPay({ seatNumber, id, idV, status }));
-      
-    })
+    
+    console.log('id',id)
+    console.log('idV',idV)
     
   const viewers = useSelector((state) => state.viewers);
-  const findViewer = viewers?.filter((v) => v.id === Number(decodId));
+  const findViewer = viewers?.filter((v) => v.id === idV);
   const viewerName = findViewer?.map((v) => v?.name);
-  // const show = useSelector((state) => state.showdetail);
+  const show = useSelector((state) => state.showdetail);
   const shows = useSelector((state) => state.shows);
-  const equalShow = shows?.filter((s) => s?.id === Number(decodIdV));
-  const showName = equalShow?.map((s) => s?.name);
-  const showTheater = equalShow?.map((s) => s?.theater.name);
-  const showDate = equalShow?.map((s) => s?.date);
+  const viewerDetail = useSelector((state) => state.viewerDetail)
+  //const equalShow = shows?.filter((s) => s?.id === id);
+  //const showName = equalShow?.map((s) => s?.name);
+  //const showTheater = equalShow?.map((s) => s?.theater.name);
+  //const showDate = equalShow?.map((s) => s?.date);
   const priceTicket = useSelector((state) => state.totalPrice);
   // console.log(priceTicket, 'priceTicket')
   var seats = seatNumber.split(",");
@@ -62,14 +63,14 @@ export default function RedirectCheckout() {
       <div>
         <NavBarPerfilViewer />
         <h2 className={style.title}>
-          Muchas gracias {viewerName} por comprar en A Sala Llena
+          Muchas gracias {viewerDetail?.name} por comprar en A Sala Llena
         </h2>
         <div className={style.card}>
-          <h2>Espectáculo: " {showName} "</h2>
-          <h3>Teatro: {showTheater}</h3>
+          <h2>Espectáculo: " {show?.name} "</h2>
+          <h3>Teatro: {show?.theater?.name}</h3>
           <h3>Cantidad de entradas: {seats?.length}</h3>
           <h3>Número de asientos: {seatNumber}</h3>
-          <h3>Fecha: {showDate}</h3>
+          <h3>Fecha: {show?.date}</h3>
           <h2>Total: $ {total}</h2>
           <div>
             <img className={style.codigoQr} src={codigo} alt="codigo" />
