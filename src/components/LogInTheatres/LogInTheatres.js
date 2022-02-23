@@ -89,7 +89,7 @@ const LogInTheatres = () => {
 
       <div className={style.loginContainer}>
         {statusIdT ? (
-          <Redirect to={`/theaterHome/${statusIdT}}`} />
+          <Redirect to={`/theaterHome/${statusIdT}`} />
         ) : (
           <form onSubmit={handleSubmit}>
             <Form>
